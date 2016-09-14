@@ -46,4 +46,3 @@ then
 fi
 echo $msg >>$BACKUP_LOGFILE
 echo "======================================================" >>$BACKUP_LOGFILE
-# hell

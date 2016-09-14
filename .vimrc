@@ -171,7 +171,7 @@ Plugin 'gregsexton/MatchTag'                " highlight pairs tags
 Plugin 'tpope/vim-ragtag'                   " set of personal mappings
 Plugin 'godlygeek/tabular'                  " smart tabbing
 Plugin 'freeo/vim-kalisi'                   " default nvim colorscheme for vim
-Plugin 'terryma/vim-multiple-cursors'
+Plugin 'terryma/vim-multiple-cursors'       " sublime-like multiple cursors
 " Plugin 'sjl/badwolf'
 " Plugin  'nanotech/jellybeans.vim'
 
