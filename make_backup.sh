@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+GITHUB_SSHKEY="$HOME/.ssh/github_key"
+
 BACKUP_FOLDER="$HOME/.dotfiles"
 BACKUP_LOGFILE="$HOME/.backup_configs.log"
 BACKUPING_FILES="/etc/default/keyboard
@@ -30,6 +32,7 @@ do
 done
 
 # github push
+ssh-add $GITHUB_SSHKEY
 cd $BACKUP_FOLDER
 git add -A
 git commit -m "Backuped by cron"
