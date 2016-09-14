@@ -18,7 +18,6 @@ do
     if [ -e $file ]
     then
         dest_dir=$BACKUP_FOLDER
-        echo $file
         if [[ $file == *"openbox"* ]]
         then
             dest_dir="$BACKUP_FOLDER/openbox"
@@ -37,6 +36,5 @@ git push -u origin master
 if [[ $(git status) == *"nothing to commit"* ]]
 then
     echo "Backuped to github." >>$BACKUP_LOGFILE
-    echo "KEK"
 fi
 echo "======================================================" >>$BACKUP_LOGFILE
