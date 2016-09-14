@@ -268,4 +268,3 @@ augroup END
 
 
 runtime macros/matchit.vim
-"'hello world'
