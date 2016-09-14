@@ -32,6 +32,7 @@ do
 done
 
 # github push
+eval `ssh-agent -s`
 ssh-add $GITHUB_SSHKEY
 cd $BACKUP_FOLDER
 git add .
