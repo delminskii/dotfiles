@@ -32,7 +32,7 @@ done
 # github push
 cd $BACKUP_FOLDER
 git add -A
-git commit -m "Backuped"
+git commit -m "Backuped by cron"
 git push -u origin master
 
 msg="ERROR: Can't back up to github."
