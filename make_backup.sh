@@ -34,8 +34,11 @@ cd $BACKUP_FOLDER
 git add -A
 git commit -m "Backuped"
 git push -u origin master
+
+msg="ERROR: Can't back up to github."
 if [[ $(git status) == *"nothing to commit"* ]]
 then
-    echo "Backuped to github." >>$BACKUP_LOGFILE
+    msg="Backuped to github."
 fi
+echo $msg >>$BACKUP_LOGFILE
 echo "======================================================" >>$BACKUP_LOGFILE
