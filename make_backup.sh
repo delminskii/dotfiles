@@ -34,7 +34,7 @@ done
 # github push
 ssh-add $GITHUB_SSHKEY
 cd $BACKUP_FOLDER
-git add -A
+git add .
 git commit -m "Backuped by cron"
 git push -u origin master
 
