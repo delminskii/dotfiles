@@ -12,7 +12,7 @@ $HOME/.config/openbox/*
 $0
 "
 
-echo "Date: $date" >>$BACKUP_LOGFILE
+echo "Date: $(date)" >>$BACKUP_LOGFILE
 for file in $BACKUPING_FILES
 do
     if [ -e $file ]
@@ -31,6 +31,7 @@ done
 
 # github push
 cd $BACKUP_FOLDER
+git add -A
 git commit -m "Backuped"
 git push -u origin master
 if [[ $(git status) == *"nothing to commit"* ]]
