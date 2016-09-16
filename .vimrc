@@ -111,6 +111,9 @@ map ;p :w<CR>:exe ":!python " . getreg("%") . "" <CR>
 " save and execute current bash script in shortcut
 map ;b :w<CR>:exe ":!bash " . getreg("%") . "" <CR>
 
+" save and execute current js script in shortcut
+map ;j :w<CR>:exe ":!node " . getreg("%") . "" <CR>
+
 " clear search-highlight
 nmap <silent> ,/ :nohlsearch<CR>
 
