@@ -262,7 +262,7 @@ map s <Plug>(easymotion-s)
 augroup vimrc_autocmd
   autocmd!
   autocmd VimEnter * call s:setCursorLine()
-  autocmd FileType html,xml,svg,css,htmldjango,scss EmmetInstall
+  autocmd FileType html,xml,svg,css,htmldjango,scss,smarty EmmetInstall
 
   " for gnome-terminal
   " toggling cursorline
