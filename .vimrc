@@ -173,10 +173,10 @@ Plugin 'tpope/vim-commentary'               " commenting
 Plugin 'gregsexton/MatchTag'                " highlight pairs tags
 Plugin 'tpope/vim-ragtag'                   " set of personal mappings
 Plugin 'godlygeek/tabular'                  " smart tabbing
-Plugin 'freeo/vim-kalisi'                   " default nvim colorscheme for vim
 Plugin 'terryma/vim-multiple-cursors'       " sublime-like multiple cursors
+Plugin 'freeo/vim-kalisi'
+" Plugin  'nanotech/jellybeans.vim'           " colorscheme for me
 " Plugin 'sjl/badwolf'
-" Plugin  'nanotech/jellybeans.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -214,6 +214,7 @@ let g:user_emmet_install_global = 0             " take a look at vimrc_autocmd
 " =============================================================================
 " Colorscheme colors
 " =============================================================================
+
 set background=dark
 colorscheme kalisi
 
