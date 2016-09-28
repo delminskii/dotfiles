@@ -3,7 +3,8 @@
 " =============================================================================
 set nocompatible
 set backspace=indent,eol,start
-map Q gq
+set regexpengine=1
+set timeoutlen=0
 
 " ---------------------------------CUSTOM -------------------------------------
 " Settings to perform spaces number, which will be replace for \t
