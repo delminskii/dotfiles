@@ -4,7 +4,7 @@
 set nocompatible
 set backspace=indent,eol,start
 set regexpengine=1
-set timeoutlen=0
+"set timeoutlen=120
 
 " ---------------------------------CUSTOM -------------------------------------
 " Settings to perform spaces number, which will be replace for \t
