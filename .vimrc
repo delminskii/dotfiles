@@ -176,6 +176,7 @@ Plugin 'tpope/vim-ragtag'                   " set of personal mappings
 Plugin 'godlygeek/tabular'                  " smart tabbing
 Plugin 'terryma/vim-multiple-cursors'       " sublime-like multiple cursors
 Plugin 'freeo/vim-kalisi'
+Plugin 'triglav/vim-visual-increment'       " inc/dec by C-A/C-X
 " Plugin  'nanotech/jellybeans.vim'           " colorscheme for me
 " Plugin 'sjl/badwolf'
 
