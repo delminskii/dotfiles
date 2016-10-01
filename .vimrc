@@ -163,6 +163,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'mattn/emmet-vim'                    " emmet for HTML\CSS
 Plugin 'Lokaltog/vim-easymotion'            " easymotion for vim
 Plugin 'jiangmiao/auto-pairs'               " auto [({, quotes and so on
+"Plugin 'tpope/vim-surround'                " auto-pairs alternative
 Plugin 'majutsushi/tagbar'                  " class\module browser
 Plugin 'tpope/vim-fugitive'                 " Vim plugin for view current git bunch for vim-airline
 Plugin 'vim-airline/vim-airline'            " Lean & mean status/tabline for vi
@@ -170,13 +171,20 @@ Plugin 'vim-airline/vim-airline-themes'     " airline themes
 Plugin 'kien/ctrlp.vim'                     " fuzzy search (files)
 Plugin 'scrooloose/syntastic'               " linting ANY (!!!) code
 Plugin 'heavenshell/vim-pydocstring'        " python docstring
-Plugin 'tpope/vim-commentary'               " commenting
+Plugin 'scrooloose/nerdcommenter'           " commenting
 Plugin 'gregsexton/MatchTag'                " highlight pairs tags
 Plugin 'tpope/vim-ragtag'                   " set of personal mappings
 Plugin 'godlygeek/tabular'                  " smart tabbing
 Plugin 'terryma/vim-multiple-cursors'       " sublime-like multiple cursors
 Plugin 'triglav/vim-visual-increment'       " inc/dec by C-A/C-X
 Plugin 'nanotech/jellybeans.vim'            " colorscheme for me
+
+Plugin 'MarcWeber/vim-addon-mw-utils'       "
+Plugin 'tomtom/tlib_vim'                    "
+Plugin 'garbas/vim-snipmate'                " FOR AUTOCOMPLETE
+" Optional:                                 "
+Plugin 'honza/vim-snippets'                 "
+
 " Plugin 'sjl/badwolf'
 
 call vundle#end()
