@@ -175,9 +175,8 @@ Plugin 'gregsexton/MatchTag'                " highlight pairs tags
 Plugin 'tpope/vim-ragtag'                   " set of personal mappings
 Plugin 'godlygeek/tabular'                  " smart tabbing
 Plugin 'terryma/vim-multiple-cursors'       " sublime-like multiple cursors
-Plugin 'freeo/vim-kalisi'
 Plugin 'triglav/vim-visual-increment'       " inc/dec by C-A/C-X
-" Plugin  'nanotech/jellybeans.vim'           " colorscheme for me
+Plugin 'nanotech/jellybeans.vim'            " colorscheme for me
 " Plugin 'sjl/badwolf'
 
 call vundle#end()
@@ -218,7 +217,7 @@ let g:user_emmet_install_global = 0             " take a look at vimrc_autocmd
 " =============================================================================
 
 set background=dark
-colorscheme kalisi
+colorscheme jellybeans
 
 
 " =============================================================================
@@ -237,7 +236,7 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 "
 " good themes for me also: hybridline, badwolf, gruvbox, term, base16_chalk
-let g:airline_theme='kalisi'
+let g:airline_theme='simple'
 
 
 " =============================================================================
