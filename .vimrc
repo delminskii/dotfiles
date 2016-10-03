@@ -168,7 +168,7 @@ Plugin 'majutsushi/tagbar'                  " class\module browser
 Plugin 'tpope/vim-fugitive'                 " Vim plugin for view current git bunch for vim-airline
 Plugin 'vim-airline/vim-airline'            " Lean & mean status/tabline for vi
 Plugin 'vim-airline/vim-airline-themes'     " airline themes
-Plugin 'kien/ctrlp.vim'                     " fuzzy search (files)
+Plugin 'ctrlpvim/ctrlp.vim'                 " fuzzy search (files)
 Plugin 'scrooloose/syntastic'               " linting ANY (!!!) code
 Plugin 'heavenshell/vim-pydocstring'        " python docstring
 Plugin 'scrooloose/nerdcommenter'           " commenting
@@ -253,6 +253,7 @@ let g:airline_theme='simple'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_working_path_mode = 'ra'
 
 
 " =============================================================================
