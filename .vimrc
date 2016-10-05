@@ -27,6 +27,7 @@ set autochdir
 
 " Show tabs in the line's beginnings by dots
 set listchars=tab:..
+let mapleader = "."
 set list
 
 " Encodings settings 
