@@ -360,6 +360,15 @@
         <command>xterm -bc -uc</command>
       </action>
     </keybind>
+    <keybind key="W-g">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Telegram</name>
+        </startupnotify>
+        <command>/home/nikolay/Telegram/Telegram</command>
+      </action>
+    </keybind>
     <keybind key="W-e">
       <action name="Execute">
         <startupnotify>
@@ -403,15 +412,6 @@
           <name>Lock screen</name>
         </startupnotify>
         <command>cb-lock</command>
-      </action>
-    </keybind>
-    <keybind key="W-e">
-      <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Editor</name>
-        </startupnotify>
-        <command>vim</command>
       </action>
     </keybind>
     <keybind key="W-m">
