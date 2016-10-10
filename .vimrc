@@ -224,7 +224,6 @@ let g:user_emmet_install_global = 0             " take a look at vimrc_autocmd
 " =============================================================================
 " Colorscheme colors
 " =============================================================================
-
 set background=dark
 colorscheme jellybeans
 

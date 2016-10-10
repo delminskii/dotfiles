@@ -11,6 +11,8 @@ xterm*background:         #1c1c1c
 xterm*foreground:         #9ea7a6
 xterm*letterSpace:        0
 
+!xterm*termName:           xterm+256color
+
 !general dialog box (affects main hostname, username, password text)
 !xscreensaver.Dialog.foreground:         #101010
 !xscreensaver.Dialog.background:         #D8D8D8
