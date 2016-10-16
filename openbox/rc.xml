@@ -360,6 +360,15 @@
         <command>xterm -bc -uc</command>
       </action>
     </keybind>
+    <keybind key="W-r">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Radio</name>
+        </startupnotify>
+        <command>smplayer http://ep128.streamr.ru</command>
+      </action>
+    </keybind>
     <keybind key="W-g">
       <action name="Execute">
         <startupnotify>

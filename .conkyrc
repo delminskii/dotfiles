@@ -186,6 +186,7 @@ ${hr}
 [S] + t${alignr}Terminal
 [S] + p${alignr}Full Terminal
 [S] + g${alignr}Telegram
+[S] + r${alignr}Radio
 [S] + e${alignr}Medit
 [S] + f${alignr}File Manager
 [S] + m${alignr}Media Player
