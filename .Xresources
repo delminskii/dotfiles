@@ -1,12 +1,13 @@
 xterm*utf8Title:          true
-!XTerm*faceName:           xft:Anonymous Pro for Powerline:pixelsize=12:antialias=false
-XTerm*faceName:           xft:FiraMono for Powerline:pixelsize=10:antialias=false
+XTerm*faceName:           xft:Anonymous Pro for Powerline:pixelsize=12:antialias=false
+!XTerm*faceName:           xft:FiraMono for Powerline:pixelsize=10:antialias=false
 !XTerm*faceName:           xft:Hack:pixelsize=11:antialias=false
 !XTerm*faceName:           xft:DejaVu Sans Mono:pixelsize=11:antialias=false
 xterm*loginShell:         true
 xterm*selectToClipboard:  true
 xterm*VT100.geometry:     80x50
-xterm*cursorColor:        #00cd00
+!xterm*cursorColor:        #00cd00
+xterm*cursorColor:        #ff7700
 xterm*background:         #1c1c1c
 xterm*foreground:         #9ea7a6
 xterm*letterSpace:        0

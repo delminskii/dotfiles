@@ -36,7 +36,7 @@ set fencs=utf-8,cp1251,koi8-r,ucs-2,cp866
 
 " carriage return sign:
 
-set number
+"set number
 set scrolloff=999                           " offset for scrolling
 set nocompatible                            " no compatible with vi
 set t_Co=256                                " 256-bit depth color support

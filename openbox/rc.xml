@@ -351,13 +351,22 @@
         <command>thunar</command>
       </action>
     </keybind>
+    <!--<keybind key="W-t">-->
+      <!--<action name="Execute">-->
+        <!--<startupnotify>-->
+          <!--<enabled>true</enabled>-->
+          <!--<name>Terminal</name>-->
+        <!--</startupnotify>-->
+        <!--<command>xterm -bc -uc</command>-->
+      <!--</action>-->
+    <!--</keybind>-->
     <keybind key="W-t">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
           <name>Terminal</name>
         </startupnotify>
-        <command>xterm -bc -uc</command>
+        <command>xterm -uc -bc</command>
       </action>
     </keybind>
     <keybind key="W-r">
