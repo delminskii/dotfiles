@@ -107,14 +107,23 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
-" save and execute current python script in shortcut
-map ;p :w<CR>:exe ":!python " . getreg("%") . "" <CR>
+"" save and execute current python script in shortcut
+"map ;p :w<CR>:exe ":!python " . getreg("%") . "" <CR>
 
-" save and execute current bash script in shortcut
-map ;b :w<CR>:exe ":!bash " . getreg("%") . "" <CR>
+"" save and execute current bash script in shortcut
+"map ;b :w<CR>:exe ":!bash " . getreg("%") . "" <CR>
 
-" save and execute current js script in shortcut
-map ;j :w<CR>:exe ":!node " . getreg("%") . "" <CR>
+"" save and execute current js script in shortcut
+"map ;j :w<CR>:exe ":!node " . getreg("%") . "" <CR>
+function! LangRunner()
+    if(&ft=="python")
+        nnoremap ;r :w<cr>:!python %<cr>
+    elseif(&ft=="sh")
+        nnoremap ;r :w<cr>:!bash %<cr>
+    elseif(&ft=="javascript")
+        nnoremap ;r :w<cr>:!node %<cr>
+    endif
+endfunction
 
 " clear search-highlight
 nmap <silent> ,/ :nohlsearch<CR>
@@ -127,6 +136,10 @@ nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
+
+" Better scrolling
+"nnoremap <C-j> <C-d>
+"nnoremap <C-k> <C-u>
 
 
 " Mappings for tabs
@@ -267,6 +280,7 @@ nmap <silent> <C-_> <Plug>(pydocstring)     " make docstring for func\class def
 " =============================================================================
 map s <Plug>(easymotion-s)
 
+
 " =============================================================================
 " My custom autocmds
 " =============================================================================
@@ -274,6 +288,8 @@ augroup vimrc_autocmd
   autocmd!
   autocmd VimEnter * call s:setCursorLine()
   autocmd FileType html,xml,svg,css,htmldjango,scss,smarty EmmetInstall
+
+  au BufEnter * call LangRunner()
 
   " for gnome-terminal
   " toggling cursorline
