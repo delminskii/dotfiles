@@ -27,7 +27,7 @@ set autochdir
 
 " Show tabs in the line's beginnings by dots
 set listchars=tab:..
-let mapleader = "."
+let mapleader = "\<Space>"
 set list
 
 " Encodings settings 
@@ -96,37 +96,29 @@ let g:netrw_browse_split = 4
 " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 " Disable Arrow keys in Normal mode
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
+map <silent><up> <nop>
+map <silent><down> <nop>
+map <silent><left> <nop>
+map <silent><right> <nop>
 
 " Disable Arrow keys in Insert mode
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
+imap <silent> <up> <nop>
+imap <silent> <down> <nop>
+imap <silent> <left> <nop>
+imap <silent> <right> <nop>
 
-"" save and execute current python script in shortcut
-"map ;p :w<CR>:exe ":!python " . getreg("%") . "" <CR>
-
-"" save and execute current bash script in shortcut
-"map ;b :w<CR>:exe ":!bash " . getreg("%") . "" <CR>
-
-"" save and execute current js script in shortcut
-"map ;j :w<CR>:exe ":!node " . getreg("%") . "" <CR>
 function! LangRunner()
     if(&ft=="python")
-        nnoremap ;r :w<cr>:!python %<cr>
+        nnoremap <Leader>r :w<cr>:!python %<cr>
     elseif(&ft=="sh")
-        nnoremap ;r :w<cr>:!bash %<cr>
+        nnoremap <Leader>r :w<cr>:!bash %<cr>
     elseif(&ft=="javascript")
-        nnoremap ;r :w<cr>:!node %<cr>
+        nnoremap <Leader>r :w<cr>:!node %<cr>
     endif
 endfunction
 
 " clear search-highlight
-nmap <silent> ,/ :nohlsearch<CR>
+nmap <silent> <Leader>/ :nohlsearch<CR>
 
 " Toggling for paste mode
 set pastetoggle=<F2>
@@ -143,12 +135,13 @@ nmap <silent> <c-l> :wincmd l<CR>
 
 
 " Mappings for tabs
-map <M-1> 1gt
-map <M-2> 2gt
-map <M-3> 3gt
-map <M-4> 4gt
-map <M-5> 5gt
-map <c-T> :tabnew<CR>
+map <silent> <M-1> 1gt
+map <silent> <M-2> 2gt
+map <silent> <M-3> 3gt
+map <silent> <M-4> 4gt
+map <silent> <M-5> 5gt
+map <silent> <c-T> :tabnew<CR>
+
 
 " =============================================================================
 " ADDITIONAL OPTIONS FOR PLUGINS
@@ -209,7 +202,7 @@ syntax on
 " =============================================================================
 " TagBar settings
 " =============================================================================
-map <F4> :TagbarToggle<CR>
+map <silent> <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 let g:tagbar_width = 30
 let g:tagbar_autoclose = 1
@@ -263,7 +256,7 @@ let g:airline_theme='simple'
 " =============================================================================
 " CtrlP options
 " =============================================================================
-let g:ctrlp_map = '<c-p>'
+let g:ctrlp_map = '<Leader>p'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_working_path_mode = 'ra'
@@ -272,13 +265,13 @@ let g:ctrlp_working_path_mode = 'ra'
 " =============================================================================
 " Pydocstring options
 " =============================================================================
-nmap <silent> <C-_> <Plug>(pydocstring)     " make docstring for func\class def
+nmap <silent> <Leader>d <Plug>(pydocstring)     " make docstring for func\class def
 
 
 " =============================================================================
 " Easy-motion options
 " =============================================================================
-map s <Plug>(easymotion-s)
+map <silent> s <Plug>(easymotion-s)
 
 
 " =============================================================================
