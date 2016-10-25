@@ -13,7 +13,7 @@ set shiftwidth=4
 set softtabstop=4
 set smarttab
 set et                                      " Enable autoreplacement by default
-set wrap                                    " Strings' replacement
+set wrap
 
 " Setting to sarching's highlighting & bracket's highlighting
 set showmatch
