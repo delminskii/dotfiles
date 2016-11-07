@@ -51,6 +51,30 @@ function s:setCursorLine()
     hi ColorColumn ctermbg=235           " color for the last column
 endfunction
 
+
+"function! Smart_TabComplete()
+  "let line = getline('.')                         " current line
+
+  "let substr = strpart(line, -1, col('.')+1)      " from the start of the current
+                                                  "" line to one character right
+                                                  "" of the cursor
+  "let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
+  "if (strlen(substr)==0)                          " nothing to match on empty string
+    "return "\<tab>"
+  "endif
+  "let has_period = match(substr, '\.') != -1      " position of period, if any
+  "let has_slash = match(substr, '\/') != -1       " position of slash, if any
+  "if (!has_period && !has_slash)
+    "return "\<C-X>\<C-P>"                         " existing text matching
+  "elseif ( has_slash )
+    "return "\<C-X>\<C-F>"                         " file matching
+  "else
+    "return "\<C-X>\<C-O>"                         " plugin matching
+  "endif
+"endfunction
+"inoremap <TAB> <C-R>=Smart_TabComplete()<CR>
+
+
 " Toggle Vexplore
 function! ToggleVExplorer()
   if exists("t:expl_buf_num")
@@ -71,7 +95,6 @@ function! ToggleVExplorer()
   endif
 endfunction
 map <silent> <F3> :call ToggleVExplorer()<CR>
-
 
 " !!!!!!!!!!!!!!!!!All below is for ToggleVExplorer which's above!!!!!!!!!!!!!!
 " Hit enter in the file browser to open the selected
@@ -119,6 +142,11 @@ endfunction
 
 " clear search-highlight
 nmap <silent> <Leader>/ :nohlsearch<CR>
+
+"omnicompletion settings
+imap <Leader>n <C-x><C-o>
+set completeopt+=longest,menuone
+set completeopt-=preview
 
 " Toggling for paste mode
 set pastetoggle=<F2>
@@ -241,6 +269,7 @@ set laststatus=2
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
+
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
@@ -248,9 +277,10 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
-"
-" good themes for me also: hybridline, badwolf, gruvbox, term, base16_chalk
-let g:airline_theme='simple'
+
+" good themes for me also: hybridline, badwolf, gruvbox, term, base16_chalk,
+" simple
+let g:airline_theme='base16_chalk'
 
 
 " =============================================================================
@@ -269,6 +299,12 @@ nmap <silent> <Leader>d <Plug>(pydocstring)     " make docstring for func\class 
 
 
 " =============================================================================
+" Auto-pairs options
+" =============================================================================
+let g:AutoPairsShortcutFastWrap = '<Leader>e'
+
+
+" =============================================================================
 " Easy-motion options
 " =============================================================================
 map <silent> s <Plug>(easymotion-s)
@@ -279,14 +315,14 @@ map <silent> s <Plug>(easymotion-s)
 " =============================================================================
 augroup vimrc_autocmd
   autocmd!
-  autocmd VimEnter * call s:setCursorLine()
+  "autocmd VimEnter * call s:setCursorLine()
   autocmd FileType html,xml,svg,css,htmldjango,scss,smarty EmmetInstall
 
   au BufEnter * call LangRunner()
 
   " for gnome-terminal
   " toggling cursorline
-  autocmd InsertEnter,InsertLeave * set cul!
+  "autocmd InsertEnter,InsertLeave * set cul!
 augroup END
 
 

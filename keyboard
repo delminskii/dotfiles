@@ -1,11 +1,19 @@
-# KEYBOARD CONFIGURATION FILE
+# Check /usr/share/doc/keyboard-configuration/README.Debian for
+# documentation on what to do after having modified this file.
 
-# Consult the keyboard(5) manual page.
+# The following variables describe your keyboard and can have the same
+# values as the XkbModel, XkbLayout, XkbVariant and XkbOptions options
+# in /etc/X11/xorg.conf.
 
 XKBMODEL="pc105"
 XKBLAYOUT="us,ru"
 XKBVARIANT=","
-# XKBOPTIONS="grp:ctrl_shift_toggle"
+XKBOPTIONS="grp:alt_shift_toggle,grp_led:scroll"
 XKBOPTIONS="grp:caps_toggle"
 
 BACKSPACE="guess"
+
+# If you don't want to use the XKB layout on the console, you can
+# specify an alternative keymap.  Make sure it will be accessible
+# before /usr is mounted.
+# KMAP=/etc/console-setup/defkeymap.kmap.gz

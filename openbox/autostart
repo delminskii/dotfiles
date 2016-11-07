@@ -31,12 +31,12 @@ hsetroot -solid "#2E3436" &
 (\
 nitrogen --restore && \
 xrandr -s 1600x900 -r 75 && \
-sleep 2s && \
+sleep 1s && \
 tint2 \
 ) &
 
 ## Volume control for systray
-(sleep 2s && pnmixer) &
+(sleep 1s && volti) &
 
 ## Volume keys daemon
 xfce4-volumed &
@@ -46,9 +46,6 @@ thunar --daemon &
 
 ## Start xscreensaver
 xscreensaver -no-splash &
-
-## Start Clipboard manager
-(sleep 3s && clipit) &
 
 ## Set keyboard settings - 250 ms delay and 25 cps (characters per second) repeat rate.
 ## Adjust the values according to your preferances.

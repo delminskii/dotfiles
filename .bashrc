@@ -124,6 +124,6 @@ LC_COLLATE=ru_RU.UTF-8
 export LC_CTYPE LC_COLLATE
 
 # editors for me
-export VISUAL=/usr/local/bin/vim
+export VISUAL=/usr/bin/vim
 export EDITOR="$VISUAL"
 eval `dircolors -b ~/.dir_colors`

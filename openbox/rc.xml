@@ -324,15 +324,6 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
-    <keybind key="A-F2">
-      <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Run Program</name>
-        </startupnotify>
-        <command>gmrun</command>
-      </action>
-    </keybind>
     <keybind key="A-F3">
       <action name="Execute">
         <startupnotify>
@@ -352,13 +343,13 @@
       </action>
     </keybind>
     <!--<keybind key="W-t">-->
-      <!--<action name="Execute">-->
-        <!--<startupnotify>-->
-          <!--<enabled>true</enabled>-->
-          <!--<name>Terminal</name>-->
-        <!--</startupnotify>-->
-        <!--<command>xterm -bc -uc</command>-->
-      <!--</action>-->
+    <!--<action name="Execute">-->
+    <!--<startupnotify>-->
+    <!--<enabled>true</enabled>-->
+    <!--<name>Terminal</name>-->
+    <!--</startupnotify>-->
+    <!--<command>xterm -bc -uc</command>-->
+    <!--</action>-->
     <!--</keybind>-->
     <keybind key="W-t">
       <action name="Execute">
