@@ -1,79 +1,73 @@
-" =============================================================================
-" General settings
-" =============================================================================
+"
+" A (not so) minimal vimrc.
+"
+
+" You want Vim, not vi. When Vim finds a vimrc, 'nocompatible' is set anyway.
+" We set it explicitely to make our position clear!
 set nocompatible
-set backspace=indent,eol,start
-set regexpengine=1
-"set timeoutlen=120
 
-" ---------------------------------CUSTOM -------------------------------------
-" Settings to perform spaces number, which will be replace for \t
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set smarttab
-set et                                      " Enable autoreplacement by default
-set wrap
+filetype plugin indent on  " Load plugins according to detected filetype.
+syntax on                  " Enable syntax highlighting.
 
-" Setting to sarching's highlighting & bracket's highlighting
-set showmatch
-set hlsearch
-set incsearch
+set autoindent             " Indent according to previous line.
+set expandtab              " Use spaces instead of tabs.
+set softtabstop =4         " Tab key indents by 4 spaces.
+set shiftwidth  =4         " >> indents by 4 spaces.
+set shiftround             " >> indents to next multiple of 'shiftwidth'.
+set scrolloff   =4
+set scrolljump  =4
+
+
+set backspace   =indent,eol,start  " Make backspace work as you would expect.
+set hidden                 " Switch between buffers without having to save first.
+set laststatus  =2         " Always show statusline.
+set display     =lastline  " Show as much as possible of the last line.
+
+"let mapleader   ="\<Space>"
+"let mapleader   =";"
+"nmap <silent> <Space> ;
+"vmap <silent> <Space> ;
+map <silent> <Space> <Leader>
+set cursorline
+
+" omnicompletion settings
+set completeopt+=longest,menuone
+set completeopt-=preview
+
+
+" Toggling for paste mode
+set pastetoggle =<F2>
+
+set showmode               " Show current mode in command-line.
+set showcmd                " Show already typed keys when more are expected.
+
+set incsearch              " Highlight while searching with / or ?.
+set hlsearch               " Keep matches highlighted.
 set ignorecase
 set smartcase
+set showmatch
 
 " Change directory to the current buffer when opening files.
 set autochdir
 
-" Show tabs in the line's beginnings by dots
-set listchars=tab:..
-let mapleader = "\<Space>"
-set list
+" Encodings
+set ffs         =unix,dos,mac
+set fencs       =utf-8,cp1251,koi8-r,ucs-2,cp866
 
-" Encodings settings 
-set ffs=unix,dos,mac
-set fencs=utf-8,cp1251,koi8-r,ucs-2,cp866
+set ttyfast                " Faster redrawing.
+set lazyredraw             " Only redraw when necessary.
 
-" carriage return sign:
+set splitbelow             " Open new windows below the current window.
+set splitright             " Open new windows right of the current window.
 
-"set number
-set scrolloff=999                           " offset for scrolling
-set nocompatible                            " no compatible with vi
-set t_Co=256                                " 256-bit depth color support
-set lazyredraw                              " lazy redrawing
-set ttyfast
+set cursorline             " Find the current line quickly.
+set wrapscan               " Searches wrap around end-of-file.
+set wrap
+set report      =0         " Always report changed lines.
+set synmaxcol   =200       " Only highlight the first 200 columns.
 
-set cursorline
-function s:setCursorLine()
-    set cursorline
-    hi CursorLine ctermbg=black ctermfg=none
-    hi Cursor ctermbg=black ctermfg=white
-    hi ColorColumn ctermbg=235           " color for the last column
-endfunction
-
-
-"function! Smart_TabComplete()
-  "let line = getline('.')                         " current line
-
-  "let substr = strpart(line, -1, col('.')+1)      " from the start of the current
-                                                  "" line to one character right
-                                                  "" of the cursor
-  "let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
-  "if (strlen(substr)==0)                          " nothing to match on empty string
-    "return "\<tab>"
-  "endif
-  "let has_period = match(substr, '\.') != -1      " position of period, if any
-  "let has_slash = match(substr, '\/') != -1       " position of slash, if any
-  "if (!has_period && !has_slash)
-    "return "\<C-X>\<C-P>"                         " existing text matching
-  "elseif ( has_slash )
-    "return "\<C-X>\<C-F>"                         " file matching
-  "else
-    "return "\<C-X>\<C-O>"                         " plugin matching
-  "endif
-"endfunction
-"inoremap <TAB> <C-R>=Smart_TabComplete()<CR>
-
+set matchpairs+=<:>                         " additional matchpairs:
+set tw          =80
 
 " Toggle Vexplore
 function! ToggleVExplorer()
@@ -94,13 +88,12 @@ function! ToggleVExplorer()
       let t:expl_buf_num = bufnr("%")
   endif
 endfunction
-map <silent> <F3> :call ToggleVExplorer()<CR>
 
 " !!!!!!!!!!!!!!!!!All below is for ToggleVExplorer which's above!!!!!!!!!!!!!!
 " Hit enter in the file browser to open the selected
 " file with :vsplit to the right of the browser.
 let g:netrw_browse_split = 4
-let g:netrw_altv = 1
+let g:netrw_altv         = 1
 
 " absolute width of netrw window
 let g:netrw_winsize = -28
@@ -118,6 +111,78 @@ let g:netrw_sort_sequence = '[\/]$,*'
 let g:netrw_browse_split = 4
 " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+
+function! LangRunner()
+    if(&ft=="python")
+        nnoremap <Leader>r :w<cr>:!python %<cr>
+    elseif(&ft=="sh")
+        nnoremap <Leader>r :w<cr>:!bash %<cr>
+    elseif(&ft=="javascript")
+        nnoremap <Leader>r :w<cr>:!node %<cr>
+    endif
+endfunction
+
+set list                   " Show non-printable characters.
+if has('multi_byte') && &encoding ==# 'utf-8'
+  let &listchars = 'tab:▸ ,extends:❯,precedes:❮,nbsp:±'
+else
+  let &listchars = 'tab:> ,extends:>,precedes:<,nbsp:.'
+endif
+
+" The fish shell is not very compatible to other shells and unexpectedly
+" breaks things that use 'shell'.
+if &shell =~# 'fish$'
+  set shell=/bin/bash
+endif
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'mattn/emmet-vim'                    " emmet for HTML\CSS
+Plugin 'Lokaltog/vim-easymotion'            " easymotion for vim
+Plugin 'jiangmiao/auto-pairs'               " auto [({, quotes and so on
+"Plugin 'tpope/vim-surround'                " auto-pairs alternative
+Plugin 'majutsushi/tagbar'                  " class\module browser
+Plugin 'tpope/vim-fugitive'                 " Vim plugin for view current git bunch for vim-airline"
+Plugin 'vim-airline/vim-airline'            " Lean & mean status/tabline for vi
+Plugin 'vim-airline/vim-airline-themes'     " airline themes
+Plugin 'ctrlpvim/ctrlp.vim'                 " fuzzy search (files)"
+Plugin 'scrooloose/syntastic'               " linting ANY (!!!) code"
+Plugin 'heavenshell/vim-pydocstring'        " python docstring"
+Plugin 'scrooloose/nerdcommenter'           " commenting"
+Plugin 'gregsexton/MatchTag'                " highlight pairs tags"
+Plugin 'godlygeek/tabular'                  " smart tabbing"
+Plugin 'terryma/vim-multiple-cursors'       " sublime-like multiple cursors"
+Plugin 'triglav/vim-visual-increment'       " inc/dec by C-A/C-X"
+Plugin 'morhetz/gruvbox'                    " colorscheme for me"
+
+" Snippets
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+
+call vundle#end()
+
+" Put all temporary files under the same directory.
+" https://github.com/mhinz/vim-galore#handling-backup-swap-undo-and-viminfo-files
+set backup
+set backupdir   =$HOME/.vim/files/backup/
+set backupext   =-vimbackup
+set backupskip  =
+set directory   =$HOME/.vim/files/swap//
+set updatecount =100
+set undofile
+set undodir     =$HOME/.vim/files/undo/
+set viminfo     ='100,n$HOME/.vim/files/info/viminfo
+
+
+" mappings
+map <silent> <F3> :call ToggleVExplorer()<CR>
+
 " Disable Arrow keys in Normal mode
 map <silent><up> <nop>
 map <silent><down> <nop>
@@ -130,26 +195,8 @@ imap <silent> <down> <nop>
 imap <silent> <left> <nop>
 imap <silent> <right> <nop>
 
-function! LangRunner()
-    if(&ft=="python")
-        nnoremap <Leader>r :w<cr>:!python %<cr>
-    elseif(&ft=="sh")
-        nnoremap <Leader>r :w<cr>:!bash %<cr>
-    elseif(&ft=="javascript")
-        nnoremap <Leader>r :w<cr>:!node %<cr>
-    endif
-endfunction
-
 " clear search-highlight
 nmap <silent> <Leader>/ :nohlsearch<CR>
-
-"omnicompletion settings
-imap <Leader>n <C-x><C-o>
-set completeopt+=longest,menuone
-set completeopt-=preview
-
-" Toggling for paste mode
-set pastetoggle=<F2>
 
 " Use ctrl-[hjkl] to select the active split!
 nmap <silent> <c-k> :wincmd k<CR>
@@ -158,73 +205,33 @@ nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
 " Better scrolling
-"nnoremap <C-j> <C-d>
-"nnoremap <C-k> <C-u>
-
+" nnoremap <C-j> <C-d>
+" nnoremap <C-k> <C-u>
 
 " Mappings for tabs
-map <silent> <M-1> 1gt
-map <silent> <M-2> 2gt
-map <silent> <M-3> 3gt
-map <silent> <M-4> 4gt
-map <silent> <M-5> 5gt
-map <silent> <c-T> :tabnew<CR>
-
-
-" =============================================================================
-" ADDITIONAL OPTIONS FOR PLUGINS
-" =============================================================================
-set matchpairs+=<:>                         " additional matchpairs:
-set textwidth=79                            " Highlight 80 column
-set colorcolumn=+1
-
-
-" -----------------------------FOR VUNDLE -------------------------------------
-filetype plugin indent off
-syntax off
-
-" set the runtime path for vundle
-set rtp+=~/.vim/bundle/Vundle.vim           " set the runtime path for vundle
-
-" start vundle environment
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-
-" to install a plugin add it here and run :PluginInstall.
-" to update the plugins run :PluginInstall! or :PluginUpdate
-" to delete a plugin remove it here and run :PluginClean
-
-" YOUR LIST OF PLUGINS GOES HERE LIKE THIS:
-Plugin 'mattn/emmet-vim'                    " emmet for HTML\CSS
-Plugin 'Lokaltog/vim-easymotion'            " easymotion for vim
-Plugin 'jiangmiao/auto-pairs'               " auto [({, quotes and so on
-"Plugin 'tpope/vim-surround'                " auto-pairs alternative
-Plugin 'majutsushi/tagbar'                  " class\module browser
-Plugin 'tpope/vim-fugitive'                 " Vim plugin for view current git bunch for vim-airline
-Plugin 'vim-airline/vim-airline'            " Lean & mean status/tabline for vi
-Plugin 'vim-airline/vim-airline-themes'     " airline themes
-Plugin 'ctrlpvim/ctrlp.vim'                 " fuzzy search (files)
-Plugin 'scrooloose/syntastic'               " linting ANY (!!!) code
-Plugin 'heavenshell/vim-pydocstring'        " python docstring
-Plugin 'scrooloose/nerdcommenter'           " commenting
-Plugin 'gregsexton/MatchTag'                " highlight pairs tags
-Plugin 'tpope/vim-ragtag'                   " set of personal mappings
-Plugin 'godlygeek/tabular'                  " smart tabbing
-Plugin 'terryma/vim-multiple-cursors'       " sublime-like multiple cursors
-Plugin 'triglav/vim-visual-increment'       " inc/dec by C-A/C-X
-Plugin 'nanotech/jellybeans.vim'            " colorscheme for me
-
-Plugin 'MarcWeber/vim-addon-mw-utils'       "
-Plugin 'tomtom/tlib_vim'                    "
-Plugin 'garbas/vim-snipmate'                " FOR AUTOCOMPLETE
-" Optional:                                 "
-Plugin 'honza/vim-snippets'                 "
-
-" Plugin 'sjl/badwolf'
-
-call vundle#end()
-filetype plugin indent on
-syntax on
+"execute "set <M-1>=\e1"
+"execute "set <M-2>=\e2"
+"execute "set <M-3>=\e3"
+"execute "set <M-4>=\e4"
+"execute "set <M-5>=\e5"
+"map <silent> <M-1> 1gt
+"map <silent> <M-2> 2gt
+"map <silent> <M-3> 3gt
+"map <silent> <M-4> 4gt
+"map <silent> <M-5> 5gt
+"map <silent> <c-T> :tabnew<CR>
+noremap <Leader>1 1gt
+noremap <Leader>2 2gt
+noremap <Leader>3 3gt
+noremap <Leader>4 4gt
+noremap <Leader>5 5gt
+noremap <Leader>6 6gt
+noremap <Leader>7 7gt
+noremap <Leader>8 8gt
+noremap <Leader>9 9gt
+noremap <Leader>0 :tablast<CR>
+map <silent> <Leader>t :tabnew<CR>
+map <silent> <Leader>w :tabclose<CR>
 
 
 " =============================================================================
@@ -259,7 +266,7 @@ let g:user_emmet_install_global = 0             " take a look at vimrc_autocmd
 " Colorscheme colors
 " =============================================================================
 set background=dark
-colorscheme jellybeans
+colorscheme gruvbox
 
 
 " =============================================================================
@@ -295,7 +302,7 @@ let g:ctrlp_working_path_mode = 'ra'
 " =============================================================================
 " Pydocstring options
 " =============================================================================
-nmap <silent> <Leader>d <Plug>(pydocstring)     " make docstring for func\class def
+nmap <silent> <Leader>d <Plug>(pydocstring)
 
 
 " =============================================================================
@@ -315,15 +322,7 @@ map <silent> s <Plug>(easymotion-s)
 " =============================================================================
 augroup vimrc_autocmd
   autocmd!
-  "autocmd VimEnter * call s:setCursorLine()
   autocmd FileType html,xml,svg,css,htmldjango,scss,smarty EmmetInstall
 
   au BufEnter * call LangRunner()
-
-  " for gnome-terminal
-  " toggling cursorline
-  "autocmd InsertEnter,InsertLeave * set cul!
 augroup END
-
-
-runtime macros/matchit.vim

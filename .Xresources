@@ -14,7 +14,7 @@ XTerm*VT100.geometry:     80x50
 XTerm*cursorColor:        #ff7700
 XTerm*background:         #1c1c1c
 XTerm*foreground:         #9ea7a6
-XTerm*trimSelection: true
+!XTerm*trimSelection: true
 
 ! Fix alt-key inputting
 XTerm*eightBitInput: false
