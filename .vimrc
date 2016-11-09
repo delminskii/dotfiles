@@ -17,7 +17,6 @@ set shiftround             " >> indents to next multiple of 'shiftwidth'.
 set scrolloff   =4
 set scrolljump  =4
 
-
 set backspace   =indent,eol,start  " Make backspace work as you would expect.
 set hidden                 " Switch between buffers without having to save first.
 set laststatus  =2         " Always show statusline.
@@ -40,6 +39,8 @@ set pastetoggle =<F2>
 
 set showmode               " Show current mode in command-line.
 set showcmd                " Show already typed keys when more are expected.
+
+set number                 " show numbers
 
 set incsearch              " Highlight while searching with / or ?.
 set hlsearch               " Keep matches highlighted.
@@ -144,13 +145,14 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'mattn/emmet-vim'                    " emmet for HTML\CSS
 Plugin 'Lokaltog/vim-easymotion'            " easymotion for vim
 Plugin 'jiangmiao/auto-pairs'               " auto [({, quotes and so on
-"Plugin 'tpope/vim-surround'                " auto-pairs alternative
+Plugin 'tpope/vim-surround'                " auto-pairs alternative
 Plugin 'majutsushi/tagbar'                  " class\module browser
+Plugin 'hynek/vim-python-pep8-indent'       " PEP8 indent
 Plugin 'tpope/vim-fugitive'                 " Vim plugin for view current git bunch for vim-airline"
 Plugin 'vim-airline/vim-airline'            " Lean & mean status/tabline for vi
 Plugin 'vim-airline/vim-airline-themes'     " airline themes
 Plugin 'ctrlpvim/ctrlp.vim'                 " fuzzy search (files)"
-Plugin 'scrooloose/syntastic'               " linting ANY (!!!) code"
+Plugin 'w0rp/ale'                           " linting ANY (!!!) code"
 Plugin 'heavenshell/vim-pydocstring'        " python docstring"
 Plugin 'scrooloose/nerdcommenter'           " commenting"
 Plugin 'gregsexton/MatchTag'                " highlight pairs tags"
@@ -245,14 +247,11 @@ let g:tagbar_compact = 1
 
 
 " =============================================================================
-" Syntastic setting
+" Ale settings
 " =============================================================================
-let g:syntastic_python_checkers = ['flake8']    " also it's possible to add 'python' and other linters
-let g:syntastic_python_python_use_codec = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:ale_linters = {
+\   'python': ['flake8'],
+\}
 
 
 " =============================================================================
