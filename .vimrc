@@ -148,18 +148,19 @@ Plugin 'jiangmiao/auto-pairs'               " auto [({, quotes and so on
 Plugin 'tpope/vim-surround'                " auto-pairs alternative
 Plugin 'majutsushi/tagbar'                  " class\module browser
 Plugin 'hynek/vim-python-pep8-indent'       " PEP8 indent
-Plugin 'tpope/vim-fugitive'                 " Vim plugin for view current git bunch for vim-airline"
+Plugin 'tpope/vim-fugitive'                 " Vim plugin for view current git bunch for vim-airline
 Plugin 'vim-airline/vim-airline'            " Lean & mean status/tabline for vi
 Plugin 'vim-airline/vim-airline-themes'     " airline themes
-Plugin 'ctrlpvim/ctrlp.vim'                 " fuzzy search (files)"
-Plugin 'w0rp/ale'                           " linting ANY (!!!) code"
-Plugin 'heavenshell/vim-pydocstring'        " python docstring"
-Plugin 'scrooloose/nerdcommenter'           " commenting"
-Plugin 'gregsexton/MatchTag'                " highlight pairs tags"
-Plugin 'godlygeek/tabular'                  " smart tabbing"
-Plugin 'terryma/vim-multiple-cursors'       " sublime-like multiple cursors"
-Plugin 'triglav/vim-visual-increment'       " inc/dec by C-A/C-X"
-Plugin 'morhetz/gruvbox'                    " colorscheme for me"
+Plugin 'ctrlpvim/ctrlp.vim'                 " fuzzy search (files)
+Plugin 'w0rp/ale'                           " linting ANY (!!!) code
+Plugin 'heavenshell/vim-pydocstring'        " python docstring
+Plugin 'scrooloose/nerdcommenter'           " commenting
+Plugin 'gregsexton/MatchTag'                " highlight pairs tags
+Plugin 'godlygeek/tabular'                  " smart tabbing
+Plugin 'terryma/vim-multiple-cursors'       " sublime-like multiple cursors
+Plugin 'triglav/vim-visual-increment'       " inc/dec by C-A/C-X
+Plugin 'morhetz/gruvbox'                    " colorscheme for me
+Plugin 'Glench/Vim-Jinja2-Syntax'           " Jinja2 syntax
 
 " Snippets
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -252,6 +253,8 @@ let g:tagbar_compact = 1
 let g:ale_linters = {
 \   'python': ['flake8'],
 \}
+let g:ale_sign_warning = '•'
+let g:ale_sign_error = '►'
 
 
 " =============================================================================
@@ -322,6 +325,7 @@ map <silent> s <Plug>(easymotion-s)
 augroup vimrc_autocmd
   autocmd!
   autocmd FileType html,xml,svg,css,htmldjango,scss,smarty EmmetInstall
+  autocmd BufNewFile,BufRead *.tpl set ft=jinja
 
   au BufEnter * call LangRunner()
 augroup END
