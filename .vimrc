@@ -207,22 +207,37 @@ nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
-" Better scrolling
-" nnoremap <C-j> <C-d>
-" nnoremap <C-k> <C-u>
+" Open new blank file
+nnoremap n<C-h> :lefta vsp new<cr>
+nnoremap n<C-j> :bel sp new<cr>
+nnoremap n<C-k> :abo sp new<cr>
+nnoremap n<C-l> :rightb vsp new<cr>
+
+" Move window
+nnoremap <Leader><C-h> <C-W>H
+nnoremap <Leader><C-j> <C-W>J
+nnoremap <Leader><C-k> <C-W>K
+nnoremap <Leader><C-l> <C-W>L
+
+" Maximise horizontally
+map <Leader>= <C-w><Bar>
+
+" Maximise vertically
+map <Leader>- <C-w>_
+
+" Make all windows equally sized
+map <Leader><Leader> <C-w>=
+
+" Change windowsizes in visual mode
+" horizontally - always three chars else it takes ages
+vnoremap - 3<C-w><
+vnoremap = 3<C-w>>
+
+" Vertically - always three chars else it takes ages
+vnoremap _ 3<C-w>-
+vnoremap + 3<C-w>+
 
 " Mappings for tabs
-"execute "set <M-1>=\e1"
-"execute "set <M-2>=\e2"
-"execute "set <M-3>=\e3"
-"execute "set <M-4>=\e4"
-"execute "set <M-5>=\e5"
-"map <silent> <M-1> 1gt
-"map <silent> <M-2> 2gt
-"map <silent> <M-3> 3gt
-"map <silent> <M-4> 4gt
-"map <silent> <M-5> 5gt
-"map <silent> <c-T> :tabnew<CR>
 noremap <Leader>1 1gt
 noremap <Leader>2 2gt
 noremap <Leader>3 3gt
