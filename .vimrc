@@ -251,6 +251,10 @@ noremap <Leader>0 :tablast<CR>
 map <silent> <Leader>t :tabnew<CR>
 map <silent> <Leader>w :tabclose<CR>
 
+" Prettify JSON
+nnoremap =j :%!python -m json.tool<CR>
+vnoremap =j :%!python -m json.tool<CR>
+
 
 " =============================================================================
 " TagBar settings
