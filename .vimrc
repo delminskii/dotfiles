@@ -152,6 +152,7 @@ Plugin 'tpope/vim-fugitive'                 " Vim plugin for view current git bu
 Plugin 'vim-airline/vim-airline'            " Lean & mean status/tabline for vi
 Plugin 'vim-airline/vim-airline-themes'     " airline themes
 Plugin 'ctrlpvim/ctrlp.vim'                 " fuzzy search (files)
+Plugin 'tacahiroy/ctrlp-funky'              " fuzzy function search (code)
 Plugin 'w0rp/ale'                           " linting ANY (!!!) code
 Plugin 'heavenshell/vim-pydocstring'        " python docstring
 Plugin 'scrooloose/nerdcommenter'           " commenting
@@ -160,6 +161,7 @@ Plugin 'godlygeek/tabular'                  " smart tabbing
 Plugin 'terryma/vim-multiple-cursors'       " sublime-like multiple cursors
 Plugin 'triglav/vim-visual-increment'       " inc/dec by C-A/C-X
 Plugin 'morhetz/gruvbox'                    " colorscheme for me
+Plugin 'mhinz/vim-startify'                 " startup
 Plugin 'Glench/Vim-Jinja2-Syntax'           " Jinja2 syntax
 
 " Snippets
@@ -321,6 +323,14 @@ let g:ctrlp_working_path_mode = 'ra'
 
 
 " =============================================================================
+" CtrlPFunky settings
+" =============================================================================
+nnoremap <Leader>f :CtrlPFunky<CR>
+let g:ctrlp_funky_matchtype = 'path'
+let g:ctrlp_funky_syntax_highlight = 1
+
+
+" =============================================================================
 " Pydocstring options
 " =============================================================================
 nmap <silent> <Leader>d <Plug>(pydocstring)
@@ -336,6 +346,17 @@ let g:AutoPairsShortcutFastWrap = '<Leader>e'
 " Easy-motion options
 " =============================================================================
 map <silent> s <Plug>(easymotion-s)
+
+
+" =============================================================================
+" Tabularize options
+" =============================================================================
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
+"nmap <Leader>at :Tabularize /|<CR>
+"vmap <Leader>at :Tabularize /|<CR>
 
 
 " =============================================================================
