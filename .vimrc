@@ -71,46 +71,46 @@ set matchpairs+=<:>                         " additional matchpairs:
 set tw          =80
 
 " Toggle Vexplore
-function! ToggleVExplorer()
-  if exists("t:expl_buf_num")
-      let expl_win_num = bufwinnr(t:expl_buf_num)
-      if expl_win_num != -1
-          let cur_win_nr = winnr()
-          exec expl_win_num . 'wincmd w'
-          close
-          exec cur_win_nr . 'wincmd w'
-          unlet t:expl_buf_num
-      else
-          unlet t:expl_buf_num
-      endif
-  else
-      exec '1wincmd w'
-      Vexplore
-      let t:expl_buf_num = bufnr("%")
-  endif
-endfunction
+"function! ToggleVExplorer()
+  "if exists("t:expl_buf_num")
+      "let expl_win_num = bufwinnr(t:expl_buf_num)
+      "if expl_win_num != -1
+          "let cur_win_nr = winnr()
+          "exec expl_win_num . 'wincmd w'
+          "close
+          "exec cur_win_nr . 'wincmd w'
+          "unlet t:expl_buf_num
+      "else
+          "unlet t:expl_buf_num
+      "endif
+  "else
+      "exec '1wincmd w'
+      "Vexplore
+      "let t:expl_buf_num = bufnr("%")
+  "endif
+"endfunction
 
-" !!!!!!!!!!!!!!!!!All below is for ToggleVExplorer which's above!!!!!!!!!!!!!!
-" Hit enter in the file browser to open the selected
-" file with :vsplit to the right of the browser.
-let g:netrw_browse_split = 4
-let g:netrw_altv         = 1
+"" !!!!!!!!!!!!!!!!!All below is for ToggleVExplorer which's above!!!!!!!!!!!!!!
+"" Hit enter in the file browser to open the selected
+"" file with :vsplit to the right of the browser.
+"let g:netrw_browse_split = 4
+"let g:netrw_altv         = 1
 
-" absolute width of netrw window
-let g:netrw_winsize = -28
+"" absolute width of netrw window
+"let g:netrw_winsize = -28
 
-" do not display info on the top of window
-let g:netrw_banner = 0
+"" do not display info on the top of window
+"let g:netrw_banner = 0
 
-" tree-view
-let g:netrw_liststyle = 3
+"" tree-view
+"let g:netrw_liststyle = 3
 
-" sort is affecting only: directories on the top, files below
-let g:netrw_sort_sequence = '[\/]$,*'
+"" sort is affecting only: directories on the top, files below
+"let g:netrw_sort_sequence = '[\/]$,*'
 
-" use the previous window to open file
-let g:netrw_browse_split = 4
-" !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+"" use the previous window to open file
+"let g:netrw_browse_split = 4
+"" !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 function! LangRunner()
@@ -161,6 +161,7 @@ Plugin 'godlygeek/tabular'                  " smart tabbing
 Plugin 'terryma/vim-multiple-cursors'       " sublime-like multiple cursors
 Plugin 'triglav/vim-visual-increment'       " inc/dec by C-A/C-X
 Plugin 'morhetz/gruvbox'                    " colorscheme for me
+Plugin 'scrooloose/nerdtree'                " file browser
 Plugin 'mhinz/vim-startify'                 " startup
 Plugin 'Glench/Vim-Jinja2-Syntax'           " Jinja2 syntax
 
@@ -186,7 +187,7 @@ set viminfo     ='100,n$HOME/.vim/files/info/viminfo
 
 
 " mappings
-map <silent> <F3> :call ToggleVExplorer()<CR>
+"map <silent> <F3> :call ToggleVExplorer()<CR>
 
 " Disable Arrow keys in Normal mode
 map <silent><up> <nop>
@@ -266,6 +267,12 @@ let g:tagbar_autofocus = 1
 let g:tagbar_width = 30
 let g:tagbar_autoclose = 1
 let g:tagbar_compact = 1
+
+
+" =============================================================================
+" Nerdtree settings
+" =============================================================================
+map <Leader>n :NERDTreeToggle<CR>
 
 
 " =============================================================================
