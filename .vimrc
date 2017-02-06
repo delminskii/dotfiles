@@ -119,9 +119,12 @@ Plugin 'gregsexton/MatchTag'                " highlight pairs tags
 Plugin 'godlygeek/tabular'                  " smart tabbing
 Plugin 'terryma/vim-multiple-cursors'       " sublime-like multiple cursors
 Plugin 'triglav/vim-visual-increment'       " inc/dec by C-A/C-X
-Plugin 'morhetz/gruvbox'                    " colorscheme for me
+Plugin 'KKPMW/moonshine-vim'                " colorscheme
 Plugin 'mhinz/vim-startify'                 " startup
 Plugin 'Glench/Vim-Jinja2-Syntax'           " Jinja2 syntax
+
+" Amazing colorshemes for me
+"Plugin 'morhetz/gruvbox'
 
 " Snippets
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -236,7 +239,8 @@ map <Leader>n :NERDTreeToggle<CR>
 let g:ale_linters = {
 \   'python': ['flake8'],
 \}
-let g:ale_sign_warning = '→'
+"let g:ale_sign_warning = '→'
+let g:ale_sign_warning = ''
 let g:ale_sign_error = '×'
 
 
@@ -251,7 +255,7 @@ let g:user_emmet_install_global = 0             " take a look at vimrc_autocmd
 " Colorscheme colors
 " =============================================================================
 set background=dark
-colorscheme gruvbox
+colorscheme moonshine_minimal
 
 
 " =============================================================================
