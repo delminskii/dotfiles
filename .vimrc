@@ -70,6 +70,8 @@ set synmaxcol   =200       " Only highlight the first 200 columns.
 set matchpairs+=<:>                         " additional matchpairs:
 set tw          =80
 
+set termguicolors
+
 
 function! LangRunner()
     if(&ft=="python")
@@ -90,9 +92,9 @@ endif
 
 " The fish shell is not very compatible to other shells and unexpectedly
 " breaks things that use 'shell'.
-if &shell =~# 'fish$'
-  set shell=/bin/bash
-endif
+"if &shell =~# 'fish$'
+  "set shell=/bin/bash
+"endif
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -103,7 +105,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'mattn/emmet-vim'                    " emmet for HTML\CSS
 Plugin 'Lokaltog/vim-easymotion'            " easymotion for vim
 Plugin 'jiangmiao/auto-pairs'               " auto [({, quotes and so on
-Plugin 'tpope/vim-surround'                " auto-pairs alternative
+Plugin 'tpope/vim-surround'                 " auto-pairs alternative
 Plugin 'majutsushi/tagbar'                  " class\module browser
 Plugin 'hynek/vim-python-pep8-indent'       " PEP8 indent
 Plugin 'tpope/vim-fugitive'                 " Vim plugin for git functionals
@@ -116,15 +118,18 @@ Plugin 'heavenshell/vim-pydocstring'        " python docstring
 Plugin 'scrooloose/nerdcommenter'           " commenting
 Plugin 'scrooloose/nerdtree'                " file browser
 Plugin 'gregsexton/MatchTag'                " highlight pairs tags
+Plugin 'rakr/vim-one'
 Plugin 'godlygeek/tabular'                  " smart tabbing
 Plugin 'terryma/vim-multiple-cursors'       " sublime-like multiple cursors
 Plugin 'triglav/vim-visual-increment'       " inc/dec by C-A/C-X
-Plugin 'KKPMW/moonshine-vim'                " colorscheme
 Plugin 'mhinz/vim-startify'                 " startup
 Plugin 'Glench/Vim-Jinja2-Syntax'           " Jinja2 syntax
 
-" Amazing colorshemes for me
+"Good colorschemes for me
 "Plugin 'morhetz/gruvbox'
+"Plugin 'sjl/badwolf'
+"Plugin 'rakr/vim-one'
+
 
 " Snippets
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -254,8 +259,8 @@ let g:user_emmet_install_global = 0             " take a look at vimrc_autocmd
 " =============================================================================
 " Colorscheme colors
 " =============================================================================
+colorscheme one
 set background=dark
-colorscheme moonshine_minimal
 
 
 " =============================================================================
@@ -274,9 +279,27 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
+"let g:airline_left_sep = '»'
+"let g:airline_left_sep = '▶'
+"let g:airline_right_sep = '«'
+"let g:airline_right_sep = '◀'
+"let g:airline_symbols.crypt = '🔒'
+"let g:airline_symbols.linenr = '␊'
+"let g:airline_symbols.linenr = '␤'
+"let g:airline_symbols.linenr = '¶'
+"let g:airline_symbols.maxlinenr = '☰'
+"let g:airline_symbols.maxlinenr = ''
+"let g:airline_symbols.branch = '⎇'
+"let g:airline_symbols.paste = 'ρ'
+"let g:airline_symbols.paste = 'Þ'
+"let g:airline_symbols.paste = '∥'
+"let g:airline_symbols.spell = 'Ꞩ'
+"let g:airline_symbols.notexists = '∄'
+"let g:airline_symbols.whitespace = 'Ξ'
+
 " good themes for me also: hybridline, badwolf, gruvbox, term, base16_chalk,
 " simple
-let g:airline_theme='base16_chalk'
+let g:airline_theme='one'
 
 
 " =============================================================================
