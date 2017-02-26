@@ -225,11 +225,11 @@ vnoremap =j :%!python -m json.tool<CR>
 " =============================================================================
 " TagBar settings
 " =============================================================================
-map <silent> <F4> :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
-let g:tagbar_width = 30
-let g:tagbar_autoclose = 1
-let g:tagbar_compact = 1
+"map <silent> <F4> :TagbarToggle<CR>
+"let g:tagbar_autofocus = 1
+"let g:tagbar_width = 30
+"let g:tagbar_autoclose = 1
+"let g:tagbar_compact = 1
 
 
 " =============================================================================
