@@ -85,6 +85,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls --color=auto'
     alias ll='ls -lh'
     alias xup='xrdb -merge $HOME/.Xresources'
+    alias zonasin='cd $HOME/python_proj/test/cableCo/zonASINhunter'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 

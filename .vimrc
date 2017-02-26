@@ -103,11 +103,11 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'mattn/emmet-vim'                    " emmet for HTML\CSS
-Plugin 'Lokaltog/vim-easymotion'            " easymotion for vim
+Plugin 'easymotion/vim-easymotion'          " easymotion for vim
 Plugin 'jiangmiao/auto-pairs'               " auto [({, quotes and so on
 Plugin 'tpope/vim-surround'                 " auto-pairs alternative
-Plugin 'majutsushi/tagbar'                  " class\module browser
-Plugin 'hynek/vim-python-pep8-indent'       " PEP8 indent
+"Plugin 'majutsushi/tagbar'                  " class\module browser
+Plugin 'Vimjas/vim-python-pep8-indent'      " PEP8 indent
 Plugin 'tpope/vim-fugitive'                 " Vim plugin for git functionals
 Plugin 'vim-airline/vim-airline'            " Lean & mean status/tabline for vi
 Plugin 'vim-airline/vim-airline-themes'     " airline themes
@@ -334,7 +334,19 @@ let g:AutoPairsShortcutFastWrap = '<Leader>e'
 " =============================================================================
 " Easy-motion options
 " =============================================================================
-map <silent> s <Plug>(easymotion-s)
+" Disable default mappings"
+let g:EasyMotion_do_mapping = 0
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap <silent> s <Plug>(easymotion-overwin-f)
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
 
 
 " =============================================================================
