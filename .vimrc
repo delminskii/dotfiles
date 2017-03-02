@@ -119,6 +119,7 @@ Plugin 'scrooloose/nerdcommenter'           " commenting
 Plugin 'scrooloose/nerdtree'                " file browser
 Plugin 'gregsexton/MatchTag'                " highlight pairs tags
 Plugin 'rakr/vim-one'
+"Plugin 'flazz/vim-colorschemes'
 Plugin 'godlygeek/tabular'                  " smart tabbing
 Plugin 'terryma/vim-multiple-cursors'       " sublime-like multiple cursors
 Plugin 'triglav/vim-visual-increment'       " inc/dec by C-A/C-X
@@ -129,7 +130,6 @@ Plugin 'Glench/Vim-Jinja2-Syntax'           " Jinja2 syntax
 "Plugin 'morhetz/gruvbox'
 "Plugin 'sjl/badwolf'
 "Plugin 'rakr/vim-one'
-
 
 " Snippets
 Plugin 'MarcWeber/vim-addon-mw-utils'
