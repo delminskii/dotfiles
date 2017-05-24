@@ -108,19 +108,19 @@ Plugin 'jiangmiao/auto-pairs'               " auto [({, quotes and so on
 Plugin 'tpope/vim-surround'                 " auto-pairs alternative
 "Plugin 'majutsushi/tagbar'                  " class\module browser
 Plugin 'Vimjas/vim-python-pep8-indent'      " PEP8 indent
-Plugin 'tpope/vim-fugitive'                 " Vim plugin for git functionals
+"Plugin 'tpope/vim-fugitive'                 " Vim plugin for git functionals
 Plugin 'vim-airline/vim-airline'            " Lean & mean status/tabline for vi
 Plugin 'vim-airline/vim-airline-themes'     " airline themes
 Plugin 'ctrlpvim/ctrlp.vim'                 " fuzzy search (files)
-Plugin 'tacahiroy/ctrlp-funky'              " fuzzy function search (code)
+"Plugin 'tacahiroy/ctrlp-funky'              " fuzzy function search (code)
 Plugin 'w0rp/ale'                           " linting ANY (!!!) code
 Plugin 'heavenshell/vim-pydocstring'        " python docstring
 Plugin 'scrooloose/nerdcommenter'           " commenting
 Plugin 'scrooloose/nerdtree'                " file browser
 Plugin 'gregsexton/MatchTag'                " highlight pairs tags
-Plugin 'rakr/vim-one'
+Plugin 'chriskempson/base16-vim'
 "Plugin 'flazz/vim-colorschemes'
-Plugin 'godlygeek/tabular'                  " smart tabbing
+"Plugin 'godlygeek/tabular'                  " smart tabbing
 Plugin 'terryma/vim-multiple-cursors'       " sublime-like multiple cursors
 Plugin 'triglav/vim-visual-increment'       " inc/dec by C-A/C-X
 Plugin 'mhinz/vim-startify'                 " startup
@@ -128,8 +128,10 @@ Plugin 'Glench/Vim-Jinja2-Syntax'           " Jinja2 syntax
 
 "Good colorschemes for me
 "Plugin 'morhetz/gruvbox'
+"Plugin 'chriskempson/base16-vim'
 "Plugin 'sjl/badwolf'
 "Plugin 'rakr/vim-one'
+"Plugin 'tomasr/molokai'
 
 " Snippets
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -259,8 +261,8 @@ let g:user_emmet_install_global = 0             " take a look at vimrc_autocmd
 " =============================================================================
 " Colorscheme colors
 " =============================================================================
-colorscheme one
 set background=dark
+colorscheme base16-eighties
 
 
 " =============================================================================
@@ -299,7 +301,7 @@ let g:airline_symbols.linenr = ''
 
 " good themes for me also: hybridline, badwolf, gruvbox, term, base16_chalk,
 " simple
-let g:airline_theme='one'
+let g:airline_theme='base16_eighties'
 
 
 " =============================================================================
