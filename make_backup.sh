@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 GITHUB_SSHKEY="$HOME/.ssh/github_dotfiles"
 
@@ -11,6 +11,7 @@ $HOME/.vimrc
 $HOME/.conkyrc
 $HOME/.Xresources
 $HOME/.config/openbox/*
+$HOME/.config/nvim/*
 $0
 "
 

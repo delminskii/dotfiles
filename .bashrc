@@ -87,6 +87,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias xup='xrdb -merge $HOME/.Xresources'
     alias zonasin='cd $HOME/python_proj/test/cableCo/zonASINhunter'
     alias test='cd $HOME/python_proj/test/'
+    alias vim='/usr/bin/nvim'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -126,6 +127,6 @@ LC_COLLATE=ru_RU.UTF-8
 export LC_CTYPE LC_COLLATE
 
 # editors for me
-export VISUAL=/usr/bin/vim
+export VISUAL=/usr/bin/nvim
 export EDITOR="$VISUAL"
 eval `dircolors -b ~/.dir_colors`
