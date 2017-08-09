@@ -366,7 +366,16 @@
           <enabled>true</enabled>
           <name>Radio</name>
         </startupnotify>
-        <command>smplayer http://ep128.streamr.ru</command>
+        <command>xterm -geometry 48x10+0+0 -e "mpv http://ep128.streamr.ru --profile=radio"</command>
+      </action>
+    </keybind>
+    <keybind key="W-c">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Radio</name>
+        </startupnotify>
+        <command>xterm -geometry 48x10+0+0 -e "mpv http://ice5.abradio.cz/hitvysocina128.mp3 --profile=radio"</command>
       </action>
     </keybind>
     <keybind key="W-g">
@@ -394,15 +403,6 @@
           <name>Terminal</name>
         </startupnotify>
         <command>xterm -uc -fullscreen</command>
-      </action>
-    </keybind>
-    <keybind key="W-m">
-      <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Smplayer</name>
-        </startupnotify>
-        <command>smplayer</command>
       </action>
     </keybind>
     <keybind key="W-w">

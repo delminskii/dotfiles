@@ -186,10 +186,10 @@ ${hr}
 [S] + t${alignr}Terminal
 [S] + p${alignr}Full Terminal
 [S] + g${alignr}Telegram
-[S] + r${alignr}Radio
+[S] + r${alignr}Russian Radio
+[S] + c${alignr}Czech Radio
 [S] + e${alignr}Medit
 [S] + f${alignr}File Manager
-[S] + m${alignr}Media Player
 [S] + w${alignr}Web Browser
 [S] + h${alignr}Task Manager
 [S] + l${alignr}Lock Screen

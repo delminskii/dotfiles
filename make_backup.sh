@@ -12,6 +12,7 @@ $HOME/.conkyrc
 $HOME/.Xresources
 $HOME/.config/openbox/*
 $HOME/.config/nvim/*
+$HOME/.config/mpv/mpv.conf
 $0
 "
 

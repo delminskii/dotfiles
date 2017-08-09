@@ -111,6 +111,7 @@ Plugin 'tpope/vim-surround'                 " auto-pairs alternative
 "Plugin 'majutsushi/tagbar'                  " class\module browser
 Plugin 'Vimjas/vim-python-pep8-indent'      " PEP8 indent
 "Plugin 'tpope/vim-fugitive'                 " Vim plugin for git functionals
+Plugin 'morhetz/gruvbox'                    " colorscheme
 Plugin 'vim-airline/vim-airline'            " Lean & mean status/tabline for vi
 Plugin 'vim-airline/vim-airline-themes'     " airline themes
 Plugin 'ctrlpvim/ctrlp.vim'                 " fuzzy search (files)
@@ -120,7 +121,6 @@ Plugin 'heavenshell/vim-pydocstring'        " python docstring
 Plugin 'scrooloose/nerdcommenter'           " commenting
 Plugin 'scrooloose/nerdtree'                " file browser
 Plugin 'gregsexton/MatchTag'                " highlight pairs tags
-Plugin 'chriskempson/base16-vim'
 "Plugin 'flazz/vim-colorschemes'
 "Plugin 'godlygeek/tabular'                  " smart tabbing
 Plugin 'terryma/vim-multiple-cursors'       " sublime-like multiple cursors
@@ -267,7 +267,7 @@ let g:user_emmet_install_global = 0             " take a look at vimrc_autocmd
 " Colorscheme colors
 " =============================================================================
 set background=dark
-colorscheme base16-eighties
+colorscheme gruvbox
 
 
 " =============================================================================
@@ -278,13 +278,13 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
-"let g:airline_left_sep = ''
-"let g:airline_left_alt_sep = ''
-"let g:airline_right_sep = ''
-"let g:airline_right_alt_sep = ''
-"let g:airline_symbols.branch = ''
-"let g:airline_symbols.readonly = ''
-"let g:airline_symbols.linenr = ''
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
 
 "let g:airline_left_sep = '»'
 "let g:airline_left_sep = '▶'
@@ -306,7 +306,7 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 " good themes for me also: hybridline, badwolf, gruvbox, term, base16_chalk,
 " simple
-let g:airline_theme='base16_eighties'
+let g:airline_theme='gruvbox'
 
 
 " =============================================================================
