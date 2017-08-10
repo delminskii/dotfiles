@@ -366,7 +366,7 @@
           <enabled>true</enabled>
           <name>Radio</name>
         </startupnotify>
-        <command>xterm -geometry 48x10+0+0 -e "mpv http://ep128.streamr.ru --profile=radio"</command>
+        <command>xterm -geometry 40x10+0+0 -e "mpv http://ep128.streamr.ru --profile=radio"</command>
       </action>
     </keybind>
     <keybind key="W-c">
@@ -375,7 +375,7 @@
           <enabled>true</enabled>
           <name>Radio</name>
         </startupnotify>
-        <command>xterm -geometry 48x10+0+0 -e "mpv http://ice5.abradio.cz/hitvysocina128.mp3 --profile=radio"</command>
+        <command>xterm -geometry 40x10+0+0 -e "mpv http://ice5.abradio.cz/hitvysocina128.mp3 --profile=radio"</command>
       </action>
     </keybind>
     <keybind key="W-g">
