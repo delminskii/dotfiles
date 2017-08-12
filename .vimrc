@@ -111,10 +111,10 @@ Plugin 'tpope/vim-surround'                 " auto-pairs alternative
 "Plugin 'majutsushi/tagbar'                  " class\module browser
 Plugin 'Vimjas/vim-python-pep8-indent'      " PEP8 indent
 "Plugin 'tpope/vim-fugitive'                 " Vim plugin for git functionals
-Plugin 'morhetz/gruvbox'                    " colorscheme
 Plugin 'vim-airline/vim-airline'            " Lean & mean status/tabline for vi
 Plugin 'vim-airline/vim-airline-themes'     " airline themes
 Plugin 'ctrlpvim/ctrlp.vim'                 " fuzzy search (files)
+Plugin 'morhetz/gruvbox'                    " colorscheme
 "Plugin 'tacahiroy/ctrlp-funky'              " fuzzy function search (code)
 Plugin 'w0rp/ale'                           " linting ANY (!!!) code
 Plugin 'heavenshell/vim-pydocstring'        " python docstring
@@ -133,8 +133,8 @@ Plugin 'Glench/Vim-Jinja2-Syntax'           " Jinja2 syntax
 "Plugin 'chriskempson/base16-vim'
 "Plugin 'sjl/badwolf'
 "Plugin 'rakr/vim-one'
+"Plugin 'dikiaap/minimalist'
 "Plugin 'tomasr/molokai'
-"Plugin 'rhysd/vim-color-spring-night'
 
 " Snippets
 Plugin 'MarcWeber/vim-addon-mw-utils'
