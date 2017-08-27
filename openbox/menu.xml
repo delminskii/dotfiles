@@ -20,13 +20,13 @@
                 </command>
             </action>
         </item>
-        <item label="Media Player">
-            <action name="Execute">
-                <command>
-                    smplayer
-                </command>
-            </action>
-        </item>
+        <!--<item label="Media Player">-->
+            <!--<action name="Execute">-->
+                <!--<command>-->
+                    <!--smplayer-->
+                <!--</command>-->
+            <!--</action>-->
+        <!--</item>-->
         <item label="Pidgin">
             <action name="Execute">
                 <command>
@@ -90,13 +90,13 @@
             </menu>
         </menu>
         <menu id="multimedia" label="Multimedia">
-            <item label="SMPlayer">
-                <action name="Execute">
-                    <command>
-                        smplayer
-                    </command>
-                </action>
-            </item>
+            <!--<item label="SMPlayer">-->
+                <!--<action name="Execute">-->
+                    <!--<command>-->
+                        <!--smplayer-->
+                    <!--</command>-->
+                <!--</action>-->
+            <!--</item>-->
             <item label="Volume Control">
                 <action name="Execute">
                     <command>

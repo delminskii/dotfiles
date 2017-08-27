@@ -6,6 +6,8 @@
 " We set it explicitely to make our position clear!
 set nocompatible
 
+set autoread
+
 filetype plugin indent on  " Load plugins according to detected filetype.
 syntax on                  " Enable syntax highlighting.
 
