@@ -13,6 +13,7 @@ $HOME/.Xresources
 $HOME/.config/openbox/*
 $HOME/.config/nvim/*
 $HOME/.config/mpv/mpv.conf
+$HOME/.radios.txt
 $0
 "
 
