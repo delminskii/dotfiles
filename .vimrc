@@ -80,8 +80,6 @@ function! LangRunner()
         nnoremap <Leader>r :w<cr>:!python %<cr>
     elseif(&ft=="sh")
         nnoremap <Leader>r :w<cr>:!bash %<cr>
-    elseif(&ft=="javascript")
-        nnoremap <Leader>r :w<cr>:!node %<cr>
     elseif(&ft=="perl")
         nnoremap <Leader>r :w<cr>:!perl %<cr>
     endif
@@ -159,7 +157,6 @@ set undodir     =$HOME/.vim/files/undo/
 
 "comment line below if nvim is ised
 "set viminfo     ='100,n$HOME/.vim/files/info/viminfo
-
 
 " Disable Arrow keys in Normal mode
 map <silent><up> <nop>
@@ -356,17 +353,6 @@ let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
-
-
-" =============================================================================
-" Tabularize options
-" =============================================================================
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:\zs<CR>
-vmap <Leader>a: :Tabularize /:\zs<CR>
-"nmap <Leader>at :Tabularize /|<CR>
-"vmap <Leader>at :Tabularize /|<CR>
 
 
 " =============================================================================
