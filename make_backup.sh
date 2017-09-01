@@ -14,6 +14,7 @@ $HOME/.config/openbox/*
 $HOME/.config/nvim/*
 $HOME/.config/mpv/mpv.conf
 $HOME/.radios.txt
+$HOME/.xinitrc
 $0
 "
 
