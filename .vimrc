@@ -24,7 +24,8 @@ set hidden                 " Switch between buffers without having to save first
 set laststatus  =2         " Always show statusline.
 set display     =lastline  " Show as much as possible of the last line.
 
-let mapleader   ="\<Space>"
+map <silent> <Space> <Leader>
+"let mapleader   ="\<Space>"
 set cursorline
 
 " omnicompletion settings
