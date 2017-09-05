@@ -89,6 +89,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias zonasin='cd $HOME/python_proj/test/cableCo/zonASINhunter'
     alias perlsandbox='cd $HOME/sandbox/perl'
     alias vim='/usr/bin/nvim'
+    alias vimrc='vim $HOME/.vimrc'
+    alias bashrc='vim $HOME/.bashrc'
+    alias xresources='vim $HOME/.Xresources'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
