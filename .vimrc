@@ -126,6 +126,7 @@ Plugin 'mhinz/vim-startify'                 " startup
 Plugin 'Glench/Vim-Jinja2-Syntax'           " Jinja2 syntax
 
 "Good colorschemes for me
+"Plugin 'w0ng/vim-hybrid'
 "Plugin 'morhetz/gruvbox'
 "Plugin 'chriskempson/base16-vim'
 "Plugin 'sjl/badwolf'
