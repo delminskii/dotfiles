@@ -26,7 +26,6 @@ set display     =lastline  " Show as much as possible of the last line.
 
 "map <silent> <Space> <Leader>
 "let mapleader   ="\<Space>"
-set cursorline
 
 " omnicompletion settings
 set completeopt+=longest,menuone
