@@ -2,8 +2,8 @@
 !XTerm*termName: xterm+256color
 
 !XTerm*faceName:           xft:Anonymous Pro for Powerline:pixelsize=12:antialias=true
-!XTerm*faceName:           xft:FiraMono for Powerline:pixelsize=10:antialias=false
-XTerm*faceName:           xft:Hack:pixelsize=11:antialias=false
+XTerm*faceName:           xft:FiraMono for Powerline:pixelsize=10:antialias=false
+!XTerm*faceName:           xft:Hack:pixelsize=11:antialias=false
 !XTerm*faceName:           xft:Iosevka Term:pixelsize=11:antialias=false
 !XTerm*faceName:           xft:DejaVu Sans Mono:pixelsize=11:antialias=false
 XTerm*utf8: True
