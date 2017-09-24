@@ -123,6 +123,7 @@ Plugin 'terryma/vim-multiple-cursors'       " sublime-like multiple cursors
 Plugin 'triglav/vim-visual-increment'       " inc/dec by C-A/C-X
 Plugin 'mhinz/vim-startify'                 " startup
 Plugin 'Glench/Vim-Jinja2-Syntax'           " Jinja2 syntax
+Plugin 'kassio/neoterm'                     " :terminal features
 
 "Good colorschemes for me
 "Plugin 'w0ng/vim-hybrid'
@@ -334,6 +335,19 @@ nmap <silent> <Leader>d <Plug>(pydocstring)
 " =============================================================================
 let g:AutoPairsShortcutFastWrap = '<Leader>e'
 
+
+" =============================================================================
+" Neoterm options
+" =============================================================================
+" Useful maps
+" hide/close terminal
+nnoremap <silent> <Leader>th :call neoterm#close()<CR>
+" clear terminal
+nnoremap <silent> <Leader>tl :call neoterm#clear()<CR>
+" kills the current job (send a <c-c>)
+nnoremap <silent> <Leader>tc :call neoterm#kill()<CR>
+" open terminal
+nnoremap <silent> <Leader>to :call neoterm#open()<CR>
 
 " =============================================================================
 " Easy-motion options
