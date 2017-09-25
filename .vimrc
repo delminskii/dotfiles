@@ -124,6 +124,7 @@ Plugin 'triglav/vim-visual-increment'       " inc/dec by C-A/C-X
 Plugin 'mhinz/vim-startify'                 " startup
 Plugin 'Glench/Vim-Jinja2-Syntax'           " Jinja2 syntax
 Plugin 'kassio/neoterm'                     " :terminal features
+Plugin 'dhruvasagar/vim-table-mode'         " table editiion <leader>tm
 
 "Good colorschemes for me
 "Plugin 'w0ng/vim-hybrid'
