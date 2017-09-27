@@ -93,12 +93,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias bashrc='vim $HOME/.bashrc'
     alias xresources='vim $HOME/.Xresources'
     alias utube='mpv --profile=youtube'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    #alias grep='grep --color=auto'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
 fi
 
 # some more ls aliases

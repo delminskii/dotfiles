@@ -374,7 +374,7 @@ map <Leader>k <Plug>(easymotion-k)
 augroup vimrc_autocmd
   autocmd!
   autocmd FileType html,xml,svg,css,htmldjango,scss,smarty EmmetInstall
-  autocmd BufNewFile,BufRead *.tpl set ft=jinja
+  "autocmd BufNewFile,BufRead *.tpl set ft=jinja
 
   au BufEnter * call LangRunner()
 augroup END
