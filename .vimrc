@@ -349,6 +349,9 @@ nnoremap <silent> <Leader>tl :call neoterm#clear()<CR>
 nnoremap <silent> <Leader>tc :call neoterm#kill()<CR>
 " open terminal
 nnoremap <silent> <Leader>to :call neoterm#open()<CR>
+" autoscrolling
+let g:neoterm_autoscroll = 1
+
 
 " =============================================================================
 " Easy-motion options
