@@ -353,6 +353,7 @@ nnoremap <silent> <Leader>to :call neoterm#open()<CR>
 let g:neoterm_autoscroll = 1
 
 
+"nmap <silent> <F6> gfggyG<Bar>:e#<CR>
 " =============================================================================
 " Easy-motion options
 " =============================================================================
