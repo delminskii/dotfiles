@@ -117,7 +117,6 @@ Plugin 'heavenshell/vim-pydocstring'        " python docstring
 Plugin 'scrooloose/nerdcommenter'           " commenting
 Plugin 'scrooloose/nerdtree'                " file browser
 Plugin 'gregsexton/MatchTag'                " highlight pairs tags
-"Plugin 'flazz/vim-colorschemes'
 "Plugin 'godlygeek/tabular'                  " smart tabbing
 Plugin 'terryma/vim-multiple-cursors'       " sublime-like multiple cursors
 Plugin 'triglav/vim-visual-increment'       " inc/dec by C-A/C-X
