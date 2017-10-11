@@ -87,6 +87,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias ll='ls -lh'
     alias xup='xrdb -merge $HOME/.Xresources'
     alias zonasin='cd $HOME/python_proj/test/cableCo/zonASINhunter'
+    alias newegg='cd $HOME/python_proj/test/cableCo/newegg'
     alias perlsandbox='cd $HOME/sandbox/perl'
     alias vim='/usr/bin/nvim'
     alias vimrc='vim $HOME/.vimrc'
