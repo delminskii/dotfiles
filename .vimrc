@@ -109,7 +109,8 @@ Plugin 'Vimjas/vim-python-pep8-indent'      " PEP8 indent
 "Plugin 'tpope/vim-fugitive'                 " Vim plugin for git functionals
 Plugin 'vim-airline/vim-airline'            " Lean & mean status/tabline for vi
 Plugin 'vim-airline/vim-airline-themes'     " airline themes
-Plugin 'ctrlpvim/ctrlp.vim'                 " fuzzy search (files)
+Plugin 'junegunn/fzf'                       " fuzzy files/lines/tags search
+Plugin 'junegunn/fzf.vim'                   " fuzzy files/lines/tags search
 Plugin 'morhetz/gruvbox'                    " colorscheme
 "Plugin 'tacahiroy/ctrlp-funky'              " fuzzy function search (code)
 Plugin 'w0rp/ale'                           " linting ANY (!!!) code
@@ -308,20 +309,22 @@ let g:airline_theme='gruvbox'
 
 
 " =============================================================================
-" CtrlP options
+" FZF settings
 " =============================================================================
-let g:ctrlp_map = '<Leader>p'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-let g:ctrlp_working_path_mode = 'ra'
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit' }
+nmap <silent> <Leader>l :Lines<CR>
+nmap <silent> <Leader>f :Files<CR>
 
 
 " =============================================================================
 " CtrlPFunky settings
 " =============================================================================
-nnoremap <Leader>f :CtrlPFunky<CR>
-let g:ctrlp_funky_matchtype = 'path'
-let g:ctrlp_funky_syntax_highlight = 1
+"nnoremap <Leader>f :CtrlPFunky<CR>
+"let g:ctrlp_funky_matchtype = 'path'
+"let g:ctrlp_funky_syntax_highlight = 1
 
 
 " =============================================================================
