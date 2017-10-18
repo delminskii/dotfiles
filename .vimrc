@@ -317,6 +317,23 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit' }
 nmap <silent> <Leader>l :Lines<CR>
 nmap <silent> <Leader>f :Files<CR>
+nmap <silent> <Leader>uf :Files ..<CR>
+
+command! -bang FLines call fzf#vim#grep(
+    \ 'grep -vnITr --color=always
+    \ --exclude-dir=".svn"
+    \ --exclude-dir=".git"
+    \ --exclude-dir="htmls"
+    \ --exclude=tags 
+    \ --exclude=*\.pyc
+    \ --exclude=*\.exe
+    \ --exclude=*\.dll
+    \ --exclude=*\.zip
+    \ --exclude=*\.gz "^$"', 
+    \ 0,  
+    \ {'options': '--reverse --prompt "FLines> "'})
+
+nmap <silent> <Leader>fl :FLines<CR>
 
 
 " =============================================================================
