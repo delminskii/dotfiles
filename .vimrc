@@ -373,6 +373,25 @@ nnoremap <silent> <Leader>to :call neoterm#open()<CR>
 let g:neoterm_autoscroll = 1
 
 
+" =============================================================================
+" Startify options
+" =============================================================================
+let g:startify_bookmarks = [
+    \ {'z': '/home/nikolay/python_proj/test/cableCo/zonASINhunter'},
+    \ {'v': '~/.vimrc'},
+    \ {'b': '~/.bashrc'},
+    \ {'x': '~/.Xresources'},
+    \ {'w': '~/.wgetrc'}
+    \ ]
+let g:startify_list_order = ['files', 'bookmarks']
+let g:startify_list_order = [
+    \ ['    MRU files:'],
+    \ 'files',
+    \ ['    Bookmarks'],
+    \ 'bookmarks',
+    \ ]
+
+
 "nmap <silent> <F6> gfggyG<Bar>:e#<CR>
 " =============================================================================
 " Easy-motion options
