@@ -383,7 +383,6 @@ let g:startify_bookmarks = [
     \ {'x': '~/.Xresources'},
     \ {'w': '~/.wgetrc'}
     \ ]
-let g:startify_list_order = ['files', 'bookmarks']
 let g:startify_list_order = [
     \ ['    MRU files:'],
     \ 'files',
