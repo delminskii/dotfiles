@@ -479,6 +479,11 @@
         <command>cb-aerosnap --right</command>
       </action>
     </keybind>
+    <keybind key="A-a-m">
+      <action name="Execute">
+        <command>bash -c "echo cycle mute | socat - /tmp/mpvsocket"</command>
+      </action>
+    </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>8</dragThreshold>
