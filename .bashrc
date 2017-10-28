@@ -95,6 +95,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias wgetrc='vim $HOME/.wgetrc'
     alias xresources='vim $HOME/.Xresources'
     alias utube='mpv --profile=youtube'
+    alias remote='ssh vultrserver'
 fi
 
 # some more ls aliases
