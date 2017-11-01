@@ -95,6 +95,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias xresources='vim $HOME/.Xresources'
     alias utube='mpv --profile=youtube'
     alias remote='ssh vultrserver'
+    alias canadapost='cd $HOME/python_proj/test/CANADAPOST_CA'
 fi
 
 # some more ls aliases
