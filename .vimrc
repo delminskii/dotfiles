@@ -389,6 +389,7 @@ let g:startify_list_order = [
     \ ['    Bookmarks'],
     \ 'bookmarks',
     \ ]
+nnoremap <silent> <Leader>sr :Startify<CR>
 
 
 "nmap <silent> <F6> gfggyG<Bar>:e#<CR>

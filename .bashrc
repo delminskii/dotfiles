@@ -92,9 +92,11 @@ if [ -x /usr/bin/dircolors ]; then
     alias vimrc='vim $HOME/.vimrc'
     alias bashrc='vim $HOME/.bashrc'
     alias wgetrc='vim $HOME/.wgetrc'
+    alias sshconfig='vim $HOME/.ssh/config'
     alias xresources='vim $HOME/.Xresources'
     alias utube='mpv --profile=youtube'
     alias remote='ssh vultrserver'
+    alias eugene_remote='ssh eugene_host'
     alias canadapost='cd $HOME/python_proj/test/CANADAPOST_CA'
 fi
 
