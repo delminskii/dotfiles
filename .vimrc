@@ -112,7 +112,6 @@ Plugin 'vim-airline/vim-airline-themes'     " airline themes
 Plugin 'junegunn/fzf'                       " fuzzy files/lines/tags search
 Plugin 'junegunn/fzf.vim'                   " fuzzy files/lines/tags search
 Plugin 'tomasr/molokai'
-"Plugin 'chriskempson/base16-vim'
 "Plugin 'tacahiroy/ctrlp-funky'              " fuzzy function search (code)
 Plugin 'w0rp/ale'                           " linting ANY (!!!) code
 Plugin 'heavenshell/vim-pydocstring'        " python docstring
@@ -135,6 +134,7 @@ Plugin 'dhruvasagar/vim-table-mode'         " table editiion <leader>tm
 "Plugin 'rakr/vim-one'
 "Plugin 'dikiaap/minimalist'
 "Plugin 'tomasr/molokai'
+"Plugin 'chriskempson/base16-vim' ?
 
 " Snippets
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -316,9 +316,6 @@ let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
-nmap <silent> <Leader>l :Lines<CR>
-nmap <silent> <Leader>f :Files<CR>
-nmap <silent> <Leader>uf :Files ..<CR>
 
 command! -bang FLines call fzf#vim#grep(
     \ 'grep -vnITr --color=always
@@ -335,6 +332,9 @@ command! -bang FLines call fzf#vim#grep(
     \ {'options': '--reverse --prompt "FLines> "'})
 
 nmap <silent> <Leader>fl :FLines<CR>
+nmap <silent> <Leader>l :Lines<CR>
+nmap <silent> <Leader>f :Files<CR>
+nmap <silent> <Leader>uf :Files ..<CR>
 
 
 " =============================================================================
