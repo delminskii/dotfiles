@@ -73,11 +73,11 @@ set termguicolors
 
 function! LangRunner()
     if(&ft=="python")
-        nnoremap <Leader>r :w<cr>:!python %<cr>
+        nnoremap <Leader>r :w<CR>:!python %<CR>
     elseif(&ft=="sh")
-        nnoremap <Leader>r :w<cr>:!bash %<cr>
+        nnoremap <Leader>r :w<CR>:!bash %<CR>
     elseif(&ft=="perl")
-        nnoremap <Leader>r :w<cr>:!perl %<cr>
+        nnoremap <Leader>r :w<CR>:!perl %<CR>
     endif
 endfunction
 
@@ -180,10 +180,10 @@ nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
 " Open new blank file
-nnoremap n<C-h> :lefta vsp new<cr>
-nnoremap n<C-j> :bel sp new<cr>
-nnoremap n<C-k> :abo sp new<cr>
-nnoremap n<C-l> :rightb vsp new<cr>
+nnoremap n<C-h> :lefta vsp new<CR>
+nnoremap n<C-j> :bel sp new<CR>
+nnoremap n<C-k> :abo sp new<CR>
+nnoremap n<C-l> :rightb vsp new<CR>
 
 " Move window
 nnoremap <Leader><C-h> <C-W>H
