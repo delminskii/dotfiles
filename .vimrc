@@ -31,7 +31,6 @@ set display     =lastline  " Show as much as possible of the last line.
 set completeopt+=longest,menuone
 set completeopt-=preview
 
-
 " Toggling for paste mode
 set pastetoggle =<F2>
 
