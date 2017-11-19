@@ -110,7 +110,7 @@ Plugin 'vim-airline/vim-airline'            " Lean & mean status/tabline for vi
 Plugin 'vim-airline/vim-airline-themes'     " airline themes
 Plugin 'junegunn/fzf'                       " fuzzy files/lines/tags search
 Plugin 'junegunn/fzf.vim'                   " fuzzy files/lines/tags search
-Plugin 'tomasr/molokai'
+Plugin 'icymind/NeoSolarized'
 "Plugin 'tacahiroy/ctrlp-funky'              " fuzzy function search (code)
 Plugin 'w0rp/ale'                           " linting ANY (!!!) code
 Plugin 'heavenshell/vim-pydocstring'        " python docstring
@@ -131,9 +131,9 @@ Plugin 'dhruvasagar/vim-table-mode'         " table editiion <leader>tm
 "Plugin 'chriskempson/base16-vim'
 "Plugin 'sjl/badwolf'
 "Plugin 'rakr/vim-one'
+"Plugin 'joshdick/onedark.vim'
 "Plugin 'dikiaap/minimalist'
 "Plugin 'tomasr/molokai'
-"Plugin 'chriskempson/base16-vim' ?
 
 " Snippets
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -252,7 +252,8 @@ let g:ale_linters = {
 \}
 let g:ale_sign_warning = '→'
 "let g:ale_sign_warning = ''
-let g:ale_sign_error = '×'
+"let g:ale_sign_error = '×'
+let g:ale_sign_error = '✗'
 
 
 " =============================================================================
@@ -266,7 +267,7 @@ let g:user_emmet_install_global = 0             " take a look at vimrc_autocmd
 " Colorscheme colors
 " =============================================================================
 set background=dark
-colorscheme molokai
+colorscheme NeoSolarized
 
 
 " =============================================================================
@@ -305,7 +306,7 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 " good themes for me also: hybridline, badwolf, gruvbox, term, base16_chalk,
 " simple
-let g:airline_theme='simple'
+let g:airline_theme='solarized'
 
 
 " =============================================================================
