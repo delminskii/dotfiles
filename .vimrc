@@ -271,7 +271,7 @@ colorscheme NeoSolarized
 
 
 " =============================================================================
-" Vim-airline options
+" Vim-airline settings
 " =============================================================================
 set laststatus=2
 if !exists('g:airline_symbols')
