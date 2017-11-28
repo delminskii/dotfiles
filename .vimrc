@@ -113,6 +113,8 @@ Plugin 'junegunn/fzf.vim'                   " fuzzy files/lines/tags search
 Plugin 'icymind/NeoSolarized'
 "Plugin 'tacahiroy/ctrlp-funky'              " fuzzy function search (code)
 Plugin 'w0rp/ale'                           " linting ANY (!!!) code
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'zchee/deoplete-jedi'
 Plugin 'heavenshell/vim-pydocstring'        " python docstring
 Plugin 'scrooloose/nerdcommenter'           " commenting
 Plugin 'scrooloose/nerdtree'                " file browser
@@ -392,7 +394,22 @@ let g:startify_list_order = [
 nnoremap <silent> <Leader>sr :Startify<CR>
 
 
+" =============================================================================
+" Deoplete settings
+" =============================================================================
+let g:deoplete#enable_at_startup = 1
+
+
+" =============================================================================
+" Deoplete-jedi settings
+" =============================================================================
+let g:deoplete#sources#jedi#show_docstring = 1
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
+
+
 "nmap <silent> <F6> gfggyG<Bar>:e#<CR>
+"
 " =============================================================================
 " Easy-motion options
 " =============================================================================
