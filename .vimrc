@@ -438,3 +438,6 @@ augroup vimrc_autocmd
 
   au BufEnter * call LangRunner()
 augroup END
+
+"TODO
+"map <silent><Leader>w :1i<CR>HELLOWORLD<CR><ESC>
