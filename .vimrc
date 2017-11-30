@@ -228,6 +228,8 @@ map <silent> <Leader>w :tabclose<CR>
 nnoremap =j :%!python -m json.tool<CR>
 vnoremap =j :%!python -m json.tool<CR>
 
+" Apply vimrc's changes
+nmap <silent> <Leader>sv :source $HOME/.vimrc<CR>
 
 
 " =============================================================================
