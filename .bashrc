@@ -133,4 +133,3 @@ export LC_CTYPE LC_COLLATE
 # editors for me
 export VISUAL=/usr/bin/nvim
 export EDITOR="$VISUAL"
-eval `dircolors -b ~/.dir_colors`

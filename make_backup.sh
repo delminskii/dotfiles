@@ -6,7 +6,6 @@ BACKUP_FOLDER="$HOME/.dotfiles"
 BACKUP_LOGFILE="$HOME/.backup_configs.log"
 BACKUPING_FILES="/etc/default/keyboard
 $HOME/.bashrc
-$HOME/.dir_colors
 $HOME/.vimrc
 $HOME/.conkyrc
 $HOME/.Xresources

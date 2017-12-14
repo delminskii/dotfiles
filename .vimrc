@@ -58,7 +58,7 @@ set lazyredraw             " Only redraw when necessary.
 set splitbelow             " Open new windows below the current window.
 set splitright             " Open new windows right of the current window.
 
-set cursorline             " Find the current line quickly.
+"set cursorline             " Find the current line quickly.
 set wrapscan               " Searches wrap around end-of-file.
 set wrap
 set report      =0         " Always report changed lines.
@@ -128,6 +128,8 @@ Plugin 'kassio/neoterm'                     " :terminal features
 Plugin 'dhruvasagar/vim-table-mode'         " table editiion <leader>tm
 
 "Good colorschemes for me
+"afterglow from Plugin 'rafi/awesome-vim-colorschemes'
+"Plugin 'joshdick/onedark.vim'
 "Plugin 'w0ng/vim-hybrid'
 "Plugin 'morhetz/gruvbox'
 "Plugin 'chriskempson/base16-vim'

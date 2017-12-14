@@ -15,7 +15,8 @@ XTerm*xftAntialias: true
 XTerm*selectToClipboard:  true
 XTerm*VT100.geometry:     80x50
 !XTerm*cursorColor:        #00cd00
-XTerm*cursorColor:        #ff7700
+!XTerm*cursorColor:        #ff7700
+XTerm*cursorColor:        #0087d8
 XTerm*background:         #1c1c1c
 XTerm*foreground:         #9ea7a6
 !XTerm*trimSelection: true
