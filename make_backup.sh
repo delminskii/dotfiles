@@ -8,6 +8,7 @@ BACKUPING_FILES="/etc/default/keyboard
 $HOME/.bashrc
 $HOME/.vimrc
 $HOME/.conkyrc
+$HOME/.dircolors
 $HOME/.Xresources
 $HOME/.config/openbox/*
 $HOME/.config/nvim/*
