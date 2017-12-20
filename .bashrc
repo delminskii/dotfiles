@@ -95,6 +95,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias sshconfig='vim $HOME/.ssh/config'
     alias xresources='vim $HOME/.Xresources'
     alias utube='mpv --profile=youtube'
+    alias podcast='mpv --profile=podcast'
     alias remote='ssh vultrserver'
     alias eugene_remote='ssh eugene_host'
     alias canadapost='cd $HOME/python_proj/test/CANADAPOST_CA'
