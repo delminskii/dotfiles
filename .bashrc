@@ -84,6 +84,8 @@ if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     alias ll='ls -lh'
+    alias la='ls -A'
+    alias l='ls -CF'
     alias xup='xrdb -merge $HOME/.Xresources'
     alias zonasin='cd $HOME/python_proj/test/cableCo/zonASINhunter'
     alias newegg='cd $HOME/python_proj/test/cableCo/newegg3'
@@ -100,11 +102,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias eugene_remote='ssh eugene_host'
     alias canadapost='cd $HOME/python_proj/test/CANADAPOST_CA'
 fi
-
-# some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like

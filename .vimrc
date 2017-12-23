@@ -110,7 +110,7 @@ Plugin 'vim-airline/vim-airline'            " Lean & mean status/tabline for vi
 Plugin 'vim-airline/vim-airline-themes'     " airline themes
 Plugin 'junegunn/fzf'                       " fuzzy files/lines/tags search
 Plugin 'junegunn/fzf.vim'                   " fuzzy files/lines/tags search
-Plugin 'icymind/NeoSolarized'
+Plugin 'w0ng/vim-hybrid'
 "Plugin 'tacahiroy/ctrlp-funky'              " fuzzy function search (code)
 Plugin 'w0rp/ale'                           " linting ANY (!!!) code
 Plugin 'Shougo/deoplete.nvim'
@@ -129,6 +129,7 @@ Plugin 'dhruvasagar/vim-table-mode'         " table editiion <leader>tm
 
 "Good colorschemes for me
 "afterglow from Plugin 'rafi/awesome-vim-colorschemes'
+"Plugin 'icymind/NeoSolarized'
 "Plugin 'joshdick/onedark.vim'
 "Plugin 'w0ng/vim-hybrid'
 "Plugin 'morhetz/gruvbox'
@@ -273,7 +274,7 @@ let g:user_emmet_install_global = 0             " take a look at vimrc_autocmd
 " Colorscheme colors
 " =============================================================================
 set background=dark
-colorscheme NeoSolarized
+colorscheme hybrid
 
 
 " =============================================================================
@@ -312,7 +313,7 @@ endif
 
 " good themes for me also: hybridline, badwolf, gruvbox, term, base16_chalk,
 " simple
-let g:airline_theme='solarized'
+let g:airline_theme='hybrid'
 
 
 " =============================================================================
