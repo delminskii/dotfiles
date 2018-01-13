@@ -160,6 +160,8 @@ TEXT
 ${font Liberation Mono:bold:size=10}${alignc}${color5}${time %X}
 ${goto 27}${color1}${execpi 7200 LAR=`date +%-d`; ncal -bh | sed 's/\<'$LAR'\>/${color5}&${color1}/' | sed ':a;N;$!ba;s/\n/\n${goto 27}/g'}${color}${font}
 
+${alignc}${execpi 10 python /home/nikolay/sandbox/py27/eth_btc_ticker.py}
+
 ${alignc}S Y S T E M    I N F O
 ${hr}
 Host:${alignr}${nodename}

@@ -94,6 +94,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias vimrc='vim $HOME/.vimrc'
     alias bashrc='vim $HOME/.bashrc'
     alias wgetrc='vim $HOME/.wgetrc'
+    alias conkyrc='vim $HOME/.conkyrc'
     alias sshconfig='vim $HOME/.ssh/config'
     alias xresources='vim $HOME/.Xresources'
     alias utube='mpv --profile=youtube'
