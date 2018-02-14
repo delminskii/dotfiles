@@ -343,22 +343,22 @@
       </action>
     </keybind>
     <!--<keybind key="W-t">-->
-        <!--<action name="Execute">-->
-        <!--<startupnotify>-->
-            <!--<enabled>true</enabled>-->
-            <!--<name>Terminal</name>-->
-        <!--</startupnotify>-->
-        <!--<command>xterm -bc -uc</command>-->
-        <!--</action>-->
+    <!--<action name="Execute">-->
+    <!--<startupnotify>-->
+    <!--<enabled>true</enabled>-->
+    <!--<name>Terminal</name>-->
+    <!--</startupnotify>-->
+    <!--<command>xterm -bc -uc</command>-->
+    <!--</action>-->
     <!--</keybind>-->
     <keybind key="W-t">
-        <action name="Execute">
+      <action name="Execute">
         <startupnotify>
-            <enabled>true</enabled>
-            <name>Terminal</name>
+          <enabled>true</enabled>
+          <name>Terminal</name>
         </startupnotify>
         <command>xterm -uc</command>
-        </action>
+      </action>
     </keybind>
     <keybind key="W-r">
       <action name="Execute">
@@ -782,16 +782,16 @@
       </mousebind>
     </context>
     <context name="Desktop">
-        <!--MOUSEWHEEL-->
+      <!--MOUSEWHEEL-->
       <!--<mousebind action="Click" button="Up">-->
-        <!--<action name="GoToDesktop">-->
-          <!--<to>previous</to>-->
-        <!--</action>-->
+      <!--<action name="GoToDesktop">-->
+      <!--<to>previous</to>-->
+      <!--</action>-->
       <!--</mousebind>-->
       <!--<mousebind action="Click" button="Down">-->
-        <!--<action name="GoToDesktop">-->
-          <!--<to>next</to>-->
-        <!--</action>-->
+      <!--<action name="GoToDesktop">-->
+      <!--<to>next</to>-->
+      <!--</action>-->
       <!--</mousebind>-->
       <mousebind action="Click" button="A-Up">
         <action name="GoToDesktop">
