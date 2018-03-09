@@ -257,6 +257,7 @@ map <Leader>n :NERDTreeToggle<CR>
 let g:ale_linters = {
 \   'python': ['flake8'],
 \}
+let g:ale_completion_enabled = 0
 let g:ale_sign_warning = '→'
 "let g:ale_sign_warning = ''
 "let g:ale_sign_error = '×'
@@ -365,17 +366,13 @@ let g:AutoPairsShortcutFastWrap = '<Leader>e'
 
 
 " =============================================================================
-" Neoterm options
+" Neoterm settings
 " =============================================================================
 " Useful maps
 " hide/close terminal
-nnoremap <silent> <Leader>th :call neoterm#close()<CR>
+nnoremap <silent> <Leader>th :Ttoggle<CR>
 " clear terminal
-nnoremap <silent> <Leader>tl :call neoterm#clear()<CR>
-" kills the current job (send a <c-c>)
-nnoremap <silent> <Leader>tc :call neoterm#kill()<CR>
-" open terminal
-nnoremap <silent> <Leader>to :call neoterm#open()<CR>
+nnoremap <silent> <Leader>tl :Tclear<CR>
 " autoscrolling
 let g:neoterm_autoscroll = 1
 
