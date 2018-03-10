@@ -375,6 +375,7 @@ nnoremap <silent> <Leader>th :Ttoggle<CR>
 nnoremap <silent> <Leader>tl :Tclear<CR>
 " autoscrolling
 let g:neoterm_autoscroll = 1
+let g:neoterm_autoinsert = 1
 
 
 " =============================================================================
