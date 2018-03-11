@@ -370,7 +370,7 @@ let g:AutoPairsShortcutFastWrap = '<Leader>e'
 " =============================================================================
 " Useful maps
 " hide/close terminal
-nnoremap <silent> <Leader>th :Ttoggle<CR>
+nnoremap <silent> <Leader>to :Ttoggle<CR>
 " clear terminal
 nnoremap <silent> <Leader>tl :Tclear<CR>
 " autoscrolling
