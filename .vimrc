@@ -369,10 +369,12 @@ let g:AutoPairsShortcutFastWrap = '<Leader>e'
 " Neoterm settings
 " =============================================================================
 " Useful maps
+" sent selection to REPL
 " hide/close terminal
 nnoremap <silent> <Leader>to :Ttoggle<CR>
 " clear terminal
 nnoremap <silent> <Leader>tl :Tclear<CR>
+" send selection to repl
 " autoscrolling
 let g:neoterm_autoscroll = 1
 let g:neoterm_autoinsert = 1
