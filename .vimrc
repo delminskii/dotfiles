@@ -94,59 +94,57 @@ endif
 "endif
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+"set rtp+=~/.vim/bundle/Vundle.vim
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'mattn/emmet-vim'                    " emmet for HTML\CSS
-Plugin 'easymotion/vim-easymotion'          " easymotion for vim
-Plugin 'jiangmiao/auto-pairs'               " auto [({, quotes and so on
-Plugin 'tpope/vim-surround'                 " auto-pairs alternative
-"Plugin 'majutsushi/tagbar'                  " class\module browser
-Plugin 'Vimjas/vim-python-pep8-indent'      " PEP8 indent
-"Plugin 'tpope/vim-fugitive'                 " Vim plugin for git functionals
-Plugin 'vim-airline/vim-airline'            " Lean & mean status/tabline for vi
-Plugin 'vim-airline/vim-airline-themes'     " airline themes
-Plugin 'junegunn/fzf'                       " fuzzy files/lines/tags search
-Plugin 'junegunn/fzf.vim'                   " fuzzy files/lines/tags search
-Plugin 'w0ng/vim-hybrid'
-"Plugin 'tacahiroy/ctrlp-funky'              " fuzzy function search (code)
-Plugin 'w0rp/ale'                           " linting ANY (!!!) code
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'zchee/deoplete-jedi'
-Plugin 'heavenshell/vim-pydocstring'        " python docstring
-Plugin 'scrooloose/nerdcommenter'           " commenting
-Plugin 'scrooloose/nerdtree'                " file browser
-Plugin 'gregsexton/MatchTag'                " highlight pairs tags
-"Plugin 'godlygeek/tabular'                  " smart tabbing
-Plugin 'terryma/vim-multiple-cursors'       " sublime-like multiple cursors
-Plugin 'triglav/vim-visual-increment'       " inc/dec by C-A/C-X
-Plugin 'mhinz/vim-startify'                 " startup
-Plugin 'Glench/Vim-Jinja2-Syntax'           " Jinja2 syntax
-Plugin 'kassio/neoterm'                     " :terminal features
-Plugin 'dhruvasagar/vim-table-mode'         " table editiion <leader>tm
+Plug 'mattn/emmet-vim', { 'for': ['html', 'xml'] }
+Plug 'easymotion/vim-easymotion'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
+"Plug 'majutsushi/tagbar'
+Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
+"Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'w0ng/vim-hybrid'
+"Plug 'tacahiroy/ctrlp-funky'
+Plug 'w0rp/ale'
+Plug 'Shougo/deoplete.nvim'
+Plug 'zchee/deoplete-jedi'
+Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'gregsexton/MatchTag'
+"Plug 'godlygeek/tabular'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'triglav/vim-visual-increment'
+Plug 'mhinz/vim-startify'
+Plug 'Glench/Vim-Jinja2-Syntax', { 'for': ['jinja2', 'jinja.html', 'jinja'] }
+Plug 'kassio/neoterm', { 'on': 'Ttoggle' }
+Plug 'dhruvasagar/vim-table-mode'
 
 "Good colorschemes for me
 "afterglow from Plugin 'rafi/awesome-vim-colorschemes'
-"Plugin 'icymind/NeoSolarized'
-"Plugin 'joshdick/onedark.vim'
-"Plugin 'w0ng/vim-hybrid'
-"Plugin 'morhetz/gruvbox'
-"Plugin 'chriskempson/base16-vim'
-"Plugin 'sjl/badwolf'
-"Plugin 'rakr/vim-one'
-"Plugin 'joshdick/onedark.vim'
-"Plugin 'dikiaap/minimalist'
-"Plugin 'tomasr/molokai'
+"Plug 'icymind/NeoSolarized'
+"Plug 'joshdick/onedark.vim'
+"Plug 'w0ng/vim-hybrid'
+"Plug 'morhetz/gruvbox'
+"Plug 'chriskempson/base16-vim'
+"Plug 'sjl/badwolf'
+"Plug 'rakr/vim-one'
+"Plug 'joshdick/onedark.vim'
+"Plug 'dikiaap/minimalist'
+"Plug 'tomasr/molokai'
 
 " Snippets
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
 
-call vundle#end()
+call plug#end()
 
 " Put all temporary files under the same directory.
 " https://github.com/mhinz/vim-galore#handling-backup-swap-undo-and-viminfo-files
