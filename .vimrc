@@ -232,6 +232,9 @@ vnoremap =j :%!python -m json.tool<CR>
 " Apply vimrc's changes
 nmap <silent> <Leader>sv :source $HOME/.vimrc<CR>
 
+" Save and exit
+nmap <silent> <Leader>q :wq<CR>
+
 
 " =============================================================================
 " TagBar settings
