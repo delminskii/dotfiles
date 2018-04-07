@@ -93,8 +93,12 @@ endif
   "set shell=/bin/bash
 "endif
 
-" set the runtime path to include Vundle and initialize
-"set rtp+=~/.vim/bundle/Vundle.vim
+
+" =============================================================================
+" plug-vim settings
+" =============================================================================
+let g:plug_threads = 2
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'mattn/emmet-vim', { 'for': ['html', 'xml'] }
