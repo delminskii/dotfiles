@@ -111,6 +111,7 @@ Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf'
+Plug 'andrewradev/splitjoin.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'w0ng/vim-hybrid'
 "Plug 'tacahiroy/ctrlp-funky'
@@ -416,6 +417,13 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#jedi#show_docstring = 1
 let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
+
+
+" =============================================================================
+" Splitjoin settings
+" =============================================================================
+nmap <Leader>S :SplitjoinSplit<CR>
+nmap <Leader>J :SplitjoinJoin<CR>
 
 
 "nmap <silent> <F6> gfggyG<Bar>:e#<CR>
