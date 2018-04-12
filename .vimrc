@@ -390,7 +390,6 @@ let g:neoterm_autoinsert = 1
 " Startify options
 " =============================================================================
 let g:startify_bookmarks = [
-    \ {'z': '/home/nikolay/python_proj/test/cableCo/zonASINhunter'},
     \ {'v': '~/.vimrc'},
     \ {'b': '~/.bashrc'},
     \ {'x': '~/.Xresources'},
