@@ -113,7 +113,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'junegunn/fzf.vim'
-Plug 'w0ng/vim-hybrid'
+Plug 'rakr/vim-one'
 "Plug 'tacahiroy/ctrlp-funky'
 Plug 'w0rp/ale'
 Plug 'Shougo/deoplete.nvim'
@@ -233,7 +233,7 @@ map <silent> <Leader>w :tabclose<CR>
 " Prettify JSON
 nnoremap =j :%!python -m json.tool<CR>
 vnoremap =j :%!python -m json.tool<CR>
-
+$
 " Apply vimrc's changes
 nmap <silent> <Leader>sv :source $HOME/.vimrc<CR>
 
@@ -264,10 +264,10 @@ let g:ale_linters = {
 \   'python': ['flake8'],
 \}
 let g:ale_completion_enabled = 0
-let g:ale_sign_warning = '→'
-"let g:ale_sign_warning = ''
-"let g:ale_sign_error = '×'
-let g:ale_sign_error = '✗'
+"let g:ale_sign_warning = '→'
+let g:ale_sign_warning = ''
+let g:ale_sign_error = '×'
+"let g:ale_sign_error = '✗'
 
 
 " =============================================================================
@@ -281,7 +281,7 @@ let g:user_emmet_install_global = 0             " take a look at vimrc_autocmd
 " Colorscheme colors
 " =============================================================================
 set background=dark
-colorscheme hybrid
+colorscheme one
 
 
 " =============================================================================
@@ -292,13 +292,13 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
-"let g:airline_left_sep = ''
-"let g:airline_left_alt_sep = ''
-"let g:airline_right_sep = ''
-"let g:airline_right_alt_sep = ''
-"let g:airline_symbols.branch = ''
-"let g:airline_symbols.readonly = ''
-"let g:airline_symbols.linenr = ''
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
 
 ""let g:airline_left_sep = '»'
 ""let g:airline_left_sep = '▶'
@@ -320,7 +320,7 @@ endif
 
 " good themes for me also: hybridline, badwolf, gruvbox, term, base16_chalk,
 " simple
-let g:airline_theme='hybrid'
+let g:airline_theme='one'
 
 
 " =============================================================================
