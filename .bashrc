@@ -102,7 +102,8 @@ if [ -x /usr/bin/dircolors ]; then
     alias remote='ssh vultrserver'
     alias eugene_remote='ssh eugene_host'
     alias canadapost='cd $HOME/python_proj/test/CANADAPOST_CA'
-    alias miamidade='cd $HOME/python_proj/test/miami_dade'
+    alias miamidade='cd $HOME/python_proj/test/miami_dade && ll ./'
+    alias downloads='cd $HOME/downloads/ && ll ./'
 fi
 
 # Alias definitions.
