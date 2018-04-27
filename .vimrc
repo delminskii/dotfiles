@@ -113,7 +113,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'junegunn/fzf.vim'
-Plug 'rakr/vim-one'
+Plug 'joshdick/onedark.vim'
 "Plug 'tacahiroy/ctrlp-funky'
 Plug 'w0rp/ale'
 Plug 'Shougo/deoplete.nvim'
@@ -139,7 +139,6 @@ Plug 'dhruvasagar/vim-table-mode'
 "Plug 'chriskempson/base16-vim'
 "Plug 'sjl/badwolf'
 "Plug 'rakr/vim-one'
-"Plug 'joshdick/onedark.vim'
 "Plug 'dikiaap/minimalist'
 "Plug 'tomasr/molokai'
 
@@ -281,7 +280,7 @@ let g:user_emmet_install_global = 0             " take a look at vimrc_autocmd
 " Colorscheme colors
 " =============================================================================
 set background=dark
-colorscheme one
+colorscheme onedark
 
 
 " =============================================================================
@@ -320,7 +319,7 @@ let g:airline_symbols.linenr = ''
 
 " good themes for me also: hybridline, badwolf, gruvbox, term, base16_chalk,
 " simple
-let g:airline_theme='one'
+let g:airline_theme='onedark'
 
 
 " =============================================================================
