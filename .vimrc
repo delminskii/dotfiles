@@ -126,7 +126,7 @@ Plug 'gregsexton/MatchTag'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'triglav/vim-visual-increment'
 Plug 'mhinz/vim-startify'
-Plug 'Glench/Vim-Jinja2-Syntax', { 'for': ['jinja2', 'jinja.html', 'jinja'] }
+Plug 'Glench/Vim-Jinja2-Syntax', { 'for': ['jinja2', 'jinja.html', 'jinja', 'j2'] }
 Plug 'kassio/neoterm', { 'on': 'Ttoggle' }
 Plug 'dhruvasagar/vim-table-mode'
 
@@ -263,10 +263,10 @@ let g:ale_linters = {
 \   'python': ['flake8'],
 \}
 let g:ale_completion_enabled = 0
-"let g:ale_sign_warning = '→'
-let g:ale_sign_warning = ''
-let g:ale_sign_error = '×'
-"let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '→'
+"let g:ale_sign_warning = ''
+"let g:ale_sign_error = '×'
+let g:ale_sign_error = '✗'
 
 
 " =============================================================================
@@ -325,6 +325,12 @@ let g:airline_theme='onedark'
 " =============================================================================
 " FZF settings
 " =============================================================================
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+
+command! ProjectFiles execute 'Files' s:find_git_root()
+
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
