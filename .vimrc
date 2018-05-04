@@ -105,6 +105,7 @@ Plug 'mattn/emmet-vim', { 'for': ['html', 'xml'] }
 Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-speeddating'
 "Plug 'majutsushi/tagbar'
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 "Plug 'tpope/vim-fugitive'
@@ -125,9 +126,8 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'gregsexton/MatchTag'
 "Plug 'godlygeek/tabular'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'triglav/vim-visual-increment'
 Plug 'mhinz/vim-startify'
-Plug 'Glench/Vim-Jinja2-Syntax', { 'for': ['jinja2', 'jinja.html', 'jinja', 'j2'] }
+Plug 'sheerun/vim-polyglot'
 Plug 'kassio/neoterm', { 'on': 'Ttoggle' }
 Plug 'dhruvasagar/vim-table-mode'
 
@@ -236,9 +236,6 @@ vnoremap =j :%!python -m json.tool<CR>
 $
 " Apply vimrc's changes
 nmap <silent> <Leader>sv :source $HOME/.vimrc<CR>
-
-" Save and exit
-nmap <silent> <Leader>q :wq<CR>
 
 
 " =============================================================================
@@ -463,7 +460,6 @@ map <Leader>k <Plug>(easymotion-k)
 augroup vimrc_autocmd
   autocmd!
   autocmd FileType html,xml,svg,css,htmldjango,scss,smarty EmmetInstall
-  "autocmd BufNewFile,BufRead *.tpl set ft=jinja
 
   au BufEnter * call LangRunner()
 augroup END
