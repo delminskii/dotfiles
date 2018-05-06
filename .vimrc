@@ -24,9 +24,6 @@ set hidden                 " Switch between buffers without having to save first
 set laststatus  =2         " Always show statusline.
 set display     =lastline  " Show as much as possible of the last line.
 
-"map <silent> <Space> <Leader>
-"let mapleader   ="\<Space>"
-
 " omnicompletion settings
 set completeopt+=longest,menuone
 set completeopt-=preview
@@ -80,6 +77,17 @@ function! LangRunner()
     endif
 endfunction
 
+
+function! StripTrailingWhitespaces()
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+
 set list                   " Show non-printable characters.
 if has('multi_byte') && &encoding ==# 'utf-8'
   let &listchars = 'tab:▸ ,extends:❯,precedes:❮,nbsp:±'
@@ -106,16 +114,13 @@ Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-speeddating'
-"Plug 'majutsushi/tagbar'
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
-"Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'joshdick/onedark.vim'
-"Plug 'tacahiroy/ctrlp-funky'
 Plug 'w0rp/ale'
 Plug 'cohama/agit.vim'
 Plug 'Shougo/deoplete.nvim'
@@ -124,24 +129,23 @@ Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'gregsexton/MatchTag'
-"Plug 'godlygeek/tabular'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mhinz/vim-startify'
 Plug 'sheerun/vim-polyglot'
 Plug 'kassio/neoterm', { 'on': 'Ttoggle' }
 Plug 'dhruvasagar/vim-table-mode'
 
-"Good colorschemes for me
-"afterglow from Plugin 'rafi/awesome-vim-colorschemes'
-"Plug 'icymind/NeoSolarized'
-"Plug 'joshdick/onedark.vim'
-"Plug 'w0ng/vim-hybrid'
-"Plug 'morhetz/gruvbox'
-"Plug 'chriskempson/base16-vim'
-"Plug 'sjl/badwolf'
-"Plug 'rakr/vim-one'
-"Plug 'dikiaap/minimalist'
-"Plug 'tomasr/molokai'
+" Good colorschemes for me:
+" - afterglow from Plugin 'rafi/awesome-vim-colorschemes'
+" - Plug 'icymind/NeoSolarized'
+" - Plug 'joshdick/onedark.vim'
+" - Plug 'w0ng/vim-hybrid'
+" - Plug 'morhetz/gruvbox'
+" - Plug 'chriskempson/base16-vim'
+" - Plug 'sjl/badwolf'
+" - Plug 'rakr/vim-one'
+" - Plug 'dikiaap/minimalist'
+" - Plug 'tomasr/molokai'
 
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -161,9 +165,6 @@ set directory   =$HOME/.vim/files/swap//
 set updatecount =100
 set undofile
 set undodir     =$HOME/.vim/files/undo/
-
-"comment line below if nvim is ised
-"set viminfo     ='100,n$HOME/.vim/files/info/viminfo
 
 " Disable Arrow keys in Normal mode
 map <silent><up> <nop>
@@ -233,19 +234,12 @@ map <silent> <Leader>w :tabclose<CR>
 " Prettify JSON
 nnoremap =j :%!python -m json.tool<CR>
 vnoremap =j :%!python -m json.tool<CR>
-$
+
 " Apply vimrc's changes
 nmap <silent> <Leader>sv :source $HOME/.vimrc<CR>
 
-
-" =============================================================================
-" TagBar settings
-" =============================================================================
-"map <silent> <F4> :TagbarToggle<CR>
-"let g:tagbar_autofocus = 1
-"let g:tagbar_width = 30
-"let g:tagbar_autoclose = 1
-"let g:tagbar_compact = 1
+" Strip lines
+nnoremap <silent> <Leader>sl :call StripTrailingWhitespaces()<CR>
 
 
 " =============================================================================
@@ -260,15 +254,17 @@ map <Leader>n :NERDTreeToggle<CR>
 let g:ale_linters = {
 \   'python': ['flake8'],
 \}
+let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 0
-let g:ale_sign_warning = '→'
+let g:ale_echo_delay = 1000
 "let g:ale_sign_warning = ''
 "let g:ale_sign_error = '×'
+let g:ale_sign_warning = '→'
 let g:ale_sign_error = '✗'
 
 
 " =============================================================================
-" Emmet-settings 
+" Emmet-settings
 " =============================================================================
 let g:user_emmet_leader_key='<TAB>'
 let g:user_emmet_install_global = 0             " take a look at vimrc_autocmd
@@ -315,8 +311,13 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.notexists = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
 
-" good themes for me also: hybridline, badwolf, gruvbox, term, base16_chalk,
-" simple
+" good themes for me also:
+" - hybridline
+" - badwolf
+" - gruvbox
+" - term
+" - base16_chalk
+" - simple
 let g:airline_theme='onedark'
 
 
@@ -339,27 +340,19 @@ command! -bang FLines call fzf#vim#grep(
     \ --exclude-dir=".svn"
     \ --exclude-dir=".git"
     \ --exclude-dir="htmls"
-    \ --exclude=tags 
+    \ --exclude=tags
     \ --exclude=*\.pyc
     \ --exclude=*\.exe
     \ --exclude=*\.dll
     \ --exclude=*\.zip
-    \ --exclude=*\.gz "^$"', 
-    \ 0,  
+    \ --exclude=*\.gz "^$"',
+    \ 0,
     \ {'options': '--reverse --prompt "FLines> "'})
 
 nmap <silent> <Leader>fl :FLines<CR>
 nmap <silent> <Leader>l :Lines<CR>
 nmap <silent> <Leader>f :Files<CR>
 nmap <silent> <Leader>uf :Files ..<CR>
-
-
-" =============================================================================
-" CtrlPFunky settings
-" =============================================================================
-"nnoremap <Leader>f :CtrlPFunky<CR>
-"let g:ctrlp_funky_matchtype = 'path'
-"let g:ctrlp_funky_syntax_highlight = 1
 
 
 " =============================================================================
@@ -377,14 +370,8 @@ let g:AutoPairsShortcutFastWrap = '<Leader>e'
 " =============================================================================
 " Neoterm settings
 " =============================================================================
-" Useful maps
-" sent selection to REPL
-" hide/close terminal
 nnoremap <silent> <Leader>to :Ttoggle<CR>
-" clear terminal
 nnoremap <silent> <Leader>tl :Tclear<CR>
-" send selection to repl
-" autoscrolling
 let g:neoterm_autoscroll = 1
 let g:neoterm_autoinsert = 1
 
@@ -434,20 +421,18 @@ nmap <Leader>J :SplitjoinJoin<CR>
 nmap <Leader>ag :Agit<CR>
 
 
-"nmap <silent> <F6> gfggyG<Bar>:e#<CR>
-"
 " =============================================================================
 " Easy-motion options
 " =============================================================================
 " Disable default mappings"
 let g:EasyMotion_do_mapping = 0
 
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " `s{char}{label}`
 nmap <silent> s <Plug>(easymotion-overwin-f)
-
-" Turn on case insensitive feature
-let g:EasyMotion_smartcase = 1
 
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
@@ -455,7 +440,7 @@ map <Leader>k <Plug>(easymotion-k)
 
 
 " =============================================================================
-" My custom autocmds
+" Augroup, autocmd
 " =============================================================================
 augroup vimrc_autocmd
   autocmd!
@@ -463,6 +448,3 @@ augroup vimrc_autocmd
 
   au BufEnter * call LangRunner()
 augroup END
-
-"TODO
-"map <silent><Leader>w :1i<CR>HELLOWORLD<CR><ESC>
