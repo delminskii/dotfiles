@@ -78,14 +78,14 @@ function! LangRunner()
 endfunction
 
 
-function! StripTrailingWhitespaces()
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  %s/\s\+$//e
-  let @/=_s
-  call cursor(l, c)
-endfunction
+" Delete trailing white space on save, useful for some filetypes
+fun! CleanExtraSpaces()
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    silent! %s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+endfun
 
 
 set list                   " Show non-printable characters.
@@ -239,7 +239,13 @@ vnoremap =j :%!python -m json.tool<CR>
 nmap <silent> <Leader>sv :source $HOME/.vimrc<CR>
 
 " Strip lines
-nnoremap <silent> <Leader>sl :call StripTrailingWhitespaces()<CR>
+nmap <silent> <Leader>sl :call CleanExtraSpaces()<CR>
+
+" Move a line of text using ALT+[jk]
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 
 " =============================================================================
@@ -438,7 +444,16 @@ map <Leader>k <Plug>(easymotion-k)
 " =============================================================================
 augroup vimrc_autocmd
   autocmd!
+
+  " Enable emmet for the specific filetypes only
   autocmd FileType html,xml,svg,css,htmldjango,scss,smarty EmmetInstall
 
+  " Strip lines in pre-write stage for specific files
+  autocmd BufWritePre *.html,*.xml,*.txt,*.js,*.py,*.sh :call CleanExtraSpaces()
+
+  " Return to last edit position when opening files (You want this!)
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+  " Turn on langRunner
   au BufEnter * call LangRunner()
 augroup END
