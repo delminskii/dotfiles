@@ -466,5 +466,5 @@ augroup vimrc_autocmd
     au BufEnter * call LangRunner()
 
     " Open NERDTree if we're executing vim without specifying a file to open
-    autocmd VimEnter * if !argc() | exe "NERDTree" | endif
+    "autocmd VimEnter * if !argc() | exe "NERDTree" | endif
 augroup END
