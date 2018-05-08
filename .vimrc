@@ -42,8 +42,7 @@ set ignorecase
 set smartcase
 set showmatch
 
-" Change directory to the current buffer when opening files.
-set autochdir
+set autochdir              " Change directory to the current buffer when opening files.
 
 " Encodings
 set ffs         =unix,dos,mac
@@ -55,13 +54,13 @@ set lazyredraw             " Only redraw when necessary.
 set splitbelow             " Open new windows below the current window.
 set splitright             " Open new windows right of the current window.
 
-"set cursorline             " Find the current line quickly.
+set cursorline             " Find the current line quickly.
 set wrapscan               " Searches wrap around end-of-file.
 set wrap
 set report      =0         " Always report changed lines.
 set synmaxcol   =200       " Only highlight the first 200 columns.
 
-set matchpairs+=<:>                         " additional matchpairs:
+set matchpairs+=<:>        " additional matchpairs:
 set tw          =80
 
 set termguicolors
@@ -88,7 +87,8 @@ fun! CleanExtraSpaces()
 endfun
 
 
-set list                   " Show non-printable characters.
+" Show non-printable characters.
+set list
 if has('multi_byte') && &encoding ==# 'utf-8'
   let &listchars = 'tab:▸ ,extends:❯,precedes:❮,nbsp:±'
 else
@@ -178,7 +178,7 @@ imap <silent> <down> <nop>
 imap <silent> <left> <nop>
 imap <silent> <right> <nop>
 
-" clear search-highlight
+" Clear search-highlight
 nmap <silent> <Leader>/ :nohlsearch<CR>
 
 " Use ctrl-[hjkl] to select the active split!
@@ -231,12 +231,9 @@ noremap <Leader>0 :tablast<CR>
 map <silent> <Leader>t :tabnew<CR>
 map <silent> <Leader>w :tabclose<CR>
 
-" Prettify JSON
+" Prettify valid JSON content
 nnoremap =j :%!python -m json.tool<CR>
 vnoremap =j :%!python -m json.tool<CR>
-
-" Apply vimrc's changes
-nmap <silent> <Leader>sv :source $HOME/.vimrc<CR>
 
 " Strip lines
 nmap <silent> <Leader>sl :call CleanExtraSpaces()<CR>
@@ -246,6 +243,9 @@ nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+" Edit vimrc config
+map <Leader>v :e! ~/.vimrc<CR>
 
 
 " =============================================================================
@@ -273,7 +273,7 @@ let g:ale_sign_error = '✗'
 " Emmet-settings
 " =============================================================================
 let g:user_emmet_leader_key='<TAB>'
-let g:user_emmet_install_global = 0             " take a look at vimrc_autocmd
+let g:user_emmet_install_global = 0
 
 
 " =============================================================================
@@ -432,28 +432,39 @@ let g:EasyMotion_smartcase = 1
 
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " `s{char}{label}`
-nmap <silent> s <Plug>(easymotion-overwin-f)
+nmap <silent>s <Plug>(easymotion-overwin-f)
 
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
+
+" Type S, then type what you're looking for, a /,
+" and what to replace it with
+nmap S :%s//g<LEFT><LEFT>
+vmap S :s//g<LEFT><LEFT>
 
 
 " =============================================================================
 " Augroup, autocmd
 " =============================================================================
 augroup vimrc_autocmd
-  autocmd!
+    autocmd!
 
-  " Enable emmet for the specific filetypes only
-  autocmd FileType html,xml,svg,css,htmldjango,scss,smarty EmmetInstall
+    " Enable emmet for the specific filetypes only
+    autocmd FileType html,xml,svg,css,htmldjango,scss,smarty EmmetInstall
 
-  " Strip lines in pre-write stage for specific files
-  autocmd BufWritePre *.html,*.xml,*.txt,*.js,*.py,*.sh :call CleanExtraSpaces()
+    " Strip lines in pre-write stage for specific files
+    autocmd BufWritePre *.html,*.xml,*.txt,*.js,*.py,*.sh :call CleanExtraSpaces()
 
-  " Return to last edit position when opening files (You want this!)
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    " Apply vimrc changes after an edit
+    autocmd BufWritePost ~/.vimrc source ~/.vimrc
 
-  " Turn on langRunner
-  au BufEnter * call LangRunner()
+    " Return to last edit position when opening files (You want this!)
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+    " Turn on langRunner
+    au BufEnter * call LangRunner()
+
+    " Open NERDTree if we're executing vim without specifying a file to open
+    autocmd VimEnter * if !argc() | exe "NERDTree" | endif
 augroup END
