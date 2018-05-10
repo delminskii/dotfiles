@@ -15,6 +15,7 @@ $HOME/.config/nvim/*
 $HOME/.config/mpv/mpv.conf
 $HOME/.radios.txt
 $HOME/.xinitrc
+$HOME/.bash_aliases
 $0
 "
 
