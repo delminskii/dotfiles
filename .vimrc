@@ -20,9 +20,9 @@ set scrolloff   =4
 set scrolljump  =4
 
 set backspace   =indent,eol,start  " Make backspace work as you would expect.
-set hidden                 " Switch between buffers without having to save first.
-set laststatus  =2         " Always show statusline.
-set display     =lastline  " Show as much as possible of the last line.
+set hidden                         " Switch between buffers without having to save first.
+set laststatus  =2                 " Always show statusline.
+set display     =lastline          " Show as much as possible of the last line.
 
 " omnicompletion settings
 set completeopt+=longest,menuone
@@ -66,6 +66,7 @@ set tw          =80
 set termguicolors
 
 
+" Run code from current buffer pressing leader+r
 function! LangRunner()
     if(&ft=="python")
         nnoremap <Leader>r :w<CR>:!python %<CR>
@@ -247,6 +248,11 @@ vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 " Edit vimrc config
 map <Leader>v :e! ~/.vimrc<CR>
 
+" Type S, then type what you're looking for, a /,
+" and what to replace it with
+nmap S :%s//g<LEFT><LEFT>
+vmap S :s//g<LEFT><LEFT>
+
 
 " =============================================================================
 " Nerdtree settings
@@ -424,24 +430,11 @@ nmap <Leader>ag :Agit<CR>
 " =============================================================================
 " Easy-motion options
 " =============================================================================
-" Disable default mappings"
-let g:EasyMotion_do_mapping = 0
-
-" Turn on case insensitive feature
-let g:EasyMotion_smartcase = 1
-
-" Jump to anywhere you want with minimal keystrokes, with just one key binding.
-" `s{char}{label}`
-nmap <silent>s <Plug>(easymotion-overwin-f)
-
-" JK motions: Line motions
+let g:EasyMotion_do_mapping = 0             " Disable default mappings
+let g:EasyMotion_smartcase = 1              " Turn on case insensitive feature
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
-
-" Type S, then type what you're looking for, a /,
-" and what to replace it with
-nmap S :%s//g<LEFT><LEFT>
-vmap S :s//g<LEFT><LEFT>
+nmap <silent>s <Plug>(easymotion-overwin-f)
 
 
 " =============================================================================
