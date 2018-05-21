@@ -5,7 +5,8 @@
 !XTerm*faceName:           xft:FiraMono for Powerline:pixelsize=10:antialias=false
 !XTerm*faceName:           xft:Hack:pixelsize=11:antialias=false
 !XTerm*faceName:           xft:Iosevka Term:pixelsize=11:antialias=false
-XTerm*faceName:           xft:DejaVu Sans Mono:pixelsize=11:antialias=false
+!XTerm*faceName:           xft:DejaVu Sans Mono:pixelsize=11:antialias=false
+XTerm*faceName:           xft:Monaco for Powerline:pixelsize=11:antialias=false
 XTerm*utf8: True
 XTerm*locale: True
 XTerm*utf8Title: True
