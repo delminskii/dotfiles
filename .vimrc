@@ -133,7 +133,7 @@ Plug 'gregsexton/MatchTag'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mhinz/vim-startify'
 Plug 'sheerun/vim-polyglot'
-Plug 'kassio/neoterm', { 'on': 'Ttoggle' }
+Plug 'kassio/neoterm'
 Plug 'dhruvasagar/vim-table-mode'
 
 " Good colorschemes for me:
@@ -378,6 +378,7 @@ nmap <silent> <Leader>d <Plug>(pydocstring)
 " =============================================================================
 nnoremap <silent> <Leader>to :Ttoggle<CR>
 nnoremap <silent> <Leader>tl :Tclear<CR>
+let g:neoterm_default_mod = 'botright'
 let g:neoterm_autoscroll = 1
 let g:neoterm_autoinsert = 1
 
