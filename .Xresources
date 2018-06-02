@@ -1,35 +1,31 @@
-!*customization: -color
-!XTerm*termName: xterm+256color
-
 !XTerm*faceName:           xft:Anonymous Pro for Powerline:pixelsize=12:antialias=true
 !XTerm*faceName:           xft:FiraMono for Powerline:pixelsize=10:antialias=false
 !XTerm*faceName:           xft:Hack:pixelsize=11:antialias=false
 !XTerm*faceName:           xft:Iosevka Term:pixelsize=11:antialias=false
 !XTerm*faceName:           xft:DejaVu Sans Mono:pixelsize=11:antialias=false
-XTerm*faceName:           xft:Monaco for Powerline:pixelsize=11:antialias=false
-XTerm*utf8: True
-XTerm*locale: True
-XTerm*utf8Title: True
-XTerm*renderFont: True
-XTerm*preeditType: Root
-XTerm*xftAntialias: true
-XTerm*selectToClipboard:  true
-XTerm*VT100.geometry:     80x50
-XTerm*cursorColor:        #00cd00
-!XTerm*cursorColor:        #ff7700
-!XTerm*cursorColor:        #0087d8
-XTerm*background:         #1c1c1c
-XTerm*foreground:         #9ea7a6
-!XTerm*trimSelection: true
+XTerm*faceName:             xft:Monaco for Powerline:pixelsize=11:antialias=false
+XTerm*utf8:                 true
+XTerm*locale:               true
+XTerm*utf8Title:            true
+XTerm*renderFont:           true
+XTerm*preeditType:          root
+XTerm*xftAntialias:         true
+XTerm*selectToClipboard:    true
+XTerm*VT100.geometry:       80x50
+XTerm*cursorColor:          #00cd00
+XTerm*background:           #1c1c1c
+XTerm*foreground:           #9ea7a6
+
+! -- Scroll multiple lines at a time for faster redrawing:
+xterm*jumpScroll:           true
+xterm*multiScroll:          true
+!
+! -- trim whitespace from selection before copying
+xterm*trimSelection:        true
 
 ! Fix alt-key inputting
-XTerm*eightBitInput: false
-XTerm*metaSendsEscape: true
+XTerm*eightBitInput:        false
+XTerm*metaSendsEscape:      true
 
 ! Allow selecting email/url by double-click
-XTerm*charClass: 33:48,37-38:48,45-47:48,64:48,58:48,126:48,61:48,63:48,43:48,35:48
-
-! Copy and paste with clipboard
-!XTerm*translations: #override \
-!    Ctrl Shift <KeyPress> C: copy-selection(CLIPBOARD) \n\
-!    Ctrl Shift <KeyPress> V: insert-selection(CLIPBOARD)
+XTerm*charClass:            33:48,37-38:48,45-47:48,64:48,58:48,126:48,61:48,63:48,43:48,35:48
