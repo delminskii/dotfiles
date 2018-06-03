@@ -16,11 +16,11 @@ XTerm*cursorColor:          #00cd00
 XTerm*background:           #1c1c1c
 XTerm*foreground:           #9ea7a6
 
-! -- Scroll multiple lines at a time for faster redrawing:
+! Scroll multiple lines at a time for faster redrawing:
 xterm*jumpScroll:           true
 xterm*multiScroll:          true
-!
-! -- trim whitespace from selection before copying
+
+! trim whitespace from selection before copying
 xterm*trimSelection:        true
 
 ! Fix alt-key inputting
