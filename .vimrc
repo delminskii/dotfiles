@@ -147,6 +147,7 @@ Plug 'dhruvasagar/vim-table-mode'
 " - Plug 'rakr/vim-one'
 " - Plug 'dikiaap/minimalist'
 " - Plug 'tomasr/molokai'
+" - Plug 'fenetikm/falcon'
 
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -252,6 +253,9 @@ map <Leader>v :e! ~/.vimrc<CR>
 " and what to replace it with
 nmap S :%s//g<LEFT><LEFT>
 vmap S :s//g<LEFT><LEFT>
+
+" Go to normal mode easily
+imap jj <ESC>
 
 
 " =============================================================================
