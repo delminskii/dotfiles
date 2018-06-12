@@ -254,10 +254,6 @@ map <Leader>v :e! ~/.vimrc<CR>
 nmap S :%s//g<LEFT><LEFT>
 vmap S :s//g<LEFT><LEFT>
 
-" Go to normal mode easily
-inoremap <silent> jj <C-c>:stopinsert<cr>l
-inoremap <silent> kk <C-c>:stopinsert<cr>l
-
 
 " =============================================================================
 " Nerdtree settings
