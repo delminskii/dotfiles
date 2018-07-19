@@ -121,7 +121,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'junegunn/fzf.vim'
-Plug 'joshdick/onedark.vim'
+Plug 'icymind/NeoSolarized'
 Plug 'w0rp/ale'
 Plug 'cohama/agit.vim'
 Plug 'Shougo/deoplete.nvim'
@@ -287,7 +287,7 @@ let g:user_emmet_install_global = 0
 " Colorscheme colors
 " =============================================================================
 set background=dark
-colorscheme onedark
+colorscheme NeoSolarized
 
 
 " =============================================================================
@@ -331,7 +331,7 @@ let g:airline_symbols.whitespace = 'Ξ'
 " - term
 " - base16_chalk
 " - simple
-let g:airline_theme='onedark'
+let g:airline_theme='solarized_flood'
 
 
 " =============================================================================
