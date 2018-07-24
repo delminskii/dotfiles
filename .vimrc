@@ -136,7 +136,7 @@ Plug 'kassio/neoterm'
 Plug 'dhruvasagar/vim-table-mode'
 
 " Good colorschemes for me:
-" - afterglow from Plugin 'rafi/awesome-vim-colorschemes'
+" - `afterglow` from Plugin 'rafi/awesome-vim-colorschemes'
 " - Plug 'icymind/NeoSolarized'
 " - Plug 'joshdick/onedark.vim'
 " - Plug 'w0ng/vim-hybrid'
