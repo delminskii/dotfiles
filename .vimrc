@@ -253,6 +253,9 @@ map <Leader>v :e! ~/.vimrc<CR>
 nmap S :%s//g<LEFT><LEFT>
 vmap S :s//g<LEFT><LEFT>
 
+" Save current file
+nmap <Leader>w :update<CR>
+
 
 " =============================================================================
 " Nerdtree settings
