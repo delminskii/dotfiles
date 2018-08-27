@@ -120,7 +120,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'junegunn/fzf.vim'
-Plug 'icymind/NeoSolarized'
+Plug 'fenetikm/falcon'
 Plug 'w0rp/ale'
 Plug 'cohama/agit.vim'
 Plug 'Shougo/deoplete.nvim'
@@ -214,10 +214,6 @@ map <Leader><Leader> <C-w>=
 vnoremap - 3<C-w><
 vnoremap = 3<C-w>>
 
-" Vertically - always three chars else it takes ages
-vnoremap _ 3<C-w>-
-vnoremap + 3<C-w>+
-
 " Mappings for tabs
 noremap <Leader>1 1gt
 noremap <Leader>2 2gt
@@ -236,9 +232,6 @@ map <silent> <Leader>w :tabclose<CR>
 nnoremap =j :%!python -m json.tool<CR>
 vnoremap =j :%!python -m json.tool<CR>
 
-" Strip lines
-nmap <silent> <Leader>sl :call CleanExtraSpaces()<CR>
-
 " Move a line of text using ALT+[jk]
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
@@ -254,7 +247,7 @@ nmap S :%s//g<LEFT><LEFT>
 vmap S :s//g<LEFT><LEFT>
 
 " Save current file
-nmap <Leader>w :update<CR>
+nmap <F1> :update<CR>
 
 
 " =============================================================================
@@ -272,10 +265,10 @@ let g:ale_linters = {
 let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 0
 let g:ale_echo_delay = 1000
-let g:ale_sign_warning = ''
-let g:ale_sign_error = '×'
-"let g:ale_sign_warning = '→'
-"let g:ale_sign_error = '✗'
+"let g:ale_sign_warning = ''
+"let g:ale_sign_error = '×'
+let g:ale_sign_warning = '→'
+let g:ale_sign_error = '✗'
 
 
 " =============================================================================
@@ -289,7 +282,7 @@ let g:user_emmet_install_global = 0
 " Colorscheme colors
 " =============================================================================
 set background=dark
-colorscheme NeoSolarized
+colorscheme falcon
 
 
 " =============================================================================
@@ -333,7 +326,7 @@ let g:airline_symbols.whitespace = 'Ξ'
 " - term
 " - base16_chalk
 " - simple
-let g:airline_theme='solarized_flood'
+let g:airline_theme='falcon'
 
 
 " =============================================================================
