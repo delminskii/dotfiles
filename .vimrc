@@ -249,6 +249,11 @@ vmap S :s//g<LEFT><LEFT>
 " Save current file
 nmap <F1> :update<CR>
 
+" Open the selected text in a split (i.e. should be a file).
+map <leader>o "oyaW:sp <C-R>o<CR>
+xnoremap <leader>o "oy<esc>:sp <C-R>o<CR>
+vnoremap <leader>o "oy<esc>:sp <C-R>o<CR>
+
 
 " =============================================================================
 " Nerdtree settings
