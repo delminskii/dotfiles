@@ -254,6 +254,10 @@ map <leader>o "oyaW:sp <C-R>o<CR>
 xnoremap <leader>o "oy<esc>:sp <C-R>o<CR>
 vnoremap <leader>o "oy<esc>:sp <C-R>o<CR>
 
+" Deprecate skip selection after indenting
+vnoremap < <gv
+vnoremap > >gv
+
 
 " =============================================================================
 " Nerdtree settings
