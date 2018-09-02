@@ -31,7 +31,7 @@ set completeopt-=preview
 " Toggling for paste mode
 set pastetoggle =<F2>
 
-set showmode               " Show current mode in command-line.
+set noshowmode             " Doesn't show current mode in command-line.
 set showcmd                " Show already typed keys when more are expected.
 
 set number                 " show numbers
@@ -48,7 +48,6 @@ set autochdir              " Change directory to the current buffer when opening
 set ffs         =unix,dos,mac
 set fencs       =utf-8,cp1251,koi8-r,ucs-2,cp866
 
-set ttyfast                " Faster redrawing.
 set lazyredraw             " Only redraw when necessary.
 
 set splitbelow             " Open new windows below the current window.
