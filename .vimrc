@@ -97,9 +97,9 @@ endif
 
 " The fish shell is not very compatible to other shells and unexpectedly
 " breaks things that use 'shell'.
-"if &shell =~# 'fish$'
-  "set shell=/bin/bash
-"endif
+if &shell =~# 'fish$'
+  set shell=/bin/bash
+endif
 
 
 " =============================================================================
