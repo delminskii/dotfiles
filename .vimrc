@@ -162,7 +162,7 @@ set backupdir   =$HOME/.vim/files/backup/
 set backupext   =-vimbackup
 set backupskip  =
 set directory   =$HOME/.vim/files/swap//
-set updatecount =100
+set updatecount =200
 set undofile
 set undodir     =$HOME/.vim/files/undo/
 
@@ -182,10 +182,10 @@ imap <silent> <right> <nop>
 nmap <silent> <Leader>/ :nohlsearch<CR>
 
 " Use ctrl-[hjkl] to select the active split!
-nmap <silent> <c-k> :wincmd k<CR>
-nmap <silent> <c-j> :wincmd j<CR>
-nmap <silent> <c-h> :wincmd h<CR>
-nmap <silent> <c-l> :wincmd l<CR>
+nmap <silent> <C-k> :wincmd k<CR>
+nmap <silent> <C-j> :wincmd j<CR>
+nmap <silent> <C-h> :wincmd h<CR>
+nmap <silent> <C-l> :wincmd l<CR>
 
 " Open new blank file
 nnoremap n<C-h> :lefta vsp new<CR>
@@ -462,7 +462,4 @@ augroup vimrc_autocmd
 
     " Turn on langRunner
     au BufEnter * call LangRunner()
-
-    " Open NERDTree if we're executing vim without specifying a file to open
-    "autocmd VimEnter * if !argc() | exe "NERDTree" | endif
 augroup END
