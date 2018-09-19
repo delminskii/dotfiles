@@ -146,6 +146,7 @@ Plug 'dhruvasagar/vim-table-mode'
 " - Plug 'dikiaap/minimalist'
 " - Plug 'tomasr/molokai'
 " - Plug 'fenetikm/falcon'
+" - Plug 'ajh17/Spacegray.vim'
 
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'
