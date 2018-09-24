@@ -119,8 +119,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'junegunn/fzf.vim'
-Plug 'fenetikm/falcon'
 Plug 'w0rp/ale'
+Plug 'icymind/NeoSolarized'
 Plug 'cohama/agit.vim'
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
@@ -145,7 +145,6 @@ Plug 'dhruvasagar/vim-table-mode'
 " - Plug 'rakr/vim-one'
 " - Plug 'dikiaap/minimalist'
 " - Plug 'tomasr/molokai'
-" - Plug 'fenetikm/falcon'
 " - Plug 'ajh17/Spacegray.vim'
 
 " Snippets
@@ -291,14 +290,14 @@ let g:user_emmet_install_global = 0
 " Colorscheme colors
 " =============================================================================
 set background=dark
-colorscheme falcon
+colorscheme NeoSolarized
 
 
 " =============================================================================
 " Vim-lightline settings
 " =============================================================================
 let g:lightline = {
-      \ 'colorscheme': 'landscape',
+      \ 'colorscheme': 'default',
       \ }
 " good themes for me also:
 " - hybridline
