@@ -95,6 +95,7 @@ else
   let &listchars = 'tab:> ,extends:>,precedes:<,nbsp:.'
 endif
 
+
 " The fish shell is not very compatible to other shells and unexpectedly
 " breaks things that use 'shell'.
 if &shell =~# 'fish$'
@@ -296,16 +297,16 @@ colorscheme falcon
 " =============================================================================
 " Vim-lightline settings
 " =============================================================================
-    " good themes for me also:
-    " - hybridline
-    " - badwolf
-    " - gruvbox
-    " - term
-    " - base16_chalk
-    " - simple
 let g:lightline = {
       \ 'colorscheme': 'landscape',
       \ }
+" good themes for me also:
+" - hybridline
+" - badwolf
+" - gruvbox
+" - term
+" - base16_chalk
+" - simple
 
 
 " =============================================================================
