@@ -297,7 +297,7 @@ colorscheme NeoSolarized
 " Vim-lightline settings
 " =============================================================================
 let g:lightline = {
-      \ 'colorscheme': 'default',
+      \ 'colorscheme': 'solarized',
       \ }
 " good themes for me also:
 " - hybridline
