@@ -31,7 +31,7 @@ set completeopt-=preview
 " Toggling for paste mode
 set pastetoggle =<F2>
 
-set noshowmode             " Doesn't show current mode in command-line.
+set noshowmode             " Don't show current mode in command-line.
 set showcmd                " Show already typed keys when more are expected.
 
 set number                 " show numbers
@@ -148,6 +148,7 @@ Plug 'dhruvasagar/vim-table-mode'
 " - Plug 'dikiaap/minimalist'
 " - Plug 'tomasr/molokai'
 " - Plug 'ajh17/Spacegray.vim'
+" - Plug 'cocopon/iceberg.vim'
 
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'
