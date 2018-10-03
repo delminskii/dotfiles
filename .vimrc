@@ -122,7 +122,7 @@ Plug 'junegunn/fzf'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
-Plug 'w0ng/vim-hybrid'
+Plug 'dikiaap/minimalist'
 Plug 'cohama/agit.vim'
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
@@ -293,14 +293,14 @@ let g:user_emmet_install_global = 0
 " Colorscheme colors
 " =============================================================================
 set background=dark
-colorscheme hybrid
+colorscheme minimalist
 
 
 " =============================================================================
 " Vim-lightline settings
 " =============================================================================
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'deus',
       \ }
 " good themes for me also:
 " - hybridline
