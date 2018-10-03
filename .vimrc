@@ -122,7 +122,7 @@ Plug 'junegunn/fzf'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
-Plug 'dikiaap/minimalist'
+Plug 'ajh17/Spacegray.vim'
 Plug 'cohama/agit.vim'
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
@@ -293,7 +293,7 @@ let g:user_emmet_install_global = 0
 " Colorscheme colors
 " =============================================================================
 set background=dark
-colorscheme minimalist
+colorscheme spacegray
 
 
 " =============================================================================
