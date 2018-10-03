@@ -122,7 +122,7 @@ Plug 'junegunn/fzf'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
-Plug 'icymind/NeoSolarized'
+Plug 'w0ng/vim-hybrid'
 Plug 'cohama/agit.vim'
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
@@ -276,10 +276,10 @@ let g:ale_linters = {
 let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 0
 let g:ale_echo_delay = 1000
-"let g:ale_sign_warning = ''
-"let g:ale_sign_error = '×'
-let g:ale_sign_warning = '→'
-let g:ale_sign_error = '✗'
+let g:ale_sign_warning = ''
+let g:ale_sign_error = '×'
+"let g:ale_sign_warning = '→'
+"let g:ale_sign_error = '✗'
 
 
 " =============================================================================
@@ -293,14 +293,14 @@ let g:user_emmet_install_global = 0
 " Colorscheme colors
 " =============================================================================
 set background=dark
-colorscheme NeoSolarized
+colorscheme hybrid
 
 
 " =============================================================================
 " Vim-lightline settings
 " =============================================================================
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'wombat',
       \ }
 " good themes for me also:
 " - hybridline
