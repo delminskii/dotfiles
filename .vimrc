@@ -175,12 +175,6 @@ map <silent><down> <nop>
 map <silent><left> <nop>
 map <silent><right> <nop>
 
-" Disable Arrow keys in Insert mode
-imap <silent> <up> <nop>
-imap <silent> <down> <nop>
-imap <silent> <left> <nop>
-imap <silent> <right> <nop>
-
 " Clear search-highlight
 nmap <silent> <Leader>/ :nohlsearch<CR>
 
