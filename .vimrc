@@ -132,7 +132,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mhinz/vim-startify'
 Plug 'sheerun/vim-polyglot'
-Plug 'kassio/neoterm'
+Plug 'kassio/neoterm', { 'on': 'Ttoggle' }
 Plug 'dhruvasagar/vim-table-mode'
 
 " Good colorschemes for me:
@@ -376,7 +376,7 @@ nnoremap <silent> <Leader>sr :Startify<CR>
 " =============================================================================
 " Deoplete settings
 " =============================================================================
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 
 
 " =============================================================================
@@ -384,7 +384,7 @@ let g:deoplete#enable_at_startup = 1
 " =============================================================================
 let g:deoplete#sources#jedi#show_docstring = 1
 let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/bin/python3.4'
+let g:python3_host_prog = '/usr/bin/python3'
 
 
 " =============================================================================
