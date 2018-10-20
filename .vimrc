@@ -129,7 +129,6 @@ Plug 'zchee/deoplete-jedi'
 Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'andymass/vim-matchup'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mhinz/vim-startify'
 Plug 'sheerun/vim-polyglot'
@@ -267,6 +266,7 @@ map <Leader>n :NERDTreeToggle<CR>
 let g:ale_linters = {
 \   'python': ['flake8'],
 \}
+let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 0
 let g:ale_echo_delay = 1000
@@ -349,7 +349,6 @@ nmap <silent> <Leader>d <Plug>(pydocstring)
 " Neoterm settings
 " =============================================================================
 nnoremap <silent> <Leader>to :Ttoggle<CR>
-nnoremap <silent> <Leader>tl :Tclear<CR>
 let g:neoterm_default_mod = 'botright'
 let g:neoterm_autoscroll = 1
 let g:neoterm_autoinsert = 1
@@ -362,7 +361,8 @@ let g:startify_bookmarks = [
     \ {'v': '~/.vimrc'},
     \ {'b': '~/.bashrc'},
     \ {'x': '~/.Xresources'},
-    \ {'w': '~/.wgetrc'}
+    \ {'w': '~/.wgetrc'},
+    \ {'s': '~/.ssh/config'}
     \ ]
 let g:startify_list_order = [
     \ ['    MRU files:'],
@@ -384,7 +384,7 @@ let g:deoplete#enable_at_startup = 1
 " =============================================================================
 let g:deoplete#sources#jedi#show_docstring = 1
 let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = '/usr/bin/python3.4'
 
 
 " =============================================================================
