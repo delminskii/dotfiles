@@ -124,8 +124,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 Plug 'ajh17/Spacegray.vim'
 Plug 'cohama/agit.vim'
-Plug 'Shougo/deoplete.nvim'
-Plug 'zchee/deoplete-jedi'
+Plug 'Shougo/deoplete.nvim', { 'frozen': 1 }
+Plug 'zchee/deoplete-jedi', { 'frozen': 1 }
 Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -148,6 +148,7 @@ Plug 'dhruvasagar/vim-table-mode'
 " - Plug 'tomasr/molokai'
 " - Plug 'ajh17/Spacegray.vim'
 " - Plug 'cocopon/iceberg.vim'
+" - themes @ Plug 'mswift42/vim-themes (darktooth)'
 
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -376,7 +377,7 @@ nnoremap <silent> <Leader>sr :Startify<CR>
 " =============================================================================
 " Deoplete settings
 " =============================================================================
-"let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 
 
 " =============================================================================
