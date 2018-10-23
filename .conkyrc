@@ -194,4 +194,5 @@ ${hr}
 [S] + l${alignr}Lock Screen
 [S] + v${alignr}Volume Control
 [S] + x${alignr}Logout
-[PrtSc]${alignr}Screenshot
+[PrtSc]${alignr}Scrot(selected)
+[A] + [PrtSc]${alignr}Scrot(focused)
