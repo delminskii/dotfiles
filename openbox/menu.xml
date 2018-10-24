@@ -8,134 +8,85 @@
         </item>
         <item label="Web Browser">
             <action name="Execute">
-                <command>
-                    x-www-browser
-                </command>
+                <command>x-www-browser</command>
             </action>
         </item>
         <item label="File Manager">
             <action name="Execute">
-                <command>
-                    thunar
-                </command>
+                <command>thunar</command>
             </action>
         </item>
-        <!--<item label="Media Player">-->
-            <!--<action name="Execute">-->
-                <!--<command>-->
-                    <!--smplayer-->
-                <!--</command>-->
-            <!--</action>-->
-        <!--</item>-->
         <item label="Pidgin">
             <action name="Execute">
-                <command>
-                    pidgin
-                </command>
+                <command>pidgin</command>
             </action>
         </item>
         <separator/>
         <menu id="graphics" label="Graphics">
-            <item label="Gnome-Paint">
+            <item label="MTPaint">
                 <action name="Execute">
-                    <command>
-                        gnome-paint
-                    </command>
+                    <command>mtpaint</command>
                 </action>
             </item>
             <item label="Viewnior Image Viewer">
                 <action name="Execute">
-                    <command>
-                        viewnior
-                    </command>
+                    <command>viewnior</command>
                 </action>
             </item>
-            <menu id="graphicsScreenshots" label="Take Screenshot">
-                <item label="Screenshooter">
-                    <action name="Execute">
-                        <command>
-                            xfce4-screenshooter
-                        </command>
-                    </action>
-                </item>
-                <separator label="scrot"/>
-                <item label="Now">
-                    <action name="Execute">
-                        <command>
-                            scrot '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp; viewnior ~/images/$f'
-                        </command>
-                    </action>
-                </item>
-                <item label="In 5 Seconds...">
-                    <action name="Execute">
-                        <command>
-                            scrot -d 5 '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp; viewnior ~/images/$f'
-                        </command>
-                    </action>
-                </item>
-                <item label="In 10 Seconds...">
-                    <action name="Execute">
-                        <command>
-                            scrot -d 10 '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp; viewnior ~/images/$f'
-                        </command>
-                    </action>
-                </item>
-                <item label="Selected Area... (click &amp; drag mouse)">
-                    <action name="Execute">
-                        <command>
-                            scrot -s '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp; viewnior ~/images/$f'
-                        </command>
-                    </action>
-                </item>
-            </menu>
+            <!--<menu id="graphicsScreenshots" label="Take Screenshot">-->
+            <!--    <item label="Screenshooter">-->
+            <!--        <action name="Execute">-->
+            <!--            <command>-->
+            <!--                xfce4-screenshooter-->
+            <!--            </command>-->
+            <!--        </action>-->
+            <!--    </item>-->
+            <!--    <separator label="scrot"/>-->
+            <!--    <item label="Now">-->
+            <!--        <action name="Execute">-->
+            <!--            <command>-->
+            <!--                scrot '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp; viewnior ~/images/$f'-->
+            <!--            </command>-->
+            <!--        </action>-->
+            <!--    </item>-->
+            <!--    <item label="In 5 Seconds...">-->
+            <!--        <action name="Execute">-->
+            <!--            <command>-->
+            <!--                scrot -d 5 '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp; viewnior ~/images/$f'-->
+            <!--            </command>-->
+            <!--        </action>-->
+            <!--    </item>-->
+            <!--    <item label="In 10 Seconds...">-->
+            <!--        <action name="Execute">-->
+            <!--            <command>-->
+            <!--                scrot -d 10 '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp; viewnior ~/images/$f'-->
+            <!--            </command>-->
+            <!--        </action>-->
+            <!--    </item>-->
+            <!--    <item label="Selected Area... (click &amp; drag mouse)">-->
+            <!--        <action name="Execute">-->
+            <!--            <command>-->
+            <!--                scrot -s '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp; viewnior ~/images/$f'-->
+            <!--            </command>-->
+            <!--        </action>-->
+            <!--    </item>-->
+            <!--</menu>-->
         </menu>
         <menu id="multimedia" label="Multimedia">
-            <!--<item label="SMPlayer">-->
-                <!--<action name="Execute">-->
-                    <!--<command>-->
-                        <!--smplayer-->
-                    <!--</command>-->
-                <!--</action>-->
-            <!--</item>-->
             <item label="Volume Control">
                 <action name="Execute">
-                    <command>
-                        pavucontrol
-                    </command>
+                    <command>pavucontrol</command>
                 </action>
             </item>
         </menu>
         <menu id="network" label="Network">
-            <item label="gFTP Client">
-                <action name="Execute">
-                    <command>
-                        gftp
-                    </command>
-                </action>
-            </item>
             <item label="Transmission BitTorrent Client">
                 <action name="Execute">
-                    <command>
-                        transmission-gtk
-                    </command>
+                    <command>transmission-gtk</command>
                 </action>
             </item>
         </menu>
         <menu id="office" label="Office">
-            <item label="AbiWord Word Processor">
-                <action name="Execute">
-                    <command>
-                        abiword
-                    </command>
-                </action>
-            </item>
-            <item label="Gnumeric Spreadsheet">
-                <action name="Execute">
-                    <command>
-                        gnumeric
-                    </command>
-                </action>
-            </item>
             <item label="Calculator">
                 <action name="Execute">
                     <command>xcalc</command>
@@ -143,9 +94,17 @@
             </item>
             <item label="Evince PDF Viewer">
                 <action name="Execute">
-                    <command>
-                        evince
-                    </command>
+                    <command>evince</command>
+                </action>
+            </item>
+            <item label="Abiword">
+                <action name="Execute">
+                    <command>abiword</command>
+                </action>
+            </item>
+            <item label="LibreOffice Calc">
+                <action name="Execute">
+                    <command>libreoffice --calc</command>
                 </action>
             </item>
         </menu>
@@ -154,48 +113,36 @@
             <menu id="conkyconfig" label="Conky">
                 <item label="Edit .conkyrc">
                     <action name="Execute">
-                        <command>
-                            vim ~/.conkyrc
-                        </command>
+                        <command>vim ~/.conkyrc</command>
                     </action>
                 </item>
                 <item label="Restart Conky">
                     <action name="Execute">
-                        <command>
-                            conkywonky
-                        </command>
+                        <command>conkywonky</command>
                     </action>
                 </item>
             </menu>
             <menu id="gmrunconfig" label="gmrun">
                 <item label="Edit config file">
                     <action name="Execute">
-                        <command>
-                            vim ~/.gmrunrc
-                        </command>
+                        <command>vim ~/.gmrunrc</command>
                     </action>
                 </item>
             </menu>
             <menu id="obConfig" label="Openbox">
                 <item label="GUI Menu Editor">
                     <action name="Execute">
-                        <command>
-                            obmenu
-                        </command>
+                        <command>obmenu</command>
                     </action>
                 </item>
                 <item label="GUI Applications Settings Editor">
                     <action name="Execute">
-                        <command>
-                            obapps
-                        </command>
+                        <command>obapps</command>
                     </action>
                 </item>
                 <item label="GUI Config Tool">
                     <action name="Execute">
-                        <command>
-                            obconf
-                        </command>
+                        <command>obconf</command>
                     </action>
                 </item>
                 <separator/>
@@ -209,9 +156,7 @@
             <menu id="DisplaySettings" label="Display Settings">
                 <item label="ARandR Screen Layout Editor">
                     <action name="Execute">
-                        <command>
-                            arandr
-                        </command>
+                        <command>arandr</command>
                     </action>
                 </item>
             </menu>
@@ -224,50 +169,36 @@
             </menu>
             <item label="User Interface Settings">
                 <action name="Execute">
-                    <command>
-                        lxappearance
-                    </command>
+                    <command>lxappearance</command>
                 </action>
             </item>
             <item label="Choose Wallpaper">
                 <action name="Execute">
-                    <command>
-                        nitrogen
-                    </command>
+                    <command>nitrogen</command>
                 </action>
             </item>
         </menu>
         <menu id="system" label="System">
             <item label="GParted">
                 <action name="Execute">
-                    <command>
-                        gksudo gparted
-                    </command>
+                    <command>gksudo gparted</command>
                 </action>
             </item>
             <item label="User Login Settings">
                 <action name="Execute">
-                    <command>
-                        gksudo slimconf
-                    </command>
+                    <command>gksudo slimconf</command>
                 </action>
             </item>
         </menu>
-        <!--<menu id="help" label="Help" execute="cb-help-pipemenu" />-->
         <separator/>
         <item label="Lock Screen">
             <action name="Execute">
-                <command>
-                    cb-lock
-                </command>
+                <command>cb-lock</command>
             </action>
         </item>
         <item label="Exit">
             <action name="Execute">
-                <command>
-                    <!--python /usr/bin/cb-exit.py-->
-                    sudo poweroff
-                </command>
+                <command>sudo poweroff</command>
             </action>
         </item>
     </menu>

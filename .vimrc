@@ -122,7 +122,7 @@ Plug 'junegunn/fzf'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
-Plug 'ajh17/Spacegray.vim'
+Plug 'dikiaap/minimalist'
 Plug 'cohama/agit.vim'
 Plug 'Shougo/deoplete.nvim', { 'frozen': 1 }
 Plug 'zchee/deoplete-jedi', { 'frozen': 1 }
@@ -133,7 +133,6 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'mhinz/vim-startify'
 Plug 'sheerun/vim-polyglot'
 Plug 'kassio/neoterm', { 'on': 'Ttoggle' }
-Plug 'dhruvasagar/vim-table-mode'
 
 " Good colorschemes for me:
 " - `afterglow` from Plugin 'rafi/awesome-vim-colorschemes'
@@ -144,11 +143,12 @@ Plug 'dhruvasagar/vim-table-mode'
 " - Plug 'chriskempson/base16-vim'
 " - Plug 'sjl/badwolf'
 " - Plug 'rakr/vim-one'
+" - Plug 'rakr/vim-two-firewatch'
 " - Plug 'dikiaap/minimalist'
 " - Plug 'tomasr/molokai'
 " - Plug 'ajh17/Spacegray.vim'
 " - Plug 'cocopon/iceberg.vim'
-" - themes @ Plug 'mswift42/vim-themes (darktooth)'
+" - Plug 'NLKNguyen/papercolor-theme'
 
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -288,7 +288,7 @@ let g:user_emmet_install_global = 0
 " Colorscheme colors
 " =============================================================================
 set background=dark
-colorscheme spacegray
+colorscheme minimalist
 
 
 " =============================================================================
@@ -344,6 +344,12 @@ nmap <silent> <Leader>uf :Files ..<CR>
 " Pydocstring options
 " =============================================================================
 nmap <silent> <Leader>d <Plug>(pydocstring)
+
+
+" =============================================================================
+" Nerdcommenter settings
+" =============================================================================
+let g:NERDDefaultAlign = 'left'
 
 
 " =============================================================================

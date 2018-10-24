@@ -1,9 +1,9 @@
-!XTerm*faceName:             xft:Anonymous Pro for Powerline:pixelsize=12:antialias=true
+XTerm*faceName:             xft:Anonymous Pro for Powerline:pixelsize=12:antialias=true
 !XTerm*faceName:             xft:FiraMono for Powerline:pixelsize=10:antialias=false
 !XTerm*faceName:             xft:Hack:pixelsize=11:antialias=false
 !XTerm*faceName:             xft:Iosevka Term:pixelsize=11:antialias=false
 !XTerm*faceName:             xft:DejaVu Sans Mono:pixelsize=11:antialias=false
-XTerm*faceName:             xft:Source Code Pro Light:pixelsize=11:antialias=false
+!XTerm*faceName:             xft:Source Code Pro Light:pixelsize=11:antialias=false
 !XTerm*faceName:             xft:Monaco for Powerline:pixelsize=11:antialias=false
 XTerm*utf8:                 true
 XTerm*locale:               true
