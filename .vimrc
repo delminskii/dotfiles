@@ -132,7 +132,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mhinz/vim-startify'
 Plug 'sheerun/vim-polyglot'
-Plug 'kassio/neoterm', { 'on': 'Ttoggle' }
+Plug 'kassio/neoterm', { 'on': 'Topen' }
 
 " Good colorschemes for me:
 " - `afterglow` from Plugin 'rafi/awesome-vim-colorschemes'
@@ -170,95 +170,90 @@ set undofile
 set undodir     =$HOME/.vim/files/undo/
 
 " Disable Arrow keys in Normal mode
-map <silent><up> <nop>
-map <silent><down> <nop>
-map <silent><left> <nop>
-map <silent><right> <nop>
+noremap <silent><up> <nop>
+noremap <silent><down> <nop>
+noremap <silent><left> <nop>
+noremap <silent><right> <nop>
 
 " Clear search-highlight
-nmap <silent> <Leader>/ :nohlsearch<CR>
+nnoremap <silent> <Leader>/ :nohlsearch<CR>
 
-" Use ctrl-[hjkl] to select the active split!
-nmap <silent> <C-k> :wincmd k<CR>
-nmap <silent> <C-j> :wincmd j<CR>
-nmap <silent> <C-h> :wincmd h<CR>
-nmap <silent> <C-l> :wincmd l<CR>
+" Use ctrl-[hjkl] to select an active split!
+nnoremap <silent> <C-k> :wincmd k<CR>
+nnoremap <silent> <C-j> :wincmd j<CR>
+nnoremap <silent> <C-h> :wincmd h<CR>
+nnoremap <silent> <C-l> :wincmd l<CR>
 
 " Open new blank file
-nnoremap n<C-h> :lefta vsp new<CR>
-nnoremap n<C-j> :bel sp new<CR>
-nnoremap n<C-k> :abo sp new<CR>
-nnoremap n<C-l> :rightb vsp new<CR>
+nnoremap <silent> n<C-h> :lefta vsp new<CR>
+nnoremap <silent> n<C-j> :bel sp new<CR>
+nnoremap <silent> n<C-k> :abo sp new<CR>
+nnoremap <silent> n<C-l> :rightb vsp new<CR>
 
-" Move window
-nnoremap <Leader><C-h> <C-W>H
-nnoremap <Leader><C-j> <C-W>J
-nnoremap <Leader><C-k> <C-W>K
-nnoremap <Leader><C-l> <C-W>L
+" Move window <S-A-hjkl>
+nnoremap <silent> <S-M-h> <C-W>H
+nnoremap <silent> <S-M-j> <C-W>J
+nnoremap <silent> <S-M-k> <C-W>K
+nnoremap <silent> <S-M-l> <C-W>L
 
 " Maximise horizontally
-map <Leader>= <C-w><Bar>
+nnoremap <silent> <Leader>= <C-w><Bar>
 
 " Maximise vertically
-map <Leader>- <C-w>_
+nnoremap <silent> <Leader>- <C-w>_
 
 " Make all windows equally sized
-map <Leader><Leader> <C-w>=
-
-" Change windowsizes in visual mode
-" horizontally - always three chars else it takes ages
-vnoremap - 3<C-w><
-vnoremap = 3<C-w>>
+nnoremap <silent> <Leader><Leader> <C-w>=
 
 " Mappings for tabs
-noremap <Leader>1 1gt
-noremap <Leader>2 2gt
-noremap <Leader>3 3gt
-noremap <Leader>4 4gt
-noremap <Leader>5 5gt
-noremap <Leader>6 6gt
-noremap <Leader>7 7gt
-noremap <Leader>8 8gt
-noremap <Leader>9 9gt
-noremap <Leader>0 :tablast<CR>
-map <silent> <Leader>t :tabnew<CR>
-map <silent> <Leader>w :tabclose<CR>
+nnoremap <silent> <Leader>1 1gt
+nnoremap <silent> <Leader>2 2gt
+nnoremap <silent> <Leader>3 3gt
+nnoremap <silent> <Leader>4 4gt
+nnoremap <silent> <Leader>5 5gt
+nnoremap <silent> <Leader>6 6gt
+nnoremap <silent> <Leader>7 7gt
+nnoremap <silent> <Leader>8 8gt
+nnoremap <silent> <Leader>9 9gt
+nnoremap <silent> <Leader>0 :tablast<CR>
+nnoremap <silent> <Leader>t :tabnew<CR>
+nnoremap <silent> <Leader>w :tabclose<CR>
 
 " Prettify valid JSON content
-nnoremap =j :%!python -m json.tool<CR>
-vnoremap =j :%!python -m json.tool<CR>
+noremap =j :%!python -m json.tool<CR>
+noremap =j :%!python -m json.tool<CR>
 
 " Move a line of text using ALT+[jk]
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nnoremap <silent> <M-j> mz:m+<cr>`z
+nnoremap <silent> <M-k> mz:m-2<cr>`z
+vnoremap <silent> <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vnoremap <silent> <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " Edit vimrc config
-map <Leader>v :e! ~/.vimrc<CR>
+nnoremap <Leader>v :e! ~/.vimrc<CR>
 
 " Type S, then type what you're looking for, a /,
 " and what to replace it with
-nmap S :%s//g<LEFT><LEFT>
-vmap S :s//g<LEFT><LEFT>
+nnoremap S :%s//g<LEFT><LEFT>
+vnoremap S :s//g<LEFT><LEFT>
 
 " Save current file
-nmap <F1> :update<CR>
+nnoremap <F1> :update<CR>
 
 " Open the selected text in a split (i.e. should be a file).
-map <leader>o "oyaW:sp <C-R>o<CR>
-xnoremap <leader>o "oy<esc>:sp <C-R>o<CR>
-vnoremap <leader>o "oy<esc>:sp <C-R>o<CR>
+noremap <Leader>o "oyaW:sp <C-R>o<CR>
+xnoremap <Leader>o "oy<esc>:sp <C-R>o<CR>
+vnoremap <Leader>o "oy<esc>:sp <C-R>o<CR>
 
 " Deprecate skip selection after indenting
-vnoremap < <gv
-vnoremap > >gv
+vnoremap <silent> < <gv
+vnoremap <silent> > >gv
 
 
 " =============================================================================
 " Nerdtree settings
 " =============================================================================
-map <Leader>n :NERDTreeToggle<CR>
+nnoremap <Leader>n :NERDTreeToggle<CR>
 
 
 " =============================================================================
@@ -334,16 +329,16 @@ command! -bang FLines call fzf#vim#grep(
     \ 0,
     \ {'options': '--reverse --prompt "FLines> "'})
 
-nmap <silent> <Leader>fl :FLines<CR>
-nmap <silent> <Leader>l :Lines<CR>
-nmap <silent> <Leader>f :Files<CR>
-nmap <silent> <Leader>uf :Files ..<CR>
+nnoremap <silent> <Leader>fl :FLines<CR>
+nnoremap <silent> <Leader>l :Lines<CR>
+nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>uf :Files ..<CR>
 
 
 " =============================================================================
 " Pydocstring options
 " =============================================================================
-nmap <silent> <Leader>d <Plug>(pydocstring)
+nnoremap <silent> <Leader>d <Plug>(pydocstring)
 
 
 " =============================================================================
@@ -355,7 +350,8 @@ let g:NERDDefaultAlign = 'left'
 " =============================================================================
 " Neoterm settings
 " =============================================================================
-nnoremap <silent> <Leader>to :Ttoggle<CR>
+nnoremap <silent> <Leader><Enter> :Topen<CR>
+tnoremap <silent> <Leader><Enter> <C-\><C-n>:Tclose<CR>
 let g:neoterm_default_mod = 'botright'
 let g:neoterm_autoscroll = 1
 let g:neoterm_autoinsert = 1
@@ -397,14 +393,14 @@ let g:python3_host_prog = '/usr/bin/python3'
 " =============================================================================
 " Splitjoin settings
 " =============================================================================
-nmap <Leader>S :SplitjoinSplit<CR>
-nmap <Leader>J :SplitjoinJoin<CR>
+nnoremap <Leader>S :SplitjoinSplit<CR>
+nnoremap <Leader>J :SplitjoinJoin<CR>
 
 
 " =============================================================================
 " Agit settings
 " =============================================================================
-nmap <Leader>ag :Agit<CR>
+nnoremap <silent> <Leader>ag :Agit<CR>
 
 
 " =============================================================================
@@ -412,9 +408,9 @@ nmap <Leader>ag :Agit<CR>
 " =============================================================================
 let g:EasyMotion_do_mapping = 0             " Disable default mappings
 let g:EasyMotion_smartcase = 1              " Turn on case insensitive feature
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-nmap <silent>s <Plug>(easymotion-overwin-f)
+nmap <silent> <Leader>j <Plug>(easymotion-j)
+nmap <silent> <Leader>k <Plug>(easymotion-k)
+nmap <silent> s <Plug>(easymotion-overwin-f)
 
 
 " =============================================================================
