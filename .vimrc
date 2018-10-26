@@ -220,8 +220,8 @@ nnoremap <silent> <Leader>t :tabnew<CR>
 nnoremap <silent> <Leader>w :tabclose<CR>
 
 " Prettify valid JSON content
-noremap =j :%!python -m json.tool<CR>
-noremap =j :%!python -m json.tool<CR>
+nnoremap =j :%!python -m json.tool<CR>
+vnoremap =j :%!python -m json.tool<CR>
 
 " Move a line of text using ALT+[jk]
 nnoremap <silent> <M-j> mz:m+<cr>`z
