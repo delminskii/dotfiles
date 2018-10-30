@@ -28,9 +28,6 @@ set display     =lastline          " Show as much as possible of the last line.
 set completeopt+=longest,menuone
 set completeopt-=preview
 
-" Toggling for paste mode
-set pastetoggle =<F2>
-
 set noshowmode             " Don't show current mode in command-line.
 set showcmd                " Show already typed keys when more are expected.
 
@@ -262,7 +259,6 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 let g:ale_linters = {
 \   'python': ['flake8'],
 \}
-let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 0
 let g:ale_echo_delay = 1000
@@ -388,13 +384,6 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#jedi#show_docstring = 1
 let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
-
-
-" =============================================================================
-" Splitjoin settings
-" =============================================================================
-nnoremap <Leader>S :SplitjoinSplit<CR>
-nnoremap <Leader>J :SplitjoinJoin<CR>
 
 
 " =============================================================================
