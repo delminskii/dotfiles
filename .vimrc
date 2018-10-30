@@ -256,6 +256,8 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 " =============================================================================
 " Ale settings
 " =============================================================================
+"nmap <silent> <S-k> <Plug>(ale_previous)
+"nmap <silent> <S-j> <Plug>(ale_next)
 let g:ale_linters = {
 \   'python': ['flake8'],
 \}
