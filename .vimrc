@@ -72,6 +72,8 @@ function! LangRunner()
         nnoremap <Leader>r :w<CR>:!bash %<CR>
     elseif(&ft=="perl")
         nnoremap <Leader>r :w<CR>:!perl %<CR>
+    elseif(&ft=="go")
+        nnoremap <Leader>r :w<CR>:!go run %<CR>
     endif
 endfunction
 

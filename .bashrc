@@ -112,3 +112,12 @@ export LC_CTYPE LC_COLLATE
 # editors for me
 export VISUAL=/usr/bin/nvim
 export EDITOR="$VISUAL"
+
+# PATH env definition
+export PATH=$PATH:~/go/bin
+
+# golang vars
+export GOBIN=~/go/bin
+export GOARCH=amd64
+export GOOS=linux
+export GOROOT=~/go
