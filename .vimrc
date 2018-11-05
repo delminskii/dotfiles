@@ -122,6 +122,7 @@ Plug 'andrewradev/splitjoin.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 Plug 'dikiaap/minimalist'
+Plug 'noahfrederick/vim-hemisu'
 Plug 'cohama/agit.vim'
 Plug 'Shougo/deoplete.nvim', { 'frozen': 1 }
 Plug 'zchee/deoplete-jedi', { 'frozen': 1 }
@@ -147,7 +148,6 @@ Plug 'kassio/neoterm', { 'on': 'Topen' }
 " - Plug 'tomasr/molokai'
 " - Plug 'ajh17/Spacegray.vim'
 " - Plug 'cocopon/iceberg.vim'
-" - Plug 'NLKNguyen/papercolor-theme'
 
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -282,8 +282,13 @@ let g:user_emmet_install_global = 0
 " =============================================================================
 " Colorscheme colors
 " =============================================================================
-set background=dark
-colorscheme minimalist
+if system('date +%H') < 19
+    set background=dark
+    colorscheme minimalist
+else
+    set background=light
+    colorscheme hemisu
+endif
 
 
 " =============================================================================
