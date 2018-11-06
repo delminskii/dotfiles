@@ -122,7 +122,6 @@ Plug 'andrewradev/splitjoin.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 Plug 'dikiaap/minimalist'
-Plug 'noahfrederick/vim-hemisu'
 Plug 'cohama/agit.vim'
 Plug 'Shougo/deoplete.nvim', { 'frozen': 1 }
 Plug 'zchee/deoplete-jedi', { 'frozen': 1 }
@@ -282,13 +281,8 @@ let g:user_emmet_install_global = 0
 " =============================================================================
 " Colorscheme colors
 " =============================================================================
-if system('date +%H') < 19
-    set background=dark
-    colorscheme minimalist
-else
-    set background=light
-    colorscheme hemisu
-endif
+set background=dark
+colorscheme minimalist
 
 
 " =============================================================================
