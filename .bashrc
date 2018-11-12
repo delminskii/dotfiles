@@ -120,3 +120,4 @@ export GOBIN=~/go/bin
 export GOARCH=amd64
 export GOOS=linux
 export GOROOT=~/go
+export GOPATH=/home/nikolay/sandbox/GO_sandbox
