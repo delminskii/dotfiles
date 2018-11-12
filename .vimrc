@@ -147,6 +147,7 @@ Plug 'kassio/neoterm', { 'on': 'Topen' }
 " - Plug 'tomasr/molokai'
 " - Plug 'ajh17/Spacegray.vim'
 " - Plug 'cocopon/iceberg.vim'
+" - Plug 'nightsense/snow'
 
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'
