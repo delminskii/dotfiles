@@ -264,6 +264,7 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 let g:ale_linters = {
 \   'python': ['flake8'],
 \}
+let g:ale_virtualtext_cursor = 1
 let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 0
 let g:ale_echo_delay = 1000
