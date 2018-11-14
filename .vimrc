@@ -114,6 +114,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'mattn/emmet-vim', { 'for': ['html', 'xml'] }
 Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
+Plug 'andymass/vim-matchup'
 Plug 'tpope/vim-surround'
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'itchyny/lightline.vim'
@@ -265,7 +266,7 @@ let g:ale_linters = {
 \}
 let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 0
-let g:ale_echo_delay = 1500
+let g:ale_echo_delay = 1000
 let g:ale_sign_warning = ''
 let g:ale_sign_error = '×'
 "let g:ale_sign_warning = '→'
@@ -333,6 +334,7 @@ nnoremap <silent> <Leader>fl :FLines<CR>
 nnoremap <silent> <Leader>l :Lines<CR>
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>uf :Files ..<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
 
 
 " =============================================================================
