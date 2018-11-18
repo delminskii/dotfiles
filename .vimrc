@@ -403,8 +403,8 @@ nnoremap <silent> <Leader>ag :Agit<CR>
 " =============================================================================
 let g:EasyMotion_do_mapping = 0             " Disable default mappings
 let g:EasyMotion_smartcase = 1              " Turn on case insensitive feature
-nmap <silent> <Leader>j <Plug>(easymotion-j)
-nmap <silent> <Leader>k <Plug>(easymotion-k)
+"nmap <silent> <Leader>j <Plug>(easymotion-j)
+"nmap <silent> <Leader>k <Plug>(easymotion-k)
 nmap <silent> s <Plug>(easymotion-overwin-f)
 
 
