@@ -232,11 +232,6 @@ vnoremap <silent> <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 " Edit vimrc config
 nnoremap <Leader>v :e! ~/.vimrc<CR>
 
-" Type S, then type what you're looking for, a /,
-" and what to replace it with
-nnoremap S :%s//g<LEFT><LEFT>
-vnoremap S :s//g<LEFT><LEFT>
-
 " Save current file
 nnoremap <F1> :update<CR>
 
