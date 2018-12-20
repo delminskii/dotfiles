@@ -62,7 +62,7 @@ set tw          =80
 set termguicolors
 
 " disable change of curso shape
-" set guicursor=
+ set guicursor=
 
 " Run code from current buffer pressing leader+r
 function! LangRunner()
