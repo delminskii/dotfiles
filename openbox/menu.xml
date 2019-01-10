@@ -16,11 +16,6 @@
                 <command>thunar</command>
             </action>
         </item>
-        <item label="Pidgin">
-            <action name="Execute">
-                <command>pidgin</command>
-            </action>
-        </item>
         <separator/>
         <menu id="graphics" label="Graphics">
             <item label="MTPaint">
