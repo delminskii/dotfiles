@@ -122,7 +122,7 @@ Plug 'junegunn/fzf'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
-Plug 'dikiaap/minimalist'
+Plug 'morhetz/gruvbox'
 Plug 'cohama/agit.vim'
 Plug 'Shougo/deoplete.nvim', { 'frozen': 1 }
 Plug 'zchee/deoplete-jedi', { 'frozen': 1 }
@@ -148,7 +148,6 @@ Plug 'kassio/neoterm', { 'on': 'Topen' }
 " - Plug 'tomasr/molokai'
 " - Plug 'ajh17/Spacegray.vim'
 " - Plug 'cocopon/iceberg.vim'
-" - Plug 'nightsense/snow'
 
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -278,8 +277,15 @@ let g:user_emmet_install_global = 0
 " =============================================================================
 " Colorscheme colors
 " =============================================================================
-set background=dark
-colorscheme minimalist
+"set background=dark
+if strftime('%H') >= 7 && strftime('%H') < 19
+  let g:gruvbox_contrast_light='medium'
+  set background=light
+else
+  let g:gruvbox_contrast_dark='medium'
+  set background=dark
+endif
+colorscheme gruvbox
 
 
 " =============================================================================
