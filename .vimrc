@@ -243,10 +243,6 @@ vnoremap <Leader>o "oy<esc>:sp <C-R>o<CR>
 vnoremap <silent> < <gv
 vnoremap <silent> > >gv
 
-" I am tired of pressing C-[ every time
-inoremap jj <ESC>
-inoremap jk <ESC>
-
 
 " =============================================================================
 " Nerdtree settings
