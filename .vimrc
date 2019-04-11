@@ -62,7 +62,7 @@ set tw          =80
 set termguicolors
 
 " disable change of curso shape
- set guicursor=
+"set guicursor=
 
 " Run code from current buffer pressing leader+r
 function! LangRunner()
@@ -70,22 +70,10 @@ function! LangRunner()
         nnoremap <Leader>r :w<CR>:!python %<CR>
     elseif(&ft=="sh")
         nnoremap <Leader>r :w<CR>:!bash %<CR>
-    elseif(&ft=="perl")
-        nnoremap <Leader>r :w<CR>:!perl %<CR>
     elseif(&ft=="go")
         nnoremap <Leader>r :w<CR>:!go run %<CR>
     endif
 endfunction
-
-
-" Delete trailing white space on save, useful for some filetypes
-fun! CleanExtraSpaces()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    silent! %s/\s\+$//e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
-endfun
 
 
 " Show non-printable characters.
@@ -218,7 +206,7 @@ nnoremap <silent> <Leader>0 :tablast<CR>
 nnoremap <silent> <Leader>t :tabnew<CR>
 nnoremap <silent> <Leader>w :tabclose<CR>
 
-" Prettify valid JSON content
+" Prettify valid JSON contents
 nnoremap =j :%!python -m json.tool<CR>
 vnoremap =j :%!python -m json.tool<CR>
 
@@ -253,8 +241,10 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 " =============================================================================
 " Ale settings
 " =============================================================================
-"nmap <silent> <S-k> <Plug>(ale_previous)
-"nmap <silent> <S-j> <Plug>(ale_next)
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\}
 let g:ale_linters = {
 \   'python': ['flake8'],
 \}
@@ -292,8 +282,8 @@ colorscheme gruvbox
 " Vim-lightline settings
 " =============================================================================
 let g:lightline = {
-      \ 'colorscheme': 'deus',
-      \ }
+\   'colorscheme': 'deus',
+\}
 " good themes for me also:
 " - hybridline
 " - badwolf
@@ -417,9 +407,6 @@ augroup vimrc_autocmd
 
     " Enable emmet for the specific filetypes only
     autocmd FileType html,xml,svg,css,htmldjango,scss,smarty EmmetInstall
-
-    " Strip lines in pre-write stage for specific files
-    autocmd BufWritePre *.html,*.xml,*.txt,*.js,*.py,*.sh :call CleanExtraSpaces()
 
     " Apply vimrc changes after an edit
     autocmd BufWritePost ~/.vimrc source ~/.vimrc
