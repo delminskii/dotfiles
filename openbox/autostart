@@ -23,29 +23,19 @@ eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 ## Set root window colour
 hsetroot -solid "#2E3436" &
 
-## Group start:
 ## 1. nitrogen - restores wallpaper
 ## 2. xrandr - resolution & freshrate
 ## 3. sleep - give compositor time to start
 ## 4. tint2 panel
-(\
-nitrogen --restore && \
-xrandr -s 1600x900 -r 75 && \
-sleep 1s && \
-tint2 \
-) &
+xrandr -s 1600x900 -r 75 &
+sleep 1s
+tint2 &
 
 ## Volume control for systray
-(sleep 1s && volti) &
-
-## Volume keys daemon
-xfce4-volumed &
+pnmixer &
 
 ## Start Thunar Daemon
 thunar --daemon &
-
-## Start xscreensaver
-xscreensaver -no-splash &
 
 ## Set keyboard settings - 250 ms delay and 25 cps (characters per second) repeat rate.
 ## Adjust the values according to your preferances.
@@ -62,3 +52,5 @@ guake &
 
 ## Run redshift
 redshift -l 56.8:53.2 &
+
+

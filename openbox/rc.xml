@@ -126,7 +126,7 @@
       <name>3</name>
       <name>4</name>
     </names>
-    <popupTime>875</popupTime>
+    <popupTime>200</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
          desktops.  Set this to 0 to disable the popup. -->
   </desktops>
@@ -204,13 +204,13 @@
     <keybind key="S-A-Left">
       <action name="SendToDesktop">
         <to>left</to>
-        <!--<wrap>no</wrap>-->
+        <wrap>no</wrap>
       </action>
     </keybind>
     <keybind key="S-A-Right">
       <action name="SendToDesktop">
         <to>right</to>
-        <!--<wrap>no</wrap>-->
+        <wrap>no</wrap>
       </action>
     </keybind>
     <keybind key="S-A-Up">
@@ -264,14 +264,14 @@
     </keybind>
     <keybind key="Print">
       <action name="Execute">
-          <command>
+        <command>
               scrot '%Y-%m-%d--%s_$wx$h_scrot.png' -se 'mv $f /tmp &amp; viewnior /tmp/$f'
           </command>
       </action>
     </keybind>
     <keybind key="A-Print">
       <action name="Execute">
-          <command>
+        <command>
               scrot '%Y-%m-%d--%s_$wx$h_scrot.png' -ue 'mv $f /tmp &amp; viewnior /tmp/$f'
           </command>
       </action>
@@ -346,15 +346,6 @@
         <command>thunar</command>
       </action>
     </keybind>
-    <!--<keybind key="W-t">-->
-    <!--<action name="Execute">-->
-    <!--<startupnotify>-->
-    <!--<enabled>true</enabled>-->
-    <!--<name>Terminal</name>-->
-    <!--</startupnotify>-->
-    <!--<command>xterm -bc -uc</command>-->
-    <!--</action>-->
-    <!--</keybind>-->
     <keybind key="W-t">
       <action name="Execute">
         <startupnotify>
@@ -406,7 +397,7 @@
           <enabled>true</enabled>
           <name>Web Browser</name>
         </startupnotify>
-        <command>x-www-browser</command>
+        <command>firefox-esr</command>
       </action>
     </keybind>
     <keybind key="W-l">
@@ -436,15 +427,15 @@
         <command>pavucontrol</command>
       </action>
     </keybind>
-    <keybind key="W-x">
-      <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Logout</name>
-        </startupnotify>
-        <command>cb-exit</command>
-      </action>
-    </keybind>
+    <!--<keybind key="W-x">-->
+    <!--  <action name="Execute">-->
+    <!--    <startupnotify>-->
+    <!--      <enabled>true</enabled>-->
+    <!--      <name>Logout</name>-->
+    <!--    </startupnotify>-->
+    <!--    <command>cb-exit</command>-->
+    <!--  </action>-->
+    <!--</keybind>-->
     <keybind key="W-Tab">
       <action name="ShowMenu">
         <menu>client-list-combined-menu</menu>
@@ -472,16 +463,6 @@
     </keybind>
     <keybind key="W-Up">
       <action name="GrowToEdgeNorth"/>
-    </keybind>
-    <keybind key="W-A-Left">
-      <action name="Execute">
-        <command>cb-aerosnap --left</command>
-      </action>
-    </keybind>
-    <keybind key="W-A-Right">
-      <action name="Execute">
-        <command>cb-aerosnap --right</command>
-      </action>
     </keybind>
     <keybind key="A-a-m">
       <action name="Execute">
@@ -827,8 +808,8 @@
     <context name="MoveResize">
       <mousebind action="Click" button="Up">
         <action name="GoToDesktop">
-        <to>previous</to>
-    </action>
+          <to>previous</to>
+        </action>
       </mousebind>
       <mousebind action="Click" button="Down">
         <action name="GoToDesktop">
@@ -963,6 +944,13 @@
     </application>
 -->
     <application name="xterm">
+      <position force="no">
+        <x>center</x>
+        <y>center</y>
+      </position>
+      <decor>no</decor>
+    </application>
+    <application class="Firefox*">
       <position force="no">
         <x>center</x>
         <y>center</y>

@@ -8,7 +8,7 @@
         </item>
         <item label="Web Browser">
             <action name="Execute">
-                <command>x-www-browser</command>
+                <command>firefox-esr</command>
             </action>
         </item>
         <item label="File Manager">
@@ -92,11 +92,6 @@
                     <command>evince</command>
                 </action>
             </item>
-            <item label="Abiword">
-                <action name="Execute">
-                    <command>abiword</command>
-                </action>
-            </item>
             <item label="LibreOffice Calc">
                 <action name="Execute">
                     <command>libreoffice --calc</command>
@@ -114,13 +109,6 @@
                 <item label="Restart Conky">
                     <action name="Execute">
                         <command>conkywonky</command>
-                    </action>
-                </item>
-            </menu>
-            <menu id="gmrunconfig" label="gmrun">
-                <item label="Edit config file">
-                    <action name="Execute">
-                        <command>vim ~/.gmrunrc</command>
                     </action>
                 </item>
             </menu>
@@ -198,3 +186,4 @@
         </item>
     </menu>
 </openbox_menu>
+

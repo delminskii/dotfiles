@@ -112,8 +112,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 Plug 'morhetz/gruvbox'
 Plug 'cohama/agit.vim'
-Plug 'Shougo/deoplete.nvim', { 'frozen': 1 }
-Plug 'zchee/deoplete-jedi', { 'frozen': 1 }
+Plug 'Shougo/deoplete.nvim'
+Plug 'zchee/deoplete-jedi'
 Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -379,8 +379,8 @@ let g:deoplete#enable_at_startup = 1
 " Deoplete-jedi settings
 " =============================================================================
 let g:deoplete#sources#jedi#show_docstring = 1
-let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/bin/python3'
+let g:python_host_prog = '/usr/bin/python2.7'
+let g:python3_host_prog = '/usr/local/bin/python3.7'
 
 
 " =============================================================================
