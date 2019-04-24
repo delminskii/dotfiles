@@ -169,7 +169,7 @@
             </item>
             <item label="User Login Settings">
                 <action name="Execute">
-                    <command>gksudo slimconf</command>
+                    <command>gksudo lightdm-gtk-greeter</command>
                 </action>
             </item>
         </menu>
@@ -179,11 +179,15 @@
                 <command>cb-lock</command>
             </action>
         </item>
+        <item label="Reboot">
+            <action name="Execute">
+                <command>sudo /sbin/reboot</command>
+            </action>
+        </item>
         <item label="Exit">
             <action name="Execute">
-                <command>sudo poweroff</command>
+                <command>sudo /sbin/shutdown now</command>
             </action>
         </item>
     </menu>
 </openbox_menu>
-

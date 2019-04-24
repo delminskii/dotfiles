@@ -67,7 +67,7 @@ set termguicolors
 " Run code from current buffer pressing leader+r
 function! LangRunner()
     if(&ft=="python")
-        nnoremap <Leader>r :w<CR>:!python %<CR>
+        nnoremap <Leader>r :w<CR>:!python3.7 %<CR>
     elseif(&ft=="sh")
         nnoremap <Leader>r :w<CR>:!bash %<CR>
     elseif(&ft=="go")
@@ -242,6 +242,7 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 " Ale settings
 " =============================================================================
 let g:ale_fix_on_save = 1
+let g:ale_linters_explicit = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
@@ -324,7 +325,6 @@ command! -bang FLines call fzf#vim#grep(
 nnoremap <silent> <Leader>fl :FLines<CR>
 nnoremap <silent> <Leader>l :Lines<CR>
 nnoremap <silent> <Leader>f :Files<CR>
-nnoremap <silent> <Leader>uf :Files ..<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 
 

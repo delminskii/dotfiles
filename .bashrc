@@ -110,7 +110,7 @@ LC_COLLATE=ru_RU.UTF-8
 export LC_CTYPE LC_COLLATE
 
 # editors for me
-export VISUAL=/usr/bin/nvim
+export VISUAL=/home/nikolay/.local/bin/nvim.appimage
 export EDITOR="$VISUAL"
 
 # golang PATH definition
