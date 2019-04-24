@@ -37,10 +37,10 @@ System Info ${hr 2 }
 ${color0}Uptime:$color $uptime_short
 
 CPU: $alignr Intel i5-2500k @ $color${freq_g} GHz
-Core 1: ${cpubar cpu1 6, 160}  ${cpu cpu1}%
-Core 2: ${cpubar cpu2 6, 160}  ${cpu cpu2}%
-Core 3: ${cpubar cpu3 6, 160}  ${cpu cpu3}%
-Core 4: ${cpubar cpu4 6, 160}  ${cpu cpu4}%
+Core 1: ${cpubar cpu1 6, 200}  ${cpu cpu1}%
+Core 2: ${cpubar cpu2 6, 200}  ${cpu cpu2}%
+Core 3: ${cpubar cpu3 6, 200}  ${cpu cpu3}%
+Core 4: ${cpubar cpu4 6, 200}  ${cpu cpu4}%
 
 
 ${color0}CPU utilisation$color$alignr ${cpu cpu0}%
