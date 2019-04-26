@@ -36,18 +36,15 @@ conky.text = [[
 System Info ${hr 2 }
 ${color0}Uptime:$color $uptime_short
 
-CPU: $alignr Intel i5-2500k @ $color${freq_g} GHz
-Core 1: ${cpubar cpu1 6, 200}  ${cpu cpu1}%
-Core 2: ${cpubar cpu2 6, 200}  ${cpu cpu2}%
-Core 3: ${cpubar cpu3 6, 200}  ${cpu cpu3}%
-Core 4: ${cpubar cpu4 6, 200}  ${cpu cpu4}%
-
+$alignc Intel i5-2500k @ $color${freq_g} GHz
+${exec sensors | grep 'Core 0' | cut -c17-21}C ${cpubar cpu1 7, 202} ${cpu cpu1}%
+${exec sensors | grep 'Core 1' | cut -c17-21}C ${cpubar cpu2 7, 202} ${cpu cpu2}%
+${exec sensors | grep 'Core 2' | cut -c17-21}C ${cpubar cpu3 7, 202} ${cpu cpu3}%
+${exec sensors | grep 'Core 3' | cut -c17-21}C ${cpubar cpu4 7, 202} ${cpu cpu4}%
 
 ${color0}CPU utilisation$color$alignr ${cpu cpu0}%
 ${cpubar cpu0}
-
 ${cpugraph 000000 55aaff}
-
 Memory ${hr 2}
 
 ${color0}MEM$color $alignc $mem / $memmax $alignr $memperc%
@@ -83,5 +80,4 @@ Network enp3s0 ${hr 2}
 
 ${color0}UP:$color$alignc${upspeed enp3s0} (${totalup enp3s0})
 ${color0}DOWN:$color$alignc${downspeed enp3s0} (${totaldown enp3s0})
-
 ]];
