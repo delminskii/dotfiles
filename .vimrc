@@ -75,6 +75,10 @@ function! LangRunner()
     endif
 endfunction
 
+" Visual mode pressing * or # searches for the current selection;
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :<C-u>call general#VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call general#VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 " Show non-printable characters.
 set list
@@ -216,9 +220,6 @@ nnoremap <silent> <M-k> mz:m-2<cr>`z
 vnoremap <silent> <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vnoremap <silent> <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
-" Edit vimrc config
-nnoremap <Leader>v :e! ~/.vimrc<CR>
-
 " Save current file
 nnoremap <F1> :update<CR>
 
@@ -353,6 +354,8 @@ let g:neoterm_autoinsert = 1
 " =============================================================================
 " Startify options
 " =============================================================================
+let g:startify_session_dir = '~/.vim/session'
+let g:startify_session_persistence = 1
 let g:startify_bookmarks = [
     \ {'v': '~/.vimrc'},
     \ {'b': '~/.bashrc'},
@@ -365,8 +368,14 @@ let g:startify_list_order = [
     \ 'files',
     \ ['    Bookmarks'],
     \ 'bookmarks',
+    \ ['    Sessions'],
+    \ 'sessions',
     \ ]
 nnoremap <silent> <Leader>sr :Startify<CR>
+nnoremap <Leader>ss :SSave
+nnoremap <Leader>sd :SDelete
+nnoremap <Leader>sl :SLoad
+nnoremap <Leader>sc :SClose
 
 
 " =============================================================================
@@ -397,6 +406,13 @@ let g:EasyMotion_smartcase = 1              " Turn on case insensitive feature
 "nmap <silent> <Leader>j <Plug>(easymotion-j)
 "nmap <silent> <Leader>k <Plug>(easymotion-k)
 nmap <silent> s <Plug>(easymotion-overwin-f)
+
+
+" =============================================================================
+" Surround settings
+" =============================================================================
+nmap <Leader>" ysiw"
+nmap <Leader>' ysiw'
 
 
 " =============================================================================
