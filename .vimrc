@@ -330,7 +330,7 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 
 
 " =============================================================================
-" Pydocstring options
+" Pydocstring settings
 " =============================================================================
 nmap <silent> <Leader>d <Plug>(pydocstring)
 
@@ -352,7 +352,7 @@ let g:neoterm_autoinsert = 1
 
 
 " =============================================================================
-" Startify options
+" Startify settings
 " =============================================================================
 let g:startify_session_dir = '~/.vim/session'
 let g:startify_session_persistence = 1
@@ -361,7 +361,8 @@ let g:startify_bookmarks = [
     \ {'b': '~/.bashrc'},
     \ {'x': '~/.Xresources'},
     \ {'w': '~/.wgetrc'},
-    \ {'s': '~/.ssh/config'}
+    \ {'s': '~/.ssh/config'},
+    \ {'o': '~/.config/openbox/'},
     \ ]
 let g:startify_list_order = [
     \ ['    MRU files:'],
@@ -399,7 +400,7 @@ nnoremap <silent> <Leader>ag :Agit<CR>
 
 
 " =============================================================================
-" Easy-motion options
+" Easy-motion settings
 " =============================================================================
 let g:EasyMotion_do_mapping = 0             " Disable default mappings
 let g:EasyMotion_smartcase = 1              " Turn on case insensitive feature

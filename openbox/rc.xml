@@ -265,14 +265,14 @@
     <keybind key="Print">
       <action name="Execute">
         <command>
-              scrot '%Y-%m-%d--%s_$wx$h_scrot.png' -se 'mv $f /tmp &amp; viewnior /tmp/$f'
+            scrot '%Y-%m-%d--%s_$wx$h_scrot.png' -se 'mv $f /tmp &amp; viewnior /tmp/$f'
         </command>
       </action>
     </keybind>
     <keybind key="A-Print">
       <action name="Execute">
         <command>
-              scrot '%Y-%m-%d--%s_$wx$h_scrot.png' -ue 'mv $f /tmp &amp; viewnior /tmp/$f'
+            scrot '%Y-%m-%d--%s_$wx$h_scrot.png' -ue 'mv $f /tmp &amp; viewnior /tmp/$f'
         </command>
       </action>
     </keybind>
@@ -427,15 +427,6 @@
         <command>pavucontrol</command>
       </action>
     </keybind>
-    <!--<keybind key="W-x">-->
-    <!--  <action name="Execute">-->
-    <!--    <startupnotify>-->
-    <!--      <enabled>true</enabled>-->
-    <!--      <name>Logout</name>-->
-    <!--    </startupnotify>-->
-    <!--    <command>cb-exit</command>-->
-    <!--  </action>-->
-    <!--</keybind>-->
     <keybind key="W-Tab">
       <action name="ShowMenu">
         <menu>client-list-combined-menu</menu>
