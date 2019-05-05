@@ -161,10 +161,11 @@ set undofile
 set undodir     =$HOME/.vim/files/undo/
 
 " Disable Arrow keys in Normal mode
-noremap <silent><up> <nop>
-noremap <silent><down> <nop>
-noremap <silent><left> <nop>
-noremap <silent><right> <nop>
+nnoremap <silent><up> :resize +10<CR>
+nnoremap <silent><down> :resize -10<CR>
+nnoremap <silent><left> :vertical resize +10<CR>
+nnoremap <silent><right> :vertical resize -10<CR>
+
 
 " Clear search-highlight
 nnoremap <silent> <Leader>/ :nohlsearch<CR>
@@ -196,7 +197,7 @@ nnoremap <silent> <Leader>- <C-w>_
 " Make all windows equally sized
 nnoremap <silent> <Leader><Leader> <C-w>=
 
-" Mappings for tabs
+" Mappings for tabs (TODO: annoying numbers)
 nnoremap <silent> <Leader>1 1gt
 nnoremap <silent> <Leader>2 2gt
 nnoremap <silent> <Leader>3 3gt
@@ -220,7 +221,7 @@ nnoremap <silent> <M-k> mz:m-2<cr>`z
 vnoremap <silent> <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vnoremap <silent> <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
-" Save current file
+" Save current buffer into current opened file
 nnoremap <F1> :update<CR>
 
 " Open the selected text in a split (i.e. should be a file).
@@ -286,7 +287,7 @@ colorscheme gruvbox
 let g:lightline = {
 \   'colorscheme': 'deus',
 \}
-" good themes for me also:
+" good themes for me:
 " - hybridline
 " - badwolf
 " - gruvbox
