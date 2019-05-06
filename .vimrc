@@ -55,8 +55,6 @@ set wrapscan               " Searches wrap around end-of-file.
 set wrap
 set report      =0         " Always report changed lines.
 set synmaxcol   =200       " Only highlight the first 200 columns.
-
-set matchpairs+=<:>        " additional matchpairs:
 set tw          =80
 
 set termguicolors
@@ -160,12 +158,11 @@ set updatecount =200
 set undofile
 set undodir     =$HOME/.vim/files/undo/
 
-" Disable Arrow keys in Normal mode
-nnoremap <silent><up> :resize +10<CR>
-nnoremap <silent><down> :resize -10<CR>
-nnoremap <silent><left> :vertical resize +10<CR>
-nnoremap <silent><right> :vertical resize -10<CR>
-
+" Increase/decrease windows' size (up/right +, bot/left -)
+nnoremap <silent><up> 10<C-w>+
+nnoremap <silent><down> 10<C-w>-
+nnoremap <silent><left> 10<C-w><
+nnoremap <silent><right> 10<C-w>>
 
 " Clear search-highlight
 nnoremap <silent> <Leader>/ :nohlsearch<CR>
@@ -187,15 +184,6 @@ nnoremap <silent> <S-M-h> <C-W>H
 nnoremap <silent> <S-M-j> <C-W>J
 nnoremap <silent> <S-M-k> <C-W>K
 nnoremap <silent> <S-M-l> <C-W>L
-
-" Maximise horizontally
-nnoremap <silent> <Leader>= <C-w><Bar>
-
-" Maximise vertically
-nnoremap <silent> <Leader>- <C-w>_
-
-" Make all windows equally sized
-nnoremap <silent> <Leader><Leader> <C-w>=
 
 " Mappings for tabs (TODO: annoying numbers)
 nnoremap <silent> <Leader>1 1gt
@@ -434,4 +422,7 @@ augroup vimrc_autocmd
 
     " Turn on langRunner
     au BufEnter * call LangRunner()
+
+    " Automaticaly close nvim if NERDTree is only thing left open
+    au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup END
