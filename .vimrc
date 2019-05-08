@@ -167,7 +167,7 @@ nnoremap <silent><right> 10<C-w>>
 " Clear search-highlight
 nnoremap <silent> <Leader>/ :nohlsearch<CR>
 
-" Use ctrl-[hjkl] to select an active split!
+" Use Ctrl-[hjkl] to select an active split!
 nnoremap <silent> <C-k> :wincmd k<CR>
 nnoremap <silent> <C-j> :wincmd j<CR>
 nnoremap <silent> <C-h> :wincmd h<CR>
@@ -185,16 +185,12 @@ nnoremap <silent> <S-M-j> <C-W>J
 nnoremap <silent> <S-M-k> <C-W>K
 nnoremap <silent> <S-M-l> <C-W>L
 
-" Mappings for tabs (TODO: annoying numbers)
-nnoremap <silent> <Leader>1 1gt
-nnoremap <silent> <Leader>2 2gt
-nnoremap <silent> <Leader>3 3gt
-nnoremap <silent> <Leader>4 4gt
-nnoremap <silent> <Leader>5 5gt
-nnoremap <silent> <Leader>6 6gt
-nnoremap <silent> <Leader>7 7gt
-nnoremap <silent> <Leader>8 8gt
-nnoremap <silent> <Leader>9 9gt
+" <Leader>$n to move to tab$n, $n in [1;9]
+let tabnum = 1
+while tabnum < 10
+    execute 'nnoremap <silent> <Leader>'.tabnum tabnum.'gt'
+    let tabnum = tabnum + 1
+endwhile
 nnoremap <silent> <Leader>0 :tablast<CR>
 nnoremap <silent> <Leader>t :tabnew<CR>
 nnoremap <silent> <Leader>w :tabclose<CR>
@@ -203,7 +199,7 @@ nnoremap <silent> <Leader>w :tabclose<CR>
 nnoremap =j :%!python -m json.tool<CR>
 vnoremap =j :%!python -m json.tool<CR>
 
-" Move a line of text using ALT+[jk]
+" Move a line of text using Alt+[jk]
 nnoremap <silent> <M-j> mz:m+<cr>`z
 nnoremap <silent> <M-k> mz:m-2<cr>`z
 vnoremap <silent> <M-j> :m'>+<cr>`<my`>mzgv`yo`z
