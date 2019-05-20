@@ -397,8 +397,9 @@ nmap <silent> s <Plug>(easymotion-overwin-f)
 " =============================================================================
 " Surround settings
 " =============================================================================
-nmap <Leader>" ysiw"
-nmap <Leader>' ysiw'
+nmap <silent> <Leader>" ysiw"
+nmap <silent> <Leader>' ysiw'
+nmap <silent> <Leader>) ysiw)
 
 
 " =============================================================================
