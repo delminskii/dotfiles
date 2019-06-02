@@ -208,10 +208,14 @@ vnoremap <silent> <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 " Save current buffer into current opened file
 nnoremap <F1> :update<CR>
 
-" Open the selected text in a split (i.e. should be a file).
+" Open the selected text in a split (should be a file).
 noremap <Leader>o "oyaW:sp <C-R>o<CR>
 xnoremap <Leader>o "oy<esc>:sp <C-R>o<CR>
 vnoremap <Leader>o "oy<esc>:sp <C-R>o<CR>
+
+" Indent shortcut
+nnoremap <silent> > >>
+nnoremap <silent> < <<
 
 " Deprecate skip selection after indenting
 vnoremap <silent> < <gv
