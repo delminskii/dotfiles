@@ -38,6 +38,7 @@ set hlsearch               " Keep matches highlighted.
 set ignorecase
 set smartcase
 set showmatch
+set suffixesadd=.py,.txt
 
 set autochdir              " Change directory to the current buffer when opening files.
 
@@ -239,11 +240,15 @@ let g:ale_fixers = {
 let g:ale_linters = {
 \   'python': ['flake8'],
 \}
+nnoremap <[-e> <Plug>(ale_previous_error)
+nnoremap <]-e> <Plug>(ale_next_error)
+nnoremap <[-w> <Plug>(ale_previous_warning)
+nnoremap <]-w> <Plug>(ale_next_warning)
 let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 0
 let g:ale_echo_delay = 1000
-let g:ale_sign_warning = ''
-let g:ale_sign_error = '×'
+let g:ale_sign_warning = 'ω'
+let g:ale_sign_error = 'ε'
 "let g:ale_sign_warning = '→'
 "let g:ale_sign_error = '✗'
 
