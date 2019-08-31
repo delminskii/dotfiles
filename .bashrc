@@ -105,9 +105,9 @@ if ! shopt -oq posix; then
 fi
 
 # kirillic for me
-LC_CTYPE=ru_RU.UTF-8
-LC_COLLATE=ru_RU.UTF-8
-export LC_CTYPE LC_COLLATE
+# LC_CTYPE=ru_RU.UTF-8
+# LC_COLLATE=ru_RU.UTF-8
+# export LC_CTYPE LC_COLLATE
 
 # editors for me
 export VISUAL=/home/nikolay/.local/bin/nvim.appimage
