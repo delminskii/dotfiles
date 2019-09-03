@@ -26,3 +26,4 @@ alias python3=python3
 alias py3=python3
 alias ipython3='/home/nikolay/.local/bin/ipython3'
 alias pip3='pip3.7'
+alias docker_remove_containers_exited='docker rm -v $(docker ps -aq -f status=exited)'
