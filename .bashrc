@@ -104,12 +104,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
+[[ -f $HOME/.lessrc ]] && source $HOME/.lessrc
 
+# languages for me
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
-
 
 # editors for me
 export VISUAL=/home/nikolay/.local/bin/nvim.appimage

@@ -16,6 +16,7 @@ $HOME/.config/mpv/mpv.conf
 $HOME/.radios.txt
 $HOME/.xinitrc
 $HOME/.bash_aliases
+$HOME/.lessrc
 $0
 "
 
