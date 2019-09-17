@@ -264,13 +264,13 @@ let g:user_emmet_install_global = 0
 " Colorscheme colors
 " =============================================================================
 "set background=dark
-if strftime('%H') >= 7 && strftime('%H') < 19
-  let g:gruvbox_contrast_light='medium'
-  set background=light
-else
-  let g:gruvbox_contrast_dark='medium'
-  set background=dark
-endif
+"if strftime('%H') >= 7 && strftime('%H') < 19
+"  let g:gruvbox_contrast_light='medium'
+"  set background=light
+"else
+"  let g:gruvbox_contrast_dark='medium'
+"  set background=dark
+"endif
 colorscheme gruvbox
 
 
