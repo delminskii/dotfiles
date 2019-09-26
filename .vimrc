@@ -243,8 +243,8 @@ let g:ale_linters = {
 let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 0
 let g:ale_echo_delay = 1000
-let g:ale_sign_warning = 'ω'
-let g:ale_sign_error = 'ε'
+let g:ale_sign_warning = 'w'
+let g:ale_sign_error = 'e'
 "let g:ale_sign_warning = '→'
 "let g:ale_sign_error = '✗'
 nmap <silent> [e <Plug>(ale_previous_wrap_error)
