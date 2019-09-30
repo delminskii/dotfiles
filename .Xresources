@@ -1,10 +1,10 @@
-!XTerm*faceName:             xft:Anonymous Pro for Powerline:pixelsize=12:antialias=true
+XTerm*faceName:             xft:Anonymous Pro for Powerline:pixelsize=12:antialias=true
 !XTerm*faceName:             xft:FiraMono for Powerline:pixelsize=10:antialias=false
 !XTerm*faceName:             xft:Hack:pixelsize=11:antialias=false
 !XTerm*faceName:             xft:Iosevka Term:pixelsize=11:antialias=false
 !XTerm*faceName:             xft:DejaVu Sans Mono:pixelsize=11:antialias=false
 !XTerm*faceName:             xft:Source Code Pro Light:pixelsize=11:antialias=false
-XTerm*faceName:             xft:Monaco for Powerline:pixelsize=11:antialias=false
+!XTerm*faceName:             xft:Monaco for Powerline:pixelsize=11:antialias=false
 XTerm*utf8:                 true
 XTerm*locale:               true
 XTerm*utf8Title:            true
@@ -14,7 +14,8 @@ XTerm*xftAntialias:         true
 XTerm*selectToClipboard:    true
 XTerm*VT100.geometry:       80x50
 XTerm*cursorColor:          #a2f45a
-XTerm*background:           #1c1c1c
+!XTerm*background:           #1c1c1c
+XTerm*background:           #161821
 XTerm*foreground:           #9ea7a6
 
 ! Scroll multiple lines at a time for faster redrawing:

@@ -113,7 +113,7 @@ Plug 'junegunn/fzf'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
-Plug 'morhetz/gruvbox'
+Plug 'cocopon/iceberg.vim'
 Plug 'cohama/agit.vim'
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
@@ -271,14 +271,14 @@ let g:user_emmet_install_global = 0
 "  let g:gruvbox_contrast_dark='medium'
 "  set background=dark
 "endif
-colorscheme gruvbox
+colorscheme iceberg
 
 
 " =============================================================================
 " Vim-lightline settings
 " =============================================================================
 let g:lightline = {
-\   'colorscheme': 'deus',
+\   'colorscheme': 'iceberg',
 \}
 " good themes for me:
 " - hybridline
@@ -410,7 +410,8 @@ nmap <silent> <Leader>" ysiw"
 nmap <silent> <Leader>' ysiw'
 nmap <silent> <Leader>) ysiw)
 
-
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 " =============================================================================
 " Augroup, autocmd
 " =============================================================================
