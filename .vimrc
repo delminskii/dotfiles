@@ -1,9 +1,9 @@
-if &term =~ '256color'
-    " disable Background Color Erase (BCE) so that color schemes
-    " render properly when inside 256-color tmux and GNU screen.
-    " see also http://sunaku.github.io/vim-256color-bce.html
-    set t_ut=
-endif
+"if &term =~ '256color'
+"    " disable Background Color Erase (BCE) so that color schemes
+"    " render properly when inside 256-color tmux and GNU screen.
+"    " see also http://sunaku.github.io/vim-256color-bce.html
+"    set t_ut=
+"endif
 "
 " A (not so) minimal vimrc.
 "
@@ -69,17 +69,6 @@ set termguicolors
 " disable change of curso shape
 set guicursor=
 
-" Run code from current buffer pressing leader+r
-function! LangRunner()
-    if(&ft=="python")
-        nnoremap <Leader>r :w<CR>:!python3.7 %<CR>
-    elseif(&ft=="sh")
-        nnoremap <Leader>r :w<CR>:!bash %<CR>
-    elseif(&ft=="go")
-        nnoremap <Leader>r :w<CR>:!go run %<CR>
-    endif
-endfunction
-
 " Visual mode pressing * or # searches for the current selection;
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :<C-u>call general#VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
@@ -116,10 +105,12 @@ Plug 'tpope/vim-surround'
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf'
-Plug 'andrewradev/splitjoin.vim'
 Plug 'junegunn/fzf.vim'
+Plug 'andrewradev/splitjoin.vim'
 Plug 'w0rp/ale'
 Plug 'cocopon/iceberg.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'benmills/vimux'
 Plug 'cohama/agit.vim'
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
@@ -129,7 +120,6 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mhinz/vim-startify'
 Plug 'sheerun/vim-polyglot'
-Plug 'kassio/neoterm', { 'on': 'Topen' }
 
 " Good colorschemes for me:
 " - `afterglow` from Plugin 'rafi/awesome-vim-colorschemes'
@@ -228,6 +218,9 @@ nnoremap <silent> < <<
 vnoremap <silent> < <gv
 vnoremap <silent> > >gv
 
+" nice copying
+nnoremap Y y$
+
 
 " =============================================================================
 " Nerdtree settings
@@ -277,11 +270,6 @@ let g:user_emmet_install_global = 0
 "  let g:gruvbox_contrast_dark='medium'
 "  set background=dark
 "endif
-" set Vim-specific sequences for RGB colors
-"let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-"let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-let &t_8f = "[38;2;%lu;%lu;%lum"
-let &t_8b = "[48;2;%lu;%lu;%lum"
 colorscheme iceberg
 
 
@@ -314,24 +302,10 @@ let g:fzf_action = {
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
 
-command! -bang FLines call fzf#vim#grep(
-    \ 'grep -vnITr --color=always
-    \ --exclude-dir=".svn"
-    \ --exclude-dir=".git"
-    \ --exclude-dir="htmls"
-    \ --exclude=tags
-    \ --exclude=*\.pyc
-    \ --exclude=*\.exe
-    \ --exclude=*\.dll
-    \ --exclude=*\.zip
-    \ --exclude=*\.gz "^$"',
-    \ 0,
-    \ {'options': '--reverse --prompt "FLines> "'})
-
-nnoremap <silent> <Leader>fl :FLines<CR>
 nnoremap <silent> <Leader>l :Lines<CR>
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <Leader>m :Marks<CR>
 
 
 " =============================================================================
@@ -344,16 +318,6 @@ nmap <silent> <Leader>d <Plug>(pydocstring)
 " Nerdcommenter settings
 " =============================================================================
 let g:NERDDefaultAlign = 'left'
-
-
-" =============================================================================
-" Neoterm settings
-" =============================================================================
-nnoremap <silent> <Leader><Enter> :Topen<CR>
-tnoremap <silent> <Leader><Enter> <C-\><C-n>:Tclose<CR>
-let g:neoterm_default_mod = 'botright'
-let g:neoterm_autoscroll = 1
-let g:neoterm_autoinsert = 1
 
 
 " =============================================================================
@@ -405,7 +369,7 @@ nnoremap <silent> <Leader>ag :Agit<CR>
 
 
 " =============================================================================
-" Easy-motion settings
+" easymotion settings
 " =============================================================================
 let g:EasyMotion_do_mapping = 0             " Disable default mappings
 let g:EasyMotion_smartcase = 1              " Turn on case insensitive feature
@@ -420,6 +384,24 @@ nmap <silent> s <Plug>(easymotion-overwin-f)
 nmap <silent> <Leader>" ysiw"
 nmap <silent> <Leader>' ysiw'
 nmap <silent> <Leader>) ysiw)
+nmap <silent> <Leader>} ysiw}
+
+
+" =============================================================================
+" vim-tmux-navigator settings
+" =============================================================================
+" Write current before before navigating from vim to tmux pane
+let g:tmux_navigator_save_on_switch = 1
+
+
+
+" =============================================================================
+" vimux settings
+" =============================================================================
+let g:VimuxHeight = "40"
+nnoremap <silent> <Leader>rp :call VimuxRunCommand("clear; python " . bufname("%"))<CR>
+nnoremap <silent> <Leader>vc :call VimuxPromptCommand()<CR>
+nnoremap <silent> <Leader>vq :call VimuxCloseRunner()<CR>
 
 
 " =============================================================================
@@ -436,9 +418,6 @@ augroup vimrc_autocmd
 
     " Return to last edit position when opening files (You want this!)
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-    " Turn on langRunner
-    au BufEnter * call LangRunner()
 
     " Automaticaly close nvim if NERDTree is only thing left open
     au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
