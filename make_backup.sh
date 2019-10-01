@@ -17,6 +17,7 @@ $HOME/.radios.txt
 $HOME/.xinitrc
 $HOME/.bash_aliases
 $HOME/.lessrc
+$HOME/.tmux.conf
 $0
 "
 

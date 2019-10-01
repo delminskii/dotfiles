@@ -1,3 +1,9 @@
+if &term =~ '256color'
+    " disable Background Color Erase (BCE) so that color schemes
+    " render properly when inside 256-color tmux and GNU screen.
+    " see also http://sunaku.github.io/vim-256color-bce.html
+    set t_ut=
+endif
 "
 " A (not so) minimal vimrc.
 "
@@ -271,6 +277,11 @@ let g:user_emmet_install_global = 0
 "  let g:gruvbox_contrast_dark='medium'
 "  set background=dark
 "endif
+" set Vim-specific sequences for RGB colors
+"let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+let &t_8f = "[38;2;%lu;%lu;%lum"
+let &t_8b = "[48;2;%lu;%lu;%lum"
 colorscheme iceberg
 
 
@@ -410,8 +421,7 @@ nmap <silent> <Leader>" ysiw"
 nmap <silent> <Leader>' ysiw'
 nmap <silent> <Leader>) ysiw)
 
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
 " =============================================================================
 " Augroup, autocmd
 " =============================================================================

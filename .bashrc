@@ -1,7 +1,7 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
-export TERM=xterm-256color
+#export TERM=xterm-256color
 
 # If not running interactively, don't do anything
 case $- in
@@ -36,11 +36,12 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-case "$TERM" in
-    'xterm') TERM=xterm-256color;;
-    'screen') TERM=screen-256color;;
-    'Eterm') TERM=Eterm-256color;;
-esac
+#case "$TERM" in
+#    'xterm') TERM=xterm-256color;;
+#    'screen') TERM=screen-256color;;
+#    'Eterm') TERM=Eterm-256color;;
+#    'st') TERM=st-256color;;
+#esac
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
