@@ -10,8 +10,8 @@ XTerm*locale:               true
 XTerm*utf8Title:            true
 XTerm*renderFont:           true
 XTerm*preeditType:          root
-XTerm*xftAntialias:         true
 XTerm*selectToClipboard:    true
+XTerm*xftAntialias:         true
 XTerm*VT100.geometry:       80x50
 XTerm*cursorColor:          #a2f45a
 XTerm*background:           #1c1c1c

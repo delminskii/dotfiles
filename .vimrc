@@ -122,6 +122,7 @@ Plug 'sheerun/vim-polyglot'
 
 " Good colorschemes for me:
 " - `afterglow` from Plugin 'rafi/awesome-vim-colorschemes'
+" - Plug 'liuchengxu/space-vim-dark'
 " - Plug 'icymind/NeoSolarized'
 " - Plug 'joshdick/onedark.vim'
 " - Plug 'w0ng/vim-hybrid'
@@ -288,27 +289,18 @@ let g:lightline = {
 " =============================================================================
 " FZF settings
 " =============================================================================
-"function! s:find_git_root()
-"  return system('git rev-parse --show-toplevel 2>/dev/null')[:-2]
-"endfunction
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2>/dev/null')[:-2]
+endfunction
 
-"command! ProjectFiles execute 'Files' s:find_git_root()
-
-let g:rg_command = '
-  \ rg --line-number --fixed-strings --ignore-case --no-ignore --hidden --follow
-  \ -g "!*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
-  \ -g "!{.git,node_modules,vendor}/*" '
-command! -bang -nargs=* FLines call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
-
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+command! ProjectFiles execute 'Files' s:find_git_root()
 
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
 
-nnoremap <silent> <Leader>fl :FLines<CR>
+nnoremap <silent> <Leader>rg :Rg<CR>
 nnoremap <silent> <Leader>l :Lines<CR>
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
@@ -426,5 +418,5 @@ augroup vimrc_autocmd
     au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
     " run script depends on FileType
-    au FileType python nnoremap <Leader>r :call RunWith("python")<CR>
+    au FileType python nnoremap <Leader>e :call RunWith("python")<CR>
 augroup END
