@@ -1,9 +1,3 @@
-"if &term =~ '256color'
-"    " disable Background Color Erase (BCE) so that color schemes
-"    " render properly when inside 256-color tmux and GNU screen.
-"    " see also http://sunaku.github.io/vim-256color-bce.html
-"    set t_ut=
-"endif
 "
 " A (not so) minimal vimrc.
 "
@@ -70,7 +64,6 @@ set termguicolors
 set guicursor=
 
 " Visual mode pressing * or # searches for the current selection;
-" Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :<C-u>call general#VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call general#VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
@@ -89,6 +82,12 @@ if &shell =~# 'fish$'
   set shell=/bin/bash
 endif
 
+" run current script
+function RunWith(command)
+    :w
+    :call VimuxRunCommand("clear;time " . a:command . " " . expand("%"))
+endfunction
+
 
 " =============================================================================
 " plug-vim settings
@@ -97,7 +96,7 @@ let g:plug_threads = 2
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'mattn/emmet-vim', { 'for': ['html', 'xml'] }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'xml', 'svg'] }
 Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'andymass/vim-matchup'
@@ -205,10 +204,8 @@ vnoremap <silent> <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 " Save current buffer into current opened file
 nnoremap <F1> :update<CR>
 
-" Open the selected text in a split (should be a file).
-noremap <Leader>o "oyaW:sp <C-R>o<CR>
-xnoremap <Leader>o "oy<esc>:sp <C-R>o<CR>
-vnoremap <Leader>o "oy<esc>:sp <C-R>o<CR>
+" Load config
+nnoremap <F2> :so $MYVIMRC<CR>
 
 " Indent shortcut
 nnoremap <silent> > >>
@@ -218,7 +215,7 @@ nnoremap <silent> < <<
 vnoremap <silent> < <gv
 vnoremap <silent> > >gv
 
-" nice copying
+" Nice copying
 nnoremap Y y$
 
 
@@ -291,17 +288,27 @@ let g:lightline = {
 " =============================================================================
 " FZF settings
 " =============================================================================
-function! s:find_git_root()
-  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
-endfunction
+"function! s:find_git_root()
+"  return system('git rev-parse --show-toplevel 2>/dev/null')[:-2]
+"endfunction
 
-command! ProjectFiles execute 'Files' s:find_git_root()
+"command! ProjectFiles execute 'Files' s:find_git_root()
+
+let g:rg_command = '
+  \ rg --line-number --fixed-strings --ignore-case --no-ignore --hidden --follow
+  \ -g "!*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
+  \ -g "!{.git,node_modules,vendor}/*" '
+command! -bang -nargs=* FLines call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
+
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
 
+nnoremap <silent> <Leader>fl :FLines<CR>
 nnoremap <silent> <Leader>l :Lines<CR>
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
@@ -373,8 +380,6 @@ nnoremap <silent> <Leader>ag :Agit<CR>
 " =============================================================================
 let g:EasyMotion_do_mapping = 0             " Disable default mappings
 let g:EasyMotion_smartcase = 1              " Turn on case insensitive feature
-"nmap <silent> <Leader>j <Plug>(easymotion-j)
-"nmap <silent> <Leader>k <Plug>(easymotion-k)
 nmap <silent> s <Plug>(easymotion-overwin-f)
 
 
@@ -394,12 +399,10 @@ nmap <silent> <Leader>} ysiw}
 let g:tmux_navigator_save_on_switch = 1
 
 
-
 " =============================================================================
 " vimux settings
 " =============================================================================
-let g:VimuxHeight = "40"
-nnoremap <silent> <Leader>rp :call VimuxRunCommand("clear; python " . bufname("%"))<CR>
+let g:VimuxHeight = "30"
 nnoremap <silent> <Leader>vc :call VimuxPromptCommand()<CR>
 nnoremap <silent> <Leader>vq :call VimuxCloseRunner()<CR>
 
@@ -411,7 +414,7 @@ augroup vimrc_autocmd
     autocmd!
 
     " Enable emmet for the specific filetypes only
-    autocmd FileType html,xml,svg,css,htmldjango,scss,smarty EmmetInstall
+    autocmd FileType html,xml,svg,htmldjango EmmetInstall
 
     " Apply vimrc changes after an edit
     autocmd BufWritePost ~/.vimrc source ~/.vimrc
@@ -421,4 +424,7 @@ augroup vimrc_autocmd
 
     " Automaticaly close nvim if NERDTree is only thing left open
     au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+    " run script depends on FileType
+    au FileType python nnoremap <Leader>r :call RunWith("python")<CR>
 augroup END

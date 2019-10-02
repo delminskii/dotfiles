@@ -113,11 +113,11 @@ export LANG=en_GB.UTF-8
 export LC_CTYPE=en_GB.UTF-8
 
 # editors for me
-export VISUAL=/home/nikolay/.local/bin/nvim.appimage
+export VISUAL=nvim.appimage
 export EDITOR="$VISUAL"
 
 # golang PATH definition
-export PATH=~/go/bin:$PATH
+export PATH=~/go/bin:~/.local/bin:$PATH
 
 export GOBIN=~/go/bin
 export GOARCH=amd64
@@ -125,4 +125,11 @@ export GOOS=linux
 export GOROOT=~/go
 export GOPATH=/home/nikolay/sandbox/GO_sandbox
 
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND=rg \
+    --files \
+    --no-ignore \
+    --hidden \
+    --follow \
+    --glob "!{.git,node_modules}/*" \
+    2>/dev/null
+export FZF_DEFAULT_OPTS='--height=70% --preview-window=right:60%:wrap'
