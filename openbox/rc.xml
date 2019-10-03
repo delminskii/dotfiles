@@ -388,7 +388,8 @@
           <enabled>true</enabled>
           <name>Terminal</name>
         </startupnotify>
-        <command>xterm +uc -fullscreen -e "tmux -2"</command>
+        <!--<command>xterm +uc -fullscreen -e "tmux -2"</command>-->
+        <command>xterm +uc -fullscreen</command>
       </action>
     </keybind>
     <keybind key="W-w">

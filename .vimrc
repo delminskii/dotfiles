@@ -85,7 +85,8 @@ endif
 " run current script
 function RunWith(command)
     :w
-    :call VimuxRunCommand("clear;time " . a:command . " " . expand("%"))
+    ":call VimuxRunCommand("clear;time " . a:command . " " . expand("%"))
+    :call VimuxRunCommandInDir("clear;time " . a:command, 1)
 endfunction
 
 
@@ -331,6 +332,7 @@ let g:startify_bookmarks = [
     \ {'w': '~/.wgetrc'},
     \ {'s': '~/.ssh/config'},
     \ {'o': '~/.config/openbox/'},
+    \ {'t': '~/.tmux.conf'},
     \ ]
 let g:startify_list_order = [
     \ ['    MRU files:'],
@@ -394,7 +396,7 @@ let g:tmux_navigator_save_on_switch = 1
 " =============================================================================
 " vimux settings
 " =============================================================================
-let g:VimuxHeight = "30"
+let g:VimuxHeight = "25"
 nnoremap <silent> <Leader>vc :call VimuxPromptCommand()<CR>
 nnoremap <silent> <Leader>vq :call VimuxCloseRunner()<CR>
 
