@@ -224,7 +224,7 @@ nnoremap Y y$
 " =============================================================================
 " Nerdtree settings
 " =============================================================================
-nnoremap <Leader>n :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
 
 
 " =============================================================================
@@ -420,5 +420,5 @@ augroup vimrc_autocmd
     au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
     " run script depends on FileType
-    au FileType python nnoremap <Leader>e :call RunWith("python")<CR>
+    au FileType python nnoremap <Leader>e :call RunWith("python3.7")<CR>
 augroup END
