@@ -120,6 +120,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mhinz/vim-startify'
 Plug 'sheerun/vim-polyglot'
+Plug 'alcesleo/vim-uppercase-sql', { 'for': 'sql' }
 
 " Good colorschemes for me:
 " - `afterglow` from Plugin 'rafi/awesome-vim-colorschemes'
@@ -270,6 +271,7 @@ let g:user_emmet_install_global = 0
 "  set background=dark
 "endif
 colorscheme iceberg
+highlight clear LineNr
 
 
 " =============================================================================
