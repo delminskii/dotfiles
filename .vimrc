@@ -345,9 +345,9 @@ let g:startify_list_order = [
     \ 'sessions',
     \ ]
 nnoremap <silent> <Leader>sr :Startify<CR>
-nnoremap <Leader>ss :SSave
-nnoremap <Leader>sd :SDelete
-nnoremap <Leader>sl :SLoad
+nnoremap <Leader>ss :SSave<Space>
+nnoremap <Leader>sd :SDelete<Space>
+nnoremap <Leader>sl :SLoad<Space>
 nnoremap <Leader>sc :SClose
 
 
