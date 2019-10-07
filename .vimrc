@@ -117,6 +117,7 @@ Plug 'zchee/deoplete-jedi'
 Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'ryanoasis/vim-devicons', { 'on': 'NERDTreeToggle' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mhinz/vim-startify'
 Plug 'sheerun/vim-polyglot'
@@ -207,9 +208,6 @@ vnoremap <silent> <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 " Save current buffer into current opened file
 nnoremap <F1> :update<CR>
 
-" Load config
-nnoremap <F2> :so $MYVIMRC<CR>
-
 " Indent shortcut
 nnoremap <silent> > >>
 nnoremap <silent> < <<
@@ -218,14 +216,24 @@ nnoremap <silent> < <<
 vnoremap <silent> < <gv
 vnoremap <silent> > >gv
 
+" Remap j and k to act as expected when used on long, wrapped, lines
+nnoremap j gj
+nnoremap k gk
+
 " Nice copying
 nnoremap Y y$
+
+" Quickly get out of insert mode without your fingers having to leave the
+" home row
+inoremap jj <Esc>
 
 
 " =============================================================================
 " Nerdtree settings
 " =============================================================================
 nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
+let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
+\ '\.o$', '\.so$', '\.egg$', '^\.git$', '__pycache__', '\.DS_Store' ]
 
 
 " =============================================================================
@@ -420,6 +428,9 @@ augroup vimrc_autocmd
 
     " Automaticaly close nvim if NERDTree is only thing left open
     au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+    " auto reload vimrc when editing it
+    autocmd BufWritePost .vimrc source ~/.vimrc
 
     " run script depends on FileType
     au FileType python nnoremap <Leader>e :call RunWith("python3.7")<CR>

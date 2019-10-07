@@ -98,6 +98,8 @@ fi
 
 [[ -f $HOME/.lessrc ]] && source $HOME/.lessrc
 
+export HISTCONTROL=ignoreboth:erasedups
+
 # languages for me
 export LANGUAGE=en_GB.UTF-8
 export LC_ALL=en_GB.UTF-8
