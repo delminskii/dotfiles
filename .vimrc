@@ -108,7 +108,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'w0rp/ale'
-Plug 'cocopon/iceberg.vim'
+Plug 'icymind/NeoSolarized'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'cohama/agit.vim'
@@ -278,15 +278,16 @@ let g:user_emmet_install_global = 0
 "  let g:gruvbox_contrast_dark='medium'
 "  set background=dark
 "endif
-colorscheme iceberg
+colorscheme NeoSolarized
 highlight clear LineNr
+
 
 
 " =============================================================================
 " Vim-lightline settings
 " =============================================================================
 let g:lightline = {
-\   'colorscheme': 'iceberg',
+\   'colorscheme': 'solarized',
 \}
 " good themes for me:
 " - hybridline
@@ -429,9 +430,7 @@ augroup vimrc_autocmd
     " Automaticaly close nvim if NERDTree is only thing left open
     au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-    " auto reload vimrc when editing it
-    autocmd BufWritePost .vimrc source ~/.vimrc
-
     " run script depends on FileType
     au FileType python nnoremap <Leader>e :call RunWith("python3.7")<CR>
+    au FileType html nnoremap <Leader>e :call RunWith("firefox-esr -safe-mode -new-window")<CR>
 augroup END
