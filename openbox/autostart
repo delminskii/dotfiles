@@ -1,6 +1,6 @@
 ## Openbox autostart.sh
 ## ====================
-## When you login to your CrunchBang Openbox session, this autostart script 
+## When you login to your CrunchBang Openbox session, this autostart script
 ## will be executed to set-up your environment and launch any applications
 ## you want to run at startup.
 ##
@@ -28,6 +28,7 @@ hsetroot -solid "#2E3436" &
 ## 3. sleep - give compositor time to start
 ## 4. tint2 panel
 xrandr -s 1600x900 -r 75 &
+nitrogen --restore &
 sleep 1s
 tint2 &
 
@@ -52,5 +53,3 @@ guake &
 
 ## Run redshift
 redshift -l 56.8:53.2 &
-
-
