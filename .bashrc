@@ -96,7 +96,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-[[ -f $HOME/.lessrc ]] && source $HOME/.lessrc
+[ -f $HOME/.lessrc ] && source $HOME/.lessrc
 
 export HISTCONTROL=ignoreboth:erasedups
 
