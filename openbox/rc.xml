@@ -123,8 +123,6 @@
     <names>
       <name>1</name>
       <name>2</name>
-      <name>3</name>
-      <name>4</name>
     </names>
     <popupTime>200</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
@@ -399,15 +397,6 @@
           <name>Web Browser</name>
         </startupnotify>
         <command>firefox-esr</command>
-      </action>
-    </keybind>
-    <keybind key="W-l">
-      <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Lock screen</name>
-        </startupnotify>
-        <command>cb-lock</command>
       </action>
     </keybind>
     <keybind key="W-h">
