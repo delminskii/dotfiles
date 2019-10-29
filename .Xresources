@@ -13,7 +13,7 @@ XTerm*preeditType:          root
 XTerm*selectToClipboard:    true
 XTerm*xftAntialias:         true
 XTerm*VT100.geometry:       80x50
-XTerm*background:           #10000C
+XTerm*background:           #1B1B1B
 
 ! Scroll multiple lines at a time for faster redrawing:
 XTerm*jumpScroll:           true
