@@ -108,7 +108,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'w0rp/ale'
-Plug 'icymind/NeoSolarized'
+Plug 'ajh17/Spacegray.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'cohama/agit.vim'
@@ -125,7 +125,6 @@ Plug 'alcesleo/vim-uppercase-sql', { 'for': 'sql' }
 " Good colorschemes for me:
 " - `afterglow` from Plugin 'rafi/awesome-vim-colorschemes'
 " - Plug 'liuchengxu/space-vim-dark'
-" - Plug 'icymind/NeoSolarized'
 " - Plug 'joshdick/onedark.vim'
 " - Plug 'w0ng/vim-hybrid'
 " - Plug 'morhetz/gruvbox'
@@ -278,7 +277,7 @@ let g:user_emmet_install_global = 0
 "  let g:gruvbox_contrast_dark='medium'
 "  set background=dark
 "endif
-colorscheme NeoSolarized
+colorscheme spacegray
 highlight clear LineNr
 
 
@@ -287,7 +286,7 @@ highlight clear LineNr
 " Vim-lightline settings
 " =============================================================================
 let g:lightline = {
-\   'colorscheme': 'solarized',
+\   'colorscheme': 'default',
 \}
 " good themes for me:
 " - hybridline
