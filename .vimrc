@@ -127,6 +127,7 @@ Plug 'alcesleo/vim-uppercase-sql', { 'for': 'sql' }
 " - Plug 'liuchengxu/space-vim-dark'
 " - Plug 'joshdick/onedark.vim'
 " - Plug 'w0ng/vim-hybrid'
+" - Plug 'ajmwagar/vim-deus'
 " - Plug 'morhetz/gruvbox'
 " - Plug 'chriskempson/base16-vim'
 " - Plug 'sjl/badwolf'
