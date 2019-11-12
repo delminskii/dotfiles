@@ -223,10 +223,6 @@ nnoremap k gk
 " Nice copying
 nnoremap Y y$
 
-" Quickly get out of insert mode without your fingers having to leave the
-" home row
-inoremap jj <Esc>
-
 
 " =============================================================================
 " Nerdtree settings
