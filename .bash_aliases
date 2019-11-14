@@ -28,7 +28,6 @@ alias tmp='cd /tmp'
 alias aliases='vim $HOME/.bash_aliases'
 alias make_go_dirs='mkdir src pkg bin cmd'
 alias python3='/usr/local/bin/python3.7'
-alias python3=python3
 alias py3=python3
 alias ipython3='$HOME/.local/bin/ipython3'
 alias docker_remove_containers_exited='docker rm -v $(docker ps -aq -f status=exited)'
