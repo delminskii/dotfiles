@@ -114,7 +114,7 @@ Plug 'benmills/vimux'
 Plug 'cohama/agit.vim'
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
-Plug 'heavenshell/vim-pydocstring', { 'for': 'python' }
+Plug 'kkoomen/vim-doge'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'terryma/vim-multiple-cursors'
@@ -343,9 +343,8 @@ nnoremap <silent> <Leader>m :Marks<CR>
 
 
 " =============================================================================
-" Pydocstring settings
+" vim-doge settings
 " =============================================================================
-nmap <silent> <Leader>d <Plug>(pydocstring)
 
 
 " =============================================================================
