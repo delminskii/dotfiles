@@ -278,12 +278,13 @@ colorscheme base16-ashes
 highlight clear LineNr
 
 
-
 " =============================================================================
 " Vim-lightline settings
 " =============================================================================
 let g:lightline = {
 \   'colorscheme': 'default',
+\   'separator': { 'left': '⮀', 'right': '⮂' },
+\   'subseparator': { 'left': '⮁', 'right': '⮃' }
 \}
 " good themes for me:
 " - hybridline
@@ -450,4 +451,5 @@ augroup vimrc_autocmd
     " run script depends on FileType
     au FileType python nnoremap <Leader>e :call RunWith("python3.7")<CR>
     au FileType html nnoremap <Leader>e :call RunWith("firefox-esr -safe-mode -new-window")<CR>
+    au FileType sh nnoremap <Leader>e :call RunWith("bash")<CR>
 augroup END
