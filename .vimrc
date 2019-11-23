@@ -120,7 +120,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mhinz/vim-startify'
 Plug 'sheerun/vim-polyglot'
-Plug 'alcesleo/vim-uppercase-sql', { 'for': 'sql' }
+Plug 'alcesleo/vim-uppercase-sql', { 'for': ['plsql', 'sql'] }
 
 " Good colorschemes for me:
 " - `afterglow` from Plugin 'rafi/awesome-vim-colorschemes'
