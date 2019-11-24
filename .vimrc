@@ -246,10 +246,8 @@ let g:ale_linters = {
 let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 0
 let g:ale_echo_delay = 1000
-let g:ale_sign_warning = 'w'
-let g:ale_sign_error = 'e'
-"let g:ale_sign_warning = '→'
-"let g:ale_sign_error = '✗'
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
 nmap <silent> [e <Plug>(ale_previous_wrap_error)
 nmap <silent> ]e <Plug>(ale_next_wrap_error)
 nmap <silent> [w <Plug>(ale_previous_wrap_warning)
@@ -298,10 +296,6 @@ let g:lightline = {
 " =============================================================================
 " FZF settings
 " =============================================================================
-function! s:find_git_root()
-  return system('git rev-parse --show-toplevel 2>/dev/null')[:-2]
-endfunction
-
 function! FloatingFZF()
     " creates a scratch, unlisted, new, empty, unnamed buffer
     " to be used in the floating window
@@ -328,8 +322,6 @@ function! FloatingFZF()
     call nvim_open_win(buf, v:true, opts)
 endfunction
 
-command! ProjectFiles execute 'Files' s:find_git_root()
-
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
@@ -338,7 +330,7 @@ let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 
 nnoremap <silent> <Leader>rg :Rg<CR>
 nnoremap <silent> <Leader>l :Lines<CR>
-nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>f :GFiles<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>m :Marks<CR>
 
@@ -437,7 +429,7 @@ augroup vimrc_autocmd
     autocmd!
 
     " Enable emmet for the specific filetypes only
-    autocmd FileType html,xml,svg,htmldjango EmmetInstall
+    autocmd FileType html,xml,css,svg,htmldjango EmmetInstall
 
     " Apply vimrc changes after an edit
     autocmd BufWritePost ~/.vimrc source ~/.vimrc

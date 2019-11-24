@@ -58,11 +58,21 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 #PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;36m\] @ \[\033[0;36m\]\h \w\[\033[0;32m\]$(__git_ps1)\n\[\033[0;32m\]└─\[\033[0m\033[0;32m\] \$\[\033[0m\033[0;32m\] \[\033[0m\]'
-git_branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-}
+#git_branch() {
+#     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+#}
 
-export PS1="\u@\h \033[32m\]\w\[\033[33m\] \$(git_branch)\[\033[00m\]\$ "
+function parse_git_branch() {
+	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+	if [ ! "${BRANCH}" == "" ]
+	then
+		echo "[${BRANCH}]"
+	else
+		echo ""
+	fi
+}
+PS1="\[\e[32m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\] \[\e[36m\]\w\[\e[m\]\[\e[33m\]\`parse_git_branch\`\[\e[m\] \[\e[32m\]\\$\[\e[m\] "
+
 
 # enable color support of ls
 if [ -x /usr/bin/dircolors ]; then
