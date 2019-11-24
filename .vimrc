@@ -444,4 +444,5 @@ augroup vimrc_autocmd
     au FileType python nnoremap <Leader>e :call RunWith("python3.7")<CR>
     au FileType html nnoremap <Leader>e :call RunWith("firefox-esr -safe-mode -new-window")<CR>
     au FileType sh nnoremap <Leader>e :call RunWith("bash")<CR>
+    au FileType javascript nnoremap <Leader>e :call RunWith("node")<CR>
 augroup END
