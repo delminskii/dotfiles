@@ -61,7 +61,7 @@ set tw          =80
 set termguicolors
 
 " disable change of curso shape
-set guicursor=
+"set guicursor=
 
 " Visual mode pressing * or # searches for the current selection;
 vnoremap <silent> * :<C-u>call general#VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
@@ -109,6 +109,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'w0rp/ale'
 Plug 'chriskempson/base16-vim'
+Plug 'haishanh/night-owl.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'cohama/agit.vim'
@@ -129,7 +130,9 @@ Plug 'alcesleo/vim-uppercase-sql', { 'for': ['plsql', 'sql'] }
 " - Plug 'w0ng/vim-hybrid'
 " - Plug 'ajmwagar/vim-deus'
 " - Plug 'morhetz/gruvbox'
+" - Plug 'lifepillar/vim-gruvbox8' ^^^
 " - Plug 'chriskempson/base16-vim'
+" - Plug 'haishanh/night-owl.vim'
 " - Plug 'sjl/badwolf'
 " - Plug 'rakr/vim-one'
 " - Plug 'rakr/vim-two-firewatch'
@@ -330,7 +333,7 @@ let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 
 nnoremap <silent> <Leader>rg :Rg<CR>
 nnoremap <silent> <Leader>l :Lines<CR>
-nnoremap <silent> <Leader>f :GFiles<CR>
+nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>m :Marks<CR>
 
