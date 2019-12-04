@@ -40,7 +40,7 @@
                     'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Clearlooks-flat-compact</name>
+    <name>Bunsen-Blackish-Remix</name>
     <titleLayout>DSLIMC</titleLayout>
     <!--
       avaible characters are NDSLIMC, each can occur at most once.
@@ -276,7 +276,7 @@
     </keybind>
     <keybind key="W-s">
       <action name="Execute">
-          <command>
+        <command>
               firefox-esr --new-tab --url www.pastebin.com
           </command>
       </action>
