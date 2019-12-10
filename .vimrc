@@ -275,7 +275,9 @@ let g:user_emmet_install_global = 0
 "  set background=dark
 "endif
 colorscheme gruvbox8_hard
-highlight clear LineNr
+let g:gruvbox_italics = 0
+let g:gruvbox_italicize_strings = 0
+"highlight clear LineNr
 
 
 " =============================================================================
