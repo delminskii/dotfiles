@@ -108,7 +108,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'w0rp/ale'
-Plug 'lifepillar/vim-gruvbox8'
+Plug 'joshdick/onedark.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'cohama/agit.vim'
@@ -274,9 +274,7 @@ let g:user_emmet_install_global = 0
 "  let g:gruvbox_contrast_dark='medium'
 "  set background=dark
 "endif
-colorscheme gruvbox8_hard
-let g:gruvbox_italics = 0
-let g:gruvbox_italicize_strings = 0
+colorscheme onedark
 "highlight clear LineNr
 
 
@@ -331,6 +329,7 @@ let g:fzf_action = {
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+let g:lightline.colorscheme = 'one'
 
 nnoremap <silent> <Leader>rg :Rg<CR>
 nnoremap <silent> <Leader>l :Lines<CR>
