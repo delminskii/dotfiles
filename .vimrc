@@ -282,7 +282,7 @@ colorscheme onedark
 " Vim-lightline settings
 " =============================================================================
 let g:lightline = {
-\   'colorscheme': 'default',
+\   'colorscheme': 'onedark',
 \   'separator': { 'left': '⮀', 'right': '⮂' },
 \   'subseparator': { 'left': '⮁', 'right': '⮃' }
 \}
@@ -329,11 +329,11 @@ let g:fzf_action = {
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
-let g:lightline.colorscheme = 'one'
 
 nnoremap <silent> <Leader>rg :Rg<CR>
 nnoremap <silent> <Leader>l :Lines<CR>
 nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>gf :GFiles<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>m :Marks<CR>
 
