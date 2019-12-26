@@ -123,6 +123,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'alcesleo/vim-uppercase-sql', { 'for': ['plsql', 'sql'] }
 
 " Good colorschemes for me:
+" - Plug 'mswift42/vim-themes'
 " - `afterglow` from Plugin 'rafi/awesome-vim-colorschemes'
 " - Plug 'liuchengxu/space-vim-dark'
 " - Plug 'joshdick/onedark.vim'
