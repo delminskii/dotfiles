@@ -27,6 +27,7 @@ set display     =lastline          " Show as much as possible of the last line.
 " omnicompletion settings
 set completeopt+=longest,menuone
 set completeopt-=preview
+set wildmode=list:longest,full
 
 set noshowmode             " Don't show current mode in command-line.
 set showcmd                " Show already typed keys when more are expected.
