@@ -31,3 +31,6 @@ alias python3='/usr/local/bin/python3.7'
 alias py3=python3
 alias ipython3='$HOME/.local/bin/ipython3'
 alias docker_remove_containers_exited='docker rm -v $(docker ps -aq -f status=exited)'
+alias vpnstatus='$VPNPYTHON -m protonvpn_cli status'
+alias vpnconnect='sudo $VPNPYTHON -m protonvpn_cli connect --fastest && vpnstatus'
+alias vpndisconnect='sudo $VPNPYTHON -m protonvpn_cli disconnect && vpnstatus'

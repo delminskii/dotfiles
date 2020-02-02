@@ -1,5 +1,4 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# ~/.bashrc: executed by bash(1) for non-login shells.  see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 export TERM=xterm-256color
 
@@ -120,4 +119,17 @@ export GOOS=linux
 export GOROOT=~/go
 export GOPATH=/home/nikolay/sandbox/GO_sandbox
 
+# for protonVPN service
+export VPNPYTHON="$HOME/.virtualenvs/protonVPN/bin/python3.7"
+
+# fuzzy searcher
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+
+#highlight_vpn() {
+#    connected_str=$(vpnstatus | grep Status: | sed "s/Status:\s*//g")
+#    if [[ $connected_str == "Connected" ]]; then
+#        echo "\n1\n1\n1"
+#    else
+#        echo "\n0\n0\n0"
+#    fi
+#}
