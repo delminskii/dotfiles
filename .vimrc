@@ -109,7 +109,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'w0rp/ale'
-Plug 'joshdick/onedark.vim'
+Plug 'ajmwagar/vim-deus'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'cohama/agit.vim'
@@ -276,7 +276,7 @@ let g:user_emmet_install_global = 0
 "  let g:gruvbox_contrast_dark='medium'
 "  set background=dark
 "endif
-colorscheme onedark
+colorscheme deus
 "highlight clear LineNr
 
 
