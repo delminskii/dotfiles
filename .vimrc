@@ -284,7 +284,7 @@ colorscheme deus
 " Vim-lightline settings
 " =============================================================================
 let g:lightline = {
-\   'colorscheme': 'onedark',
+\   'colorscheme': 'powerlineish',
 \   'separator': { 'left': '⮀', 'right': '⮂' },
 \   'subseparator': { 'left': '⮁', 'right': '⮃' }
 \}
