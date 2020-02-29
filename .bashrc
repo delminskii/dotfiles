@@ -113,23 +113,14 @@ export EDITOR="$VISUAL"
 # golang PATH definition
 export PATH=~/go/bin:~/.local/bin:$PATH
 
-export GOBIN=~/go/bin
-export GOARCH=amd64
-export GOOS=linux
-export GOROOT=~/go
-export GOPATH=/home/nikolay/sandbox/GO_sandbox
+#export GOBIN=~/go/bin
+#export GOARCH=amd64
+#export GOOS=linux
+#export GOROOT=~/go
+#export GOPATH=/home/nikolay/sandbox/GO_sandbox
 
 # for protonVPN service
 export VPNPYTHON="$HOME/.virtualenvs/protonVPN/bin/python3.7"
 
 # fuzzy searcher
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
-
-#highlight_vpn() {
-#    connected_str=$(vpnstatus | grep Status: | sed "s/Status:\s*//g")
-#    if [[ $connected_str == "Connected" ]]; then
-#        echo "\n1\n1\n1"
-#    else
-#        echo "\n0\n0\n0"
-#    fi
-#}
