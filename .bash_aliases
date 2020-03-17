@@ -17,6 +17,7 @@ alias tpp='vim /tmp/$(cat /dev/urandom | env LC_CTYPE=C tr -cd 'a-f0-9' | head -
 alias bashrc='vim $HOME/.bashrc'
 alias wgetrc='vim $HOME/.wgetrc'
 alias conkyrc='vim $HOME/.conkyrc'
+alias muttrc='vim $HOME/.muttrc'
 alias sshconfig='vim $HOME/.ssh/config'
 alias xresources='vim $HOME/.Xresources'
 alias tmuxconfig='vim $HOME/.tmux.conf'
