@@ -110,6 +110,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'w0rp/ale'
 Plug 'haishanh/night-owl.vim'
+Plug 'vim-scripts/earendel'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'cohama/agit.vim'
@@ -268,7 +269,7 @@ let g:user_emmet_install_global = 0
 " =============================================================================
 " Colorscheme colors
 " =============================================================================
-"set background=dark
+set background=light
 "if strftime('%H') >= 7 && strftime('%H') < 19
 "  let g:gruvbox_contrast_light='medium'
 "  set background=light
@@ -276,7 +277,7 @@ let g:user_emmet_install_global = 0
 "  let g:gruvbox_contrast_dark='medium'
 "  set background=dark
 "endif
-colorscheme night-owl
+colorscheme earendel
 "highlight clear LineNr
 
 
