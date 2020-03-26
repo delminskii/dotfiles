@@ -278,6 +278,7 @@ set background=light
 "  set background=dark
 "endif
 colorscheme earendel
+"colorscheme night-owl
 "highlight clear LineNr
 
 
