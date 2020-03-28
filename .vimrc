@@ -277,8 +277,8 @@ set background=light
 "  let g:gruvbox_contrast_dark='medium'
 "  set background=dark
 "endif
-colorscheme earendel
-"colorscheme night-owl
+"colorscheme earendel
+colorscheme night-owl
 "highlight clear LineNr
 
 
