@@ -11,6 +11,7 @@ alias zonasin='cd $HOME/python_proj/test/cableCo/zonASINhunter'
 alias newegg='cd $HOME/python_proj/test/cableCo/newegg3'
 alias flasksandbox='cd $HOME/sandbox/flask_PY3'
 alias vim='TERM=tmux-256color nvim.appimage'
+alias ivm='vim'
 alias nvim=vim
 alias vimrc='vim $HOME/.vimrc'
 alias tpp='vim /tmp/$(cat /dev/urandom | env LC_CTYPE=C tr -cd 'a-f0-9' | head -c 32).py'
