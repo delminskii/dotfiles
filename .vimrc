@@ -62,7 +62,7 @@ set tw          =80
 set termguicolors
 
 " disable change of curso shape
-"set guicursor=
+set guicursor=
 
 " Visual mode pressing * or # searches for the current selection;
 vnoremap <silent> * :<C-u>call general#VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
