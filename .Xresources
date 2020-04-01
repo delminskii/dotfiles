@@ -14,7 +14,7 @@ XTerm*selectToClipboard:    true
 XTerm*xftAntialias:         true
 XTerm*VT100.geometry:       80x50
 XTerm*background:           #1B1B1B
-XTerm*cursorColor:          #1566B7
+XTerm*cursorColor:          131920
 
 ! Scroll multiple lines at a time for faster redrawing:
 XTerm*jumpScroll:           true

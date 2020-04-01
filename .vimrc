@@ -109,7 +109,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'w0rp/ale'
-Plug 'haishanh/night-owl.vim'
+Plug 'cocopon/iceberg.vim'
 Plug 'vim-scripts/earendel'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
@@ -121,7 +121,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mhinz/vim-startify'
-Plug 'sheerun/vim-polyglot'
+"Plug 'sheerun/vim-polyglot'
 Plug 'alcesleo/vim-uppercase-sql', { 'for': ['plsql', 'sql'] }
 
 " Good colorschemes for me:
@@ -278,7 +278,7 @@ set background=light
 "  set background=dark
 "endif
 "colorscheme earendel
-colorscheme night-owl
+colorscheme iceberg
 "highlight clear LineNr
 
 
