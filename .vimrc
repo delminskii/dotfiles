@@ -109,7 +109,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'w0rp/ale'
-Plug 'cocopon/iceberg.vim'
+Plug 'joshdick/onedark.vim'
 Plug 'vim-scripts/earendel'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
@@ -127,7 +127,6 @@ Plug 'alcesleo/vim-uppercase-sql', { 'for': ['plsql', 'sql'] }
 " Good colorschemes for me:
 " - Plug 'mswift42/vim-themes'
 " - `afterglow` from Plugin 'rafi/awesome-vim-colorschemes'
-" - Plug 'liuchengxu/space-vim-dark'
 " - Plug 'joshdick/onedark.vim'
 " - Plug 'w0ng/vim-hybrid'
 " - Plug 'ajmwagar/vim-deus'
@@ -269,7 +268,7 @@ let g:user_emmet_install_global = 0
 " =============================================================================
 " Colorscheme colors
 " =============================================================================
-set background=light
+set background=dark
 "if strftime('%H') >= 7 && strftime('%H') < 19
 "  let g:gruvbox_contrast_light='medium'
 "  set background=light
@@ -277,8 +276,8 @@ set background=light
 "  let g:gruvbox_contrast_dark='medium'
 "  set background=dark
 "endif
+colorscheme onedark
 "colorscheme earendel
-colorscheme iceberg
 "highlight clear LineNr
 
 
@@ -286,7 +285,7 @@ colorscheme iceberg
 " Vim-lightline settings
 " =============================================================================
 let g:lightline = {
-\   'colorscheme': 'powerlineish',
+\   'colorscheme': 'one',
 \   'separator': { 'left': '⮀', 'right': '⮂' },
 \   'subseparator': { 'left': '⮁', 'right': '⮃' }
 \}
