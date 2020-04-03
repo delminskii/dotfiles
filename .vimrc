@@ -110,7 +110,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'w0rp/ale'
 Plug 'joshdick/onedark.vim'
-Plug 'vim-scripts/earendel'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'cohama/agit.vim'
@@ -268,7 +267,7 @@ let g:user_emmet_install_global = 0
 " =============================================================================
 " Colorscheme colors
 " =============================================================================
-set background=light
+set background=dark
 "if strftime('%H') >= 7 && strftime('%H') < 19
 "  let g:gruvbox_contrast_light='medium'
 "  set background=light
@@ -276,8 +275,7 @@ set background=light
 "  let g:gruvbox_contrast_dark='medium'
 "  set background=dark
 "endif
-"colorscheme onedark
-colorscheme earendel
+colorscheme onedark
 "highlight clear LineNr
 
 
