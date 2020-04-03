@@ -268,7 +268,7 @@ let g:user_emmet_install_global = 0
 " =============================================================================
 " Colorscheme colors
 " =============================================================================
-set background=dark
+set background=light
 "if strftime('%H') >= 7 && strftime('%H') < 19
 "  let g:gruvbox_contrast_light='medium'
 "  set background=light
@@ -276,8 +276,8 @@ set background=dark
 "  let g:gruvbox_contrast_dark='medium'
 "  set background=dark
 "endif
-colorscheme onedark
-"colorscheme earendel
+"colorscheme onedark
+colorscheme earendel
 "highlight clear LineNr
 
 
