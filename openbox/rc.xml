@@ -274,13 +274,6 @@
         </command>
       </action>
     </keybind>
-    <keybind key="W-s">
-      <action name="Execute">
-        <command>
-              firefox-esr --new-tab --url www.pastebin.com
-          </command>
-      </action>
-    </keybind>
     <!-- Keybindings for window switching -->
     <keybind key="A-Tab">
       <action name="NextWindow">
