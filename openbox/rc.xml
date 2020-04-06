@@ -386,8 +386,25 @@
           <enabled>true</enabled>
           <name>Terminal</name>
         </startupnotify>
-        <!--<command>xterm +uc -fullscreen -e "tmux -2"</command>-->
         <command>xterm +uc -fullscreen -e "tmux -2"</command>
+      </action>
+    </keybind>
+    <keybind key="W-j">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Paint</name>
+        </startupnotify>
+        <command>mtpaint</command>
+      </action>
+    </keybind>
+    <keybind key="W-s">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Screenrecorder</name>
+        </startupnotify>
+        <command>simplescreenrecorder --start-hidden</command>
       </action>
     </keybind>
     <keybind key="W-w">
