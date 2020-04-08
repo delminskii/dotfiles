@@ -209,7 +209,7 @@ vnoremap <silent> <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vnoremap <silent> <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " Save current buffer into current opened file
-nnoremap <Leader>F1 :update<CR>
+nnoremap <F1> :update<CR>
 
 " Indent shortcut
 nnoremap <silent> > >>
