@@ -242,10 +242,12 @@ let g:ale_fix_on_save = 1
 let g:ale_linters_explicit = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'python': ['black'],
 \}
 let g:ale_linters = {
 \   'python': ['flake8'],
 \}
+let g:ale_python_black_options = '-l 80  -S'
 let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 0
 let g:ale_echo_delay = 1000
@@ -378,6 +380,9 @@ nnoremap <Leader>sc :SClose
 " Deoplete settings
 " =============================================================================
 let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('sources', {
+\ '_': ['ale'],
+\})
 
 
 " =============================================================================
@@ -414,7 +419,7 @@ nmap <silent> <Leader>} ysiw}
 " =============================================================================
 " vim-tmux-navigator settings
 " =============================================================================
-" Write current before before navigating from vim to tmux pane
+" Write current buffer before navigating from vim to tmux pane
 let g:tmux_navigator_save_on_switch = 1
 
 
