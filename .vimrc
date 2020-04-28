@@ -248,7 +248,7 @@ let g:ale_fixers = {
 let g:ale_linters = {
 \   'python': ['flake8'],
 \}
-let g:ale_python_black_options = '-l 80  -S'
+let g:ale_python_black_options = '-l 80 -S -t py37'
 let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 0
 let g:ale_echo_delay = 1000
