@@ -227,6 +227,9 @@ nnoremap k gk
 " Nice copying
 nnoremap Y y$
 
+" System copy/paste
+set clipboard+=unnamedplus
+
 
 " =============================================================================
 " Nerdtree settings
