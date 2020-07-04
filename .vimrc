@@ -1,7 +1,3 @@
-"
-" A (not so) minimal vimrc.
-"
-
 " You want Vim, not vi. When Vim finds a vimrc, 'nocompatible' is set anyway.
 " We set it explicitely to make our position clear!
 set nocompatible
@@ -456,7 +452,7 @@ augroup vimrc_autocmd
     " Automaticaly close nvim if NERDTree is only thing left open
     au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-    " run script depends on FileType
+    " run script deoending on FileType
     au FileType python nnoremap <Leader>e :call RunWith("python3.7")<CR>
     au FileType html nnoremap <Leader>e :call RunWith("firefox-esr -safe-mode -new-window")<CR>
     au FileType sh nnoremap <Leader>e :call RunWith("bash")<CR>
