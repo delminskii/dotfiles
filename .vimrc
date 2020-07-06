@@ -224,6 +224,9 @@ nnoremap k gk
 " Nice copying
 nnoremap Y y$
 
+" Quit
+nnoremap <Leader>q :wq!<CR>
+
 " System copy/paste
 set clipboard+=unnamedplus
 
@@ -433,6 +436,17 @@ nnoremap <silent> <Leader>vq :call VimuxCloseRunner()<CR>
 " polyglot settings
 " =============================================================================
 let g:python_highlight_func_calls = 0
+
+
+" =============================================================================
+" dadbod settingss
+" =============================================================================
+let g:db = "sqlite:db.sqlite3"
+xmap <silent> <Leader>db  <Plug>(DBExe)
+nmap <silent> <Leader>db  <Plug>(DBExe)
+omap <silent> <Leader>db  <Plug>(DBExe)
+nmap <silent> <Leader>dbb <Plug>(DBExeLine)
+"nnoremap <silent> <Leader>dbl  <Plug>(DBExeLine) db#op_exec() . '_'
 
 
 " =============================================================================
