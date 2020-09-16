@@ -228,7 +228,7 @@ nnoremap Y y$
 nnoremap <Leader>q :q<CR>
 
 " System copy/paste
-set clipboard+=unnamedplus
+" set clipboard+=unnamedplus
 
 
 " =============================================================================
