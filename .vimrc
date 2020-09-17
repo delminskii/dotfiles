@@ -106,8 +106,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'w0rp/ale'
-Plug 'joshdick/onedark.vim'
-Plug 'cocopon/iceberg.vim'
+Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'cohama/agit.vim'
@@ -281,7 +280,7 @@ set background=dark
 "  let g:gruvbox_contrast_dark='medium'
 "  set background=dark
 "endif
-colorscheme iceberg
+colorscheme base16-default-dark
 "highlight clear LineNr
 
 
@@ -289,7 +288,7 @@ colorscheme iceberg
 " Vim-lightline settings
 " =============================================================================
 let g:lightline = {
-\   'colorscheme': 'iceberg',
+\   'colorscheme': 'srcery_drk',
 \   'separator': { 'left': '⮀', 'right': '⮂' },
 \   'subseparator': { 'left': '⮁', 'right': '⮃' }
 \}
