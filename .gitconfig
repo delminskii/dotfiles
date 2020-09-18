@@ -1,0 +1,20 @@
+[core]
+	editor = /home/nikolay/.local/bin/nvim.appimage
+	autocrlf = input
+	safecrlf = warn
+	quotepath = off
+[user]
+	name = Nikolay
+	email = deluxoft@gmail.com
+[color]
+	ui = auto
+[diff]
+	tool = vimdiff
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p

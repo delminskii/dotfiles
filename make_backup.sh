@@ -18,6 +18,7 @@ $HOME/.xinitrc
 $HOME/.bash_aliases
 $HOME/.lessrc
 $HOME/.tmux.conf
+$HOME/.gitconfig
 $0
 "
 
