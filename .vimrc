@@ -138,6 +138,7 @@ Plug 'alcesleo/vim-uppercase-sql', { 'for': ['plsql', 'sql'] }
 " - Plug 'ajh17/Spacegray.vim'
 " - Plug 'cocopon/iceberg.vim'
 " - Plug 'doums/darcula'
+" - Plug 'kaicataldo/material.vim'
 
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'
