@@ -217,6 +217,10 @@ nnoremap <silent> < <<
 vnoremap <silent> < <gv
 vnoremap <silent> > >gv
 
+" Quickly select the text that was just pasted. This allows you to, e.g.,
+" indent it after pasting.
+noremap gV `[v`]
+
 " Remap j and k to act as expected when used on long, wrapped, lines
 nnoremap j gj
 nnoremap k gk
@@ -226,9 +230,6 @@ nnoremap Y y$
 
 " Quit
 nnoremap <Leader>q :q<CR>
-
-" System copy/paste
-" set clipboard+=unnamedplus
 
 
 " =============================================================================
