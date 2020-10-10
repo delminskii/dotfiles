@@ -105,14 +105,7 @@ export LC_CTYPE=en_GB.UTF-8
 export VISUAL=nvim.appimage
 export EDITOR="$VISUAL"
 
-# golang PATH definition
-export PATH=~/go/bin:~/.local/bin:$PATH
-
-#export GOBIN=~/go/bin
-#export GOARCH=amd64
-#export GOOS=linux
-#export GOROOT=~/go
-#export GOPATH=/home/nikolay/sandbox/GO_sandbox
+export PATH=~/.local/bin:$PATH
 
 # for protonVPN service
 export VPNPYTHON="$HOME/.virtualenvs/protonVPN/bin/python3.7"
