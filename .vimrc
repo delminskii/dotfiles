@@ -110,8 +110,8 @@ Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'cohama/agit.vim'
-Plug 'Shougo/deoplete.nvim', { 'for': 'python' }
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+Plug 'Shougo/deoplete.nvim', { 'for': 'python' }
 Plug 'kkoomen/vim-doge', { 'tag': 'v2.8.0' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -257,8 +257,8 @@ let g:ale_python_black_options = '-l 80 -S -t py37'
 let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 0
 let g:ale_echo_delay = 1000
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
+let g:ale_sign_error = 'e'
+let g:ale_sign_warning = 'w'
 nmap <silent> [e <Plug>(ale_previous_wrap_error)
 nmap <silent> ]e <Plug>(ale_next_wrap_error)
 nmap <silent> [w <Plug>(ale_previous_wrap_warning)
