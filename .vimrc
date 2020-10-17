@@ -232,6 +232,9 @@ nnoremap Y y$
 " Quit
 nnoremap <Leader>q :q<CR>
 
+" Leaving insert mode
+inoremap jk <ESC>
+
 
 " =============================================================================
 " Nerdtree settings
@@ -388,7 +391,7 @@ nmap <silent> s <Plug>(easymotion-overwin-f)
 nmap <silent> <Leader>" ysiw"
 nmap <silent> <Leader>' ysiw'
 nmap <silent> <Leader>) ysiw)
-nmap <silent> <Leader>} ysiw}
+nmap <silent> <Leader>ee vg_S'<ESC>A,<ESC>
 
 
 " =============================================================================
