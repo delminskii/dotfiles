@@ -82,7 +82,6 @@ endif
 " run current script
 function RunWith(command)
     :w
-    ":call VimuxRunCommand("clear;time " . a:command . " " . expand("%"))
     :call VimuxRunCommandInDir("clear;time " . a:command, 1)
 endfunction
 
@@ -388,10 +387,10 @@ nmap <silent> s <Plug>(easymotion-overwin-f)
 " =============================================================================
 " Surround settings
 " =============================================================================
-nmap <silent> <Leader>" ysiw"
-nmap <silent> <Leader>' ysiw'
-nmap <silent> <Leader>) ysiw)
-nmap <silent> <Leader>ee vg_S'<ESC>A,<ESC>
+for br in ['"', "'", ')']
+    execute 'nmap <silent> <Leader>'.br 'ysiw'.br
+    execute 'nmap <silent> <Leader>e'.br 'vg_S'.br.'<ESC>A,<ESC>'
+endfor
 
 
 " =============================================================================
