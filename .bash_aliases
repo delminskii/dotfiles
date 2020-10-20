@@ -9,7 +9,7 @@ alias tatt='tmux attach'
 alias tkillall='tmux kill-server'
 alias zonasin='cd $HOME/python_proj/test/cableCo/zonASINhunter'
 alias newegg='cd $HOME/python_proj/test/cableCo/newegg3'
-alias flasksandbox='cd $HOME/sandbox/flask_PY3'
+alias projpy='cd $HOME/python_proj/test'
 alias vim='TERM=tmux-256color nvim.appimage'
 alias ivm=vim
 alias nvim=vim
