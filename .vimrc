@@ -389,7 +389,7 @@ nmap <silent> s <Plug>(easymotion-overwin-f)
 " =============================================================================
 for br in ['"', "'", ')']
     execute 'nmap <silent> <Leader>'.br 'ysiw'.br
-    execute 'nmap <silent> <Leader>e'.br 'vg_S'.br.'<ESC>A,<ESC>'
+    execute 'nmap <silent> <Leader>z'.br 'vg_S'.br.'<ESC>A,<ESC>'
 endfor
 
 
