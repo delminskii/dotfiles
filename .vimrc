@@ -446,3 +446,6 @@ augroup vimrc_autocmd
     au FileType sh nnoremap <Leader>e :call RunWith("bash")<CR>
     au FileType javascript nnoremap <Leader>e :call RunWith("node")<CR>
 augroup END
+
+
+autocmd InsertEnter * echo "Hi!!!"
