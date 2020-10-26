@@ -109,14 +109,14 @@ Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'cohama/agit.vim'
+Plug 'shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-Plug 'Shougo/deoplete.nvim', { 'for': 'python' }
 Plug 'kkoomen/vim-doge', { 'tag': 'v2.8.0' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mhinz/vim-startify'
-Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot', {'tag': 'v4.15.1'}
 Plug 'alcesleo/vim-uppercase-sql', { 'for': ['plsql', 'sql'] }
 
 " Good colorschemes for me:
@@ -141,9 +141,7 @@ Plug 'alcesleo/vim-uppercase-sql', { 'for': ['plsql', 'sql'] }
 " - Plug 'danilo-augusto/vim-afterglow'
 
 " Snippets
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 call plug#end()
@@ -423,6 +421,14 @@ vnoremap <silent> <Leader>db :DB<CR>
 
 
 " =============================================================================
+" ultisnips settings
+" =============================================================================
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger='<tab>'
+let g:UltiSnipsJumpBackwardTrigger='<c-k>'
+
+
+" =============================================================================
 " Augroup, autocmd
 " =============================================================================
 augroup vimrc_autocmd
@@ -446,6 +452,3 @@ augroup vimrc_autocmd
     au FileType sh nnoremap <Leader>e :call RunWith("bash")<CR>
     au FileType javascript nnoremap <Leader>e :call RunWith("node")<CR>
 augroup END
-
-
-autocmd InsertEnter * echo "Hi!!!"
