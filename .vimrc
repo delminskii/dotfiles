@@ -116,7 +116,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mhinz/vim-startify'
-Plug 'sheerun/vim-polyglot', {'tag': 'v4.15.1'}
+Plug 'sheerun/vim-polyglot'
 Plug 'alcesleo/vim-uppercase-sql', { 'for': ['plsql', 'sql'] }
 
 " Good colorschemes for me:
@@ -425,7 +425,6 @@ vnoremap <silent> <Leader>db :DB<CR>
 " =============================================================================
 let g:UltiSnipsExpandTrigger='<tab>'
 let g:UltiSnipsJumpForwardTrigger='<tab>'
-let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 
 
 " =============================================================================
