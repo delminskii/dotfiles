@@ -425,6 +425,9 @@ vnoremap <silent> <Leader>db :DB<CR>
 " =============================================================================
 let g:UltiSnipsExpandTrigger='<tab>'
 let g:UltiSnipsJumpForwardTrigger='<tab>'
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/user_snippets']
+nnoremap <silent> <Leader>ue :UltiSnipsEdit<CR>
 
 
 " =============================================================================
