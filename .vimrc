@@ -338,6 +338,7 @@ let g:startify_bookmarks = [
     \ {'s': '~/.ssh/config'},
     \ {'o': '~/.config/openbox/'},
     \ {'t': '~/.tmux.conf'},
+    \ {'g': '~/.gitconfig'},
     \ ]
 let g:startify_list_order = [
     \ ['    MRU files:'],
