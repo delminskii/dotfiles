@@ -109,7 +109,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'cohama/agit.vim'
-Plug 'shougo/deoplete.nvim'
+Plug 'shougo/deoplete.nvim', { 'commit': 'c09da81e9824fc' }
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 Plug 'kkoomen/vim-doge', { 'tag': 'v2.8.0' }
 Plug 'scrooloose/nerdcommenter'
@@ -421,7 +421,7 @@ nnoremap <silent> <Leader>db :DB<CR>
 vnoremap <silent> <Leader>db :DB<CR>
 
 
-" =============================================================================
+"" =============================================================================
 " ultisnips settings
 " =============================================================================
 let g:UltiSnipsExpandTrigger='<tab>'
