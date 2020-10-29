@@ -223,8 +223,11 @@ noremap gV `[v`]
 nnoremap j gj
 nnoremap k gk
 
-" Nice copying
+" Nice copying in VIM
 nnoremap Y y$
+
+" Nice copying to clipboard
+vnoremap <silent> <Leader>y "+y
 
 " Quit
 nnoremap <Leader>q :q<CR>
