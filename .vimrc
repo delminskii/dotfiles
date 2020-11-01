@@ -114,7 +114,7 @@ Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 Plug 'kkoomen/vim-doge', { 'tag': 'v2.8.0' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi'
 Plug 'mhinz/vim-startify'
 Plug 'sheerun/vim-polyglot'
 Plug 'alcesleo/vim-uppercase-sql', { 'for': ['plsql', 'sql'] }
@@ -231,6 +231,7 @@ vnoremap <silent> <Leader>y "+y
 
 " Quit
 nnoremap <Leader>q :q<CR>
+nnoremap <Leader>Q :q!<CR>
 
 " Leaving insert mode
 inoremap jk <ESC>
