@@ -110,7 +110,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'cohama/agit.vim'
 Plug 'shougo/deoplete.nvim', { 'commit': 'c09da81e9824fc' }
-Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' , 'commit': '2786058b9022ce'}
 Plug 'kkoomen/vim-doge', { 'tag': 'v2.8.0' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
