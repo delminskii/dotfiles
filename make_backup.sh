@@ -12,7 +12,7 @@ $HOME/.dircolors
 $HOME/.Xresources
 $HOME/.config/openbox/*
 $HOME/.config/nvim/*
-$HOME/.vim/user_snippets/*
+$HOME/.vim/user_snippets/python.snippets
 $HOME/.config/mpv/mpv.conf
 $HOME/.radios.txt
 $HOME/.xinitrc
@@ -32,9 +32,6 @@ do
         if [[ $file == *"openbox"* ]]
         then
             dest_dir="$BACKUP_FOLDER/openbox"
-        elif [[ $file == *"user_snippets"* ]]
-        then
-            dest_dir="$BACKUP_FOLDER/user_snippets"
         fi
         cp $file $dest_dir
         echo "$file is backuped." >>$BACKUP_LOGFILE
