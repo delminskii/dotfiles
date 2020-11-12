@@ -280,14 +280,13 @@ let g:user_emmet_install_global = 0
 " Colorscheme colors
 " =============================================================================
 set background=dark
-"if strftime('%H') >= 7 && strftime('%H') < 19
-"  let g:gruvbox_contrast_light='medium'
-"  set background=light
-"else
-"  let g:gruvbox_contrast_dark='medium'
-"  set background=dark
-"endif
-colorscheme base16-default-dark
+if strftime('%H') >= 7 && strftime('%H') < 19
+    colorscheme base16-ia-light
+  set background=light
+else
+  colorscheme base16-default-dark
+  set background=dark
+endif
 "highlight clear LineNr
 
 
