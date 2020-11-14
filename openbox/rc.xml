@@ -350,24 +350,21 @@
           <enabled>true</enabled>
           <name>Terminal</name>
         </startupnotify>
-        <command>xterm +uc -e "tmux -2"</command>
+        <command>xterm +uc -T "SmallXTerm" -e "tmux -2"</command>
+      </action>
+    </keybind>
+    <keybind key="W-m">
+      <action name="Execute">
+        <command>xterm -T "mutt" -e "tmux new-session -s mutt 'TERM=xterm-256color mutt'"</command>
       </action>
     </keybind>
     <keybind key="W-r">
       <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Radio</name>
-        </startupnotify>
-        <command>xterm -geometry 40x10+0+0 -e "mpv --profile=radio --playlist $HOME/.radios.txt "</command>
+        <command>xterm -T "radio" -e "mpv --profile=radio --playlist $HOME/.radios.txt"</command>
       </action>
     </keybind>
     <keybind key="W-g">
       <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Telegram</name>
-        </startupnotify>
         <command>/home/nikolay/Telegram/Telegram</command>
       </action>
     </keybind>
@@ -386,33 +383,21 @@
           <enabled>true</enabled>
           <name>Terminal</name>
         </startupnotify>
-        <command>xterm +uc -fullscreen -e "tmux -2"</command>
+        <command>xterm -T "FullXTerm" +uc -fullscreen -e "tmux -2"</command>
       </action>
     </keybind>
     <keybind key="W-j">
       <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Paint</name>
-        </startupnotify>
         <command>mtpaint</command>
       </action>
     </keybind>
     <keybind key="W-s">
       <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Screenrecorder</name>
-        </startupnotify>
         <command>simplescreenrecorder --start-hidden</command>
       </action>
     </keybind>
     <keybind key="W-w">
       <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Web Browser</name>
-        </startupnotify>
         <command>firefox-esr</command>
       </action>
     </keybind>
@@ -855,137 +840,110 @@
     <!-- show the manage desktops section in the client-list-(combined-)menu -->
   </menu>
   <applications>
-    <!--
-  # this is an example with comments through out. use these to make your
-  # own rules, but without the comments of course.
-  # you may use one or more of the name/class/role/title/type rules to specify
-  # windows to match
 
-  <application name="the window's _OB_APP_NAME property (see obxprop)"
-              class="the window's _OB_APP_CLASS property (see obxprop)"
-               role="the window's _OB_APP_ROLE property (see obxprop)"
-              title="the window's _OB_APP_TITLE property (see obxprop)"
-               type="the window's _OB_APP_TYPE property (see obxprob)..
-                      (if unspecified, then it is 'dialog' for child windows)">
-  # you may set only one of name/class/role/title/type, or you may use more
-  # than one together to restrict your matches.
-
-  # the name, class, role, and title use simple wildcard matching such as those
-  # used by a shell. you can use * to match any characters and ? to match
-  # any single character.
-
-  # the type is one of: normal, dialog, splash, utility, menu, toolbar, dock,
-  #    or desktop
-
-  # when multiple rules match a window, they will all be applied, in the
-  # order that they appear in this list
-
-
-    # each rule element can be left out or set to 'default' to specify to not
-    # change that attribute of the window
-
-    <decor>yes</decor>
-    # enable or disable window decorations
-
-    <shade>no</shade>
-    # make the window shaded when it appears, or not
-
-    <position force="no">
-      # the position is only used if both an x and y coordinate are provided
-      # (and not set to 'default')
-      # when force is "yes", then the window will be placed here even if it
-      # says you want it placed elsewhere.  this is to override buggy
-      # applications who refuse to behave
-      <x>center</x>
-      # a number like 50, or 'center' to center on screen. use a negative number
-      # to start from the right (or bottom for <y>), ie -50 is 50 pixels from the
-      # right edge (or bottom).
-      <y>200</y>
-      <monitor>1</monitor>
-      # specifies the monitor in a xinerama setup.
-      # 1 is the first head, or 'mouse' for wherever the mouse is
-    </position>
-
-    <focus>yes</focus>
-    # if the window should try be given focus when it appears. if this is set
-    # to yes it doesn't guarantee the window will be given focus. some
-    # restrictions may apply, but Openbox will try to
-
-    <desktop>1</desktop>
-    # 1 is the first desktop, 'all' for all desktops
-
-    <layer>normal</layer>
-    # 'above', 'normal', or 'below'
-
-    <iconic>no</iconic>
-    # make the window iconified when it appears, or not
-
-    <skip_pager>no</skip_pager>
-    # asks to not be shown in pagers
-
-    <skip_taskbar>no</skip_taskbar>
-    # asks to not be shown in taskbars. window cycling actions will also
-    # skip past such windows
-
-    <fullscreen>yes</fullscreen>
-    # make the window in fullscreen mode when it appears
-
-    <maximized>true</maximized>
-    # 'Horizontal', 'Vertical' or boolean (yes/no)
-  </application>
-
-  # end of the example
--->
-    <!--
-    <application name="terminator">
-        <decor>no</decor>
-    </application>
--->
-    <application name="xterm">
-      <position force="no">
+    <application class="*">
+      <decor>no</decor>
+      <position force="yes">
         <x>center</x>
         <y>center</y>
       </position>
-      <decor>no</decor>
+      <desktop>1</desktop>
     </application>
-    <application class="Firefox*">
-      <position force="no">
-        <x>center</x>
-        <y>center</y>
-      </position>
-      <decor>no</decor>
-    </application>
-    <application name="gmessage">
-      <decor>no</decor>
-      <shade>no</shade>
-      <skip_pager>yes</skip_pager>
-      <skip_taskbar>yes</skip_taskbar>
-      <fullscreen>no</fullscreen>
+
+    <application type="dialog">
+      <decor>yes</decor>
       <maximized>no</maximized>
+      <desktop>all</desktop>
     </application>
-    <application class="Gimp" name="gimp" role="gimp-toolbox" type="utility">
-      <maximized>vertical</maximized>
+
+    <application name="Telegram">
+      <position force="yes">
+        <x>0</x>
+        <y>-1</y>
+      </position>
+      <focus>yes</focus>
+      <layer>normal</layer>
+      <decor>yes</decor>
     </application>
-    <application class="Gimp" name="gimp" role="gimp-dock" type="utility">
-      <maximized>vertical</maximized>
+
+    <application title="mutt">
+      <focus>no</focus>
+      <position>
+        <x>-1</x>
+        <y>-1</y>
+      </position>
+      <size>
+        <height>25%</height>
+        <width>16%</width>
+      </size>
     </application>
-    <application class="Gimp" name="gimp" role="gimp-image-window" type="normal">
-      <position force="no">
+
+    <application title="SmallXTerm">
+      <focus>yes</focus>
+      <position>
+        <x>center</x>
+        <y>center</y>
+      </position>
+      <size>
+        <height>70%</height>
+        <width>33%</width>
+      </size>
+    </application>
+
+    <application title="FullXTerm">
+      <maximized>yes</maximized>
+      <desktop>2</desktop>
+    </application>
+
+    <application title="Guake?">
+      <desktop>all</desktop>
+    </application>
+
+    <application title="radio">
+      <focus>no</focus>
+      <position>
+        <x>0</x>
+        <y>0</y>
+      </position>
+      <size>
+        <height>10%</height>
+        <width>17%</width>
+      </size>
+    </application>
+
+    <application class="Firefox*">
+      <decor>no</decor>
+      <position force="yes">
         <x>center</x>
         <y>center</y>
       </position>
     </application>
-    <application class="Gimp" name="gimp-2.8" role="gimp-toolbox" type="utility">
-      <maximized>vertical</maximized>
+
+    <application name="thunar">
+      <decor>yes</decor>
+      <focus>yes</focus>
+      <position force="yes">
+        <x>60</x>
+        <y>center</y>
+      </position>
     </application>
-    <application class="Gimp" name="gimp-2.8" role="gimp-dock" type="utility">
-      <maximized>vertical</maximized>
-    </application>
-    <application class="Gimp" name="gimp-2.8" role="gimp-image-window" type="normal">
-      <position force="no">
+
+    <application title="medit">
+      <decor>yes</decor>
+      <position force="yes">
         <x>center</x>
         <y>center</y>
       </position>
     </application>
+
+    <application title="Viewnior">
+      <decor>yes</decor>
+      <desktop>all</desktop>
+      <!--<position force="yes">-->
+      <!--  <x>center</x>-->
+      <!--  <y>center</y>-->
+      <!--</position>-->
+    </application>
+
   </applications>
 </openbox_config>
