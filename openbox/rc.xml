@@ -813,6 +813,7 @@
     </application>
 
     <application type="dialog">
+      <skip_page>yes</skip_page>
       <decor>yes</decor>
       <maximized>no</maximized>
       <desktop>all</desktop>
@@ -829,6 +830,7 @@
     </application>
 
     <application title="mutt">
+      <skip_page>yes</skip_page>
       <focus>no</focus>
       <position>
         <x>-1</x>
@@ -858,6 +860,7 @@
     </application>
 
     <application title="Guake?">
+      <skip_page>yes</skip_page>
       <desktop>all</desktop>
     </application>
 
@@ -875,6 +878,7 @@
 
     <application class="Firefox*">
       <decor>no</decor>
+      <focus>yes</focus>
       <position force="yes">
         <x>center</x>
         <y>center</y>
