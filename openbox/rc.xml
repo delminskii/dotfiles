@@ -110,14 +110,6 @@
     </font>
   </theme>
   <desktops>
-    <!-- this stuff is only used at startup, pagers allow you to change them
-       during a session
-
-       these are default values to use when other ones are not already set
-       by other applications, or saved in your session
-
-       use obconf if you want to change these without having to log out
-       and back in -->
     <number>2</number>
     <firstdesk>1</firstdesk>
     <names>
@@ -125,8 +117,6 @@
       <name>2</name>
     </names>
     <popupTime>200</popupTime>
-    <!-- The number of milliseconds to show the popup for when switching
-         desktops.  Set this to 0 to disable the popup. -->
   </desktops>
   <resize>
     <drawContents>yes</drawContents>
@@ -337,25 +327,17 @@
     </keybind>
     <keybind key="W-f">
       <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>thunar</name>
-        </startupnotify>
         <command>thunar</command>
       </action>
     </keybind>
     <keybind key="W-t">
       <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Terminal</name>
-        </startupnotify>
         <command>xterm +uc -T "SmallXTerm" -e "tmux -2"</command>
       </action>
     </keybind>
     <keybind key="W-m">
       <action name="Execute">
-        <command>xterm -T "mutt" -e "tmux new-session -s mutt 'TERM=xterm-256color mutt'"</command>
+        <command>xterm -T "mutt" -e "tmux -2 new-session -s mutt 'TERM=xterm-256color mutt'"</command>
       </action>
     </keybind>
     <keybind key="W-r">
@@ -370,19 +352,11 @@
     </keybind>
     <keybind key="W-e">
       <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Medit</name>
-        </startupnotify>
         <command>medit</command>
       </action>
     </keybind>
     <keybind key="W-p">
       <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Terminal</name>
-        </startupnotify>
         <command>xterm -T "FullXTerm" +uc -fullscreen -e "tmux -2"</command>
       </action>
     </keybind>
@@ -403,19 +377,11 @@
     </keybind>
     <keybind key="W-h">
       <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>htop</name>
-        </startupnotify>
         <command>xterm -e htop</command>
       </action>
     </keybind>
     <keybind key="W-v">
       <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Volume</name>
-        </startupnotify>
         <command>pavucontrol</command>
       </action>
     </keybind>
@@ -843,10 +809,6 @@
 
     <application class="*">
       <decor>no</decor>
-      <position force="yes">
-        <x>center</x>
-        <y>center</y>
-      </position>
       <desktop>1</desktop>
     </application>
 
@@ -939,10 +901,10 @@
     <application title="Viewnior">
       <decor>yes</decor>
       <desktop>all</desktop>
-      <!--<position force="yes">-->
-      <!--  <x>center</x>-->
-      <!--  <y>center</y>-->
-      <!--</position>-->
+      <position>
+        <x>center</x>
+        <y>center</y>
+      </position>
     </application>
 
   </applications>
