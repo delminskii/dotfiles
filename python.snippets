@@ -20,9 +20,6 @@ d = {
 	'Accept-Language': 'en-US,en;q=0.5',
 	'Cache-Control': 'no-cache',
 	'Connection': 'keep-alive',
-	'Host': str(),
-	'Origin': str(),
-	'Pragma': str(),
 	'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0'
 }
 if match.group(1): d.update({'X-Requested-With': 'XMLHttpRequest'})
@@ -54,6 +51,11 @@ log.info("test")
 endsnippet
 
 
+snippet l "log.debug"
+log.debug(f'${1}')
+endsnippet
+
+
 snippet "m(a)?p" "map" rb
 map(lambda x: ${1}, ${2:seq})
 endsnippet
@@ -71,7 +73,7 @@ THIS_DIR = Path(__file__).parent
 endsnippet
 
 
-snippet "bs(4)?back(end)?" "define BS4 backend" r
+snippet "bs(4)?back" "define BS4 backend" r
 BS4_BACKEND = 'html.parser'
 try:
 	import lxml

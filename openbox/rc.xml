@@ -813,7 +813,6 @@
 
     <application type="dialog">
       <skip_page>yes</skip_page>
-      <decor>yes</decor>
       <desktop>all</desktop>
     </application>
 
@@ -828,7 +827,7 @@
     </application>
 
     <application title="mutt">
-      <skip_page>yes</skip_page>
+      <skip_pager>yes</skip_pager>
       <focus>no</focus>
       <decor>no</decor>
       <position>
@@ -861,7 +860,7 @@
     </application>
 
     <application title="Guake?">
-      <skip_page>yes</skip_page>
+      <skip_pager>yes</skip_pager>
       <desktop>all</desktop>
     </application>
 
