@@ -808,14 +808,12 @@
   <applications>
 
     <application class="*">
-      <decor>no</decor>
       <desktop>1</desktop>
     </application>
 
     <application type="dialog">
       <skip_page>yes</skip_page>
       <decor>yes</decor>
-      <maximized>no</maximized>
       <desktop>all</desktop>
     </application>
 
@@ -832,6 +830,7 @@
     <application title="mutt">
       <skip_page>yes</skip_page>
       <focus>no</focus>
+      <decor>no</decor>
       <position>
         <x>-1</x>
         <y>-1</y>
@@ -844,6 +843,7 @@
 
     <application title="SmallXTerm">
       <focus>yes</focus>
+      <decor>no</decor>
       <position>
         <x>center</x>
         <y>center</y>
@@ -855,6 +855,7 @@
     </application>
 
     <application title="FullXTerm">
+      <decor>no</decor>
       <maximized>yes</maximized>
       <desktop>2</desktop>
     </application>
@@ -866,6 +867,7 @@
 
     <application title="radio">
       <focus>no</focus>
+      <decor>no</decor>
       <position>
         <x>0</x>
         <y>0</y>
@@ -895,7 +897,6 @@
     </application>
 
     <application title="medit">
-      <decor>yes</decor>
       <position force="yes">
         <x>center</x>
         <y>center</y>
@@ -903,7 +904,6 @@
     </application>
 
     <application title="Viewnior">
-      <decor>yes</decor>
       <desktop>all</desktop>
       <position>
         <x>center</x>
