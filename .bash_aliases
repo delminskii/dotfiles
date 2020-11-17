@@ -15,6 +15,7 @@ alias ivm=vim
 alias nvim=vim
 alias vimrc='vim $HOME/.vimrc'
 alias tpp='vim /tmp/$(cat /dev/urandom | env LC_CTYPE=C tr -cd 'a-f0-9' | head -c 32).py'
+alias tnn='vim /tmp/$(cat /dev/urandom | env LC_CTYPE=C tr -cd 'a-f0-9' | head -c 32).js'
 alias bashrc='vim $HOME/.bashrc'
 alias wgetrc='vim $HOME/.wgetrc'
 alias conkyrc='vim $HOME/.conkyrc'
