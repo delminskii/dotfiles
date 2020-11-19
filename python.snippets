@@ -103,10 +103,11 @@ output_filename = THIS_DIR / Path('${0:output}')
 endsnippet
 
 
-snippet mts "make tuple of empty strings"
+snippet mks
 `!p
-n = len(snip.v.text.split(','))
-snip.rv = '%s = %s' % (snip.v.text.strip(), ', '.join('str()' for _ in range(n)))`
+pieces = map(str.strip, snip.v.text.strip().split('\n'))
+lines = map(lambda p: '%s: str = str()' % p, pieces)
+snip.rv = '\n'.join(lines).strip()`
 
 endsnippet
 
