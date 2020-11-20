@@ -40,7 +40,7 @@
                     'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Bunsen-Blackish-Remix</name>
+    <name>Crocus-Remix</name>
     <titleLayout>DSLIMC</titleLayout>
     <!--
       avaible characters are NDSLIMC, each can occur at most once.
@@ -806,16 +806,13 @@
     <!-- show the manage desktops section in the client-list-(combined-)menu -->
   </menu>
   <applications>
-
     <application class="*">
       <desktop>1</desktop>
     </application>
-
     <application type="dialog">
       <skip_page>yes</skip_page>
       <desktop>all</desktop>
     </application>
-
     <application name="Telegram">
       <position force="yes">
         <x>0</x>
@@ -825,7 +822,6 @@
       <layer>normal</layer>
       <decor>yes</decor>
     </application>
-
     <application title="mutt">
       <skip_pager>yes</skip_pager>
       <focus>no</focus>
@@ -839,7 +835,6 @@
         <width>16%</width>
       </size>
     </application>
-
     <application title="SmallXTerm">
       <focus>yes</focus>
       <decor>no</decor>
@@ -852,18 +847,15 @@
         <width>33%</width>
       </size>
     </application>
-
     <application title="FullXTerm">
       <decor>no</decor>
       <maximized>yes</maximized>
       <desktop>2</desktop>
     </application>
-
     <application title="Guake?">
       <skip_pager>yes</skip_pager>
       <desktop>all</desktop>
     </application>
-
     <application title="radio">
       <focus>no</focus>
       <decor>no</decor>
@@ -876,7 +868,6 @@
         <width>17%</width>
       </size>
     </application>
-
     <application class="Firefox*">
       <decor>no</decor>
       <focus>yes</focus>
@@ -885,7 +876,6 @@
         <y>center</y>
       </position>
     </application>
-
     <application name="thunar">
       <decor>yes</decor>
       <focus>yes</focus>
@@ -894,14 +884,12 @@
         <y>center</y>
       </position>
     </application>
-
     <application title="medit">
       <position force="yes">
         <x>center</x>
         <y>center</y>
       </position>
     </application>
-
     <application title="Viewnior">
       <desktop>all</desktop>
       <position>
@@ -909,6 +897,5 @@
         <y>center</y>
       </position>
     </application>
-
   </applications>
 </openbox_config>
