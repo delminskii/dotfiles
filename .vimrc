@@ -233,7 +233,7 @@ vnoremap <silent> <Leader>y "+y
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :q!<CR>
 
-" Leaving insert mode
+"" Leaving insert mode
 inoremap jk <ESC>
 
 
