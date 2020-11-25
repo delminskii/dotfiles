@@ -377,7 +377,7 @@
     </keybind>
     <keybind key="W-h">
       <action name="Execute">
-        <command>xterm -e htop</command>
+        <command>xterm -T "htop" -e htop</command>
       </action>
     </keybind>
     <keybind key="W-v">
@@ -808,6 +808,14 @@
   <applications>
     <application class="*">
       <desktop>1</desktop>
+    </application>
+    <application>
+      <position>
+        <x>center</x>
+        <y>center</y>
+      </position>
+      <focus>yes</focus>
+      <decor>no</decor>
     </application>
     <application type="dialog">
       <skip_page>yes</skip_page>
