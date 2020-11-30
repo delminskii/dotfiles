@@ -37,11 +37,6 @@ snip.rv = "print('*' * %d)" % (match.string.count('*') * 10)`
 endsnippet
 
 
-snippet fil "filter"
-filter(lambda x: ${1:bool}, ${2:seq})
-endsnippet
-
-
 snippet log "logging"
 import logging
 logging.getLogger('<some logger name>').propagate = False
@@ -54,11 +49,6 @@ endsnippet
 
 snippet l "log.debug"
 log.debug(f'${1}')
-endsnippet
-
-
-snippet "m(a)?p" "map" rb
-map(lambda x: ${1}, ${2:seq})
 endsnippet
 
 
@@ -92,7 +82,7 @@ endsnippet
 
 
 snippet aw
-await
+await ${1}
 endsnippet
 
 
