@@ -148,10 +148,6 @@ call plug#end()
 
 " Put all temporary files under the same directory.
 " https://github.com/mhinz/vim-galore#handling-backup-swap-undo-and-viminfo-files
-set backup
-set backupdir   =$HOME/.vim/files/backup/
-set backupext   =-vimbackup
-set backupskip  =
 set directory   =$HOME/.vim/files/swap//
 set updatecount =200
 set undofile
