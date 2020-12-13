@@ -95,6 +95,14 @@ fi
 
 export HISTCONTROL=ignoreboth:erasedups
 
+mkenv() {
+  cwd=$(pwd)
+  cd $HOME/.virtualenvs
+  python3.7 -m virtualenv --no-site-packages $1
+  source $1/bin/activate
+  cd $cwd
+}
+
 # languages for me
 export LANGUAGE=en_GB.UTF-8
 export LC_ALL=en_GB.UTF-8
