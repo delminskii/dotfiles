@@ -106,7 +106,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'w0rp/ale'
 Plug 'chriskempson/base16-vim'
-Plug 'ulwlu/elly.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'cohama/agit.vim'
@@ -257,7 +256,7 @@ let g:ale_linters = {
 let g:ale_python_black_options = '-l 80 -S -t py37'
 let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 0
-let g:ale_echo_delay = 1000
+let g:ale_echo_delay = 2000
 let g:ale_sign_error = 'e'
 let g:ale_sign_warning = 'w'
 nmap <silent> [e <Plug>(ale_previous_wrap_error)
