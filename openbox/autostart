@@ -21,19 +21,19 @@
 eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 
 ## Set root window colour
-hsetroot -solid "#2E3436" &
+# hsetroot -solid "#2E3436" &
 
 ## 1. nitrogen - restores wallpaper
 ## 2. xrandr - resolution & freshrate
 ## 3. sleep - give compositor time to start
 ## 4. tint2 panel
-xrandr -s 1600x900 -r 75 &
+xrandr --mode 1366x768 --rate 60 &
 nitrogen --restore &
 sleep 1s
 tint2 &
 
 ## Volume control for systray
-pnmixer &
+# pnmixer &
 
 ## Start Thunar Daemon
 thunar --daemon &
@@ -49,7 +49,7 @@ xset b off &
 conky -q &
 
 ## Run the guake terminal
-guake &
+# guake &
 
 ## Run redshift
 redshift -l 56.8:53.2 &

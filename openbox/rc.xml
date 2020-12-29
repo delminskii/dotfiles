@@ -40,7 +40,7 @@
                     'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Mire v2_orange</name>
+    <name>HitsujiTMO</name>
     <titleLayout>DSLIMC</titleLayout>
     <!--
       avaible characters are NDSLIMC, each can occur at most once.
@@ -56,7 +56,7 @@
     <animateIconify>no</animateIconify>
     <font place="ActiveWindow">
       <name>DejaVu Sans Mono</name>
-      <size>10</size>
+      <size>9</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -65,7 +65,7 @@
     </font>
     <font place="InactiveWindow">
       <name>DejaVu Sans Mono</name>
-      <size>10</size>
+      <size>9</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -322,12 +322,12 @@
           <enabled>true</enabled>
           <name>dmenu-bind</name>
         </startupnotify>
-        <command>~/.config/dmenu/dmenu-bind.sh</command>
+        <command>dmenu_run -b -i -nb '#151617' -nf '#d8d8d8' -sb '#d8d8d8' -sf '#151617'</command>
       </action>
     </keybind>
     <keybind key="W-f">
       <action name="Execute">
-        <command>thunar</command>
+        <command>pcmanfm</command>
       </action>
     </keybind>
     <keybind key="W-t">
@@ -852,7 +852,7 @@
       </position>
       <size>
         <height>70%</height>
-        <width>33%</width>
+        <width>40%</width>
       </size>
     </application>
     <application title="FullXTerm">

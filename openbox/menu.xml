@@ -151,6 +151,7 @@
                 </item>
             </menu>
             <item label="User Interface Settings">
+
                 <action name="Execute">
                     <command>lxappearance</command>
                 </action>

@@ -109,8 +109,8 @@ Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'cohama/agit.vim'
-Plug 'shougo/deoplete.nvim', { 'commit': 'c09da81e9824fc' }
-Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' , 'commit': '2786058b9022ce'}
+Plug 'shougo/deoplete.nvim'
+Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'kkoomen/vim-doge', { 'tag': 'v2.8.0' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -256,7 +256,7 @@ let g:ale_linters = {
 let g:ale_python_black_options = '-l 80 -S -t py37'
 let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 0
-let g:ale_echo_delay = 2000
+let g:ale_echo_delay = 1000
 let g:ale_sign_error = 'e'
 let g:ale_sign_warning = 'w'
 nmap <silent> [e <Plug>(ale_previous_wrap_error)
@@ -280,7 +280,7 @@ if strftime('%H') >= 7 && strftime('%H') < 19
     colorscheme base16-ia-light
   set background=light
 else
-  colorscheme base16-default-dark
+  colorscheme base16-gruvbox-dark-pale
   set background=dark
 endif
 "highlight clear LineNr
@@ -291,8 +291,8 @@ endif
 " =============================================================================
 let g:lightline = {
 \   'colorscheme': 'srcery_drk',
-\   'separator': { 'left': '⮀', 'right': '⮂' },
-\   'subseparator': { 'left': '⮁', 'right': '⮃' }
+\   'separator': { 'left': '', 'right': '' },
+\   'subseparator': { 'left': '', 'right': '' }
 \}
 " good themes for me:
 " - hybridline
@@ -365,7 +365,7 @@ let g:deoplete#enable_at_startup = 1
 " =============================================================================
 let g:deoplete#sources#jedi#show_docstring = 1
 let g:python_host_prog = '/usr/bin/python2.7'
-let g:python3_host_prog = '/usr/local/bin/python3.7'
+let g:python3_host_prog = '/usr/bin/python3.7'
 
 
 " =============================================================================

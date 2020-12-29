@@ -57,13 +57,13 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 function parse_git_branch() {
-	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
-	if [ ! "${BRANCH}" == "" ]
-	then
-		echo "[${BRANCH}]"
-	else
-		echo ""
-	fi
+ BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+ if [ ! "${BRANCH}" == "" ]
+ then
+  echo "[${BRANCH}]"
+ else
+  echo ""
+ fi
 }
 PS1="\[\e[32m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\] \[\e[36m\]\w\[\e[m\]\[\e[33m\]\`parse_git_branch\`\[\e[m\] \[\e[32m\]\\$\[\e[m\] "
 
@@ -98,16 +98,16 @@ export HISTCONTROL=ignoreboth:erasedups
 mkenv() {
   cwd=$(pwd)
   cd $HOME/.virtualenvs
-  python3.7 -m virtualenv --no-site-packages $1
+  python3.7 -m virtualenv --no-site-packages -p python3 $1
   source $1/bin/activate
   cd $cwd
 }
 
 # languages for me
-export LANGUAGE=en_GB.UTF-8
-export LC_ALL=en_GB.UTF-8
-export LANG=en_GB.UTF-8
-export LC_CTYPE=en_GB.UTF-8
+export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
 
 # editors for me
 export VISUAL=nvim.appimage

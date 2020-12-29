@@ -36,7 +36,11 @@ conky.text = [[
 System Info ${hr 2 }
 ${color0}Uptime:$color $uptime_short
 
-$alignc Intel i5-2500k @ $color${freq_g} GHz
+${color0}Temp: $alignc$color${exec sensors | grep 'Package id' | awk '{print $4}'}
+${color0}Fan: $alignc$color${exec sensors | grep 'fan1' | awk '{print $2,$3}'}
+
+
+$alignc Intel i5-3320M @ $color${freq_g} GHz
 Core 1: ${cpubar cpu1 6, 200} ${cpu cpu1}%
 Core 2: ${cpubar cpu2 6, 200} ${cpu cpu2}%
 Core 3: ${cpubar cpu3 6, 200} ${cpu cpu3}%
@@ -49,8 +53,8 @@ Memory ${hr 2}
 
 ${color0}MEM$color $alignc $mem / $memmax $alignr $memperc%
 $membar
-# ${color0}SWAP$color $alignc $swap / $swapmax $alignr $swapperc%
-# $swapbar
+${color0}SWAP$color $alignc $swap / $swapmax $alignr $swapperc%
+$swapbar
 
 ${if_match  "$swap"!="0B  " }
   ${exec notify-send "Warning: Swapping"}
@@ -76,8 +80,9 @@ ${top name 3} $alignr ${top pid 3} ${top cpu 3} ${top mem 3}
 ${top name 4} $alignr ${top pid 4} ${top cpu 4} ${top mem 4}
 ${top name 5} $alignr ${top pid 5} ${top cpu 5} ${top mem 5}
 
-Network enp3s0 ${hr 2}
+Network wlp3s0 ${hr 2}
 
-${color0}UP:$color$alignc${upspeed enp3s0} (${totalup enp3s0})
-${color0}DOWN:$color$alignc${downspeed enp3s0} (${totaldown enp3s0})
+${color0}UP:$color$alignc${upspeed wlp3s0} (${totalup wlp3s0})
+${color0}DOWN:$color$alignc${downspeed wlp3s0} (${totaldown wlp3s0})
+
 ]];
