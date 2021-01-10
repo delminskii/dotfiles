@@ -105,7 +105,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'w0rp/ale'
-Plug 'chriskempson/base16-vim'
+Plug 'lifepillar/vim-gruvbox8'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'cohama/agit.vim'
@@ -244,6 +244,7 @@ let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
 " =============================================================================
 " Ale settings
 " =============================================================================
+let g:ale_set_highlights = 0
 let g:ale_fix_on_save = 1
 let g:ale_linters_explicit = 1
 let g:ale_fixers = {
@@ -253,10 +254,10 @@ let g:ale_fixers = {
 let g:ale_linters = {
 \   'python': ['flake8'],
 \}
-let g:ale_python_black_options = '-l 80 -S -t py37'
+let g:ale_python_black_options = '-l 79 -S -t py37'
 let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 0
-let g:ale_echo_delay = 1000
+let g:ale_echo_delay = 200
 let g:ale_sign_error = 'e'
 let g:ale_sign_warning = 'w'
 nmap <silent> [e <Plug>(ale_previous_wrap_error)
@@ -276,12 +277,12 @@ let g:user_emmet_install_global = 0
 " Colorscheme colors
 " =============================================================================
 set background=dark
+colorscheme gruvbox8
+let g:gruvbox_italics = 0
 if strftime('%H') >= 7 && strftime('%H') < 19
-    colorscheme base16-ia-light
   set background=light
 else
-  colorscheme base16-gruvbox-dark-pale
-  set background=dark
+  colorscheme gruvbox8
 endif
 "highlight clear LineNr
 
