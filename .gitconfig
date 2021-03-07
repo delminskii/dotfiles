@@ -8,8 +8,12 @@
 	email = deluxoft@gmail.com
 [color]
 	ui = auto
+[difftool]
+    prompt = false
 [diff]
-	tool = vimdiff
+    tool = nvimdiff
+[difftool "nvimdiff"]
+    cmd = git diff | /home/nikolay/.local/bin/nvim.appimage
 [alias]
 	co = checkout
 	ci = commit

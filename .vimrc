@@ -28,7 +28,12 @@ set wildmode=list:longest,full
 set noshowmode             " Don't show current mode in command-line.
 set showcmd                " Show already typed keys when more are expected.
 
-set number                 " show numbers
+" [no]rel numbers with an easy access by jk in visual mode
+vnoremap <Esc> <Esc>:set nu nornu<CR>
+au CursorMoved * if mode() !~# "[vV\<C-v>]" | set nu nornu | endif
+nnoremap <silent> v v:<C-u>set nonu rnu<CR>gv
+nnoremap <silent> V V:<C-u>set nonu rnu<CR>gv
+nnoremap <silent> <C-v> <C-v>:<C-u>set nonu rnu<CR>gv
 
 set incsearch              " Highlight while searching with / or ?.
 set hlsearch               " Keep matches highlighted.
@@ -105,13 +110,14 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'w0rp/ale'
-Plug 'lifepillar/vim-gruvbox8'
+Plug 'tomasr/molokai'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'cohama/agit.vim'
 Plug 'shougo/deoplete.nvim'
 Plug 'deoplete-plugins/deoplete-jedi'
-Plug 'kkoomen/vim-doge', { 'tag': 'v2.8.0' }
+"Plug 'kkoomen/vim-doge', { 'tag': 'v2.8.0' }
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'mg979/vim-visual-multi'
@@ -276,14 +282,10 @@ let g:user_emmet_install_global = 0
 " =============================================================================
 " Colorscheme colors
 " =============================================================================
-set background=dark
-colorscheme gruvbox8
-let g:gruvbox_italics = 0
-if strftime('%H') >= 7 && strftime('%H') < 19
-  set background=light
-else
-  colorscheme gruvbox8
-endif
+"if strftime('%H') >= 7 && strftime('%H') < 19
+"else
+"endif
+colorscheme molokai
 "highlight clear LineNr
 
 
@@ -291,7 +293,7 @@ endif
 " Vim-lightline settings
 " =============================================================================
 let g:lightline = {
-\   'colorscheme': 'srcery_drk',
+\   'colorscheme': 'molokai',
 \   'separator': { 'left': '', 'right': '' },
 \   'subseparator': { 'left': '', 'right': '' }
 \}
@@ -430,6 +432,13 @@ let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/user_snippets']
 nnoremap <silent> <Leader>ue :UltiSnipsEdit<CR>
 
+
+"" =============================================================================
+" vim-doge settings
+" =============================================================================
+let g:doge_python_settings = {
+\  'single_quotes': 1
+\}
 
 " =============================================================================
 " Augroup, autocmd

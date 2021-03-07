@@ -1,5 +1,5 @@
 !XTerm*faceName:             xft:Anonymous Pro for Powerline:pixelsize=12:antialias=true
-!XTerm*faceName:             xft:CascadiaCode:pixelsize=12:antialias=true
+!XTerm*faceName:             xft:CascadiaCode:pixelsize=11:antialias=true
 !XTerm*faceName:             xft:FiraMono for Powerline:pixelsize=10:antialias=false
 XTerm*faceName:             xft:Hack:pixelsize=11:antialias=true
 !XTerm*faceName:             xft:Iosevka Term:pixelsize=11:antialias=false
