@@ -111,5 +111,5 @@ endsnippet
 
 snippet wjson "writes out json file"
 with open(${1:output_filename}, 'w') as fp:
-	json.dump(fp, ${2:data}, indent=4)
+	json.dump(${2:data}, fp, indent=4)
 endsnippet
