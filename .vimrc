@@ -108,15 +108,14 @@ Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'mswift42/vim-themes'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'w0rp/ale'
-Plug 'tomasr/molokai'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'cohama/agit.vim'
 Plug 'shougo/deoplete.nvim'
 Plug 'deoplete-plugins/deoplete-jedi'
-"Plug 'kkoomen/vim-doge', { 'tag': 'v2.8.0' }
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -282,10 +281,11 @@ let g:user_emmet_install_global = 0
 " =============================================================================
 " Colorscheme colors
 " =============================================================================
-"if strftime('%H') >= 7 && strftime('%H') < 19
-"else
-"endif
-colorscheme molokai
+if strftime('%H') >= 7 && strftime('%H') < 19
+    colorscheme sunny-day
+else
+    colorscheme darktooth
+endif
 "highlight clear LineNr
 
 
@@ -293,7 +293,7 @@ colorscheme molokai
 " Vim-lightline settings
 " =============================================================================
 let g:lightline = {
-\   'colorscheme': 'molokai',
+\   'colorscheme': 'jellybeans',
 \   'separator': { 'left': '', 'right': '' },
 \   'subseparator': { 'left': '', 'right': '' }
 \}
