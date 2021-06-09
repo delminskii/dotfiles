@@ -108,9 +108,10 @@ Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'mswift42/vim-themes'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'w0rp/ale'
+Plug 'lifepillar/vim-gruvbox8'
+Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'cohama/agit.vim'
@@ -154,9 +155,9 @@ call plug#end()
 " Put all temporary files under the same directory.
 " https://github.com/mhinz/vim-galore#handling-backup-swap-undo-and-viminfo-files
 set directory   =$HOME/.vim/files/swap//
-set updatecount =200
-set undofile
-set undodir     =$HOME/.vim/files/undo/
+"set updatecount =200
+"set undofile
+"set undodir     =$HOME/.vim/files/undo/
 
 " Increase/decrease windows' size (up/right +, bot/left -)
 nnoremap <silent><up> 10<C-w>+
@@ -282,10 +283,12 @@ let g:user_emmet_install_global = 0
 " Colorscheme colors
 " =============================================================================
 if strftime('%H') >= 7 && strftime('%H') < 19
-    colorscheme sunny-day
+    set background=light
 else
-    colorscheme darktooth
+    set background=dark
 endif
+let g:gruvbox_italics = 0
+colorscheme gruvbox8
 "highlight clear LineNr
 
 
@@ -293,7 +296,7 @@ endif
 " Vim-lightline settings
 " =============================================================================
 let g:lightline = {
-\   'colorscheme': 'jellybeans',
+\   'colorscheme': 'default',
 \   'separator': { 'left': '', 'right': '' },
 \   'subseparator': { 'left': '', 'right': '' }
 \}
@@ -439,6 +442,17 @@ nnoremap <silent> <Leader>ue :UltiSnipsEdit<CR>
 let g:doge_python_settings = {
 \  'single_quotes': 1
 \}
+
+
+"" =============================================================================
+" treesitter settings
+" =============================================================================
+lua <<EOF
+    require'nvim-treesitter.configs'.setup {
+      highlight = {enable = {'python'}}
+    }
+EOF
+
 
 " =============================================================================
 " Augroup, autocmd
