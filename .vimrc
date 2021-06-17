@@ -106,8 +106,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-dadbod'
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'itchyny/lightline.vim'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'w0rp/ale'
 Plug 'lifepillar/vim-gruvbox8'
@@ -125,15 +123,21 @@ Plug 'mhinz/vim-startify'
 Plug 'sheerun/vim-polyglot'
 Plug 'alcesleo/vim-uppercase-sql', { 'for': ['plsql', 'sql'] }
 
+" Telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 " Good colorschemes for me:
 " - Plug 'mswift42/vim-themes'
 " - `afterglow` from Plugin 'rafi/awesome-vim-colorschemes'
+" - Plug 'srcery-colors/srcery-vim'
 " - Plug 'joshdick/onedark.vim'
 " - Plug 'w0ng/vim-hybrid'
 " - Plug 'ajmwagar/vim-deus'
 " - Plug 'morhetz/gruvbox'
 " - Plug 'lifepillar/vim-gruvbox8' ^^^
-" - Plug 'chriskempson/base16-vim'
+" - Plug 'RRethy/nvim-base16' # treesitter suport
 " - Plug 'haishanh/night-owl.vim'
 " - Plug 'sjl/badwolf'
 " - Plug 'rakr/vim-one'
@@ -310,18 +314,34 @@ let g:lightline = {
 
 
 " =============================================================================
-" FZF settings
+" Telescope settings
 " =============================================================================
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit' }
+lua <<EOF
+local actions = require('telescope.actions')
+local previewers = require('telescope.previewers')
+require('telescope').setup{
+  defaults = {
+    mappings = {
+      i = {
+        ["<C-k>"] = actions.move_selection_previous,
+        ["<C-j>"] = actions.move_selection_next,
 
-nnoremap <silent> <Leader>rg :Rg<CR>
-nnoremap <silent> <Leader>l :Lines<CR>
-nnoremap <silent> <Leader>f :Files<CR>
-nnoremap <silent> <Leader>b :Buffers<CR>
-nnoremap <silent> <Leader>m :Marks<CR>
+        -- using C-s instead
+        ["<C-x"] = false,
+        ["<C-s>"] = actions.select_horizontal
+      }
+    },
+    file_previewer = previewers.vim_buffer_cat.new,
+    grep_previewer = previewers.vim_buffer_vimgrep.new,
+    qflist_previewer = previewers.vim_buffer_qflist.new
+  }
+}
+EOF
+nnoremap <silent> <Leader>f :lua require('telescope.builtin').find_files()<CR>
+nnoremap <silent> <Leader>b :lua require('telescope.builtin').buffers()<CR>
+nnoremap <silent> <Leader>l :lua require('telescope.builtin').live_grep()<CR>
+nnoremap <silent> <Leader>; :lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>
+nnoremap <Leader>v :lua require('telescope.builtin').treesitter()<CR>
 
 
 " =============================================================================
@@ -471,6 +491,9 @@ augroup vimrc_autocmd
 
     " Automaticaly close nvim if NERDTree is only thing left open
     au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+    " disable suggestion for Telescope when typing in TelescopePrompt buffer
+    au FileType TelescopePrompt call deoplete#custom#buffer_option('auto_complete', v:false)
 
     " run script deoending on FileType
     au FileType python nnoremap <Leader>e :call RunWith("python3.7")<CR>
