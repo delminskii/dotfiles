@@ -10,6 +10,15 @@ if __name__ == '__main__':
 	main()
 endsnippet
 
+snippet "^baseimp?" "import base modules" r
+import csv
+import re
+import json
+from pathlib import Path
+import requests
+${0}
+endsnippet
+
 
 snippet "head(aj)?" "browser-like headers" r
 `!p
@@ -29,6 +38,10 @@ endsnippet
 
 snippet p "prints message"
 print(f'${1}')
+endsnippet
+
+snippet br "break"
+break
 endsnippet
 
 snippet "p(\*){1,3}" "prints delimeter" r
@@ -71,12 +84,6 @@ try:
 	BS4_BACKEND = 'lxml'
 except (ImportError, ModuleNotFoundError):
 	pass
-
-endsnippet
-
-
-snippet soup "create BS4 instance"
-soup = BS4(response.text, BS4_BACKEND)
 
 endsnippet
 

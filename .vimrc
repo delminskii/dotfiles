@@ -104,6 +104,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'andymass/vim-matchup'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-dadbod'
+Plug 'tpope/vim-abolish'
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'itchyny/lightline.vim'
 Plug 'andrewradev/splitjoin.vim'
@@ -239,8 +240,11 @@ vnoremap <silent> <Leader>y "+y
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :q!<CR>
 
-"" Leaving insert mode
+" Leaving insert mode
 inoremap jk <ESC>
+
+" better visual til the end$
+nnoremap vE vg_
 
 
 " =============================================================================
@@ -318,30 +322,28 @@ let g:lightline = {
 " =============================================================================
 lua <<EOF
 local actions = require('telescope.actions')
-local previewers = require('telescope.previewers')
 require('telescope').setup{
   defaults = {
     mappings = {
       i = {
         ["<C-k>"] = actions.move_selection_previous,
         ["<C-j>"] = actions.move_selection_next,
+        ["<C-[>"] = actions.close,
 
         -- using C-s instead
         ["<C-x"] = false,
         ["<C-s>"] = actions.select_horizontal
       }
-    },
-    file_previewer = previewers.vim_buffer_cat.new,
-    grep_previewer = previewers.vim_buffer_vimgrep.new,
-    qflist_previewer = previewers.vim_buffer_qflist.new
+    }
   }
 }
 EOF
-nnoremap <silent> <Leader>f :lua require('telescope.builtin').find_files()<CR>
-nnoremap <silent> <Leader>b :lua require('telescope.builtin').buffers()<CR>
-nnoremap <silent> <Leader>l :lua require('telescope.builtin').live_grep()<CR>
-nnoremap <silent> <Leader>; :lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>
-nnoremap <Leader>v :lua require('telescope.builtin').treesitter()<CR>
+nnoremap <silent> <Leader>f :Telescope find_files theme=get_ivy<CR>
+nnoremap <silent> <Leader>b :Telescope buffers theme=get_ivy<CR>
+nnoremap <silent> <Leader>l :Telescope live_grep theme=get_ivy<CR>
+nnoremap <silent> <Leader>; :Telescope current_buffer_fuzzy_find theme=get_ivy<CR>
+nnoremap <silent> <Leader>co :Telescope colorscheme theme=get_ivy<CR>
+nnoremap <Leader>v :Telescope treesitter theme=get_ivy<CR>
 
 
 " =============================================================================
