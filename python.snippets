@@ -16,7 +16,16 @@ import re
 import json
 from pathlib import Path
 import requests
+
 ${0}
+endsnippet
+
+snippet cd "_log.debug"
+cls._log.debug(f'${0}')
+endsnippet
+
+snippet ci "_log.info"
+cls._log.info(f'${0}')
 endsnippet
 
 

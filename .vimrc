@@ -99,7 +99,7 @@ let g:plug_threads = 2
 call plug#begin('~/.vim/plugged')
 
 Plug 'mattn/emmet-vim', { 'for': ['html', 'xml', 'svg'] }
-Plug 'easymotion/vim-easymotion'
+Plug 'phaazon/hop.nvim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'andymass/vim-matchup'
 Plug 'tpope/vim-surround'
@@ -110,6 +110,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'w0rp/ale'
 Plug 'lifepillar/vim-gruvbox8'
+Plug 'sainnhe/sonokai'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
@@ -334,7 +335,8 @@ require('telescope').setup{
         ["<C-x"] = false,
         ["<C-s>"] = actions.select_horizontal
       }
-    }
+    },
+    prompt_prefix="🔍",
   }
 }
 EOF
@@ -403,11 +405,13 @@ nnoremap <silent> <Leader>ag :Agit<CR>
 
 
 " =============================================================================
-" easymotion settings
+" hop settings
 " =============================================================================
-let g:EasyMotion_do_mapping = 0             " Disable default mappings
-let g:EasyMotion_smartcase = 1              " Turn on case insensitive feature
-nmap <silent> s <Plug>(easymotion-overwin-f)
+lua <<EOF
+require'hop.highlight'.insert_highlights()
+EOF
+nnoremap <silent> s :HopChar1<CR>
+
 
 
 " =============================================================================
