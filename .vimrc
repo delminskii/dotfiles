@@ -14,6 +14,7 @@ set shiftwidth  =4         " >> indents by 4 spaces.
 set shiftround             " >> indents to next multiple of 'shiftwidth'.
 set scrolloff   =4
 set scrolljump  =4
+set colorcolumn =79
 
 set backspace   =indent,eol,start  " Make backspace work as you would expect.
 set hidden                         " Switch between buffers without having to save first.
@@ -118,7 +119,7 @@ Plug 'cohama/agit.vim'
 Plug 'shougo/deoplete.nvim'
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
-Plug 'scrooloose/nerdcommenter'
+Plug 'tyru/caw.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'mg979/vim-visual-multi'
 Plug 'mhinz/vim-startify'
@@ -305,7 +306,7 @@ colorscheme gruvbox8
 " Vim-lightline settings
 " =============================================================================
 let g:lightline = {
-\   'colorscheme': 'default',
+\   'colorscheme': 'gruvbox8',
 \   'separator': { 'left': '', 'right': '' },
 \   'subseparator': { 'left': '', 'right': '' }
 \}
@@ -344,14 +345,13 @@ nnoremap <silent> <Leader>f :Telescope find_files theme=get_ivy<CR>
 nnoremap <silent> <Leader>b :Telescope buffers theme=get_ivy<CR>
 nnoremap <silent> <Leader>l :Telescope live_grep theme=get_ivy<CR>
 nnoremap <silent> <Leader>; :Telescope current_buffer_fuzzy_find theme=get_ivy<CR>
-nnoremap <silent> <Leader>co :Telescope colorscheme theme=get_ivy<CR>
-nnoremap <Leader>v :Telescope treesitter theme=get_ivy<CR>
+nnoremap <silent> <Leader>cs :Telescope colorscheme theme=get_ivy<CR>
 
 
 " =============================================================================
-" Nerdcommenter settings
+" caw settings
 " =============================================================================
-let g:NERDDefaultAlign = 'left'
+map <Leader>c <Plug>(caw:prefix)
 
 
 " =============================================================================
@@ -452,7 +452,7 @@ nnoremap <silent> <Leader>db :DB<CR>
 vnoremap <silent> <Leader>db :DB<CR>
 
 
-"" =============================================================================
+"" ============================================================================
 " ultisnips settings
 " =============================================================================
 let g:UltiSnipsExpandTrigger='<tab>'
@@ -462,7 +462,7 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/user_snippets']
 nnoremap <silent> <Leader>ue :UltiSnipsEdit<CR>
 
 
-"" =============================================================================
+"" ============================================================================
 " vim-doge settings
 " =============================================================================
 let g:doge_python_settings = {
@@ -470,7 +470,7 @@ let g:doge_python_settings = {
 \}
 
 
-"" =============================================================================
+"" ============================================================================
 " treesitter settings
 " =============================================================================
 lua <<EOF
