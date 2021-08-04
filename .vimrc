@@ -7,7 +7,7 @@ set autoread
 filetype plugin indent on  " Load plugins according to detected filetype.
 syntax on                  " Enable syntax highlighting.
 
-set autoindent             " Indent according to previous line.
+
 set expandtab              " Use spaces instead of tabs.
 set softtabstop =4         " Tab key indents by 4 spaces.
 set shiftwidth  =4         " >> indents by 4 spaces.
@@ -59,7 +59,7 @@ set wrapscan               " Searches wrap around end-of-file.
 set wrap
 set report      =0         " Always report changed lines.
 set synmaxcol   =200       " Only highlight the first 200 columns.
-set tw          =80
+set tw          =79
 
 set termguicolors
 
@@ -111,7 +111,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'w0rp/ale'
 Plug 'lifepillar/vim-gruvbox8'
-Plug 'sainnhe/sonokai'
+Plug 'Rigellute/rigel'
+Plug 'flazz/vim-colorschemes'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
@@ -119,7 +120,7 @@ Plug 'cohama/agit.vim'
 Plug 'shougo/deoplete.nvim'
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
-Plug 'tyru/caw.vim'
+Plug 'preservim/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'mg979/vim-visual-multi'
 Plug 'mhinz/vim-startify'
@@ -265,7 +266,7 @@ let g:ale_fix_on_save = 1
 let g:ale_linters_explicit = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'python': ['black'],
+\   'python': ['black', 'isort'],
 \}
 let g:ale_linters = {
 \   'python': ['flake8'],
@@ -294,11 +295,11 @@ let g:user_emmet_install_global = 0
 " =============================================================================
 if strftime('%H') >= 7 && strftime('%H') < 19
     set background=light
+    colorscheme github
 else
     set background=dark
+    colorscheme rigel
 endif
-let g:gruvbox_italics = 0
-colorscheme gruvbox8
 "highlight clear LineNr
 
 
@@ -306,7 +307,7 @@ colorscheme gruvbox8
 " Vim-lightline settings
 " =============================================================================
 let g:lightline = {
-\   'colorscheme': 'gruvbox8',
+\   'colorscheme': 'default',
 \   'separator': { 'left': '', 'right': '' },
 \   'subseparator': { 'left': '', 'right': '' }
 \}
@@ -345,13 +346,12 @@ nnoremap <silent> <Leader>f :Telescope find_files theme=get_ivy<CR>
 nnoremap <silent> <Leader>b :Telescope buffers theme=get_ivy<CR>
 nnoremap <silent> <Leader>l :Telescope live_grep theme=get_ivy<CR>
 nnoremap <silent> <Leader>; :Telescope current_buffer_fuzzy_find theme=get_ivy<CR>
-nnoremap <silent> <Leader>cs :Telescope colorscheme theme=get_ivy<CR>
 
 
 " =============================================================================
-" caw settings
+" nerdcommenter settings
 " =============================================================================
-map <Leader>c <Plug>(caw:prefix)
+let g:NERDDefaultAlign = 'left'
 
 
 " =============================================================================
@@ -408,7 +408,7 @@ nnoremap <silent> <Leader>ag :Agit<CR>
 " hop settings
 " =============================================================================
 lua <<EOF
-require'hop.highlight'.insert_highlights()
+  require'hop.highlight'.insert_highlights()
 EOF
 nnoremap <silent> s :HopChar1<CR>
 
