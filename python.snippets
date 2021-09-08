@@ -118,7 +118,7 @@ endsnippet
 
 
 snippet wcsv "writes out csv file"
-with open(${1:output_filename}, 'w', newline='') as fp:
+with ${1:output_filename}.open('w', newline='') as fp:
 	writer = csv.writer(fp)
 	writer.writerow(header)
 	writer.writerows(output_rows)
@@ -126,6 +126,6 @@ endsnippet
 
 
 snippet wjson "writes out json file"
-with open(${1:output_filename}, 'w') as fp:
+with ${1:output_filename}.open('w') as fp:
 	json.dump(${2:data}, fp, indent=4)
 endsnippet

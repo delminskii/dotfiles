@@ -20,6 +20,7 @@ $HOME/.bash_aliases
 $HOME/.lessrc
 $HOME/.tmux.conf
 $HOME/.gitconfig
+$HOME/.gitignore
 $HOME/.config/tint2/tint2rc
 $0
 "

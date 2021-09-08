@@ -7,7 +7,6 @@ set autoread
 filetype plugin indent on  " Load plugins according to detected filetype.
 syntax on                  " Enable syntax highlighting.
 
-
 set expandtab              " Use spaces instead of tabs.
 set softtabstop =4         " Tab key indents by 4 spaces.
 set shiftwidth  =4         " >> indents by 4 spaces.
@@ -99,6 +98,7 @@ let g:plug_threads = 2
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'tpope/vim-fugitive'
 Plug 'mattn/emmet-vim', { 'for': ['html', 'xml', 'svg'] }
 Plug 'phaazon/hop.nvim'
 Plug 'jiangmiao/auto-pairs'
@@ -110,9 +110,8 @@ Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'itchyny/lightline.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'w0rp/ale'
-Plug 'lifepillar/vim-gruvbox8'
-Plug 'Rigellute/rigel'
-Plug 'flazz/vim-colorschemes'
+Plug 'ayu-theme/ayu-vim'
+"Plug 'lifepillar/vim-gruvbox8'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
@@ -293,13 +292,13 @@ let g:user_emmet_install_global = 0
 " =============================================================================
 " Colorscheme colors
 " =============================================================================
-if strftime('%H') >= 7 && strftime('%H') < 19
-    set background=light
-    colorscheme github
-else
-    set background=dark
-    colorscheme rigel
-endif
+"if strftime('%H') >= 7 && strftime('%H') < 19
+"    set background=light
+"else
+"    set background=dark
+"endif
+let ayucolor="mirage" " for mirage version of theme
+colorscheme ayu
 "highlight clear LineNr
 
 
@@ -309,7 +308,14 @@ endif
 let g:lightline = {
 \   'colorscheme': 'default',
 \   'separator': { 'left': '', 'right': '' },
-\   'subseparator': { 'left': '', 'right': '' }
+\   'subseparator': { 'left': '', 'right': '' },
+\   'active': {
+\   'left': [ [ 'mode', 'paste' ],
+\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+\   },
+\   'component_function': {
+\     'gitbranch': 'FugitiveHead'
+\   },
 \}
 " good themes for me:
 " - hybridline
@@ -339,6 +345,7 @@ require('telescope').setup{
       }
     },
     prompt_prefix="🔍",
+    file_ignore_patterns={ "output/?.*%.csv" }
   }
 }
 EOF
@@ -413,7 +420,6 @@ EOF
 nnoremap <silent> s :HopChar1<CR>
 
 
-
 " =============================================================================
 " Surround settings
 " =============================================================================
@@ -452,7 +458,7 @@ nnoremap <silent> <Leader>db :DB<CR>
 vnoremap <silent> <Leader>db :DB<CR>
 
 
-"" ============================================================================
+" ============================================================================
 " ultisnips settings
 " =============================================================================
 let g:UltiSnipsExpandTrigger='<tab>'
@@ -462,7 +468,7 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/user_snippets']
 nnoremap <silent> <Leader>ue :UltiSnipsEdit<CR>
 
 
-"" ============================================================================
+" ============================================================================
 " vim-doge settings
 " =============================================================================
 let g:doge_python_settings = {
@@ -470,7 +476,7 @@ let g:doge_python_settings = {
 \}
 
 
-"" ============================================================================
+" ============================================================================
 " treesitter settings
 " =============================================================================
 lua <<EOF
@@ -478,6 +484,12 @@ lua <<EOF
       highlight = {enable = {'python'}}
     }
 EOF
+
+
+" ============================================================================
+" fugitive settings
+" =============================================================================
+nnoremap <Leader>g :G<CR>
 
 
 " =============================================================================

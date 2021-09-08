@@ -1,0 +1,6 @@
+# Common
+output*
+*.log
+
+# Python
+__pycache__/
