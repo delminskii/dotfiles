@@ -518,4 +518,5 @@ augroup vimrc_autocmd
     au FileType html nnoremap <Leader>e :call RunWith("firefox-esr -safe-mode -new-window")<CR>
     au FileType sh nnoremap <Leader>e :call RunWith("bash")<CR>
     au FileType javascript nnoremap <Leader>e :call RunWith("node")<CR>
+    au FileType ruby nnoremap <Leader>e :call RunWith("ruby")<CR>
 augroup END
