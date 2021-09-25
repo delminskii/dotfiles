@@ -21,8 +21,7 @@ set laststatus  =2                 " Always show statusline.
 set display     =lastline          " Show as much as possible of the last line.
 
 " omnicompletion settings
-set completeopt+=longest,menuone
-set completeopt-=preview
+set completeopt=menuone,noinsert,noselect
 set wildmode=list:longest,full
 
 set noshowmode             " Don't show current mode in command-line.
@@ -106,18 +105,19 @@ Plug 'andymass/vim-matchup'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-abolish'
-Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
-Plug 'itchyny/lightline.vim'
+Plug 'hoob3rt/lualine.nvim'
 Plug 'andrewradev/splitjoin.vim'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'ayu-theme/ayu-vim'
 "Plug 'lifepillar/vim-gruvbox8'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'cohama/agit.vim'
-Plug 'shougo/deoplete.nvim'
-Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+"Plug 'shougo/deoplete.nvim'
+"Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'preservim/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -127,7 +127,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'alcesleo/vim-uppercase-sql', { 'for': ['plsql', 'sql'] }
 
 " Telescope
-Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
@@ -248,6 +247,14 @@ inoremap jk <ESC>
 " better visual til the end$
 nnoremap vE vg_
 
+let g:python_host_prog = '/usr/bin/python2.7'
+let g:python3_host_prog = '/usr/bin/python3.7'
+
+" disable diagnostics messages
+lua <<EOF
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
+EOF
+
 
 " =============================================================================
 " Nerdtree settings
@@ -303,27 +310,17 @@ colorscheme ayu
 
 
 " =============================================================================
-" Vim-lightline settings
+" Lualine settings
 " =============================================================================
-let g:lightline = {
-\   'colorscheme': 'default',
-\   'separator': { 'left': '', 'right': '' },
-\   'subseparator': { 'left': '', 'right': '' },
-\   'active': {
-\   'left': [ [ 'mode', 'paste' ],
-\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-\   },
-\   'component_function': {
-\     'gitbranch': 'FugitiveHead'
-\   },
-\}
-" good themes for me:
-" - hybridline
-" - badwolf
-" - gruvbox
-" - term
-" - base16_chalk
-" - simple
+lua <<EOF
+  require'lualine'.setup{
+    options = {
+      theme = 'ayu_mirage',
+      section_separators = '',
+      component_separators = ''
+    }
+  }
+EOF
 
 
 " =============================================================================
@@ -353,6 +350,7 @@ nnoremap <silent> <Leader>f :Telescope find_files theme=get_ivy<CR>
 nnoremap <silent> <Leader>b :Telescope buffers theme=get_ivy<CR>
 nnoremap <silent> <Leader>l :Telescope live_grep theme=get_ivy<CR>
 nnoremap <silent> <Leader>; :Telescope current_buffer_fuzzy_find theme=get_ivy<CR>
+nnoremap <silent> <Leader>d :Telescope lsp_definitions<CR>
 
 
 " =============================================================================
@@ -392,17 +390,26 @@ nnoremap <Leader>sc :SClose
 
 
 " =============================================================================
-" Deoplete settings
+" nvim-completion settings
 " =============================================================================
-let g:deoplete#enable_at_startup = 1
+lua <<EOF
+    require'lspconfig'.pylsp.setup{on_attach=require'completion'.on_attach}
+EOF
+let g:completion_enable_snippet = 'UltiSnips'
+let g:completion_enable_auto_hover = 0
+let g:completion_matching_strategy_list = ['substring', 'fuzzy', 'exact', 'all']
+let g:completion_matching_ignore_case = 1
+let g:completion_matching_smart_case = 1
+let g:completion_timer_cycle = 250
+let g:completion_enable_auto_signature = 0
+imap <silent> <C-n> <Plug>(completion_trigger)
+let g:completion_chain_complete_list = {
+\  'default' : {
+\    'default': [{'complete_items': ['lsp', 'snippet']}],
+\    'string' : [{'complete_items': ['path']}]
+\  }
+\}
 
-
-" =============================================================================
-" Deoplete-jedi settings
-" =============================================================================
-let g:deoplete#sources#jedi#show_docstring = 1
-let g:python_host_prog = '/usr/bin/python2.7'
-let g:python3_host_prog = '/usr/bin/python3.7'
 
 
 " =============================================================================
@@ -509,6 +516,8 @@ augroup vimrc_autocmd
 
     " Automaticaly close nvim if NERDTree is only thing left open
     au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+    au BufEnter * lua require'completion'.on_attach()
 
     " disable suggestion for Telescope when typing in TelescopePrompt buffer
     au FileType TelescopePrompt call deoplete#custom#buffer_option('auto_complete', v:false)
