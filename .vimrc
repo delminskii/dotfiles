@@ -3,6 +3,7 @@
 set nocompatible
 
 set autoread
+set number
 
 filetype plugin indent on  " Load plugins according to detected filetype.
 syntax on                  " Enable syntax highlighting.
@@ -26,13 +27,6 @@ set wildmode=list:longest,full
 
 set noshowmode             " Don't show current mode in command-line.
 set showcmd                " Show already typed keys when more are expected.
-
-" [no]rel numbers with an easy access by jk in visual mode
-vnoremap <Esc> <Esc>:set nu nornu<CR>
-au CursorMoved * if mode() !~# "[vV\<C-v>]" | set nu nornu | endif
-nnoremap <silent> v v:<C-u>set nonu rnu<CR>gv
-nnoremap <silent> V V:<C-u>set nonu rnu<CR>gv
-nnoremap <silent> <C-v> <C-v>:<C-u>set nonu rnu<CR>gv
 
 set incsearch              " Highlight while searching with / or ?.
 set hlsearch               " Keep matches highlighted.
@@ -106,6 +100,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-abolish'
 Plug 'hoob3rt/lualine.nvim'
+Plug 'neovim/nvim-lspconfig'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'dense-analysis/ale'
 Plug 'ayu-theme/ayu-vim'
@@ -114,10 +109,6 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'cohama/agit.vim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-"Plug 'shougo/deoplete.nvim'
-"Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'preservim/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -129,6 +120,12 @@ Plug 'alcesleo/vim-uppercase-sql', { 'for': ['plsql', 'sql'] }
 " Telescope
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
+" Completion
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
 " Good colorschemes for me:
 " - Plug 'mswift42/vim-themes'
@@ -252,7 +249,7 @@ let g:python3_host_prog = '/usr/bin/python3.7'
 
 " disable diagnostics messages
 lua <<EOF
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
+vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
 EOF
 
 
@@ -313,13 +310,13 @@ colorscheme ayu
 " Lualine settings
 " =============================================================================
 lua <<EOF
-  require'lualine'.setup{
-    options = {
-      theme = 'ayu_mirage',
-      section_separators = '',
-      component_separators = ''
-    }
+require'lualine'.setup{
+  options = {
+    theme = 'ayu_mirage',
+    section_separators = '',
+    component_separators = ''
   }
+}
 EOF
 
 
@@ -350,7 +347,7 @@ nnoremap <silent> <Leader>f :Telescope find_files theme=get_ivy<CR>
 nnoremap <silent> <Leader>b :Telescope buffers theme=get_ivy<CR>
 nnoremap <silent> <Leader>l :Telescope live_grep theme=get_ivy<CR>
 nnoremap <silent> <Leader>; :Telescope current_buffer_fuzzy_find theme=get_ivy<CR>
-nnoremap <silent> <Leader>d :Telescope lsp_definitions<CR>
+nnoremap <silent> gd :Telescope lsp_definitions theme=get_ivy<CR>
 
 
 " =============================================================================
@@ -390,25 +387,34 @@ nnoremap <Leader>sc :SClose
 
 
 " =============================================================================
-" nvim-completion settings
+" nvim-cmp settings
 " =============================================================================
 lua <<EOF
-    require'lspconfig'.pylsp.setup{on_attach=require'completion'.on_attach}
+local cmp = require'cmp'
+
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      vim.fn["UltiSnips#Anon"](args.body)
+    end,
+  },
+
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'ultisnips' },
+    { name = 'buffer' },
+  },
+
+  completion = { keyword_length = 2 },
+  documentation = false,
+})
+
+-- Setup lspconfig.
+require'lspconfig'.pylsp.setup {
+  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+}
 EOF
-let g:completion_enable_snippet = 'UltiSnips'
-let g:completion_enable_auto_hover = 0
-let g:completion_matching_strategy_list = ['substring', 'fuzzy', 'exact', 'all']
-let g:completion_matching_ignore_case = 1
-let g:completion_matching_smart_case = 1
-let g:completion_timer_cycle = 250
-let g:completion_enable_auto_signature = 0
-imap <silent> <C-n> <Plug>(completion_trigger)
-let g:completion_chain_complete_list = {
-\  'default' : {
-\    'default': [{'complete_items': ['lsp', 'snippet']}],
-\    'string' : [{'complete_items': ['path']}]
-\  }
-\}
+
 
 
 
@@ -422,7 +428,7 @@ nnoremap <silent> <Leader>ag :Agit<CR>
 " hop settings
 " =============================================================================
 lua <<EOF
-  require'hop.highlight'.insert_highlights()
+require'hop.highlight'.insert_highlights()
 EOF
 nnoremap <silent> s :HopChar1<CR>
 
@@ -487,9 +493,9 @@ let g:doge_python_settings = {
 " treesitter settings
 " =============================================================================
 lua <<EOF
-    require'nvim-treesitter.configs'.setup {
-      highlight = {enable = {'python'}}
-    }
+require'nvim-treesitter.configs'.setup {
+  highlight = {enable = {'python'}}
+}
 EOF
 
 
@@ -517,10 +523,8 @@ augroup vimrc_autocmd
     " Automaticaly close nvim if NERDTree is only thing left open
     au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-    au BufEnter * lua require'completion'.on_attach()
-
     " disable suggestion for Telescope when typing in TelescopePrompt buffer
-    au FileType TelescopePrompt call deoplete#custom#buffer_option('auto_complete', v:false)
+    "au FileType TelescopePrompt call deoplete#custom#buffer_option('auto_complete', v:false)
 
     " run script deoending on FileType
     au FileType python nnoremap <Leader>e :call RunWith("python3.7")<CR>
