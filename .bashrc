@@ -121,6 +121,5 @@ export VPNPYTHON="$HOME/.virtualenvs/protonVPN/bin/python3.7"
 # fuzzy searcher
 # export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 
-#export PATH="$HOME/.pyenv/bin:$PATH"
-#eval "$(pyenv init -)"
-#eval "$(pyenv virtualenv-init -)"
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"

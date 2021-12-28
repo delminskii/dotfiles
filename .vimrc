@@ -80,7 +80,7 @@ endif
 " run current script
 function RunWith(command)
     :w
-    :call VimuxRunCommandInDir("clear;time " . a:command, 1)
+    :call VimuxRunCommandInDir("clear;time PATH=$PATH " . a:command, 1)
 endfunction
 
 
@@ -92,6 +92,7 @@ let g:plug_threads = 2
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-fugitive'
+Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'mattn/emmet-vim', { 'for': ['html', 'xml', 'svg'] }
 Plug 'phaazon/hop.nvim'
 Plug 'jiangmiao/auto-pairs'
@@ -99,16 +100,15 @@ Plug 'andymass/vim-matchup'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-abolish'
-Plug 'hoob3rt/lualine.nvim'
+Plug 'tpope/vim-unimpaired'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'dense-analysis/ale'
-Plug 'ayu-theme/ayu-vim'
-"Plug 'lifepillar/vim-gruvbox8'
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'lifepillar/vim-gruvbox8'
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
-Plug 'cohama/agit.vim'
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'preservim/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -126,6 +126,10 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+"
+" Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " Good colorschemes for me:
 " - Plug 'mswift42/vim-themes'
@@ -148,10 +152,6 @@ Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 " - Plug 'doums/darcula'
 " - Plug 'kaicataldo/material.vim'
 " - Plug 'danilo-augusto/vim-afterglow'
-
-" Snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -247,10 +247,13 @@ nnoremap vE vg_
 let g:python_host_prog = '/usr/bin/python2.7'
 let g:python3_host_prog = '/usr/bin/python3.7'
 
-" disable diagnostics messages
-lua <<EOF
-vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
-EOF
+
+" =============================================================================
+" LSP stuff
+" =============================================================================
+luado vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
+nnoremap <silent> <Leader>h :lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <F2> :lua vim.lsp.buf.rename()<CR>
 
 
 " =============================================================================
@@ -272,9 +275,10 @@ let g:ale_fixers = {
 \   'python': ['black', 'isort'],
 \}
 let g:ale_linters = {
-\   'python': ['flake8'],
+\   'python': ['flake8', 'mypy'],
 \}
-let g:ale_python_black_options = '-l 79 -S -t py37'
+let b:ale_python_mypy_options = '--python-version 3.7'
+let g:ale_python_black_options = '-l 79 --fast -t py37'
 let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 0
 let g:ale_echo_delay = 200
@@ -287,10 +291,18 @@ nmap <silent> ]w <Plug>(ale_next_wrap_warning)
 
 
 " =============================================================================
-" Emmet-settings
+" Emmet settings
 " =============================================================================
 let g:user_emmet_leader_key='<TAB>'
 let g:user_emmet_install_global = 0
+
+
+" =============================================================================
+" Indent-blankline settings
+" =============================================================================
+lua <<EOF
+require("indent_blankline").setup{}
+EOF
 
 
 " =============================================================================
@@ -301,21 +313,22 @@ let g:user_emmet_install_global = 0
 "else
 "    set background=dark
 "endif
-let ayucolor="mirage" " for mirage version of theme
-colorscheme ayu
+let g:gruvbox_italicize_strings = 0
+let g:gruvbox_italics = 0
+colorscheme gruvbox8
 "highlight clear LineNr
 
 
 " =============================================================================
-" Lualine settings
+" lualine settings
 " =============================================================================
 lua <<EOF
-require'lualine'.setup{
+require('lualine').setup{
   options = {
-    theme = 'ayu_mirage',
+    theme = 'gruvbox',
     section_separators = '',
     component_separators = ''
-  }
+  },
 }
 EOF
 
@@ -325,7 +338,7 @@ EOF
 " =============================================================================
 lua <<EOF
 local actions = require('telescope.actions')
-require('telescope').setup{
+require('telescope').setup {
   defaults = {
     mappings = {
       i = {
@@ -335,15 +348,15 @@ require('telescope').setup{
 
         -- using C-s instead
         ["<C-x"] = false,
-        ["<C-s>"] = actions.select_horizontal
+        ["<C-s>"] = actions.select_horizontal,
       }
     },
-    prompt_prefix="🔍",
-    file_ignore_patterns={ "output/?.*%.csv" }
+    prompt_prefix = "🔍",
+    file_ignore_patterns = { "output/?.*%.csv", '__pycache__' },
   }
 }
 EOF
-nnoremap <silent> <Leader>f :Telescope find_files theme=get_ivy<CR>
+nnoremap <silent> <Leader>f :Telescope git_files theme=get_ivy<CR>
 nnoremap <silent> <Leader>b :Telescope buffers theme=get_ivy<CR>
 nnoremap <silent> <Leader>l :Telescope live_grep theme=get_ivy<CR>
 nnoremap <silent> <Leader>; :Telescope current_buffer_fuzzy_find theme=get_ivy<CR>
@@ -390,12 +403,18 @@ nnoremap <Leader>sc :SClose
 " nvim-cmp settings
 " =============================================================================
 lua <<EOF
-local cmp = require'cmp'
-
+local cmp = require('cmp')
 cmp.setup({
   snippet = {
     expand = function(args)
       vim.fn["UltiSnips#Anon"](args.body)
+    end,
+  },
+
+  mapping = {
+    ['<C-c>'] = function(fallback)
+      cmp.close()
+      fallback()
     end,
   },
 
@@ -409,26 +428,18 @@ cmp.setup({
   documentation = false,
 })
 
--- Setup lspconfig.
-require'lspconfig'.pylsp.setup {
+-- Setup lspconfig
+require('lspconfig').pylsp.setup {
   capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 }
 EOF
-
-
-
-
-" =============================================================================
-" Agit settings
-" =============================================================================
-nnoremap <silent> <Leader>ag :Agit<CR>
 
 
 " =============================================================================
 " hop settings
 " =============================================================================
 lua <<EOF
-require'hop.highlight'.insert_highlights()
+require('hop').setup()
 EOF
 nnoremap <silent> s :HopChar1<CR>
 
@@ -453,8 +464,10 @@ let g:tmux_navigator_save_on_switch = 1
 " vimux settings
 " =============================================================================
 let g:VimuxHeight = "25"
+let g:VimuxExpandCommand = 1
 nnoremap <silent> <Leader>vc :call VimuxPromptCommand()<CR>
 nnoremap <silent> <Leader>vq :call VimuxCloseRunner()<CR>
+
 
 
 " =============================================================================
@@ -493,7 +506,7 @@ let g:doge_python_settings = {
 " treesitter settings
 " =============================================================================
 lua <<EOF
-require'nvim-treesitter.configs'.setup {
+require('nvim-treesitter.configs').setup {
   highlight = {enable = {'python'}}
 }
 EOF
@@ -502,7 +515,7 @@ EOF
 " ============================================================================
 " fugitive settings
 " =============================================================================
-nnoremap <Leader>g :G<CR>
+nnoremap <silent> <Leader>g :G<CR>
 
 
 " =============================================================================
@@ -523,13 +536,14 @@ augroup vimrc_autocmd
     " Automaticaly close nvim if NERDTree is only thing left open
     au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-    " disable suggestion for Telescope when typing in TelescopePrompt buffer
-    "au FileType TelescopePrompt call deoplete#custom#buffer_option('auto_complete', v:false)
-
     " run script deoending on FileType
     au FileType python nnoremap <Leader>e :call RunWith("python3.7")<CR>
     au FileType html nnoremap <Leader>e :call RunWith("firefox-esr -safe-mode -new-window")<CR>
     au FileType sh nnoremap <Leader>e :call RunWith("bash")<CR>
     au FileType javascript nnoremap <Leader>e :call RunWith("node")<CR>
     au FileType ruby nnoremap <Leader>e :call RunWith("ruby")<CR>
+
+    " just for my experiments/sandboxing with lua
+    " input: vim.fn.input("Enter some number:")
+    au FileType lua nnoremap <Leader>e :w<CR> :luafile %<CR>
 augroup END

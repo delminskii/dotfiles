@@ -1,3 +1,28 @@
+snippet "^advent(ofcode)?" "AdventOfCode Template" r
+#!/usr/bin/env python3
+import operator
+import re
+import math
+from collections import Counter, defaultdict, deque
+from pathlib import Path
+
+
+def	part1(contents):
+	pass
+
+
+def	part2(contents):
+	pass
+
+if __name__ == "__main__":
+	# contents = Path("input.txt").read_text().strip()
+
+	contents = Path("input_sample.txt").read_text().strip()
+
+	part1(contents)
+	part2(contents)
+endsnippet
+
 snippet "^main" "def main with __main__" r
 #!/usr/bin/env python3
 
@@ -6,8 +31,16 @@ def main():
 	${0:pass}
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 	main()
+endsnippet
+
+snippet "^datac?" "import dataclass related things" r
+from dataclasses import astuple, dataclass, field
+from enum import Enum
+from typing import List
+
+${0}
 endsnippet
 
 snippet "^baseimp?" "import base modules" r
@@ -15,19 +48,18 @@ import csv
 import re
 import json
 from pathlib import Path
-from typing import List, Dict, Tuple, Iterator
+from typing import List, Dict, Tuple, Iterator, Optional
 import requests
-from selectolax.parser import HTMLParser
 
 ${0}
 endsnippet
 
 snippet cd "_log.debug"
-cls._log.debug(f'${0}')
+cls._log.debug("${0}")
 endsnippet
 
 snippet ci "_log.info"
-cls._log.info(f'${0}')
+cls._log.info("${0}")
 endsnippet
 
 
@@ -35,20 +67,20 @@ snippet "head(aj)?" "browser-like headers" r
 `!p
 from json import dumps
 d = {
-	'Accept': '*/*',
-	'Accept-Encoding': 'gzip, deflate, br',
-	'Accept-Language': 'en-US,en;q=0.5',
-	'Cache-Control': 'no-cache',
-	'Connection': 'keep-alive',
-	'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0'
+	"Accept": "*/*",
+	"Accept-Encoding": "gzip, deflate, br",
+	"Accept-Language": "en-US,en;q=0.5",
+	"Cache-Control": "no-cache",
+	"Connection": "keep-alive",
+	"User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0"
 }
-if match.group(1): d.update({'X-Requested-With': 'XMLHttpRequest'})
-snip.rv = 'headers = %s' % dumps(d, indent=4).replace('"', "'")`
+if match.group(1): d.update({"X-Requested-With": "XMLHttpRequest"})
+snip.rv = "headers = %s" % dumps(d, indent=4).replace('"', "'")`
 endsnippet
 
 
 snippet p "prints message"
-print(f'${1}')
+print(f"{${0}}")
 endsnippet
 
 snippet br "break"
@@ -63,20 +95,19 @@ endsnippet
 
 snippet log "logging"
 import logging
-logging.getLogger('<some logger name>').propagate = False
-logFormatter = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+logging.getLogger("<some logger name>").propagate = False
+logFormatter = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 logging.basicConfig(format=logFormatter, level=logging.DEBUG)
 log = logging.getLogger(__name__)
 endsnippet
 
 
-snippet l "log.debug"
-log.debug(f'${1}')
+snippet l "make list"
+list(${VISUAL})
 endsnippet
 
-
-snippet ls "makes list"
-list(${VISUAL})
+snippet pe "print variable with it's name & value"
+print(f"value={value}")
 endsnippet
 
 
@@ -87,11 +118,11 @@ endsnippet
 
 
 snippet "bs(4)?back" "define BS4 backend" r
-BS4_BACKEND = 'html.parser'
+BS4_BACKEND = "html.parser"
 try:
 	import lxml
 
-	BS4_BACKEND = 'lxml'
+	BS4_BACKEND = "lxml"
 except (ImportError, ModuleNotFoundError):
 	pass
 
@@ -111,15 +142,15 @@ endsnippet
 
 snippet mks
 `!p
-pieces = map(str.strip, snip.v.text.strip().split('\n'))
-lines = map(lambda p: '%s: str = str()' % p, pieces)
-snip.rv = '\n'.join(lines).strip()`
+pieces = map(str.strip, snip.v.text.strip().split("\n"))
+lines = map(lambda p: "%s: str = str()" % p, pieces)
+snip.rv = "\n".join(lines).strip()`
 
 endsnippet
 
 
 snippet wcsv "writes out csv file"
-with ${1:output_filename}.open('w', newline='') as fp:
+with ${1:output_filename}.open("w", newline="") as fp:
 	writer = csv.writer(fp)
 	writer.writerow(header)
 	writer.writerows(output_rows)
@@ -127,6 +158,6 @@ endsnippet
 
 
 snippet wjson "writes out json file"
-with ${1:output_filename}.open('w') as fp:
+with ${1:output_filename}.open("w") as fp:
 	json.dump(${2:data}, fp, indent=4)
 endsnippet

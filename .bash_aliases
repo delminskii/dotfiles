@@ -10,6 +10,7 @@ alias tkillall='tmux kill-server'
 alias projpy='cd $HOME/projects'
 alias vim='TERM=tmux-256color nvim.appimage'
 alias ivm=vim
+alias v=vim
 alias nvim=vim
 alias vimrc='vim $HOME/.vimrc'
 alias tpp='vim /tmp/$(cat /dev/urandom | env LC_CTYPE=C tr -cd 'a-f0-9' | head -c 32).py'
@@ -23,6 +24,8 @@ alias sshconfig='vim $HOME/.ssh/config'
 alias xresources='vim $HOME/.Xresources'
 alias tmuxconfig='vim $HOME/.tmux.conf'
 alias gitconfig='vim $HOME/.gitconfig'
+alias gut=git
+alias gti=git
 alias podcast='mpv --profile=podcast'
 alias iptv='mpv --profile=iptv https://iptvbarmen.tk/auto.nogrp.m3u'
 alias iptv2='mpv --profile=iptv https://iptv-org.github.io/iptv/countries/ru.m3u'
@@ -36,6 +39,7 @@ alias python3='/usr/bin/python3'
 alias py3=python3
 alias jordandir='cd $HOME/projects/Joran_Hannes/Nikolay_Sidorov/'
 alias mattdir='cd $HOME/projects/Matthew_Paulton/'
+alias tomdir='cd $HOME/projects/Tom10_projects/'
 alias docker_remove_containers_exited='docker rm -v $(docker ps -aq -f status=exited)'
 alias vpnstatus='$VPNPYTHON -m protonvpn_cli status'
 alias vpnconnect='sudo $VPNPYTHON -m protonvpn_cli connect --fastest && vpnstatus'
@@ -46,3 +50,4 @@ alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"
 alias t='tree'
 alias ff='firefox-esr'
 alias selact='source $HOME/.virtualenvs/sel_requests/bin/activate'
+alias mkadventfiles='touch script.py {input,input_sample}.txt'
