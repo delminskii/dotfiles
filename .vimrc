@@ -92,7 +92,6 @@ let g:plug_threads = 2
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-fugitive'
-Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'mattn/emmet-vim', { 'for': ['html', 'xml', 'svg'] }
 Plug 'phaazon/hop.nvim'
 Plug 'jiangmiao/auto-pairs'
@@ -102,15 +101,15 @@ Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-unimpaired'
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'ajmwagar/vim-deus'
 Plug 'neovim/nvim-lspconfig'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'dense-analysis/ale'
-Plug 'lifepillar/vim-gruvbox8'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
-Plug 'preservim/nerdcommenter'
+Plug 'numToStr/Comment.nvim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'mg979/vim-visual-multi'
 Plug 'mhinz/vim-startify'
@@ -152,6 +151,7 @@ Plug 'honza/vim-snippets'
 " - Plug 'doums/darcula'
 " - Plug 'kaicataldo/material.vim'
 " - Plug 'danilo-augusto/vim-afterglow'
+" - Plug 'projekt0n/github-nvim-theme'
 
 call plug#end()
 
@@ -264,6 +264,7 @@ let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
 \ '\.o$', '\.so$', '\.egg$', '^\.git$', '__pycache__', '\.DS_Store' ]
 
 
+
 " =============================================================================
 " Ale settings
 " =============================================================================
@@ -275,9 +276,8 @@ let g:ale_fixers = {
 \   'python': ['black', 'isort'],
 \}
 let g:ale_linters = {
-\   'python': ['flake8', 'mypy'],
+\   'python': ['flake8'],
 \}
-let b:ale_python_mypy_options = '--python-version 3.7'
 let g:ale_python_black_options = '-l 79 --fast -t py37'
 let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 0
@@ -298,14 +298,6 @@ let g:user_emmet_install_global = 0
 
 
 " =============================================================================
-" Indent-blankline settings
-" =============================================================================
-lua <<EOF
-require("indent_blankline").setup{}
-EOF
-
-
-" =============================================================================
 " Colorscheme colors
 " =============================================================================
 "if strftime('%H') >= 7 && strftime('%H') < 19
@@ -313,9 +305,9 @@ EOF
 "else
 "    set background=dark
 "endif
-let g:gruvbox_italicize_strings = 0
-let g:gruvbox_italics = 0
-colorscheme gruvbox8
+"let g:gruvbox_italicize_strings = 0
+"let g:gruvbox_italics = 0
+colorscheme deus
 "highlight clear LineNr
 
 
@@ -325,7 +317,7 @@ colorscheme gruvbox8
 lua <<EOF
 require('lualine').setup{
   options = {
-    theme = 'gruvbox',
+    theme = 'auto',
     section_separators = '',
     component_separators = ''
   },
@@ -353,7 +345,7 @@ require('telescope').setup {
     },
     prompt_prefix = "🔍",
     file_ignore_patterns = { "output/?.*%.csv", '__pycache__' },
-  }
+  },
 }
 EOF
 nnoremap <silent> <Leader>f :Telescope git_files theme=get_ivy<CR>
@@ -364,9 +356,69 @@ nnoremap <silent> gd :Telescope lsp_definitions theme=get_ivy<CR>
 
 
 " =============================================================================
-" nerdcommenter settings
+" Comment.nvim settings
 " =============================================================================
-let g:NERDDefaultAlign = 'left'
+lua << EOF
+local U = require('Comment.utils')
+local A = vim.api
+local opt = { silent = true, noremap = true }
+
+require('Comment').setup({
+  ignore = '^$',
+
+  ---LHS of toggle mappings in NORMAL + VISUAL mode
+  ---@type table
+  toggler = {
+      ---Line-comment toggle keymap
+      line = '<Leader>cc',
+  },
+
+  ---LHS of operator-pending mappings in NORMAL + VISUAL mode
+  ---@type table
+  opleader = {
+      ---Line-comment keymap
+      line = '<Leader>c',
+  },
+
+  ---LHS of extra mappings
+  ---@type table
+  extra = {
+      ---Add comment on the line above
+      above = '<Leader>cO',
+      ---Add comment on the line below
+      below = '<Leader>co',
+      ---Add comment at the end of line
+      eol = '<Leader>cA',
+  },
+})
+
+-- https://github.com/numToStr/Comment.nvim/issues/70#issuecomment-998494798
+function _G.___gdc(vmode)
+ local range = U.get_region(vmode)
+ local lines = U.get_lines(range)
+
+ -- Copying the block
+ local srow = range.erow
+ A.nvim_buf_set_lines(0, srow, srow, false, lines)
+
+ -- Doing the comment
+ require('Comment.api').toggle_linewise_op(vmode)
+
+ -- Move the cursor
+ local erow = srow + 1
+ local line = U.get_lines({ srow = srow, erow = erow })
+ local _, col = U.grab_indent(line[1])
+ A.nvim_win_set_cursor(0, { erow, col })
+end
+
+-- <Leader>dc will do (yank & comment & paste);
+-- Example: <Leader>dc3j will copy & comment 4 lines (current+3 below) and
+-- paste them after
+A.nvim_set_keymap('x', '<Leader>dc', '<ESC><CMD>lua ___gdc(vim.fn.visualmode())<CR>', opt)
+A.nvim_set_keymap('n', '<Leader>dc', '<CMD>set operatorfunc=v:lua.___gdc<CR>g@', opt)
+EOF
+
+nnoremap <Leader>p :%s/p=//
 
 
 " =============================================================================

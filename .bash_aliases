@@ -40,6 +40,7 @@ alias py3=python3
 alias jordandir='cd $HOME/projects/Joran_Hannes/Nikolay_Sidorov/'
 alias mattdir='cd $HOME/projects/Matthew_Paulton/'
 alias tomdir='cd $HOME/projects/Tom10_projects/'
+alias tzvi='cd $HOME/projects/Tzvi_Arnstein/'
 alias docker_remove_containers_exited='docker rm -v $(docker ps -aq -f status=exited)'
 alias vpnstatus='$VPNPYTHON -m protonvpn_cli status'
 alias vpnconnect='sudo $VPNPYTHON -m protonvpn_cli connect --fastest && vpnstatus'
