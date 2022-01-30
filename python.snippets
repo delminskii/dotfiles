@@ -23,6 +23,7 @@ if __name__ == "__main__":
 	part2(contents)
 endsnippet
 
+
 snippet "^main" "def main with __main__" r
 #!/usr/bin/env python3
 
@@ -35,6 +36,7 @@ if __name__ == "__main__":
 	main()
 endsnippet
 
+
 snippet "^datac?" "import dataclass related things" r
 from dataclasses import astuple, dataclass, field
 from enum import Enum
@@ -42,6 +44,7 @@ from typing import List
 
 ${0}
 endsnippet
+
 
 snippet "^baseimp?" "import base modules" r
 import csv
@@ -54,9 +57,11 @@ import requests
 ${0}
 endsnippet
 
+
 snippet cd "_log.debug"
 cls._log.debug("${0}")
 endsnippet
+
 
 snippet ci "_log.info"
 cls._log.info("${0}")
@@ -83,12 +88,14 @@ snippet p "prints message"
 print(f"${0}")
 endsnippet
 
-snippet br "break"
-break
+
+snippet "p(\*+)" "prints delimeter" r
+`!p snip.rv = "print('*' * %d)" % (len(match.group(1)) * 10)`
 endsnippet
 
-snippet "p(\*)+" "prints delimeter" r
-`!p snip.rv = "print('*' * %d)" % (match.string.count('*') * 10)`
+
+snippet br "break"
+break
 endsnippet
 
 
@@ -103,22 +110,20 @@ log = logging.getLogger(__name__)
 endsnippet
 
 
-snippet l "make list" A
+snippet l "make a list" A
 list(${VISUAL})
 endsnippet
 
 snippet p= "print variable with it's name & value (py3.10 adhoc)" A
 `!p
-indent = ' ' * int(vim.eval("&sw"))
+indent = ' ' * int(vim.eval('indent(".")'))
 pieces = filter(len, map(str.strip, snip.v.text.split('\n')))
 pieces = (
-	(indent if i else '') + 'print(f"%s: {%s}")' % (p, p)
+	'%sprint(f"%s: {%s}")' % (indent if i else '', p, p)
 	for i, p in enumerate(pieces)
 )
-snip.rv = '\n'.join(pieces).rstrip()
-`
+snip.rv = '\n'.join(pieces).rstrip()`
 endsnippet
-
 
 snippet "(cur|this)?dir" "current directory" r
 THIS_DIR = Path(__file__).parent
@@ -151,7 +156,7 @@ endsnippet
 
 snippet mks
 `!p
-indent = ' ' * int(vim.eval("&sw"))
+indent = ' ' * int(vim.eval('indent(".")'))
 pieces = filter(len, map(str.strip, snip.v.text.strip().split('\n')))
 pieces = (
 	"%s%s: str = str()" % (indent if i else '', p)
