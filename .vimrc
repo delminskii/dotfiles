@@ -110,7 +110,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'numToStr/Comment.nvim'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'mg979/vim-visual-multi'
 Plug 'mhinz/vim-startify'
 Plug 'sheerun/vim-polyglot'
@@ -257,11 +257,25 @@ nnoremap <silent> <F2> :lua vim.lsp.buf.rename()<CR>
 
 
 " =============================================================================
-" Nerdtree settings
+" nvim-tree settings
 " =============================================================================
-nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
-let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
-\ '\.o$', '\.so$', '\.egg$', '^\.git$', '__pycache__', '\.DS_Store' ]
+let g:nvim_tree_highlight_opened_files = 1
+let g:nvim_tree_add_trailing = 1
+nnoremap <Leader>n :NvimTreeToggle<CR>
+nnoremap <Leader>r :NvimTreeRefresh<CR>
+lua <<EOF
+require('nvim-tree').setup({
+  git = {
+    ignore = true,
+    enable = false
+  },
+  disable_netrw = true,
+  update_focused_file = { enable = true },
+  update_cwd = true,
+  filters = { custom = { '.git', '.cache', '__pycache__' } }
+})
+EOF
+
 
 
 " =============================================================================
@@ -417,8 +431,6 @@ A.nvim_set_keymap('x', '<Leader>dc', '<ESC><CMD>lua ___gdc(vim.fn.visualmode())<
 A.nvim_set_keymap('n', '<Leader>dc', '<CMD>set operatorfunc=v:lua.___gdc<CR>g@', opt)
 EOF
 
-nnoremap <Leader>p :%s/p=//
-
 
 " =============================================================================
 " Startify settings
@@ -518,6 +530,7 @@ let g:VimuxHeight = "25"
 let g:VimuxExpandCommand = 1
 nnoremap <silent> <Leader>vc :call VimuxPromptCommand()<CR>
 nnoremap <silent> <Leader>vq :call VimuxCloseRunner()<CR>
+nnoremap <silent> <Leader>vl :call VimuxClearTerminalScreen()<CR>
 
 
 
@@ -583,9 +596,6 @@ augroup vimrc_autocmd
 
     " Return to last edit position when opening files (You want this!)
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-    " Automaticaly close nvim if NERDTree is only thing left open
-    au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
     " run script deoending on FileType
     au FileType python nnoremap <Leader>e :call RunWith("python3.7")<CR>

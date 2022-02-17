@@ -24,6 +24,9 @@
 	type = cat-file -t
 	dump = cat-file -p
 	aci = !git add . && git commit
-[color "status"]
-	;untracked = "#eca347 normal no-bold"
-	;changed = "#1e81b0 normal no-bold"
+[mergetool "fugitive"]
+	cmd = /home/nikolay/.local/bin/nvim.appimage -f -c \"Gvdiffsplit!\" \"$MERGED\"
+[merge]
+	tool = fugitive
+[mergetool]
+	prompt = false
