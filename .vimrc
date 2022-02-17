@@ -261,8 +261,8 @@ nnoremap <silent> <F2> :lua vim.lsp.buf.rename()<CR>
 " =============================================================================
 let g:nvim_tree_highlight_opened_files = 1
 let g:nvim_tree_add_trailing = 1
-nnoremap <Leader>n :NvimTreeToggle<CR>
-nnoremap <Leader>r :NvimTreeRefresh<CR>
+nnoremap <silent> <Leader>n :NvimTreeToggle<CR>
+nnoremap <silent> <Leader>r :NvimTreeRefresh<CR>
 lua <<EOF
 require('nvim-tree').setup({
   git = {
@@ -272,7 +272,8 @@ require('nvim-tree').setup({
   disable_netrw = true,
   update_focused_file = { enable = true },
   update_cwd = true,
-  filters = { custom = { '.git', '.cache', '__pycache__' } }
+  auto_close = true,
+  filters = { dotfiles = true },
 })
 EOF
 
