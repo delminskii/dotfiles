@@ -101,8 +101,8 @@ Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-unimpaired'
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'ajmwagar/vim-deus'
 Plug 'neovim/nvim-lspconfig'
+Plug 'haishanh/night-owl.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'dense-analysis/ale'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
@@ -113,7 +113,7 @@ Plug 'numToStr/Comment.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'mg979/vim-visual-multi'
 Plug 'mhinz/vim-startify'
-Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot', { 'commit': '2c5af8f89d3e61e04e761c07a1f043b0f35203c6' }
 Plug 'alcesleo/vim-uppercase-sql', { 'for': ['plsql', 'sql'] }
 
 " Telescope
@@ -267,7 +267,7 @@ lua <<EOF
 require('nvim-tree').setup({
   git = {
     ignore = true,
-    enable = false
+    enable = false,
   },
   disable_netrw = true,
   update_focused_file = { enable = true },
@@ -321,7 +321,7 @@ let g:user_emmet_install_global = 0
 "endif
 "let g:gruvbox_italicize_strings = 0
 "let g:gruvbox_italics = 0
-colorscheme deus
+colorscheme night-owl
 "highlight clear LineNr
 
 
@@ -580,7 +580,7 @@ EOF
 " ============================================================================
 " fugitive settings
 " =============================================================================
-nnoremap <silent> <Leader>g :G<CR>
+nnoremap <silent> <Leader>g :G \| 15wincmd_<CR>
 
 
 " =============================================================================
