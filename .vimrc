@@ -92,6 +92,7 @@ let g:plug_threads = 2
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/goyo.vim'
 Plug 'mattn/emmet-vim', { 'for': ['html', 'xml', 'svg'] }
 Plug 'phaazon/hop.nvim'
 Plug 'jiangmiao/auto-pairs'
@@ -113,7 +114,7 @@ Plug 'numToStr/Comment.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'mg979/vim-visual-multi'
 Plug 'mhinz/vim-startify'
-Plug 'sheerun/vim-polyglot', { 'commit': '2c5af8f89d3e61e04e761c07a1f043b0f35203c6' }
+Plug 'sheerun/vim-polyglot'
 Plug 'alcesleo/vim-uppercase-sql', { 'for': ['plsql', 'sql'] }
 
 " Telescope
@@ -123,12 +124,12 @@ Plug 'nvim-telescope/telescope.nvim'
 " Completion
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/nvim-cmp', { 'commit': '3192a0c57837c1ec5bf298e4f3ec984c7d2d60c0' }
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 "
 " Snippets
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'honza/vim-snippets', { 'commit': '4e1d1456fd7d1d5d6cff256578a3e3bbeeb24e62' }
 
 " Good colorschemes for me:
 " - Plug 'mswift42/vim-themes'
@@ -265,6 +266,15 @@ nnoremap <silent> <Leader>n :NvimTreeToggle<CR>
 nnoremap <silent> <Leader>r :NvimTreeRefresh<CR>
 lua <<EOF
 require('nvim-tree').setup({
+  view = {
+    mappings = {
+      list = {
+        -- using <C-s> instead
+        { key = "<C-s>", action = "split" },
+        { key = "<C-x>", action = "" },
+      }
+    }
+  },
   git = {
     ignore = true,
     enable = false,
@@ -272,7 +282,6 @@ require('nvim-tree').setup({
   disable_netrw = true,
   update_focused_file = { enable = true },
   update_cwd = true,
-  auto_close = true,
   filters = { dotfiles = true },
 })
 EOF
@@ -322,7 +331,7 @@ let g:user_emmet_install_global = 0
 "let g:gruvbox_italicize_strings = 0
 "let g:gruvbox_italics = 0
 colorscheme night-owl
-"highlight clear LineNr
+" highlight clear LineNr
 
 
 " =============================================================================
@@ -333,7 +342,7 @@ require('lualine').setup{
   options = {
     theme = 'auto',
     section_separators = '',
-    component_separators = ''
+    component_separators = '',
   },
 }
 EOF
@@ -489,7 +498,7 @@ cmp.setup({
   },
 
   completion = { keyword_length = 2 },
-  documentation = false,
+  documentation = false
 })
 
 -- Setup lspconfig
@@ -568,6 +577,11 @@ let g:doge_python_settings = {
 
 
 " ============================================================================
+" goyo settings
+" =============================================================================
+nnoremap <silent> <Leader># :Goyo<CR>
+
+" ============================================================================
 " treesitter settings
 " =============================================================================
 lua <<EOF
@@ -580,7 +594,15 @@ EOF
 " ============================================================================
 " fugitive settings
 " =============================================================================
-nnoremap <silent> <Leader>g :G \| 15wincmd_<CR>
+function FugitiveToggle() abort
+  try
+    exe filter(getwininfo(), "get(v:val['variables'], 'fugitive_status', v:false) != v:false")[0].winnr .. "wincmd c"
+  catch /E684/
+    Git
+    resize 15
+  endtry
+endfunction
+nnoremap <silent> <Leader>g :call FugitiveToggle()<CR>
 
 
 " =============================================================================
@@ -597,6 +619,9 @@ augroup vimrc_autocmd
 
     " Return to last edit position when opening files (You want this!)
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+    " auto close nvim tree if it's alone
+    autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
 
     " run script deoending on FileType
     au FileType python nnoremap <Leader>e :call RunWith("python3.7")<CR>

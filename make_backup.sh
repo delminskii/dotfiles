@@ -11,6 +11,7 @@ $HOME/.conkyrc
 $HOME/.dircolors
 $HOME/.Xresources
 $HOME/.config/openbox/*
+$HOME/scripts/*
 $HOME/.config/nvim/*
 $HOME/.vim/user_snippets/python.snippets
 $HOME/.config/mpv/mpv.conf
@@ -34,6 +35,9 @@ do
         if [[ $file == *"openbox"* ]]
         then
             dest_dir="$BACKUP_FOLDER/openbox"
+        elif [[ $file == *"scripts" ]]
+        then
+            dest_dir="$BACKUP_FOLDER/scripts"
         fi
         cp $file $dest_dir
         echo "$file is backuped." >>$BACKUP_LOGFILE

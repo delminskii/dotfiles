@@ -40,7 +40,7 @@
                     'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>HitsujiTMO</name>
+    <name>Natura</name>
     <titleLayout>DSLIMC</titleLayout>
     <!--
       avaible characters are NDSLIMC, each can occur at most once.
@@ -330,9 +330,14 @@
         <command>pcmanfm</command>
       </action>
     </keybind>
-    <keybind key="W-t">
+    <keybind key="W-Return">
       <action name="Execute">
         <command>xterm +uc -T "SmallXTerm" -e "tmux -2"</command>
+      </action>
+    </keybind>
+    <keybind key="W-t">
+      <action name="Execute">
+        <command>clockify</command>
       </action>
     </keybind>
     <keybind key="W-m">
@@ -362,7 +367,7 @@
     </keybind>
     <keybind key="W-j">
       <action name="Execute">
-        <command>mtpaint</command>
+        <command>~/scripts/mtpaint_open_latest.sh</command>
       </action>
     </keybind>
     <keybind key="W-s">
