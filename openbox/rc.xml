@@ -40,7 +40,7 @@
                     'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Natura</name>
+    <name>Clearlooks</name>
     <titleLayout>DSLIMC</titleLayout>
     <!--
       avaible characters are NDSLIMC, each can occur at most once.
@@ -338,6 +338,11 @@
     <keybind key="W-t">
       <action name="Execute">
         <command>clockify</command>
+      </action>
+    </keybind>
+    <keybind key="W-k">
+      <action name="Execute">
+        <command>keepassx</command>
       </action>
     </keybind>
     <keybind key="W-m">
@@ -888,6 +893,9 @@
         <x>center</x>
         <y>center</y>
       </position>
+      <size>
+        <width>66%</width>
+      </size>
     </application>
     <application name="thunar">
       <decor>yes</decor>
@@ -902,6 +910,10 @@
         <x>center</x>
         <y>center</y>
       </position>
+      <size>
+        <width>50%</width>
+        <height>50%</height>
+      </size>
     </application>
     <application title="Viewnior">
       <desktop>all</desktop>

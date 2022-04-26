@@ -103,7 +103,7 @@ Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-unimpaired'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'neovim/nvim-lspconfig'
-Plug 'haishanh/night-owl.vim'
+Plug 'joshdick/onedark.vim'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'dense-analysis/ale'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
@@ -152,7 +152,6 @@ Plug 'honza/vim-snippets', { 'commit': '4e1d1456fd7d1d5d6cff256578a3e3bbeeb24e62
 " - Plug 'doums/darcula'
 " - Plug 'kaicataldo/material.vim'
 " - Plug 'danilo-augusto/vim-afterglow'
-" - Plug 'projekt0n/github-nvim-theme'
 
 call plug#end()
 
@@ -323,14 +322,20 @@ let g:user_emmet_install_global = 0
 " =============================================================================
 " Colorscheme colors
 " =============================================================================
-"if strftime('%H') >= 7 && strftime('%H') < 19
+" if strftime('%H') >= 7 && strftime('%H') < 19
 "    set background=light
-"else
+" else
 "    set background=dark
-"endif
+" endif
+" if strftime('%H') >= 7 && strftime('%H') < 18
+"    set background=light
+" else
+"    set background=dark
+" endif
+colorscheme onedark
+
 "let g:gruvbox_italicize_strings = 0
 "let g:gruvbox_italics = 0
-colorscheme night-owl
 " highlight clear LineNr
 
 
