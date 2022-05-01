@@ -124,7 +124,7 @@ Plug 'nvim-telescope/telescope.nvim'
 " Completion
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/nvim-cmp', { 'commit': '3192a0c57837c1ec5bf298e4f3ec984c7d2d60c0' }
+Plug 'hrsh7th/nvim-cmp'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 "
 " Snippets
@@ -489,12 +489,7 @@ cmp.setup({
     end,
   },
 
-  mapping = {
-    ['<C-c>'] = function(fallback)
-      cmp.close()
-      fallback()
-    end,
-  },
+  mapping = cmp.mapping.preset.insert(),
 
   sources = {
     { name = 'nvim_lsp' },
@@ -502,8 +497,9 @@ cmp.setup({
     { name = 'buffer' },
   },
 
+
   completion = { keyword_length = 2 },
-  documentation = false
+  window = { documentation = false },
 })
 
 -- Setup lspconfig
@@ -534,7 +530,7 @@ endfor
 " =============================================================================
 " vim-tmux-navigator settings
 " =============================================================================
-" Write current buffer before navigating from vim to tmux pane
+" Write current buffer before navigating from vim to tmux pane;
 let g:tmux_navigator_save_on_switch = 1
 
 
