@@ -92,26 +92,27 @@ let g:plug_threads = 2
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-fugitive'
-Plug 'junegunn/goyo.vim'
+Plug 'dstein64/vim-startuptime', { 'on': 'StartupTime'}
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'xml', 'svg'] }
 Plug 'phaazon/hop.nvim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'andymass/vim-matchup'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-dadbod'
+Plug 'tpope/vim-dadbod', { 'on': 'DB' }
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-unimpaired'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'joshdick/onedark.vim'
-Plug 'andrewradev/splitjoin.vim'
+Plug 'andrewradev/splitjoin.vim', { 'on': ['SplitjoinJoin', 'SplitjoinSplit']}
 Plug 'dense-analysis/ale'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'numToStr/Comment.nvim'
-Plug 'kyazdani42/nvim-tree.lua'
+Plug 'kyazdani42/nvim-tree.lua', { 'on': 'NvimTreeToggle' }
 Plug 'mg979/vim-visual-multi'
 Plug 'mhinz/vim-startify'
 Plug 'sheerun/vim-polyglot'
@@ -286,7 +287,6 @@ require('nvim-tree').setup({
 EOF
 
 
-
 " =============================================================================
 " Ale settings
 " =============================================================================
@@ -359,7 +359,7 @@ EOF
 lua <<EOF
 local actions = require('telescope.actions')
 require('telescope').setup {
-  defaults = {
+  defaults = require('telescope.themes').get_ivy({
     mappings = {
       i = {
         ["<C-k>"] = actions.move_selection_previous,
@@ -373,14 +373,14 @@ require('telescope').setup {
     },
     prompt_prefix = "🔍",
     file_ignore_patterns = { "output/?.*%.csv", '__pycache__' },
-  },
+  }),
 }
 EOF
-nnoremap <silent> <Leader>f :Telescope git_files theme=get_ivy<CR>
-nnoremap <silent> <Leader>b :Telescope buffers theme=get_ivy<CR>
-nnoremap <silent> <Leader>l :Telescope live_grep theme=get_ivy<CR>
-nnoremap <silent> <Leader>; :Telescope current_buffer_fuzzy_find theme=get_ivy<CR>
-nnoremap <silent> gd :Telescope lsp_definitions theme=get_ivy<CR>
+nnoremap <silent> <Leader>f :Telescope git_files<CR>
+nnoremap <silent> <Leader>b :Telescope buffers<CR>
+nnoremap <silent> <Leader>l :Telescope live_grep<CR>
+nnoremap <silent> <Leader>; :Telescope current_buffer_fuzzy_find<CR>
+nnoremap <silent> gd :Telescope lsp_definitions<CR>
 
 
 " =============================================================================
@@ -586,9 +586,9 @@ nnoremap <silent> <Leader># :Goyo<CR>
 " treesitter settings
 " =============================================================================
 lua <<EOF
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter.configs').setup({
   highlight = {enable = {'python'}}
-}
+})
 EOF
 
 
