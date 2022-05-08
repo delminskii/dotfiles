@@ -124,6 +124,11 @@ _G.packer_plugins = {
     path = "/home/nikolay/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["material.vim"] = {
+    loaded = true,
+    path = "/home/nikolay/.local/share/nvim/site/pack/packer/start/material.vim",
+    url = "https://github.com/kaicataldo/material.vim"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/nikolay/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -144,10 +149,11 @@ _G.packer_plugins = {
     path = "/home/nikolay/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
-  ["onedark.vim"] = {
-    loaded = true,
-    path = "/home/nikolay/.local/share/nvim/site/pack/packer/start/onedark.vim",
-    url = "https://github.com/joshdick/onedark.vim"
+  ["packer.nvim"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/nikolay/.local/share/nvim/site/pack/packer/opt/packer.nvim",
+    url = "https://github.com/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
@@ -194,6 +200,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/nikolay/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-gruvbox8"] = {
+    loaded = true,
+    path = "/home/nikolay/.local/share/nvim/site/pack/packer/start/vim-gruvbox8",
+    url = "https://github.com/lifepillar/vim-gruvbox8"
   },
   ["vim-matchup"] = {
     loaded = true,
@@ -261,22 +272,22 @@ time([[Defining packer_plugins]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file SplitjoinJoin lua require("packer.load")({'splitjoin.vim'}, { cmd = "SplitjoinJoin", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file SplitjoinSplit lua require("packer.load")({'splitjoin.vim'}, { cmd = "SplitjoinSplit", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Goyo lua require("packer.load")({'goyo.vim'}, { cmd = "Goyo", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file StartupTime lua require("packer.load")({'vim-startuptime'}, { cmd = "StartupTime", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file DB lua require("packer.load")({'vim-dadbod'}, { cmd = "DB", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file SplitjoinSplit lua require("packer.load")({'splitjoin.vim'}, { cmd = "SplitjoinSplit", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Goyo lua require("packer.load")({'goyo.vim'}, { cmd = "Goyo", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file SplitjoinJoin lua require("packer.load")({'splitjoin.vim'}, { cmd = "SplitjoinJoin", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType html ++once lua require("packer.load")({'emmet-vim'}, { ft = "html" }, _G.packer_plugins)]]
-vim.cmd [[au FileType sql ++once lua require("packer.load")({'vim-uppercase-sql'}, { ft = "sql" }, _G.packer_plugins)]]
-vim.cmd [[au FileType xml ++once lua require("packer.load")({'emmet-vim'}, { ft = "xml" }, _G.packer_plugins)]]
-vim.cmd [[au FileType plsql ++once lua require("packer.load")({'vim-uppercase-sql'}, { ft = "plsql" }, _G.packer_plugins)]]
 vim.cmd [[au FileType svg ++once lua require("packer.load")({'emmet-vim'}, { ft = "svg" }, _G.packer_plugins)]]
+vim.cmd [[au FileType plsql ++once lua require("packer.load")({'vim-uppercase-sql'}, { ft = "plsql" }, _G.packer_plugins)]]
+vim.cmd [[au FileType sql ++once lua require("packer.load")({'vim-uppercase-sql'}, { ft = "sql" }, _G.packer_plugins)]]
+vim.cmd [[au FileType html ++once lua require("packer.load")({'emmet-vim'}, { ft = "html" }, _G.packer_plugins)]]
+vim.cmd [[au FileType xml ++once lua require("packer.load")({'emmet-vim'}, { ft = "xml" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

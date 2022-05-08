@@ -66,14 +66,14 @@ opt.termguicolors = true
 opt.guicursor = ''
 
 opt.directory = HOME .. '/.vim/files/swap//'
--- cmd([[
--- let g:python_host_prog = '/usr/bin/python2.7'
--- let g:python3_host_prog = '/usr/bin/python3.7'
--- ]])
 g.python_host_prog = '/usr/bin/python2.7'
 g.python3_host_prog = '/usr/bin/python3.7'
 
-cmd('colorscheme onedark')
+-- Colorscheme settings
+g.gruvbox_italicize_strings = 0
+local hour = tonumber(os.date('%H'))
+opt.bg = hour >= 7 and hour < 19 and 'light' or 'dark'
+cmd('colorscheme gruvbox8_soft')
 
 -- Visual mode pressing * or # searches for the current selection;
 map('v', '*', [[<CMD><C-u>call general#VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>]])
@@ -106,7 +106,7 @@ end
 
 -- <Leader>$n to move to tab$n, $n in [1;9]
 for i=1,9 do
-  map('n', 'Leader>' .. i, i .. 'gt')
+  map('n', string.format('<Leader>%i', i), string.format('%igt', i))
 end
 map('n', '<Leader>0', [[<CMD>tablast<CR>]])
 map('n', '<Leader>t', [[<CMD>tabnew<CR>]])
@@ -163,7 +163,7 @@ map('n', 'vE', 'vg_', {silent = false})
 -- =============================================================================
 vim.lsp.handlers['textDocument/publishDiagnostics'] = function() end
 map('n', '<Leader>h', [[<CMD>lua vim.lsp.buf.hover()<CR>]])
-map('n', 'F2>', [[<CMD>lua.vim.lsp.buf.rename()<CR>]])
+map('n', '<F2>', [[<CMD>lua vim.lsp.buf.rename()<CR>]])
 
 
 -- =============================================================================
@@ -196,30 +196,8 @@ require('nvim-tree').setup({
 -- =============================================================================
 -- Ale settings
 -- =============================================================================
--- cmd([[
--- let g:ale_set_highlights = 0
--- let g:ale_fix_on_save = 1
--- let g:ale_linters_explicit = 1
--- let g:ale_fixers = {
--- \   '*': ['remove_trailing_lines', 'trim_whitespace'],
--- \   'python': ['black', 'isort'],
--- \}
--- let g:ale_linters = {
--- \   'python': ['flake8'],
--- \}
--- let g:ale_python_black_options = '-l 79 --fast -t py37'
--- let g:ale_sign_column_always = 1
--- let g:ale_completion_enabled = 0
--- let g:ale_echo_delay = 200
--- let g:ale_sign_error = 'e'
--- let g:ale_sign_warning = 'w'
--- ]])
-cmd([[
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'python': ['black', 'isort'],
-\}
-]])
+g.ale_fixers = {python = {'black', 'isort'}}
+g.ale_fixers['*'] = {'remove_trailing_lines', 'trim_whitespace'}
 g.ale_set_highlights = 0
 g.ale_fix_on_save = 1
 g.ale_linters_explicit = 1
@@ -239,10 +217,6 @@ map('n', ']w', '<Plug>(ale_next_wrap_warning)', {noremap = false})
 -- =============================================================================
 -- Emmet settings
 -- =============================================================================
--- cmd([[
--- let g:user_emmet_leader_key='<TAB>'
--- let g:user_emmet_install_global = 0
--- ]])
 g.user_emmet_leader_key = '<TAB>'
 g.user_emmet_install_global = 0
 
@@ -344,8 +318,6 @@ end
 -- <Leader>dc will do (yank & comment & paste);
 -- Example: <Leader>dc3j will copy & comment 4 lines (current+3 below) and
 -- paste them after
--- A.nvim_set_keymap('x', '<Leader>dc', '<ESC><CMD>lua ___gdc(vim.fn.visualmode())<CR>', opt)
--- A.nvim_set_keymap('n', '<Leader>dc', '<CMD>set operatorfunc=v:lua.___gdc<CR>g@', opt)
 map('x', '<Leader>dc', [[<ESC><CMD>lua ___gdc(vim.fn.visualmode())<CR>]])
 map('n', '<Leader>dc', [[<CMD>set operatorfunc=v:lua.___gdc<CR>g@]])
 
@@ -353,28 +325,23 @@ map('n', '<Leader>dc', [[<CMD>set operatorfunc=v:lua.___gdc<CR>g@]])
 -- =============================================================================
 -- Startify settings
 -- =============================================================================
-cmd([[
-let g:startify_session_dir = '~/.vim/session'
-let g:startify_session_persistence = 1
-let g:startify_bookmarks = [
-    \ {'v': '~/.config/nvim/init.lua'},
-    \ {'b': '~/.bashrc'},
-    \ {'x': '~/.Xresources'},
-    \ {'w': '~/.wgetrc'},
-    \ {'s': '~/.ssh/config'},
-    \ {'o': '~/.config/openbox/'},
-    \ {'t': '~/.tmux.conf'},
-    \ {'g': '~/.gitconfig'},
-    \ ]
-let g:startify_list_order = [
-    \ ['    MRU files:'],
-    \ 'files',
-    \ ['    Bookmarks'],
-    \ 'bookmarks',
-    \ ['    Sessions'],
-    \ 'sessions',
-    \ ]
-]])
+g.startify_session_dir = '~/.vim/session'
+g.startify_session_persistence = 1
+g.startify_bookmarks = {
+    {v = '~/.config/nvim/init.lua'},
+    {b = '~/.bashrc'},
+    {x = '~/.Xresources'},
+    {w = '~/.wgetrc'},
+    {s = '~/.ssh/config'},
+    {o = '~/.config/openbox/'},
+    {t = '~/.tmux.conf'},
+    {g = '~/.gitconfig'},
+}
+g.startify_lists = {
+    {type = 'files',        header = {'   MRU Files'}},
+    {type = 'bookmarks',    header = {'   Bookmarks'}},
+    {type = 'sessions',     header = {'   Sessions'}},
+}
 map('n', '<Leader>sr', [[<CMD>Startify<CR>]])
 map('n', '<Leader>ss', ':SSave<Space>', {silent = false})
 map('n', '<Leader>sd', ':SDelete<Space>', {silent = false})
@@ -462,12 +429,6 @@ map('v', '<Leader>db', [[<CMD>DB<CR>]])
 -- ============================================================================
 -- ultisnips settings
 -- =============================================================================
--- cmd([[
--- let g:UltiSnipsExpandTrigger='<tab>'
--- let g:UltiSnipsJumpForwardTrigger='<tab>'
--- let g:UltiSnipsEditSplit="vertical"
--- let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/user_snippets']
--- ]])
 g.UltiSnipsExpandTrigger = '<tab>'
 g.UltiSnipsJumpForwardTrigger = '<tab>'
 g.UltiSnipsEditSplit = 'vertical'
@@ -478,11 +439,6 @@ map('n', '<Leader>ue', [[<CMD>UltiSnipsEdit<CR>]])
 -- ============================================================================
 -- vim-doge settings
 -- =============================================================================
--- cmd([[
--- let g:doge_python_settings = {
--- \  'single_quotes': 1
--- \}
--- ]])
 g.doge_python_settings = {single_quotes = 0}
 
 

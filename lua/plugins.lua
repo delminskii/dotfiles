@@ -10,6 +10,7 @@ packer.init({
 
 return packer.startup(
 function()
+  use {'wbthomason/packer.nvim', opt = true}
   use 'tpope/vim-fugitive'
   use {'dstein64/vim-startuptime', cmd = 'StartupTime'}
   use {'junegunn/goyo.vim',  cmd = 'Goyo'}
@@ -24,7 +25,8 @@ function()
   use 'tpope/vim-unimpaired'
   use 'nvim-lualine/lualine.nvim'
   use 'neovim/nvim-lspconfig'
-  use 'joshdick/onedark.vim'
+  use 'kaicataldo/material.vim'
+  use 'lifepillar/vim-gruvbox8'
 
   use {'andrewradev/splitjoin.vim', cmd = {'SplitjoinJoin', 'SplitjoinSplit'}}
   use 'dense-analysis/ale'
@@ -33,8 +35,7 @@ function()
   use 'benmills/vimux'
   use {'kkoomen/vim-doge',  run = ':call doge#install()'}
   use 'numToStr/Comment.nvim'
-  -- use {'kyazdani42/nvim-tree.lua', cmd = 'NvimTreeToggle'}
-  use {'kyazdani42/nvim-tree.lua'}
+  use 'kyazdani42/nvim-tree.lua'
   use 'mg979/vim-visual-multi'
   use 'mhinz/vim-startify'
   use 'sheerun/vim-polyglot'
@@ -63,6 +64,7 @@ function()
   -- use 'ajmwagar/vim-deus'
   -- use 'morhetz/gruvbox'
   -- use 'lifepillar/vim-gruvbox8' ^^^
+  -- use lifepillar/vim-solarized8
   -- use 'RRethy/nvim-base16' # treesitter suport
   -- use 'haishanh/night-owl.vim'
   -- use 'sjl/badwolf'
