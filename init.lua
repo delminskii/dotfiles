@@ -8,6 +8,8 @@ local hjkl = {'h', 'j', 'k', 'l'}
 require('plugins')
 require('functions')
 
+local HOME = os.getenv('HOME')
+
 -----------COMMON SETTINGS-----------
 cmd([[
 filetype plugin indent on
@@ -31,7 +33,6 @@ opt.display = 'lastline'
 opt.completeopt = 'menuone,noinsert,noselect'
 opt.wildmode = 'list:longest,full'
 
--- cmd('set noshowmode')
 opt.showmode = false
 opt.showcmd = true
 
@@ -64,7 +65,7 @@ opt.termguicolors = true
 -- disable change of curso shape
 opt.guicursor = ''
 
-opt.directory = os.getenv('HOME') .. '/.vim/files/swap//'
+opt.directory = HOME .. '/.vim/files/swap//'
 -- cmd([[
 -- let g:python_host_prog = '/usr/bin/python2.7'
 -- let g:python3_host_prog = '/usr/bin/python3.7'
@@ -75,8 +76,8 @@ g.python3_host_prog = '/usr/bin/python3.7'
 cmd('colorscheme onedark')
 
 -- Visual mode pressing * or # searches for the current selection;
-map('v', '*', ":<C-u>call general#VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>")
-map('v', '#', ":<C-u>call general#VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>")
+map('v', '*', [[<CMD><C-u>call general#VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>]])
+map('v', '#', [[<CMD><C-u>call general#VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>]])
 
 -- Increase/decrease windows' size (up/right +, bot/left -)
 map('n', '<up>', '10<C-w>+')
@@ -85,18 +86,18 @@ map('n', '<left>', '10<C-w><')
 map('n', '<right>', '10<C-w>>')
 
 -- Clear search-highlight
-map('n', '<Leader>/', ':nohlsearch<CR>')
+map('n', '<Leader>/', [[<CMD>nohlsearch<CR>]])
 
 -- Use Ctrl-[hjkl] to select an active split!
 for _,v in pairs(hjkl) do
-  map('n', string.format('<C-%s>', v), string.format(':wincmd %s<CR>', v))
+  map('n', string.format('<C-%s>', v), string.format([[<CMD>wincmd %s<CR>]], v))
 end
 
 -- Open new blank file
-map('n', 'n<C-h>', ':lefta vsp new<CR>')
-map('n', 'n<C-j>', ':bel sp new<CR>')
-map('n', 'n<C-k>', ':abo sp new<CR>')
-map('n', 'n<C-l>', ':rightb vsp new<CR>')
+map('n', 'n<C-h>', [[<CMD>lefta vsp new<CR>]])
+map('n', 'n<C-j>', [[<CMD>bel sp new<CR>]])
+map('n', 'n<C-k>', [[<CMD>abo sp new<CR>]])
+map('n', 'n<C-l>', [[<CMD>rightb vsp new<CR>]])
 
 -- Move window <S-A-hjkl>
 for _,v in pairs(hjkl) do
@@ -105,11 +106,11 @@ end
 
 -- <Leader>$n to move to tab$n, $n in [1;9]
 for i=1,9 do
-  map('n', string.format('<Leader>%i', i), string.format('%igt', i))
+  map('n', 'Leader>' .. i, i .. 'gt')
 end
-map('n', '<Leader>0', ':tablast<CR>')
-map('n', '<Leader>t', ':tabnew<CR>')
-map('n', '<Leader>w', ':tabclose<CR>')
+map('n', '<Leader>0', [[<CMD>tablast<CR>]])
+map('n', '<Leader>t', [[<CMD>tabnew<CR>]])
+map('n', '<Leader>w', [[<CMD>tabclose<CR>]])
 
 -- Prettify valid JSON contents
 map('n', '=j', ':%!python -m json.tool<CR>', {silent = false})
@@ -118,11 +119,11 @@ map('v', '=j', ':%!python -m json.tool<CR>', {silent = false})
 -- Move a line of text using Alt+[jk]
 map('n', '<M-j>', 'mz:m+<cr>`z')
 map('n', '<M-k>', 'mz:m-2<cr>`z')
-map('v', '<M-j>', ":m'>+<cr>`<my`>mzgv`yo`z")
-map('v', '<M-k>', ":m'<-2<cr>`>my`<mzgv`yo`z")
+map('v', '<M-j>', [[<CMD>m'>+<cr>`<my`>mzgv`yo`z]])
+map('v', '<M-k>', [[<CMD>m'<-2<cr>`>my`<mzgv`yo`z]])
 
 -- Save current buffer into current opened file
-map('n', '<F1>', ':update<CR>', {silent = false})
+map('n', '<F1>', [[<CMD>update<CR>]], {silent = false})
 
 -- Indent shortcut
 map('n', '>', '>>')
@@ -147,8 +148,8 @@ map('n', 'Y', 'y$', {silent = false})
 map('v', '<Leader>y', '"+y')
 
 -- Quit
-map('n', '<Leader>q', ':q<CR>', {silent = false})
-map('n', '<Leader>Q', ':q!<CR>', {silent = false})
+map('n', '<Leader>q', [[<CMD>q<CR>]], {silent = false})
+map('n', '<Leader>Q', [[<CMD>q!<CR>]], {silent = false})
 
 -- Leaving insert mode
 map('i', 'jk', '<ESC>', {silent = false})
@@ -161,25 +162,23 @@ map('n', 'vE', 'vg_', {silent = false})
 -- LSP stuff
 -- =============================================================================
 vim.lsp.handlers['textDocument/publishDiagnostics'] = function() end
-map('n', '<Leader>h', 'v:lua vim.lsp.buf.hover()')
-map('n', 'F2>', 'v:lua vim.lsp.buf.rename()')
+map('n', '<Leader>h', [[<CMD>lua vim.lsp.buf.hover()<CR>]])
+map('n', 'F2>', [[<CMD>lua.vim.lsp.buf.rename()<CR>]])
 
 
 -- =============================================================================
 -- nvim-tree settings
 -- =============================================================================
-cmd([[
-let g:nvim_tree_highlight_opened_files = 1
-let g:nvim_tree_add_trailing = 1
-]])
-map('n', '<Leader>n', ':NvimTreeToggle<CR>')
+g.nvim_tree_highlight_opened_files = 1
+g.nvim_tree_add_trailing = 1
+map('n', '<Leader>n', [[<CMD>NvimTreeToggle<CR>]])
 require('nvim-tree').setup({
   view = {
     mappings = {
       list = {
         -- using <C-s> instead
-        { key = "<C-s>", action = "split" },
-        { key = "<C-x>", action = "" },
+        {key = '<C-s>', action = 'split'},
+        {key = '<C-x>', action = ''},
       }
     }
   },
@@ -188,33 +187,49 @@ require('nvim-tree').setup({
     enable = false,
   },
   disable_netrw = true,
-  update_focused_file = { enable = true },
+  update_focused_file = {enable = true},
   update_cwd = true,
-  filters = { dotfiles = true },
+  filters = {dotfiles = true},
 })
 
 
 -- =============================================================================
 -- Ale settings
 -- =============================================================================
+-- cmd([[
+-- let g:ale_set_highlights = 0
+-- let g:ale_fix_on_save = 1
+-- let g:ale_linters_explicit = 1
+-- let g:ale_fixers = {
+-- \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+-- \   'python': ['black', 'isort'],
+-- \}
+-- let g:ale_linters = {
+-- \   'python': ['flake8'],
+-- \}
+-- let g:ale_python_black_options = '-l 79 --fast -t py37'
+-- let g:ale_sign_column_always = 1
+-- let g:ale_completion_enabled = 0
+-- let g:ale_echo_delay = 200
+-- let g:ale_sign_error = 'e'
+-- let g:ale_sign_warning = 'w'
+-- ]])
 cmd([[
-let g:ale_set_highlights = 0
-let g:ale_fix_on_save = 1
-let g:ale_linters_explicit = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'python': ['black', 'isort'],
 \}
-let g:ale_linters = {
-\   'python': ['flake8'],
-\}
-let g:ale_python_black_options = '-l 79 --fast -t py37'
-let g:ale_sign_column_always = 1
-let g:ale_completion_enabled = 0
-let g:ale_echo_delay = 200
-let g:ale_sign_error = 'e'
-let g:ale_sign_warning = 'w'
 ]])
+g.ale_set_highlights = 0
+g.ale_fix_on_save = 1
+g.ale_linters_explicit = 1
+g.ale_linters = {python = {'flake8'}}
+g.ale_python_black_options = '-l 79 --fast -t py37'
+g.ale_sign_column_always = 1
+g.ale_completion_enabled = 0
+g.ale_echo_delay = 200
+g.ale_sign_error = 'e'
+g.ale_sign_warning = 'w'
 map('n', '[e', '<Plug>(ale_previous_wrap_error)', {noremap = false})
 map('n', ']e', '<Plug>(ale_next_wrap_error)', {noremap = false})
 map('n', '[w', '<Plug>(ale_previous_wrap_warning)', {noremap = false})
@@ -224,10 +239,12 @@ map('n', ']w', '<Plug>(ale_next_wrap_warning)', {noremap = false})
 -- =============================================================================
 -- Emmet settings
 -- =============================================================================
-cmd([[
-let g:user_emmet_leader_key='<TAB>'
-let g:user_emmet_install_global = 0
-]])
+-- cmd([[
+-- let g:user_emmet_leader_key='<TAB>'
+-- let g:user_emmet_install_global = 0
+-- ]])
+g.user_emmet_leader_key = '<TAB>'
+g.user_emmet_install_global = 0
 
 
 -- =============================================================================
@@ -260,14 +277,14 @@ require('telescope').setup {
       }
     },
     prompt_prefix = "🔍",
-    file_ignore_patterns = { "output/?.*%.csv", '__pycache__' },
+    file_ignore_patterns = {"output/?.*%.csv", '__pycache__'},
   }),
 }
-map('n', '<Leader>f', ':Telescope git_files<CR>')
-map('n', '<Leader>b', ':Telescope buffers<CR>')
-map('n', '<Leader>l', ':Telescope live_grep<CR>')
-map('n', '<Leader>;', ':Telescope current_buffer_fuzzy_find<CR>')
-map('n', 'gd', ':Telescope lsp_definitions<CR>')
+map('n', '<Leader>f', [[<CMD>Telescope git_files<CR>]])
+map('n', '<Leader>b', [[<CMD>Telescope buffers<CR>]])
+map('n', '<Leader>l', [[<CMD>Telescope live_grep<CR>]])
+map('n', '<Leader>;', [[<CMD>Telescope current_buffer_fuzzy_find<CR>]])
+map('n', 'gd', [[<CMD>Telescope lsp_definitions<CR>]])
 
 
 -- =============================================================================
@@ -275,7 +292,7 @@ map('n', 'gd', ':Telescope lsp_definitions<CR>')
 -- =============================================================================
 local U = require('Comment.utils')
 local A = vim.api
-local opt = { silent = true, noremap = true }
+local opt = {silent = true, noremap = true}
 require('Comment').setup({
   ignore = '^$',
 
@@ -329,8 +346,8 @@ end
 -- paste them after
 -- A.nvim_set_keymap('x', '<Leader>dc', '<ESC><CMD>lua ___gdc(vim.fn.visualmode())<CR>', opt)
 -- A.nvim_set_keymap('n', '<Leader>dc', '<CMD>set operatorfunc=v:lua.___gdc<CR>g@', opt)
-map('x', '<Leader>dc', '<ESC><CMD>lua ___gdc(vim.fn.visualmode())<CR>')
-map('n', '<Leader>dc', '<CMD>set operatorfunc=v:lua.___gdc<CR>g@')
+map('x', '<Leader>dc', [[<ESC><CMD>lua ___gdc(vim.fn.visualmode())<CR>]])
+map('n', '<Leader>dc', [[<CMD>set operatorfunc=v:lua.___gdc<CR>g@]])
 
 
 -- =============================================================================
@@ -358,7 +375,7 @@ let g:startify_list_order = [
     \ 'sessions',
     \ ]
 ]])
-map('n', '<Leader>sr', ':Startify<CR>')
+map('n', '<Leader>sr', [[<CMD>Startify<CR>]])
 map('n', '<Leader>ss', ':SSave<Space>', {silent = false})
 map('n', '<Leader>sd', ':SDelete<Space>', {silent = false})
 map('n', '<Leader>sl', ':SLoad<Space>', {silent = false})
@@ -371,22 +388,20 @@ map('n', '<Leader>sc', ':SClose<Space>', {silent = false})
 local cmp = require('cmp')
 cmp.setup({
   snippet = {
-    expand = function(args)
-      vim.fn["UltiSnips#Anon"](args.body)
-    end,
+    expand = function(args) vim.fn['UltiSnips#Anon'](args.body) end,
   },
 
   mapping = cmp.mapping.preset.insert(),
 
   sources = {
-    { name = 'nvim_lsp' },
-    { name = 'ultisnips' },
-    { name = 'buffer' },
+    {name = 'nvim_lsp'},
+    {name = 'ultisnips'},
+    {name = 'buffer'},
   },
 
 
-  completion = { keyword_length = 2 },
-  window = { documentation = false },
+  completion = {keyword_length = 2},
+  window = {documentation = false},
 })
 -- Setup lspconfig
 require('lspconfig').pylsp.setup {
@@ -398,15 +413,15 @@ require('lspconfig').pylsp.setup {
 -- hop settings
 -- =============================================================================
 require('hop').setup()
-map('n', 's', ':HopChar1<CR>')
+map('n', 's', [[<CMD>HopChar1<CR>]])
 
 
 -- =============================================================================
 -- Surround settings
 -- =============================================================================
 for _,br in pairs({'"', "'", ')'}) do
-  map('n', '<Leader>' .. br, 'ysiw' .. br)
-  map('n', '<Leader>z' .. br, 'vg_S' .. br .. '<ESC>A,<ESC>')
+  map('n', '<Leader>' .. br, 'ysiw' .. br, {noremap = false})
+  map('n', '<Leader>z' .. br, 'vg_S' .. br .. '<ESC>A,<ESC>', {noremap = false})
 end
 
 
@@ -423,51 +438,58 @@ g.tmux_navigator_save_on_switch = 1
 -- =============================================================================
 g.VimuxHeight = 25
 g.VimuxExpandCommand = 1
-map('n', '<Leader>vc', ':call VimuxPromptCommand()<CR>')
-map('n', '<Leader>vq', ':call VimuxCloseRunner()<CR>')
-map('n', '<Leader>vl', ':call VimuxClearTerminalScreen()<CR>')
+map('n', '<Leader>vc', [[<CMD>call VimuxPromptCommand()<CR>]])
+map('n', '<Leader>vq', [[<CMD>call VimuxCloseRunner()<CR>]])
+map('n', '<Leader>vl', [[<CMD>call VimuxClearTerminalScreen()<CR>]])
 
 
 -- =============================================================================
 -- polyglot settings
 -- =============================================================================
-cmd('let g:python_highlight_func_calls = 0')
+-- cmd('let g:python_highlight_func_calls = 0')
+g.python_highlight_func_calls = 0
 
 
 -- =============================================================================
 -- dadbod settings
 -- =============================================================================
-cmd('let g:db = "sqlite:db.sqlite3"')
-map('n', '<Leader>db', ':DB<CR>')
-map('v', '<Leader>db', ':DB<CR>')
+-- cmd('let g:db = "sqlite:db.sqlite3"')
+g.db = 'sqlite:db.sqlite3'
+map('n', '<Leader>db', [[<CMD>DB<CR>]])
+map('v', '<Leader>db', [[<CMD>DB<CR>]])
 
 
 -- ============================================================================
 -- ultisnips settings
 -- =============================================================================
-cmd([[
-let g:UltiSnipsExpandTrigger='<tab>'
-let g:UltiSnipsJumpForwardTrigger='<tab>'
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/user_snippets']
-]])
-map('n', '<Leader>ue', ':UltiSnipsEdit<CR>')
+-- cmd([[
+-- let g:UltiSnipsExpandTrigger='<tab>'
+-- let g:UltiSnipsJumpForwardTrigger='<tab>'
+-- let g:UltiSnipsEditSplit="vertical"
+-- let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/user_snippets']
+-- ]])
+g.UltiSnipsExpandTrigger = '<tab>'
+g.UltiSnipsJumpForwardTrigger = '<tab>'
+g.UltiSnipsEditSplit = 'vertical'
+g.UltiSnipsSnippetDirectories = {HOME .. '/.vim/user_snippets'}
+map('n', '<Leader>ue', [[<CMD>UltiSnipsEdit<CR>]])
 
 
 -- ============================================================================
 -- vim-doge settings
 -- =============================================================================
-cmd([[
-let g:doge_python_settings = {
-\  'single_quotes': 1
-\}
-]])
+-- cmd([[
+-- let g:doge_python_settings = {
+-- \  'single_quotes': 1
+-- \}
+-- ]])
+g.doge_python_settings = {single_quotes = 0}
 
 
 -- ============================================================================
 -- goyo settings
 -- =============================================================================
-map('n', '<Leader>#', ':Goyo<CR>')
+map('n', '<Leader>#', [[<CMD>Goyo<CR>]])
 
 
 -- ============================================================================
@@ -491,14 +513,14 @@ function! FugitiveToggle() abort
   endtry
 endfunction
 ]])
-map('n', '<Leader>g', ':call FugitiveToggle()<CR>', def_opts)
+map('n', '<Leader>g', [[<CMD>call FugitiveToggle()<CR>]])
 
 
 -- =============================================================================
 -- Augroup, autocmd
 -- =============================================================================
 local groupname = 'init_autocmd'
-vim.api.nvim_create_augroup(groupname, { clear = true })
+vim.api.nvim_create_augroup(groupname, {clear = true})
 
 -- execute scripts by <Leader>e
 local filetypes_executors = {
@@ -513,7 +535,7 @@ for filetype, executor in pairs(filetypes_executors) do
         desc = 'Executes ' .. filetype .. ' files by <Leader>e',
         group = groupname,
         pattern = filetype,
-        command = string.format('nnoremap <Leader>e :lua RunWith("%s")<CR>', executor),
+        command = string.format([[nnoremap <Leader>e <CMD>lua RunWith("%s")<CR>]], executor),
         once = true
     })
 end
@@ -521,31 +543,31 @@ au('FileType', {
     desc = 'Executes Lua files by <Leader>e',
     group = groupname,
     pattern = 'lua',
-    command = 'nnoremap <Leader>e :w<CR> :luafile %<CR>',
+    command = [[nnoremap <Leader>e <CMD>w<CR> <CMD>luafile %<CR>]],
     once = true
 })
 au('FileType', {
     desc = 'Emmet for tags',
     group = groupname,
-    pattern = 'html,xml,css,svg,htmldjango',
+    pattern = {'html', 'xml', 'css', 'svg', 'htmldjango'},
     command = 'EmmetInstall',
     once = true
 })
 au('BufWritePost', {
-    desc = 'Source init.lua',
+    desc = 'Sources init.lua',
     group = groupname,
-    pattern = os.getenv('HOME') .. '/.config/nvim/init.lua',
-    command = 'source ' .. os.getenv('HOME') .. '/.config/nvim/init.lua | PackerCompile',
+    pattern = HOME .. '/.config/nvim/init.lua',
+    command = 'source ' .. HOME .. '/.config/nvim/init.lua | PackerCompile',
     once = true
 })
 au('BufReadPost', {
-    desc = 'Return to last edit position when opening files (You want this!)',
+    desc = 'Returns to last edit position when opening files (You want this!)',
     group = groupname,
     command = [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]],
     once = true
 })
 au('BufEnter', {
-    desc = 'Auto close nvim tree if it is alone',
+    desc = 'Auto closes nvim tree if it is alone',
     group = groupname,
     command = "if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif",
     once = true,

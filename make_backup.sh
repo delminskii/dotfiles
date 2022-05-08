@@ -38,8 +38,6 @@ do
         elif [[ $file == *"scripts"* ]]
         then
             dest_dir="$BACKUP_FOLDER/scripts"
-        else
-            echo "file: '$file'"
         fi
         cp -r $file $dest_dir
         echo "$file is backuped." >>$BACKUP_LOGFILE
