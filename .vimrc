@@ -70,13 +70,6 @@ else
   let &listchars = 'tab:> ,extends:>,precedes:<,nbsp:.'
 endif
 
-
-" The fish shell is not very compatible to other shells and unexpectedly
-" breaks things that use 'shell'.
-if &shell =~# 'fish$'
-  set shell=/bin/bash
-endif
-
 " run current script
 function RunWith(command)
     :w
@@ -98,13 +91,13 @@ Plug 'mattn/emmet-vim', { 'for': ['html', 'xml', 'svg'] }
 Plug 'phaazon/hop.nvim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'andymass/vim-matchup'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-dadbod', { 'on': 'DB' }
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-unimpaired'
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'joshdick/onedark.vim'
+plug 'tpope/vim-surround'
+plug 'tpope/vim-dadbod', { 'on': 'db' }
+plug 'tpope/vim-abolish'
+plug 'tpope/vim-unimpaired'
+plug 'nvim-lualine/lualine.nvim'
+plug 'neovim/nvim-lspconfig'
+plug 'joshdick/onedark.vim'
 Plug 'andrewradev/splitjoin.vim', { 'on': ['SplitjoinJoin', 'SplitjoinSplit']}
 Plug 'dense-analysis/ale'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
