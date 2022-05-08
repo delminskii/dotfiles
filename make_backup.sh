@@ -41,7 +41,7 @@ do
         else
             echo "file: '$file'"
         fi
-        cp $file $dest_dir
+        cp -r $file $dest_dir
         echo "$file is backuped." >>$BACKUP_LOGFILE
     else
         echo "ERROR: $file isn't backuped." >>$BACKUP_LOGFILE
