@@ -16,7 +16,8 @@ function()
   use {'junegunn/goyo.vim',  cmd = 'Goyo'}
   use {'mattn/emmet-vim', ft = {'html', 'xml', 'svg'}}
   use 'phaazon/hop.nvim'
-  use 'jiangmiao/auto-pairs'
+  -- use 'jiangmiao/auto-pairs'
+  use 'steelsojka/pears.nvim'
   use 'andymass/vim-matchup'
 
   use 'tpope/vim-surround'

@@ -113,7 +113,7 @@ export LC_CTYPE=en_US.UTF-8
 export VISUAL=nvim.appimage
 export EDITOR="$VISUAL"
 
-export PATH=~/.local/bin:$PATH
+export PATH=~/.local/bin:/usr/local/go/bin:$PATH
 
 # export PATH="$HOME/.pyenv/bin:$PATH"
 # eval "$(pyenv init --path)"

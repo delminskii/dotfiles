@@ -11,10 +11,10 @@ require('functions')
 local HOME = os.getenv('HOME')
 
 -----------COMMON SETTINGS-----------
-cmd([[
-filetype plugin indent on
-syntax on
-]])
+-- cmd([[
+-- filetype plugin indent on
+-- syntax on
+-- ]])
 opt.autoread = true
 opt.number = true
 opt.expandtab = true
@@ -86,11 +86,11 @@ map('n', '<left>', '10<C-w><')
 map('n', '<right>', '10<C-w>>')
 
 -- Clear search-highlight
-map('n', '<Leader>/', [[<CMD>nohlsearch<CR>]])
+map('n', '<Leader>/', [[<CMD>lua vim.opt.hlsearch = false<CR>]])
 
 -- Use Ctrl-[hjkl] to select an active split!
 for _,v in pairs(hjkl) do
-  map('n', string.format('<C-%s>', v), string.format([[<CMD>wincmd %s<CR>]], v))
+  map('n', ('<C-%s>'):format(v), ([[<CMD>wincmd %s<CR>]]):format(v))
 end
 
 -- Open new blank file
@@ -101,12 +101,12 @@ map('n', 'n<C-l>', [[<CMD>rightb vsp new<CR>]])
 
 -- Move window <S-A-hjkl>
 for _,v in pairs(hjkl) do
-  map('n', string.format('<S-M-%s>', v), string.format('<C-W>%s', string.upper(v)))
+  map('n', ('<S-M-%s>'):format(v), ('<C-W>%s'):format(v:upper()))
 end
 
 -- <Leader>$n to move to tab$n, $n in [1;9]
 for i=1,9 do
-  map('n', string.format('<Leader>%i', i), string.format('%igt', i))
+  map('n', '<Leader>' .. i, i .. 'gt')
 end
 map('n', '<Leader>0', [[<CMD>tablast<CR>]])
 map('n', '<Leader>t', [[<CMD>tabnew<CR>]])
@@ -154,7 +154,7 @@ map('n', '<Leader>Q', [[<CMD>q!<CR>]], {silent = false})
 -- Leaving insert mode
 map('i', 'jk', '<ESC>', {silent = false})
 
--- better visual til the end$
+-- Better visual til the end$
 map('n', 'vE', 'vg_', {silent = false})
 
 
@@ -186,6 +186,7 @@ require('nvim-tree').setup({
     ignore = true,
     enable = false,
   },
+  reload_on_bufenter = true,
   disable_netrw = true,
   update_focused_file = {enable = true},
   update_cwd = true,
@@ -226,7 +227,8 @@ g.user_emmet_install_global = 0
 -- =============================================================================
 require('lualine').setup{
   options = {
-    theme = 'auto',
+    -- theme = 'auto',
+    theme = 'gruvbox',
     section_separators = '',
     component_separators = '',
   },
@@ -243,7 +245,7 @@ require('telescope').setup {
       i = {
         ["<C-k>"] = actions.move_selection_previous,
         ["<C-j>"] = actions.move_selection_next,
-        ["<C-[>"] = actions.close,
+        ["<Esc>"] = actions.close,
 
         -- using C-s instead
         ["<C-x"] = false,
@@ -449,6 +451,12 @@ map('n', '<Leader>#', [[<CMD>Goyo<CR>]])
 
 
 -- ============================================================================
+-- pears.nvim settings
+-- =============================================================================
+require('pears').setup()
+
+
+-- ============================================================================
 -- treesitter settings
 -- =============================================================================
 require('nvim-treesitter.configs').setup({
@@ -485,13 +493,14 @@ local filetypes_executors = {
     sh = 'bash',
     javascript = 'node',
     ruby = 'ruby',
+    go = 'go run'
 }
 for filetype, executor in pairs(filetypes_executors) do
     au('FileType', {
         desc = 'Executes ' .. filetype .. ' files by <Leader>e',
         group = groupname,
         pattern = filetype,
-        command = string.format([[nnoremap <Leader>e <CMD>lua RunWith("%s")<CR>]], executor),
+        command = ([[nnoremap <Leader>e <CMD>lua RunWith("%s")<CR>]]):format(executor),
         once = true
     })
 end
@@ -500,32 +509,30 @@ au('FileType', {
     group = groupname,
     pattern = 'lua',
     command = [[nnoremap <Leader>e <CMD>w<CR> <CMD>luafile %<CR>]],
-    once = true
 })
 au('FileType', {
     desc = 'Emmet for tags',
     group = groupname,
     pattern = {'html', 'xml', 'css', 'svg', 'htmldjango'},
     command = 'EmmetInstall',
-    once = true
 })
 au('BufWritePost', {
     desc = 'Sources init.lua',
     group = groupname,
     pattern = HOME .. '/.config/nvim/init.lua',
     command = 'source ' .. HOME .. '/.config/nvim/init.lua | PackerCompile',
-    once = true
 })
 au('BufReadPost', {
     desc = 'Returns to last edit position when opening files (You want this!)',
     group = groupname,
+    pattern = '*',
     command = [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]],
     once = true
 })
 au('BufEnter', {
     desc = 'Auto closes nvim tree if it is alone',
     group = groupname,
+    pattern = '*',
     command = "if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif",
-    once = true,
     nested = true
 })
