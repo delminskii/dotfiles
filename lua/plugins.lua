@@ -12,7 +12,6 @@ return packer.startup(
 function()
   use {'wbthomason/packer.nvim', opt = true}
   use 'tpope/vim-fugitive'
-  use {'dstein64/vim-startuptime', cmd = 'StartupTime'}
   use {'junegunn/goyo.vim',  cmd = 'Goyo'}
   use {'mattn/emmet-vim', ft = {'html', 'xml', 'svg'}}
   use 'phaazon/hop.nvim'
@@ -41,6 +40,7 @@ function()
   use 'mhinz/vim-startify'
   use 'sheerun/vim-polyglot'
   use {'alcesleo/vim-uppercase-sql', ft = {'plsql', 'sql'}}
+  use 'lukas-reineke/indent-blankline.nvim'
 
   -- Telescope
   use 'nvim-lua/plenary.nvim'

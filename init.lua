@@ -11,10 +11,6 @@ require('functions')
 local HOME = os.getenv('HOME')
 
 -----------COMMON SETTINGS-----------
--- cmd([[
--- filetype plugin indent on
--- syntax on
--- ]])
 opt.autoread = true
 opt.number = true
 opt.expandtab = true
@@ -72,7 +68,7 @@ g.python3_host_prog = '/usr/bin/python3.7'
 -- Colorscheme settings
 g.gruvbox_italicize_strings = 0
 local hour = tonumber(os.date('%H'))
-opt.bg = hour >= 7 and hour < 19 and 'light' or 'dark'
+opt.bg = hour >= 7 and hour < 18 and 'light' or 'dark'
 cmd('colorscheme gruvbox8_soft')
 
 -- Visual mode pressing * or # searches for the current selection;
@@ -169,8 +165,6 @@ map('n', '<F2>', [[<CMD>lua vim.lsp.buf.rename()<CR>]])
 -- =============================================================================
 -- nvim-tree settings
 -- =============================================================================
-g.nvim_tree_highlight_opened_files = 1
-g.nvim_tree_add_trailing = 1
 map('n', '<Leader>n', [[<CMD>NvimTreeToggle<CR>]])
 require('nvim-tree').setup({
   view = {
@@ -181,6 +175,10 @@ require('nvim-tree').setup({
         {key = '<C-x>', action = ''},
       }
     }
+  },
+  renderer = {
+    highlight_opened_files = "name",
+    add_trailing = true
   },
   git = {
     ignore = true,
@@ -197,12 +195,15 @@ require('nvim-tree').setup({
 -- =============================================================================
 -- Ale settings
 -- =============================================================================
-g.ale_fixers = {python = {'black', 'isort'}}
-g.ale_fixers['*'] = {'remove_trailing_lines', 'trim_whitespace'}
+g.ale_fixers = {
+  ['*'] = {'remove_trailing_lines', 'trim_whitespace'},
+  python = {'black', 'isort'},
+  go = 'gofmt'
+}
 g.ale_set_highlights = 0
 g.ale_fix_on_save = 1
 g.ale_linters_explicit = 1
-g.ale_linters = {python = {'flake8'}}
+g.ale_linters = {python = {'flake8'}, go = {'gopls'}}
 g.ale_python_black_options = '-l 79 --fast -t py37'
 g.ale_sign_column_always = 1
 g.ale_completion_enabled = 0
@@ -368,14 +369,14 @@ cmp.setup({
     {name = 'buffer'},
   },
 
-
   completion = {keyword_length = 2},
   window = {documentation = false},
 })
 -- Setup lspconfig
-require('lspconfig').pylsp.setup {
-  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-}
+local lspconfig = require('lspconfig')
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+lspconfig.pylsp.setup({capabilities = capabilities})
+lspconfig.gopls.setup({capabilities = capabilities})
 
 
 -- =============================================================================
@@ -460,7 +461,7 @@ require('pears').setup()
 -- treesitter settings
 -- =============================================================================
 require('nvim-treesitter.configs').setup({
-  highlight = {enable = {'python'}}
+  highlight = {enable = {'python', 'go'}}
 })
 
 
@@ -478,6 +479,19 @@ function! FugitiveToggle() abort
 endfunction
 ]])
 map('n', '<Leader>g', [[<CMD>call FugitiveToggle()<CR>]])
+
+
+-- ============================================================================
+-- indent_blankline settings
+-- =============================================================================
+-- '|', '¦', '┆', '┊'
+require("indent_blankline").setup({
+  enabled = false,
+  show_first_indent_level = false,
+  -- char = '┆'
+})
+cmd([[highlight IndentBlanklineChar guifg=#a89984 gui=nocombine]])
+map('n', '<Leader>i', [[<CMD>IndentBlanklineToggle<CR>]])
 
 
 -- =============================================================================
