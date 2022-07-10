@@ -5,17 +5,16 @@ packer.init({
   max_jobs = 2,
   git = {clone_timeout = 360},
   display = {open_cmd = 'lefta vsp new'}
-
 })
 
 return packer.startup(
 function()
   use {'wbthomason/packer.nvim', opt = true}
   use 'tpope/vim-fugitive'
+  use 'lewis6991/gitsigns.nvim'
   use {'junegunn/goyo.vim',  cmd = 'Goyo'}
   use {'mattn/emmet-vim', ft = {'html', 'xml', 'svg'}}
   use 'phaazon/hop.nvim'
-  -- use 'jiangmiao/auto-pairs'
   use 'steelsojka/pears.nvim'
   use 'andymass/vim-matchup'
 
@@ -54,7 +53,7 @@ function()
 
   -- Snippets
   use 'SirVer/ultisnips'
-  use {'honza/vim-snippets',  commit = '4e1d1456fd7d1d5d6cff256578a3e3bbeeb24e62'}
+  use {'honza/vim-snippets', commit = '4e1d1456fd7d1d5d6cff256578a3e3bbeeb24e62'}
 
   -- Good colorschemes for me:
   -- use 'mswift42/vim-themes'

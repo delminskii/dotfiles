@@ -26,7 +26,7 @@ opt.hidden = true
 opt.laststatus = 2
 opt.display = 'lastline'
 
-opt.completeopt = 'menuone,noinsert,noselect'
+-- opt.completeopt = 'menuone,noinsert,noselect'
 opt.wildmode = 'list:longest,full'
 
 opt.showmode = false
@@ -369,6 +369,7 @@ cmp.setup({
     {name = 'buffer'},
   },
 
+  preselect = cmp.PreselectMode.None,
   completion = {keyword_length = 2},
   window = {documentation = false},
 })
@@ -482,9 +483,50 @@ map('n', '<Leader>g', [[<CMD>call FugitiveToggle()<CR>]])
 
 
 -- ============================================================================
+-- gitsigns settings
+-- =============================================================================
+require('gitsigns').setup({
+  on_attach = function(bufnr)
+    local gs = package.loaded.gitsigns
+
+    -- Navigation
+    map('n', ']c', function()
+      if vim.wo.diff then return ']c' end
+      vim.schedule(function() gs.next_hunk() end)
+      return '<Ignore>'
+    end, {expr=true, buffer=bufnr})
+
+    map('n', '[c', function()
+      if vim.wo.diff then return '[c' end
+      vim.schedule(function() gs.prev_hunk() end)
+      return '<Ignore>'
+    end, {expr=true, buffer=bufnr})
+
+    -- Actions
+    local opts = {buffer=bufnr}
+    map({'n', 'v'}, '<Leader>hs', ':Gitsigns stage_hunk<CR>', opts)
+    map({'n', 'v'}, '<Leader>hr', ':Gitsigns reset_hunk<CR>', opts)
+    map('n', '<Leader>hS', gs.stage_buffer, opts)
+    map('n', '<Leader>hu', gs.undo_stage_hunk, opts)
+    map('n', '<Leader>hR', gs.reset_buffer, opts)
+    map('n', '<Leader>hp', gs.preview_hunk, opts)
+    map('n', '<Leader>hb', function() gs.blame_line{full=true} end, opts)
+    map('n', '<Leader>tb', gs.toggle_current_line_blame, opts)
+    map('n', '<Leader>hd', gs.diffthis, opts)
+    map('n', '<Leader>hD', function() gs.diffthis('~') end, opts)
+    map('n', '<Leader>td', gs.toggle_deleted, opts)
+
+    -- Text object
+    map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>', opts)
+  end
+})
+
+
+-- ============================================================================
 -- indent_blankline settings
 -- =============================================================================
 -- '|', '¦', '┆', '┊'
+
 require("indent_blankline").setup({
   enabled = false,
   show_first_indent_level = false,
