@@ -9,11 +9,11 @@ function map(mode, lhs, rhs, opts)
 end
 
 function RunWith(executor_binary)
-    cmd(':w')
-    cmd(
-      string.format(
-        ':call VimuxRunCommandInDir("clear;time PATH=$PATH %s", 1)',
-        executor_binary
-      )
+  cmd(':w')
+  cmd(
+    string.format(
+      ':call VimuxRunCommandInDir("clear;time PATH=$PATH %s", 1)',
+      executor_binary
     )
+  )
 end

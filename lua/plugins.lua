@@ -25,7 +25,7 @@ function()
   use 'nvim-lualine/lualine.nvim'
   use 'neovim/nvim-lspconfig'
   use 'kaicataldo/material.vim'
-  use 'lifepillar/vim-gruvbox8'
+  use 'srcery-colors/srcery-vim'
 
   use {'andrewradev/splitjoin.vim', cmd = {'SplitjoinJoin', 'SplitjoinSplit'}}
   use 'dense-analysis/ale'
@@ -33,7 +33,7 @@ function()
   use 'christoomey/vim-tmux-navigator'
   use 'benmills/vimux'
   use {'kkoomen/vim-doge',  run = ':call doge#install()'}
-  use 'numToStr/Comment.nvim'
+  use {'numToStr/Comment.nvim', tag = 'v0.6.1'}
   use 'kyazdani42/nvim-tree.lua'
   use 'mg979/vim-visual-multi'
   use 'mhinz/vim-startify'
@@ -43,7 +43,7 @@ function()
 
   -- Telescope
   use 'nvim-lua/plenary.nvim'
-  use 'nvim-telescope/telescope.nvim'
+  use {'nvim-telescope/telescope.nvim', tag = '0.1.0'}
 
   -- Completion
   use 'hrsh7th/cmp-nvim-lsp'

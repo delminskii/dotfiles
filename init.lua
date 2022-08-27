@@ -69,7 +69,7 @@ g.python3_host_prog = '/usr/bin/python3.7'
 g.gruvbox_italicize_strings = 0
 local hour = tonumber(os.date('%H'))
 opt.bg = hour >= 7 and hour < 18 and 'light' or 'dark'
-cmd('colorscheme gruvbox8_soft')
+cmd('colorscheme srcery')
 
 -- Visual mode pressing * or # searches for the current selection;
 map('v', '*', [[<CMD><C-u>call general#VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>]])
@@ -158,7 +158,7 @@ map('n', 'vE', 'vg_', {silent = false})
 -- LSP stuff
 -- =============================================================================
 vim.lsp.handlers['textDocument/publishDiagnostics'] = function() end
-map('n', '<Leader>h', [[<CMD>lua vim.lsp.buf.hover()<CR>]])
+map('n', '<Leader>i', [[<CMD>lua vim.lsp.buf.hover()<CR>]])
 map('n', '<F2>', [[<CMD>lua vim.lsp.buf.rename()<CR>]])
 
 
@@ -182,7 +182,7 @@ require('nvim-tree').setup({
   },
   git = {
     ignore = true,
-    enable = false,
+    enable = true,
   },
   reload_on_bufenter = true,
   disable_netrw = true,
@@ -229,7 +229,8 @@ g.user_emmet_install_global = 0
 require('lualine').setup{
   options = {
     -- theme = 'auto',
-    theme = 'gruvbox',
+    -- theme = 'gruvbox',
+    theme = 'auto',
     section_separators = '',
     component_separators = '',
   },
@@ -276,46 +277,46 @@ require('Comment').setup({
   ---LHS of toggle mappings in NORMAL + VISUAL mode
   ---@type table
   toggler = {
-      ---Line-comment toggle keymap
-      line = '<Leader>cc',
+    ---Line-comment toggle keymap
+    line = '<Leader>cc',
   },
 
   ---LHS of operator-pending mappings in NORMAL + VISUAL mode
   ---@type table
   opleader = {
-      ---Line-comment keymap
-      line = '<Leader>c',
+    ---Line-comment keymap
+    line = '<Leader>c',
   },
 
   ---LHS of extra mappings
   ---@type table
   extra = {
-      ---Add comment on the line above
-      above = '<Leader>cO',
-      ---Add comment on the line below
-      below = '<Leader>co',
-      ---Add comment at the end of line
-      eol = '<Leader>cA',
+    ---Add comment on the line above
+    above = '<Leader>cO',
+    ---Add comment on the line below
+    below = '<Leader>co',
+    ---Add comment at the end of line
+    eol = '<Leader>cA',
   },
 })
 
 -- https://github.com/numToStr/Comment.nvim/issues/70#issuecomment-998494798
 function _G.___gdc(vmode)
- local range = U.get_region(vmode)
- local lines = U.get_lines(range)
+  local range = U.get_region(vmode)
+  local lines = U.get_lines(range)
 
- -- Copying the block
- local srow = range.erow
- A.nvim_buf_set_lines(0, srow, srow, false, lines)
+  -- Copying the block
+  local srow = range.erow
+  A.nvim_buf_set_lines(0, srow, srow, false, lines)
 
- -- Doing the comment
- require('Comment.api').toggle_linewise_op(vmode)
+  -- Doing the comment
+  require('Comment.api').toggle_linewise_op(vmode)
 
- -- Move the cursor
- local erow = srow + 1
- local line = U.get_lines({ srow = srow, erow = erow })
- local _, col = U.grab_indent(line[1])
- A.nvim_win_set_cursor(0, { erow, col })
+  -- Move the cursor
+  local erow = srow + 1
+  local line = U.get_lines({ srow = srow, erow = erow })
+  local _, col = U.grab_indent(line[1])
+  A.nvim_win_set_cursor(0, { erow, col })
 end
 
 -- <Leader>dc will do (yank & comment & paste);
@@ -331,19 +332,19 @@ map('n', '<Leader>dc', [[<CMD>set operatorfunc=v:lua.___gdc<CR>g@]])
 g.startify_session_dir = '~/.vim/session'
 g.startify_session_persistence = 1
 g.startify_bookmarks = {
-    {v = '~/.config/nvim/init.lua'},
-    {b = '~/.bashrc'},
-    {x = '~/.Xresources'},
-    {w = '~/.wgetrc'},
-    {s = '~/.ssh/config'},
-    {o = '~/.config/openbox/'},
-    {t = '~/.tmux.conf'},
-    {g = '~/.gitconfig'},
+  {v = '~/.config/nvim/init.lua'},
+  {b = '~/.bashrc'},
+  {x = '~/.Xresources'},
+  {w = '~/.wgetrc'},
+  {s = '~/.ssh/config'},
+  {o = '~/.config/openbox/'},
+  {t = '~/.tmux.conf'},
+  {g = '~/.gitconfig'},
 }
 g.startify_lists = {
-    {type = 'files',        header = {'   MRU Files'}},
-    {type = 'bookmarks',    header = {'   Bookmarks'}},
-    {type = 'sessions',     header = {'   Sessions'}},
+  {type = 'files',        header = {'   MRU Files'}},
+  {type = 'bookmarks',    header = {'   Bookmarks'}},
+  {type = 'sessions',     header = {'   Sessions'}},
 }
 map('n', '<Leader>sr', [[<CMD>Startify<CR>]])
 map('n', '<Leader>ss', ':SSave<Space>', {silent = false})
@@ -494,16 +495,16 @@ require('gitsigns').setup({
       if vim.wo.diff then return ']c' end
       vim.schedule(function() gs.next_hunk() end)
       return '<Ignore>'
-    end, {expr=true, buffer=bufnr})
+    end, {expr = true, buffer = bufnr})
 
     map('n', '[c', function()
       if vim.wo.diff then return '[c' end
       vim.schedule(function() gs.prev_hunk() end)
       return '<Ignore>'
-    end, {expr=true, buffer=bufnr})
+    end, {expr = true, buffer = bufnr})
 
     -- Actions
-    local opts = {buffer=bufnr}
+    local opts = {buffer = bufnr}
     map({'n', 'v'}, '<Leader>hs', ':Gitsigns stage_hunk<CR>', opts)
     map({'n', 'v'}, '<Leader>hr', ':Gitsigns reset_hunk<CR>', opts)
     map('n', '<Leader>hS', gs.stage_buffer, opts)
@@ -526,14 +527,13 @@ require('gitsigns').setup({
 -- indent_blankline settings
 -- =============================================================================
 -- '|', '¦', '┆', '┊'
-
 require("indent_blankline").setup({
   enabled = false,
   show_first_indent_level = false,
   -- char = '┆'
 })
 cmd([[highlight IndentBlanklineChar guifg=#a89984 gui=nocombine]])
-map('n', '<Leader>i', [[<CMD>IndentBlanklineToggle<CR>]])
+map('n', '<Leader><Tab>', [[<CMD>IndentBlanklineToggle<CR>]])
 
 
 -- =============================================================================
@@ -544,51 +544,51 @@ vim.api.nvim_create_augroup(groupname, {clear = true})
 
 -- execute scripts by <Leader>e
 local filetypes_executors = {
-    python = 'python3.7',
-    html = 'firefox-esr -safe-mode -new-window',
-    sh = 'bash',
-    javascript = 'node',
-    ruby = 'ruby',
-    go = 'go run'
+  python = 'python3.7',
+  html = 'firefox-esr -safe-mode -new-window',
+  sh = 'bash',
+  javascript = 'node',
+  ruby = 'ruby',
+  go = 'go run'
 }
 for filetype, executor in pairs(filetypes_executors) do
-    au('FileType', {
-        desc = 'Executes ' .. filetype .. ' files by <Leader>e',
-        group = groupname,
-        pattern = filetype,
-        command = ([[nnoremap <Leader>e <CMD>lua RunWith("%s")<CR>]]):format(executor),
-        once = true
-    })
+  au('FileType', {
+    desc = 'Executes ' .. filetype .. ' files by <Leader>e',
+    group = groupname,
+    pattern = filetype,
+    command = ([[nnoremap <Leader>e <CMD>lua RunWith("%s")<CR>]]):format(executor),
+    once = true
+  })
 end
 au('FileType', {
-    desc = 'Executes Lua files by <Leader>e',
-    group = groupname,
-    pattern = 'lua',
-    command = [[nnoremap <Leader>e <CMD>w<CR> <CMD>luafile %<CR>]],
+  desc = 'Executes Lua files by <Leader>e',
+  group = groupname,
+  pattern = 'lua',
+  command = [[nnoremap <Leader>e <CMD>w<CR> <CMD>luafile %<CR>]],
 })
 au('FileType', {
-    desc = 'Emmet for tags',
-    group = groupname,
-    pattern = {'html', 'xml', 'css', 'svg', 'htmldjango'},
-    command = 'EmmetInstall',
+  desc = 'Emmet for tags',
+  group = groupname,
+  pattern = {'html', 'xml', 'css', 'svg', 'htmldjango'},
+  command = 'EmmetInstall',
 })
 au('BufWritePost', {
-    desc = 'Sources init.lua',
-    group = groupname,
-    pattern = HOME .. '/.config/nvim/init.lua',
-    command = 'source ' .. HOME .. '/.config/nvim/init.lua | PackerCompile',
+  desc = 'Sources init.lua',
+  group = groupname,
+  pattern = HOME .. '/.config/nvim/init.lua',
+  command = 'source ' .. HOME .. '/.config/nvim/init.lua | PackerCompile',
 })
 au('BufReadPost', {
-    desc = 'Returns to last edit position when opening files (You want this!)',
-    group = groupname,
-    pattern = '*',
-    command = [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]],
-    once = true
+  desc = 'Returns to last edit position when opening files (You want this!)',
+  group = groupname,
+  pattern = '*',
+  command = [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]],
+  once = true
 })
 au('BufEnter', {
-    desc = 'Auto closes nvim tree if it is alone',
-    group = groupname,
-    pattern = '*',
-    command = "if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif",
-    nested = true
+  desc = 'Auto closes nvim tree if it is alone',
+  group = groupname,
+  pattern = '*',
+  command = "if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif",
+  nested = true
 })
