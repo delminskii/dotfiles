@@ -17,6 +17,7 @@ function()
   use 'phaazon/hop.nvim'
   use 'steelsojka/pears.nvim'
   use 'andymass/vim-matchup'
+  use 'max397574/better-escape.nvim'
 
   use 'tpope/vim-surround'
   use {'tpope/vim-dadbod', cmd = 'DB'}
@@ -24,8 +25,7 @@ function()
   use 'tpope/vim-unimpaired'
   use 'nvim-lualine/lualine.nvim'
   use 'neovim/nvim-lspconfig'
-  use 'kaicataldo/material.vim'
-  use 'srcery-colors/srcery-vim'
+  use 'ajmwagar/vim-deus'
 
   use {'andrewradev/splitjoin.vim', cmd = {'SplitjoinJoin', 'SplitjoinSplit'}}
   use 'dense-analysis/ale'
@@ -33,7 +33,7 @@ function()
   use 'christoomey/vim-tmux-navigator'
   use 'benmills/vimux'
   use {'kkoomen/vim-doge',  run = ':call doge#install()'}
-  use {'numToStr/Comment.nvim', tag = 'v0.6.1'}
+  use {'numToStr/Comment.nvim'}
   use 'kyazdani42/nvim-tree.lua'
   use 'mg979/vim-visual-multi'
   use 'mhinz/vim-startify'

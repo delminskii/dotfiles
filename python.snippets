@@ -53,6 +53,7 @@ import json
 import logging
 from contextlib import suppress
 from pathlib import Path
+import operator
 from typing import List, Dict, Tuple, Iterator, Optional
 import requests
 
@@ -79,7 +80,7 @@ d = {
 	"Accept-Language": "en-US,en;q=0.5",
 	"Cache-Control": "no-cache",
 	"Connection": "keep-alive",
-	"User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0"
+	"User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
 }
 if match.group(1): d.update({"X-Requested-With": "XMLHttpRequest"})
 snip.rv = "headers = %s" % dumps(d, indent=4).replace('"', "'")`

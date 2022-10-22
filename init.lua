@@ -69,7 +69,8 @@ g.python3_host_prog = '/usr/bin/python3.7'
 g.gruvbox_italicize_strings = 0
 local hour = tonumber(os.date('%H'))
 opt.bg = hour >= 7 and hour < 18 and 'light' or 'dark'
-cmd('colorscheme srcery')
+cmd('colorscheme deus')
+
 
 -- Visual mode pressing * or # searches for the current selection;
 map('v', '*', [[<CMD><C-u>call general#VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>]])
@@ -148,7 +149,10 @@ map('n', '<Leader>q', [[<CMD>q<CR>]], {silent = false})
 map('n', '<Leader>Q', [[<CMD>q!<CR>]], {silent = false})
 
 -- Leaving insert mode
-map('i', 'jk', '<ESC>', {silent = false})
+-- map('i', 'jk', '<ESC>', {silent = false})
+
+-- Better switch to command mode
+map('n', ';', ':', {silent = false})
 
 -- Better visual til the end$
 map('n', 'vE', 'vg_', {silent = false})
@@ -310,12 +314,12 @@ function _G.___gdc(vmode)
   A.nvim_buf_set_lines(0, srow, srow, false, lines)
 
   -- Doing the comment
-  require('Comment.api').toggle_linewise_op(vmode)
+  require('Comment.api').toggle.linewise(vmode)
 
   -- Move the cursor
   local erow = srow + 1
   local line = U.get_lines({ srow = srow, erow = erow })
-  local _, col = U.grab_indent(line[1])
+  local _, col, _ = line[1]:find('^(%s*)')
   A.nvim_win_set_cursor(0, { erow, col })
 end
 
@@ -376,7 +380,8 @@ cmp.setup({
 })
 -- Setup lspconfig
 local lspconfig = require('lspconfig')
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 lspconfig.pylsp.setup({capabilities = capabilities})
 lspconfig.gopls.setup({capabilities = capabilities})
 
@@ -534,6 +539,12 @@ require("indent_blankline").setup({
 })
 cmd([[highlight IndentBlanklineChar guifg=#a89984 gui=nocombine]])
 map('n', '<Leader><Tab>', [[<CMD>IndentBlanklineToggle<CR>]])
+
+
+-- ============================================================================
+-- better-escape settings
+-- =============================================================================
+require("better_escape").setup()
 
 
 -- =============================================================================
