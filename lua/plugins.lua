@@ -25,15 +25,15 @@ function()
   use 'tpope/vim-unimpaired'
   use 'nvim-lualine/lualine.nvim'
   use 'neovim/nvim-lspconfig'
-  use 'ajmwagar/vim-deus'
+  use 'haishanh/night-owl.vim'
 
   use {'andrewradev/splitjoin.vim', cmd = {'SplitjoinJoin', 'SplitjoinSplit'}}
   use 'dense-analysis/ale'
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-  use 'christoomey/vim-tmux-navigator'
-  use 'benmills/vimux'
+  use 'numToStr/Navigator.nvim'
+  use 'numToStr/FTerm.nvim'
   use {'kkoomen/vim-doge',  run = ':call doge#install()'}
-  use {'numToStr/Comment.nvim'}
+  use 'numToStr/Comment.nvim'
   use 'kyazdani42/nvim-tree.lua'
   use 'mg979/vim-visual-multi'
   use 'mhinz/vim-startify'
@@ -54,6 +54,9 @@ function()
   -- Snippets
   use 'SirVer/ultisnips'
   use {'honza/vim-snippets', commit = '4e1d1456fd7d1d5d6cff256578a3e3bbeeb24e62'}
+
+  -- Speedup
+  use 'lewis6991/impatient.nvim'
 
   -- Good colorschemes for me:
   -- use 'mswift42/vim-themes'

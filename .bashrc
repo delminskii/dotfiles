@@ -115,5 +115,5 @@ export EDITOR="$VISUAL"
 
 export PATH=~/.local/bin:/usr/local/go/bin:$HOME/go/bin:$PATH
 
-# export PATH="$HOME/.pyenv/bin:$PATH"
-# eval "$(pyenv init --path)"
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"

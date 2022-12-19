@@ -5,6 +5,7 @@ local au = vim.api.nvim_create_autocmd
 
 local hjkl = {'h', 'j', 'k', 'l'}
 
+require('impatient')
 require('plugins')
 require('functions')
 
@@ -63,13 +64,13 @@ opt.guicursor = ''
 
 opt.directory = HOME .. '/.vim/files/swap//'
 g.python_host_prog = '/usr/bin/python2.7'
-g.python3_host_prog = '/usr/bin/python3.7'
+g.python3_host_prog = HOME .. '/.pyenv/versions/3.10.9/bin/python3.10'
 
 -- Colorscheme settings
 g.gruvbox_italicize_strings = 0
 local hour = tonumber(os.date('%H'))
 opt.bg = hour >= 7 and hour < 18 and 'light' or 'dark'
-cmd('colorscheme deus')
+cmd('colorscheme night-owl')
 
 
 -- Visual mode pressing * or # searches for the current selection;
@@ -208,7 +209,9 @@ g.ale_set_highlights = 0
 g.ale_fix_on_save = 1
 g.ale_linters_explicit = 1
 g.ale_linters = {python = {'flake8'}, go = {'gopls'}}
-g.ale_python_black_options = '-l 79 --fast -t py37'
+g.ale_python_flake8_executable = HOME .. '/.pyenv/versions/3.10.9/bin/flake8'
+g.ale_python_black_executable = HOME .. '/.pyenv/versions/3.10.9/bin/black'
+g.ale_python_black_options = '-l 79 --fast -t py310'
 g.ale_sign_column_always = 1
 g.ale_completion_enabled = 0
 g.ale_echo_delay = 200
@@ -245,7 +248,8 @@ require('lualine').setup{
 -- Telescope settings
 -- =============================================================================
 local actions = require('telescope.actions')
-require('telescope').setup {
+local builtin = require('telescope.builtin')
+require('telescope').setup({
   defaults = require('telescope.themes').get_ivy({
     mappings = {
       i = {
@@ -261,8 +265,15 @@ require('telescope').setup {
     prompt_prefix = "🔍",
     file_ignore_patterns = {"output/?.*%.csv", '__pycache__'},
   }),
-}
-map('n', '<Leader>f', [[<CMD>Telescope git_files<CR>]])
+})
+map('n', '<Leader>f', function()
+  local is_git = os.execute('git') == 0
+  if is_git then
+    builtin.git_files()
+  else
+    builtin.find_files()
+  end
+end)
 map('n', '<Leader>b', [[<CMD>Telescope buffers<CR>]])
 map('n', '<Leader>l', [[<CMD>Telescope live_grep<CR>]])
 map('n', '<Leader>;', [[<CMD>Telescope current_buffer_fuzzy_find<CR>]])
@@ -319,7 +330,7 @@ function _G.___gdc(vmode)
   -- Move the cursor
   local erow = srow + 1
   local line = U.get_lines({ srow = srow, erow = erow })
-  local _, col, _ = line[1]:find('^(%s*)')
+  local _, col, _ = string.find(line[1], '^(%s*)')
   A.nvim_win_set_cursor(0, { erow, col })
 end
 
@@ -380,7 +391,6 @@ cmp.setup({
 })
 -- Setup lspconfig
 local lspconfig = require('lspconfig')
--- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 lspconfig.pylsp.setup({capabilities = capabilities})
 lspconfig.gopls.setup({capabilities = capabilities})
@@ -403,21 +413,49 @@ end
 
 
 -- =============================================================================
--- vim-tmux-navigator settings
+-- Navigator settings
 -- =============================================================================
--- Write current buffer before navigating from vim to tmux pane;
--- cmd('let g:tmux_navigator_save_on_switch = 1')
-g.tmux_navigator_save_on_switch = 1
+require('Navigator').setup({
+  auto_save = nil
+})
+map('n', "<C-h>", [[<CMD>NavigatorLeft<CR>]])
+map('n', "<C-l>", [[<CMD>NavigatorRight<CR>]])
+map('n', "<C-k>", [[<CMD>NavigatorUp<CR>]])
+map('n', "<C-j>", [[<CMD>NavigatorDown<CR>]])
 
 
 -- =============================================================================
--- vimux settings
+-- FTerm settings
 -- =============================================================================
-g.VimuxHeight = 25
-g.VimuxExpandCommand = 1
-map('n', '<Leader>vc', [[<CMD>call VimuxPromptCommand()<CR>]])
-map('n', '<Leader>vq', [[<CMD>call VimuxCloseRunner()<CR>]])
-map('n', '<Leader>vl', [[<CMD>call VimuxClearTerminalScreen()<CR>]])
+local fterm = require('FTerm')
+local fterm_dimensions = {
+  height = 0.35,
+  width = 1.0,
+  y = 1.0
+}
+fterm.setup({ dimensions = fterm_dimensions })
+local runners = {
+  python = 'python3.10',
+  html = 'firefox-esr -safe-mode -new-window',
+  sh = 'bash',
+  javascript = 'node',
+  ruby = 'ruby',
+  go = 'go run',
+}
+map('n', '<Leader>e', function()
+  cmd('write')
+  local buf = vim.api.nvim_buf_get_name(0)
+  local ftype = vim.filetype.match({ filename = buf })
+  local exec = runners[ftype]
+  if exec ~= nil then
+    fterm.scratch({
+      cmd = { exec, buf },
+      dimensions = fterm_dimensions
+    })
+  end
+  end
+)
+map({'n', 't'}, '<A-i>', [[<CMD>lua require("FTerm").toggle()<CR>]])
 
 
 -- =============================================================================
@@ -553,30 +591,6 @@ require("better_escape").setup()
 local groupname = 'init_autocmd'
 vim.api.nvim_create_augroup(groupname, {clear = true})
 
--- execute scripts by <Leader>e
-local filetypes_executors = {
-  python = 'python3.7',
-  html = 'firefox-esr -safe-mode -new-window',
-  sh = 'bash',
-  javascript = 'node',
-  ruby = 'ruby',
-  go = 'go run'
-}
-for filetype, executor in pairs(filetypes_executors) do
-  au('FileType', {
-    desc = 'Executes ' .. filetype .. ' files by <Leader>e',
-    group = groupname,
-    pattern = filetype,
-    command = ([[nnoremap <Leader>e <CMD>lua RunWith("%s")<CR>]]):format(executor),
-    once = true
-  })
-end
-au('FileType', {
-  desc = 'Executes Lua files by <Leader>e',
-  group = groupname,
-  pattern = 'lua',
-  command = [[nnoremap <Leader>e <CMD>w<CR> <CMD>luafile %<CR>]],
-})
 au('FileType', {
   desc = 'Emmet for tags',
   group = groupname,

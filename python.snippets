@@ -1,9 +1,11 @@
 snippet "^advent(ofcode)?" "AdventOfCode Template" r
 #!/usr/bin/env python3
 import operator
+import string
 import re
 import math
 from collections import Counter, defaultdict, deque
+from functools import reduce
 from pathlib import Path
 
 
@@ -15,10 +17,7 @@ def	part2(contents):
 	pass
 
 if __name__ == "__main__":
-	# contents = Path("input.txt").read_text().strip()
-
-	contents = Path("input_sample.txt").read_text().strip()
-
+	contents = Path("input.txt").read_text().strip()
 	part1(contents)
 	part2(contents)
 endsnippet
@@ -37,10 +36,15 @@ if __name__ == "__main__":
 endsnippet
 
 
+snippet "^dc" "dataclass decorator with slots set" r
+@dataclass(slots=True)
+
+endsnippet
+
+
 snippet "^datac?" "import dataclass related things" r
 from dataclasses import astuple, dataclass, field
 from enum import Enum
-from typing import List
 
 ${0}
 endsnippet
@@ -54,7 +58,6 @@ import logging
 from contextlib import suppress
 from pathlib import Path
 import operator
-from typing import List, Dict, Tuple, Iterator, Optional
 import requests
 
 ${0}
@@ -88,7 +91,7 @@ endsnippet
 
 
 snippet p "prints message"
-print(f"${0}")
+print(f"\{${0}\}")
 endsnippet
 
 
