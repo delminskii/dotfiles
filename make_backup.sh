@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GITHUB_SSHKEY="$HOME/.ssh/github"
+GITHUB_SSHKEY="$HOME/.ssh/github_doftiles"
 
 BACKUP_FOLDER="$HOME/.dotfiles"
 BACKUP_LOGFILE="$HOME/.backup_configs.log"
