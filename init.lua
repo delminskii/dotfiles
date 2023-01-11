@@ -70,7 +70,7 @@ g.python3_host_prog = HOME .. '/.pyenv/versions/3.10.9/bin/python3.10'
 g.gruvbox_italicize_strings = 0
 local hour = tonumber(os.date('%H'))
 opt.bg = hour >= 7 and hour < 18 and 'light' or 'dark'
-cmd('colorscheme night-owl')
+cmd('colorscheme solarized8_high')
 
 
 -- Visual mode pressing * or # searches for the current selection;
@@ -205,11 +205,12 @@ g.ale_fixers = {
   python = {'black', 'isort'},
   go = 'gofmt'
 }
+g.ale_virtualtext_cursor = 'disabled'
 g.ale_set_highlights = 0
 g.ale_fix_on_save = 1
 g.ale_linters_explicit = 1
-g.ale_linters = {python = {'flake8'}, go = {'gopls'}}
-g.ale_python_flake8_executable = HOME .. '/.pyenv/versions/3.10.9/bin/flake8'
+g.ale_linters = {python = {'ruff'}, go = {'gopls'}}
+g.ale_python_ruff_executable = HOME .. '/.pyenv/versions/3.10.9/bin/ruff'
 g.ale_python_black_executable = HOME .. '/.pyenv/versions/3.10.9/bin/black'
 g.ale_python_black_options = '-l 79 --fast -t py310'
 g.ale_sign_column_always = 1
@@ -237,7 +238,9 @@ require('lualine').setup{
   options = {
     -- theme = 'auto',
     -- theme = 'gruvbox',
-    theme = 'auto',
+    -- theme = 'solarized_dark',
+    -- theme = 'auto',
+    theme = '16color',
     section_separators = '',
     component_separators = '',
   },
@@ -435,7 +438,7 @@ local fterm_dimensions = {
 }
 fterm.setup({ dimensions = fterm_dimensions })
 local runners = {
-  python = 'python3.10',
+  python = 'python3',
   html = 'firefox-esr -safe-mode -new-window',
   sh = 'bash',
   javascript = 'node',

@@ -25,14 +25,15 @@ function()
   use 'tpope/vim-unimpaired'
   use 'nvim-lualine/lualine.nvim'
   use 'neovim/nvim-lspconfig'
-  use 'haishanh/night-owl.vim'
+  use 'lifepillar/vim-solarized8'
 
   use {'andrewradev/splitjoin.vim', cmd = {'SplitjoinJoin', 'SplitjoinSplit'}}
   use 'dense-analysis/ale'
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use 'numToStr/Navigator.nvim'
   use 'numToStr/FTerm.nvim'
-  use {'kkoomen/vim-doge',  run = ':call doge#install()'}
+  -- use {'kkoomen/vim-doge', commit = 'c73de5d887ef0c5b7d313291f2b39750aa9d2b4d', run = ':call doge#install()'}
+  use {'kkoomen/vim-doge'}
   use 'numToStr/Comment.nvim'
   use 'kyazdani42/nvim-tree.lua'
   use 'mg979/vim-visual-multi'
