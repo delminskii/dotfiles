@@ -19,15 +19,16 @@ function()
   use 'andymass/vim-matchup'
   use 'max397574/better-escape.nvim'
 
-  use 'tpope/vim-surround'
+  use {'kylechui/nvim-surround', tag = '*'}
   use {'tpope/vim-dadbod', cmd = 'DB'}
   use 'tpope/vim-abolish'
   use 'tpope/vim-unimpaired'
   use 'nvim-lualine/lualine.nvim'
   use 'neovim/nvim-lspconfig'
-  use 'lifepillar/vim-solarized8'
+  use 'lifepillar/vim-gruvbox8'
 
-  use {'andrewradev/splitjoin.vim', cmd = {'SplitjoinJoin', 'SplitjoinSplit'}}
+
+  use 'Wansmer/treesj'
   use 'dense-analysis/ale'
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use 'numToStr/Navigator.nvim'

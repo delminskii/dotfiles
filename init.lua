@@ -69,8 +69,8 @@ g.python3_host_prog = HOME .. '/.pyenv/versions/3.10.9/bin/python3.10'
 -- Colorscheme settings
 g.gruvbox_italicize_strings = 0
 local hour = tonumber(os.date('%H'))
-opt.bg = hour >= 7 and hour < 18 and 'light' or 'dark'
-cmd('colorscheme solarized8_high')
+opt.bg = hour >= 7 and hour < 17 and 'light' or 'dark'
+cmd('colorscheme gruvbox8')
 
 
 -- Visual mode pressing * or # searches for the current selection;
@@ -163,14 +163,14 @@ map('n', 'vE', 'vg_', {silent = false})
 -- LSP stuff
 -- =============================================================================
 vim.lsp.handlers['textDocument/publishDiagnostics'] = function() end
-map('n', '<Leader>i', [[<CMD>lua vim.lsp.buf.hover()<CR>]])
-map('n', '<F2>', [[<CMD>lua vim.lsp.buf.rename()<CR>]])
+map('n', '<Leader>i', vim.lsp.buf.hover)
+map('n', '<F2>', vim.lsp.buf.rename)
 
 
 -- =============================================================================
 -- nvim-tree settings
 -- =============================================================================
-map('n', '<Leader>n', [[<CMD>NvimTreeToggle<CR>]])
+map('n', '<Leader>n', require('nvim-tree.api').tree.toggle)
 require('nvim-tree').setup({
   view = {
     mappings = {
@@ -209,7 +209,7 @@ g.ale_virtualtext_cursor = 'disabled'
 g.ale_set_highlights = 0
 g.ale_fix_on_save = 1
 g.ale_linters_explicit = 1
-g.ale_linters = {python = {'ruff'}, go = {'gopls'}}
+g.ale_linters = {python = {'ruff', 'mypy'}, go = {'gopls'}}
 g.ale_python_ruff_executable = HOME .. '/.pyenv/versions/3.10.9/bin/ruff'
 g.ale_python_black_executable = HOME .. '/.pyenv/versions/3.10.9/bin/black'
 g.ale_python_black_options = '-l 79 --fast -t py310'
@@ -237,10 +237,10 @@ g.user_emmet_install_global = 0
 require('lualine').setup{
   options = {
     -- theme = 'auto',
-    -- theme = 'gruvbox',
+    theme = 'gruvbox',
     -- theme = 'solarized_dark',
     -- theme = 'auto',
-    theme = '16color',
+    -- theme = '16color',
     section_separators = '',
     component_separators = '',
   },
@@ -402,29 +402,28 @@ lspconfig.gopls.setup({capabilities = capabilities})
 -- =============================================================================
 -- hop settings
 -- =============================================================================
-require('hop').setup()
-map('n', 's', [[<CMD>HopChar1<CR>]])
+local hop = require('hop')
+hop.setup()
+map('n', 's', hop.hint_char1)
 
 
 -- =============================================================================
 -- Surround settings
 -- =============================================================================
-for _,br in pairs({'"', "'", ')'}) do
-  map('n', '<Leader>' .. br, 'ysiw' .. br, {noremap = false})
-  map('n', '<Leader>z' .. br, 'vg_S' .. br .. '<ESC>A,<ESC>', {noremap = false})
-end
+require('nvim-surround').setup()
 
 
 -- =============================================================================
 -- Navigator settings
 -- =============================================================================
-require('Navigator').setup({
+local navigator = require('Navigator')
+navigator.setup({
   auto_save = nil
 })
-map('n', "<C-h>", [[<CMD>NavigatorLeft<CR>]])
-map('n', "<C-l>", [[<CMD>NavigatorRight<CR>]])
-map('n', "<C-k>", [[<CMD>NavigatorUp<CR>]])
-map('n', "<C-j>", [[<CMD>NavigatorDown<CR>]])
+map('n', "<C-h>", navigator.left)
+map('n', "<C-l>", navigator.right)
+map('n', "<C-k>", navigator.up)
+map('n', "<C-j>", navigator.down)
 
 
 -- =============================================================================
@@ -458,13 +457,13 @@ map('n', '<Leader>e', function()
   end
   end
 )
-map({'n', 't'}, '<A-i>', [[<CMD>lua require("FTerm").toggle()<CR>]])
+map({'n', 't'}, '<A-i>', fterm.toggle)
 
 
 -- =============================================================================
 -- polyglot settings
 -- =============================================================================
--- cmd('let g:python_highlight_func_calls = 0')
+-- cm('let g:python_highlight_func_calls = 0')
 g.python_highlight_func_calls = 0
 
 
@@ -514,6 +513,17 @@ require('nvim-treesitter.configs').setup({
 
 
 -- ============================================================================
+-- treesj settings
+-- =============================================================================
+local tsj = require('treesj')
+tsj.setup({
+    use_default_keymaps = false,
+})
+map('n', '<Leader>SJ', tsj.toggle)
+
+
+
+-- ============================================================================
 -- fugitive settings
 -- =============================================================================
 cmd([[
@@ -527,6 +537,7 @@ function! FugitiveToggle() abort
 endfunction
 ]])
 map('n', '<Leader>g', [[<CMD>call FugitiveToggle()<CR>]])
+map('n', '<Leader>GP', [[<CMD>Git push -u origin master<CR>]])
 
 
 -- ============================================================================

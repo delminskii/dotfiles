@@ -36,6 +36,11 @@ if __name__ == "__main__":
 endsnippet
 
 
+snippet c "class-scoped private variable name"
+cls._${0:var}
+endsnippet
+
+
 snippet "^dc" "dataclass decorator with slots set" r
 @dataclass(slots=True)
 
@@ -43,7 +48,7 @@ endsnippet
 
 
 snippet "^datac?" "import dataclass related things" r
-from dataclasses import astuple, dataclass, field
+from dataclasses import astuple, dataclass, field, fields
 from enum import Enum
 
 ${0}
@@ -55,6 +60,7 @@ import csv
 import re
 import json
 import logging
+import operator
 from contextlib import suppress
 from pathlib import Path
 import operator

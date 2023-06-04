@@ -20,7 +20,7 @@
 	ci = commit
 	st = status
 	br = branch
-	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short --decorate --all
+	hist = log --pretty=format:'"%C(green)%h %Creset%ad | %C(#e0fa6b)%s%C(#8ad984)%d [%C(#8495d9)%an]"' --graph --date=short --decorate --all
 	type = cat-file -t
 	dump = cat-file -p
 	aci = !git add . && git commit

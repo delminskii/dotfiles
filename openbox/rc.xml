@@ -40,7 +40,7 @@
                     'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Zukitwo-ob</name>
+    <name>HitsujiTMO</name>
     <titleLayout>DSLIMC</titleLayout>
     <!--
       avaible characters are NDSLIMC, each can occur at most once.
@@ -253,7 +253,7 @@
     <keybind key="Print">
       <action name="Execute">
         <command>
-            scrot '%Y-%m-%d--%s_$wx$h_scrot.png' -se 'mv $f /tmp &amp; viewnior /tmp/$f'
+            flameshot gui --path=/tmp
         </command>
       </action>
     </keybind>
