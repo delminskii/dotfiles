@@ -18,6 +18,7 @@ function()
   use 'steelsojka/pears.nvim'
   use 'andymass/vim-matchup'
   use 'max397574/better-escape.nvim'
+  use 'dhruvasagar/vim-table-mode'
 
   use {'kylechui/nvim-surround', tag = '*'}
   use {'tpope/vim-dadbod', cmd = 'DB'}
@@ -25,16 +26,15 @@ function()
   use 'tpope/vim-unimpaired'
   use 'nvim-lualine/lualine.nvim'
   use 'neovim/nvim-lspconfig'
-  use 'lifepillar/vim-gruvbox8'
-
+  use {'lifepillar/vim-gruvbox8', cmd = 'neovim'}
+  use 'Shatur/neovim-ayu'
 
   use 'Wansmer/treesj'
   use 'dense-analysis/ale'
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use 'numToStr/Navigator.nvim'
   use 'numToStr/FTerm.nvim'
-  -- use {'kkoomen/vim-doge', commit = 'c73de5d887ef0c5b7d313291f2b39750aa9d2b4d', run = ':call doge#install()'}
-  use {'kkoomen/vim-doge'}
+  use { 'kkoomen/vim-doge', run = ':call doge#install()' }
   use 'numToStr/Comment.nvim'
   use 'kyazdani42/nvim-tree.lua'
   use 'mg979/vim-visual-multi'

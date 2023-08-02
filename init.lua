@@ -46,7 +46,7 @@ opt.autochdir = true
 opt.ffs = 'unix,dos,mac'
 opt.fencs = 'utf-8,cp1251,koi8-r,ucs-2,cp866'
 opt.listchars = 'tab:▸ ,extends:❯,precedes:❮,nbsp:±'
-opt.lazyredraw = true
+-- opt.lazyredraw = true
 
 opt.splitbelow = true
 opt.splitright = true
@@ -67,10 +67,12 @@ g.python_host_prog = '/usr/bin/python2.7'
 g.python3_host_prog = HOME .. '/.pyenv/versions/3.10.9/bin/python3.10'
 
 -- Colorscheme settings
-g.gruvbox_italicize_strings = 0
+-- g.gruvbox_italicize_strings = 0
 local hour = tonumber(os.date('%H'))
-opt.bg = hour >= 7 and hour < 17 and 'light' or 'dark'
-cmd('colorscheme gruvbox8')
+-- opt.bg = hour >= 7 and hour < 17 and 'light' or 'dark'
+-- cmd('colorscheme gruvbox8')
+-- cmd(string.format('colorscheme ayu-%s', hour >= 7 and hour < 17 and 'light' or 'dark'))
+cmd('colorscheme ayu-dark')
 
 
 -- Visual mode pressing * or # searches for the current selection;
@@ -158,6 +160,8 @@ map('n', ';', ':', {silent = false})
 -- Better visual til the end$
 map('n', 'vE', 'vg_', {silent = false})
 
+-- Type ignore
+map('n', '<Leader>mi', ':s/$/\t# type: ignore<CR>')
 
 -- =============================================================================
 -- LSP stuff
@@ -232,12 +236,19 @@ g.user_emmet_install_global = 0
 
 
 -- =============================================================================
+-- vim-table-mode settings
+-- =============================================================================
+g.vim_table_mode = '+'
+g.table_mode_header_fillchar = '='
+
+-- =============================================================================
 -- lualine settings
 -- =============================================================================
 require('lualine').setup{
   options = {
+    theme = 'ayu',
     -- theme = 'auto',
-    theme = 'gruvbox',
+    -- theme = 'gruvbox',
     -- theme = 'solarized_dark',
     -- theme = 'auto',
     -- theme = '16color',
@@ -489,7 +500,7 @@ map('n', '<Leader>ue', [[<CMD>UltiSnipsEdit<CR>]])
 -- ============================================================================
 -- vim-doge settings
 -- =============================================================================
-g.doge_python_settings = {single_quotes = 0}
+g.doge_python_settings = {single_quotes = 0, omit_redundant_param_types = 0}
 
 
 -- ============================================================================
