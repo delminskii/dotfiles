@@ -162,13 +162,13 @@ mouse_scroll_down = iconify
 # Battery
 battery = 1
 battery_low_status = 15
-battery_low_cmd = notify-send "battery low"
-#battery_hide = 96
 battery_hide = never
-bat1_font = Liberation Mono 8
-bat2_font = Liberation Mono 8
+bat1_font = Liberation Mono 7
+bat2_font = Liberation Mono 7
 battery_font_color = #b5b5b5 100
 battery_padding = 2 0
 battery_background_id = 0
+ac_connected_cmd = sleep 3 && sudo /home/nikolay/scripts/cpu_tdp_logic.sh ac_plug_in >/home/nikolay/scripts/out/cpu_tdp.log 2>&1
+ac_disconnected_cmd = sleep 3 && sudo /home/nikolay/scripts/cpu_tdp_logic.sh ac_plug_out >/home/nikolay/scripts/out/cpu_tdp.log 2>&1
 
 # End of config

@@ -27,8 +27,8 @@ conky.config = {
 	cpu_avg_samples = 2,
 	override_utf8_locale = false,
 
-        -- title color
-        color0 = '55aaff',
+	-- title color
+	color0 = '55aaff',
 
 };
 
@@ -36,15 +36,27 @@ conky.text = [[
 System Info ${hr 2 }
 ${color0}Uptime:$color $uptime_short
 
-${color0}Temp: $alignc$color${exec sensors | grep 'Package id' | awk '{print $4}'}
+${color0}Temp: $alignc$color${exec sensors | grep 'Tctl' | awk '{print $2}'}
 ${color0}Fan: $alignc$color${exec sensors | grep 'fan1' | awk '{print $2,$3}'}
 
 
-$alignc Intel i5-3320M @ $color${freq_g} GHz
+$alignc AMD Ryzen 7 6800H @ $color${freq_g} GHz
 Core 1: ${cpubar cpu1 6, 200} ${cpu cpu1}%
 Core 2: ${cpubar cpu2 6, 200} ${cpu cpu2}%
 Core 3: ${cpubar cpu3 6, 200} ${cpu cpu3}%
 Core 4: ${cpubar cpu4 6, 200} ${cpu cpu4}%
+Core 5: ${cpubar cpu5 6, 200} ${cpu cpu5}%
+Core 6: ${cpubar cpu6 6, 200} ${cpu cpu6}%
+Core 7: ${cpubar cpu7 6, 200} ${cpu cpu7}%
+Core 8: ${cpubar cpu8 6, 200} ${cpu cpu8}%
+Core 9: ${cpubar cpu9 6, 200} ${cpu cpu9}%
+Core 10: ${cpubar cpu10 6, 200} ${cpu cpu10}%
+Core 11: ${cpubar cpu11 6, 200} ${cpu cpu11}%
+Core 12: ${cpubar cpu12 6, 200} ${cpu cpu12}%
+Core 13: ${cpubar cpu13 6, 200} ${cpu cpu13}%
+Core 14: ${cpubar cpu14 6, 200} ${cpu cpu14}%
+Core 15: ${cpubar cpu15 6, 200} ${cpu cpu15}%
+Core 16: ${cpubar cpu16 6, 200} ${cpu cpu16}%
 
 ${color0}CPU utilisation$color$alignr ${cpu cpu0}%
 ${cpubar cpu0}
@@ -55,10 +67,6 @@ ${color0}MEM$color $alignc $mem / $memmax $alignr $memperc%
 $membar
 ${color0}SWAP$color $alignc $swap / $swapmax $alignr $swapperc%
 $swapbar
-
-${if_match  "$swap"!="0B  " }
-  ${exec notify-send "Warning: Swapping"}
-$endif
 
 File System ${hr 2}
 
@@ -80,9 +88,9 @@ ${top name 3} $alignr ${top pid 3} ${top cpu 3} ${top mem 3}
 ${top name 4} $alignr ${top pid 4} ${top cpu 4} ${top mem 4}
 ${top name 5} $alignr ${top pid 5} ${top cpu 5} ${top mem 5}
 
-Network wlp3s0 ${hr 2}
+Network wlo1 ${hr 2}
 
-${color0}UP:$color$alignc${upspeed wlp3s0} (${totalup wlp3s0})
-${color0}DOWN:$color$alignc${downspeed wlp3s0} (${totaldown wlp3s0})
+${color0}UP:$color$alignc${upspeed wlo1} (${totalup wlo1})
+${color0}DOWN:$color$alignc${downspeed wlo1} (${totaldown wlo1})
 
 ]];

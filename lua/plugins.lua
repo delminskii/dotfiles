@@ -2,7 +2,7 @@ vim.cmd('packadd packer.nvim')
 
 packer = require('packer')
 packer.init({
-  max_jobs = 2,
+  max_jobs = 8,
   git = {clone_timeout = 360},
   display = {open_cmd = 'lefta vsp new'}
 })

@@ -253,7 +253,7 @@
     <keybind key="Print">
       <action name="Execute">
         <command>
-            flameshot gui --path=/tmp
+            flameshot gui --path=/tmp --clipboard
         </command>
       </action>
     </keybind>
@@ -342,7 +342,7 @@
     </keybind>
     <keybind key="W-k">
       <action name="Execute">
-        <command>keepassx</command>
+        <command>keepassxc</command>
       </action>
     </keybind>
     <keybind key="W-m">
@@ -368,11 +368,6 @@
     <keybind key="W-p">
       <action name="Execute">
         <command>xterm -T "FullXTerm" +uc -fullscreen -e "tmux -2"</command>
-      </action>
-    </keybind>
-    <keybind key="W-j">
-      <action name="Execute">
-        <command>~/scripts/mtpaint_open_latest.sh</command>
       </action>
     </keybind>
     <keybind key="W-s">
@@ -410,6 +405,35 @@
         <menu>root-menu</menu>
       </action>
     </keybind>
+
+    <!-- FN shortcuts -->
+    <keybind key="XF86AudioMute">
+      <action name="Execute">
+        <command>/home/nikolay/scripts/fn_logic.sh volume_toggle</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioLowerVolume">
+      <action name="Execute">
+        <command>/home/nikolay/scripts/fn_logic.sh volume_down</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioRaiseVolume">
+      <action name="Execute">
+        <command>/home/nikolay/scripts/fn_logic.sh volume_up</command>
+      </action>
+    </keybind>
+    <keybind key="XF86MonBrightnessDown">
+      <action name="Execute">
+        <command>sudo /home/nikolay/scripts/fn_logic.sh brightness_down</command>
+      </action>
+    </keybind>
+    <keybind key="XF86MonBrightnessUp">
+      <action name="Execute">
+        <command>sudo /home/nikolay/scripts/fn_logic.sh brightness_up</command>
+      </action>
+    </keybind>
+
+
     <!-- A bit of tiling -->
     <keybind key="W-Right">
       <action name="GrowToEdgeEast"/>
@@ -870,10 +894,6 @@
       <maximized>yes</maximized>
       <desktop>2</desktop>
     </application>
-    <application title="Guake?">
-      <skip_pager>yes</skip_pager>
-      <desktop>all</desktop>
-    </application>
     <application title="radio">
       <focus>no</focus>
       <decor>no</decor>
@@ -886,15 +906,27 @@
         <width>17%</width>
       </size>
     </application>
+    <!-- <application class="Firefox*"> -->
+    <!--   <decor>no</decor> -->
+    <!--   <focus>yes</focus> -->
+    <!--   <position force="yes"> -->
+    <!--     <x>center</x> -->
+    <!--     <y>center</y> -->
+    <!--   </position> -->
+    <!--   <size> -->
+    <!--     <width>66%</width> -->
+    <!--   </size> -->
+    <!-- </application> -->
     <application class="Firefox*">
       <decor>no</decor>
       <focus>yes</focus>
       <position force="yes">
-        <x>center</x>
-        <y>center</y>
+        <x>17%</x>
+        <y>0</y>
       </position>
       <size>
         <width>66%</width>
+        <height>100%</height>
       </size>
     </application>
     <application name="thunar">

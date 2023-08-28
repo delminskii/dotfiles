@@ -63,7 +63,7 @@ opt.termguicolors = true
 opt.guicursor = ''
 
 opt.directory = HOME .. '/.vim/files/swap//'
-g.python_host_prog = '/usr/bin/python2.7'
+g.python_host_prog = HOME .. '/.pyenv/versions/2.7.18/bin/python2.7'
 g.python3_host_prog = HOME .. '/.pyenv/versions/3.10.9/bin/python3.10'
 
 -- Colorscheme settings
@@ -174,17 +174,16 @@ map('n', '<F2>', vim.lsp.buf.rename)
 -- =============================================================================
 -- nvim-tree settings
 -- =============================================================================
-map('n', '<Leader>n', require('nvim-tree.api').tree.toggle)
+local api = require('nvim-tree.api')
+map('n', '<Leader>n', api.tree.toggle)
 require('nvim-tree').setup({
-  view = {
-    mappings = {
-      list = {
-        -- using <C-s> instead
-        {key = '<C-s>', action = 'split'},
-        {key = '<C-x>', action = ''},
-      }
-    }
-  },
+  on_attach = function(bufnr)
+    api.config.mappings.default_on_attach(bufnr)
+
+    -- using <C-s> instead
+    vim.keymap.del('n', '<C-x>', { buffer = bufnr })
+    map('n', '<C-s>', api.node.open.horizontal, { buffer = bufnr, nowait = true })
+  end,
   renderer = {
     highlight_opened_files = "name",
     add_trailing = true
@@ -197,7 +196,7 @@ require('nvim-tree').setup({
   disable_netrw = true,
   update_focused_file = {enable = true},
   update_cwd = true,
-  filters = {dotfiles = true},
+  filters = {dotfiles = true, exclude = { '__*__' }},
 })
 
 
@@ -214,8 +213,8 @@ g.ale_set_highlights = 0
 g.ale_fix_on_save = 1
 g.ale_linters_explicit = 1
 g.ale_linters = {python = {'ruff', 'mypy'}, go = {'gopls'}}
-g.ale_python_ruff_executable = HOME .. '/.pyenv/versions/3.10.9/bin/ruff'
-g.ale_python_black_executable = HOME .. '/.pyenv/versions/3.10.9/bin/black'
+g.ale_python_ruff_executable = HOME .. '/.local/bin/ruff'
+g.ale_python_black_executable = HOME .. '/.local/bin/black'
 g.ale_python_black_options = '-l 79 --fast -t py310'
 g.ale_sign_column_always = 1
 g.ale_completion_enabled = 0
@@ -281,7 +280,7 @@ require('telescope').setup({
   }),
 })
 map('n', '<Leader>f', function()
-  local is_git = os.execute('git') == 0
+  local is_git = os.execute('git >/dev/null 2>&1') == 0
   if is_git then
     builtin.git_files()
   else
@@ -329,7 +328,7 @@ require('Comment').setup({
   },
 })
 
--- https://github.com/numToStr/Comment.nvim/issues/70#issuecomment-998494798
+---- https://github.com/numToStr/Comment.nvim/issues/70#issuecomment-998494798
 function _G.___gdc(vmode)
   local range = U.get_region(vmode)
   local lines = U.get_lines(range)

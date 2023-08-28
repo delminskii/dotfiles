@@ -27,16 +27,14 @@ eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 ## 2. xrandr - resolution & freshrate
 ## 3. sleep - give compositor time to start
 ## 4. tint2 panel
-xrandr --mode 1366x768 --rate 60 &
+#xrandr --output $(xrandr --current | head | grep connected | cut -d' ' -f1) --primary -s 2880x1800 --rate 90 --scale 0.55 &
+xrandr --output $(xrandr --current | head | grep connected | cut -d' ' -f1) --primary --mode 1680x1050 --rate 90 &
 nitrogen --restore &
 sleep 1s
 tint2 &
 
 ## Volume control for systray
 # pnmixer &
-
-## Start Thunar Daemon
-thunar --daemon &
 
 ## Set keyboard settings - 250 ms delay and 25 cps (characters per second) repeat rate.
 ## Adjust the values according to your preferances.
@@ -47,9 +45,6 @@ xset b off &
 
 ## Run the conky
 conky -q &
-
-## Run the guake terminal
-# guake &
 
 ## Run redshift
 redshift -l 56.8:53.2 &
