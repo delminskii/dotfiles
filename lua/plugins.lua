@@ -26,8 +26,9 @@ function()
   use 'tpope/vim-unimpaired'
   use 'nvim-lualine/lualine.nvim'
   use 'neovim/nvim-lspconfig'
-  use {'lifepillar/vim-gruvbox8', cmd = 'neovim'}
-  use 'Shatur/neovim-ayu'
+  -- use {'lifepillar/vim-gruvbox8', cmd = 'neovim'}
+  -- use 'Shatur/neovim-ayu'
+  use 'doums/darcula'
 
   use 'Wansmer/treesj'
   use 'dense-analysis/ale'
@@ -45,7 +46,7 @@ function()
 
   -- Telescope
   use 'nvim-lua/plenary.nvim'
-  use {'nvim-telescope/telescope.nvim', tag = '0.1.0'}
+  use {'nvim-telescope/telescope.nvim', branch = '0.1.x'}
 
   -- Completion
   use 'hrsh7th/cmp-nvim-lsp'

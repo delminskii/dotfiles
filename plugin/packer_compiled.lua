@@ -114,6 +114,11 @@ _G.packer_plugins = {
     path = "/home/nikolay/.local/share/nvim/site/pack/packer/start/cmp-nvim-ultisnips",
     url = "https://github.com/quangnguyen30192/cmp-nvim-ultisnips"
   },
+  darcula = {
+    loaded = true,
+    path = "/home/nikolay/.local/share/nvim/site/pack/packer/start/darcula",
+    url = "https://github.com/doums/darcula"
+  },
   ["emmet-vim"] = {
     loaded = false,
     needs_bufread = false,
@@ -153,11 +158,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/nikolay/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
-  },
-  ["neovim-ayu"] = {
-    loaded = true,
-    path = "/home/nikolay/.local/share/nvim/site/pack/packer/start/neovim-ayu",
-    url = "https://github.com/Shatur/neovim-ayu"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -238,14 +238,6 @@ _G.packer_plugins = {
     path = "/home/nikolay/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
-  ["vim-gruvbox8"] = {
-    commands = { "neovim" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/nikolay/.local/share/nvim/site/pack/packer/opt/vim-gruvbox8",
-    url = "https://github.com/lifepillar/vim-gruvbox8"
-  },
   ["vim-matchup"] = {
     loaded = true,
     path = "/home/nikolay/.local/share/nvim/site/pack/packer/start/vim-matchup",
@@ -294,20 +286,6 @@ time([[Defining packer_plugins]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.api.nvim_create_user_command, 'DB', function(cmdargs)
-          require('packer.load')({'vim-dadbod'}, { cmd = 'DB', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'vim-dadbod'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('DB ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'neovim', function(cmdargs)
-          require('packer.load')({'vim-gruvbox8'}, { cmd = 'neovim', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'vim-gruvbox8'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('neovim ', 'cmdline')
-      end})
 pcall(vim.api.nvim_create_user_command, 'Goyo', function(cmdargs)
           require('packer.load')({'goyo.vim'}, { cmd = 'Goyo', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
@@ -315,16 +293,23 @@ pcall(vim.api.nvim_create_user_command, 'Goyo', function(cmdargs)
           require('packer.load')({'goyo.vim'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('Goyo ', 'cmdline')
       end})
+pcall(vim.api.nvim_create_user_command, 'DB', function(cmdargs)
+          require('packer.load')({'vim-dadbod'}, { cmd = 'DB', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-dadbod'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('DB ', 'cmdline')
+      end})
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType xml ++once lua require("packer.load")({'emmet-vim'}, { ft = "xml" }, _G.packer_plugins)]]
 vim.cmd [[au FileType plsql ++once lua require("packer.load")({'vim-uppercase-sql'}, { ft = "plsql" }, _G.packer_plugins)]]
-vim.cmd [[au FileType svg ++once lua require("packer.load")({'emmet-vim'}, { ft = "svg" }, _G.packer_plugins)]]
+vim.cmd [[au FileType xml ++once lua require("packer.load")({'emmet-vim'}, { ft = "xml" }, _G.packer_plugins)]]
 vim.cmd [[au FileType html ++once lua require("packer.load")({'emmet-vim'}, { ft = "html" }, _G.packer_plugins)]]
+vim.cmd [[au FileType svg ++once lua require("packer.load")({'emmet-vim'}, { ft = "svg" }, _G.packer_plugins)]]
 vim.cmd [[au FileType sql ++once lua require("packer.load")({'vim-uppercase-sql'}, { ft = "sql" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")

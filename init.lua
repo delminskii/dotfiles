@@ -68,11 +68,10 @@ g.python3_host_prog = HOME .. '/.pyenv/versions/3.10.9/bin/python3.10'
 
 -- Colorscheme settings
 -- g.gruvbox_italicize_strings = 0
-local hour = tonumber(os.date('%H'))
+-- local hour = tonumber(os.date('%H'))
 -- opt.bg = hour >= 7 and hour < 17 and 'light' or 'dark'
--- cmd('colorscheme gruvbox8')
+cmd('colorscheme darcula')
 -- cmd(string.format('colorscheme ayu-%s', hour >= 7 and hour < 17 and 'light' or 'dark'))
-cmd('colorscheme ayu-dark')
 
 
 -- Visual mode pressing * or # searches for the current selection;

@@ -352,7 +352,7 @@
     </keybind>
     <keybind key="W-r">
       <action name="Execute">
-        <command>xterm -T "radio" -e "mpv --profile=radio --playlist $HOME/.radios.txt"</command>
+        <command>xterm -T "radio" -e "mpv --profile=radio --playlist=$HOME/.radios.txt"</command>
       </action>
     </keybind>
     <keybind key="W-g">

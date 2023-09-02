@@ -22,8 +22,7 @@ alias gitconfig='vim $HOME/.gitconfig'
 alias gut=git
 alias gti=git
 alias podcast='mpv --profile=podcast'
-alias iptv='mpv --profile=iptv https://iptvbarmen.tk/auto.nogrp.m3u'
-alias iptv2='mpv --profile=iptv https://iptv-org.github.io/iptv/countries/ru.m3u'
+alias iptv='mpv --profile=iptv $HOME/.config/mpv/ru.m3u'
 alias downloads='cd $HOME/downloads/ && ll ./'
 alias tmp='cd /tmp'
 alias aliases='vim $HOME/.bash_aliases'
