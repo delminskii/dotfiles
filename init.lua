@@ -244,7 +244,7 @@ g.table_mode_header_fillchar = '='
 -- =============================================================================
 require('lualine').setup{
   options = {
-    theme = 'ayu',
+    theme = 'darcula',
     -- theme = 'auto',
     -- theme = 'gruvbox',
     -- theme = 'solarized_dark',
