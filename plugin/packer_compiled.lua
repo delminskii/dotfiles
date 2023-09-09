@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/nikolay/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/nikolay/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/nikolay/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/nikolay/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/nikolay/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/home/nikolay/.cache/nvim/packer_hererocks/2.1.1692716794/share/lua/5.1/?.lua;/home/nikolay/.cache/nvim/packer_hererocks/2.1.1692716794/share/lua/5.1/?/init.lua;/home/nikolay/.cache/nvim/packer_hererocks/2.1.1692716794/lib/luarocks/rocks-5.1/?.lua;/home/nikolay/.cache/nvim/packer_hererocks/2.1.1692716794/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/nikolay/.cache/nvim/packer_hererocks/2.1.1692716794/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -286,13 +286,6 @@ time([[Defining packer_plugins]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.api.nvim_create_user_command, 'DB', function(cmdargs)
-          require('packer.load')({'vim-dadbod'}, { cmd = 'DB', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'vim-dadbod'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('DB ', 'cmdline')
-      end})
 pcall(vim.api.nvim_create_user_command, 'Goyo', function(cmdargs)
           require('packer.load')({'goyo.vim'}, { cmd = 'Goyo', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
@@ -300,17 +293,24 @@ pcall(vim.api.nvim_create_user_command, 'Goyo', function(cmdargs)
           require('packer.load')({'goyo.vim'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('Goyo ', 'cmdline')
       end})
+pcall(vim.api.nvim_create_user_command, 'DB', function(cmdargs)
+          require('packer.load')({'vim-dadbod'}, { cmd = 'DB', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-dadbod'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('DB ', 'cmdline')
+      end})
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType svg ++once lua require("packer.load")({'emmet-vim'}, { ft = "svg" }, _G.packer_plugins)]]
-vim.cmd [[au FileType html ++once lua require("packer.load")({'emmet-vim'}, { ft = "html" }, _G.packer_plugins)]]
 vim.cmd [[au FileType sql ++once lua require("packer.load")({'vim-uppercase-sql'}, { ft = "sql" }, _G.packer_plugins)]]
-vim.cmd [[au FileType plsql ++once lua require("packer.load")({'vim-uppercase-sql'}, { ft = "plsql" }, _G.packer_plugins)]]
 vim.cmd [[au FileType xml ++once lua require("packer.load")({'emmet-vim'}, { ft = "xml" }, _G.packer_plugins)]]
+vim.cmd [[au FileType html ++once lua require("packer.load")({'emmet-vim'}, { ft = "html" }, _G.packer_plugins)]]
+vim.cmd [[au FileType svg ++once lua require("packer.load")({'emmet-vim'}, { ft = "svg" }, _G.packer_plugins)]]
+vim.cmd [[au FileType plsql ++once lua require("packer.load")({'vim-uppercase-sql'}, { ft = "plsql" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 
