@@ -165,7 +165,10 @@ map('n', '<Leader>mi', ':s/$/\t# type: ignore<CR>')
 -- =============================================================================
 -- LSP stuff
 -- =============================================================================
-vim.lsp.handlers['textDocument/publishDiagnostics'] = function() end
+-- vim.lsp.handlers['textDocument/publishDiagnostics'] = function() end
+vim.diagnostic.config({
+  virtual_text = false
+})
 map('n', '<Leader>i', vim.lsp.buf.hover)
 map('n', '<F2>', vim.lsp.buf.rename)
 
