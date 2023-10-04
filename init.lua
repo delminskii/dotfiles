@@ -596,13 +596,12 @@ require('gitsigns').setup({
 -- indent_blankline settings
 -- =============================================================================
 -- '|', '¦', '┆', '┊'
-require("indent_blankline").setup({
+require("ibl").setup({
   enabled = false,
-  show_first_indent_level = false,
   -- char = '┆'
 })
 cmd([[highlight IndentBlanklineChar guifg=#a89984 gui=nocombine]])
-map('n', '<Leader><Tab>', [[<CMD>IndentBlanklineToggle<CR>]])
+map('n', '<Leader><Tab>', [[<CMD>IBLToggle<CR>]])
 
 
 -- ============================================================================
