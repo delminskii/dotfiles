@@ -70,8 +70,8 @@ g.python3_host_prog = HOME .. '/.pyenv/versions/3.10.9/bin/python3.10'
 -- g.gruvbox_italicize_strings = 0
 -- local hour = tonumber(os.date('%H'))
 -- opt.bg = hour >= 7 and hour < 17 and 'light' or 'dark'
-cmd('colorscheme darcula')
 -- cmd(string.format('colorscheme ayu-%s', hour >= 7 and hour < 17 and 'light' or 'dark'))
+cmd('colorscheme catppuccin')
 
 
 -- Visual mode pressing * or # searches for the current selection;
@@ -247,7 +247,7 @@ g.table_mode_header_fillchar = '='
 -- =============================================================================
 require('lualine').setup{
   options = {
-    theme = 'darcula',
+    theme = 'catppuccin',
     -- theme = 'auto',
     -- theme = 'gruvbox',
     -- theme = 'solarized_dark',

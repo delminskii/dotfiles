@@ -28,7 +28,8 @@ function()
   use 'neovim/nvim-lspconfig'
   -- use {'lifepillar/vim-gruvbox8', cmd = 'neovim'}
   -- use 'Shatur/neovim-ayu'
-  use 'doums/darcula'
+  use { "catppuccin/nvim", as = "catppuccin" }
+
 
   use 'Wansmer/treesj'
   use 'dense-analysis/ale'
