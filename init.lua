@@ -71,6 +71,11 @@ g.python3_host_prog = HOME .. '/.pyenv/versions/3.10.9/bin/python3.10'
 -- local hour = tonumber(os.date('%H'))
 -- opt.bg = hour >= 7 and hour < 17 and 'light' or 'dark'
 -- cmd(string.format('colorscheme ayu-%s', hour >= 7 and hour < 17 and 'light' or 'dark'))
+require('catppuccin').setup({
+  styles = {
+    conditionals = {},
+  }
+})
 cmd('colorscheme catppuccin')
 
 
@@ -150,9 +155,6 @@ map('v', '<Leader>y', '"+y')
 map('n', '<Leader>q', [[<CMD>q<CR>]], {silent = false})
 map('n', '<Leader>Q', [[<CMD>q!<CR>]], {silent = false})
 
--- Leaving insert mode
--- map('i', 'jk', '<ESC>', {silent = false})
-
 -- Better switch to command mode
 map('n', ';', ':', {silent = false})
 
@@ -161,6 +163,7 @@ map('n', 'vE', 'vg_', {silent = false})
 
 -- Type ignore
 map('n', '<Leader>mi', ':s/$/\t# type: ignore<CR>')
+
 
 -- =============================================================================
 -- LSP stuff
@@ -241,6 +244,7 @@ g.user_emmet_install_global = 0
 -- =============================================================================
 g.vim_table_mode = '+'
 g.table_mode_header_fillchar = '='
+
 
 -- =============================================================================
 -- lualine settings
@@ -602,12 +606,6 @@ require("ibl").setup({
 })
 cmd([[highlight IndentBlanklineChar guifg=#a89984 gui=nocombine]])
 map('n', '<Leader><Tab>', [[<CMD>IBLToggle<CR>]])
-
-
--- ============================================================================
--- better-escape settings
--- =============================================================================
-require("better_escape").setup()
 
 
 -- =============================================================================

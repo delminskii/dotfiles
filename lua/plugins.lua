@@ -17,7 +17,7 @@ function()
   use 'phaazon/hop.nvim'
   use 'steelsojka/pears.nvim'
   use 'andymass/vim-matchup'
-  use 'max397574/better-escape.nvim'
+  -- use 'max397574/better-escape.nvim' -- better jk map
   use 'dhruvasagar/vim-table-mode'
 
   use {'kylechui/nvim-surround', tag = '*'}
@@ -29,6 +29,7 @@ function()
   -- use {'lifepillar/vim-gruvbox8', cmd = 'neovim'}
   -- use 'Shatur/neovim-ayu'
   use { "catppuccin/nvim", as = "catppuccin" }
+  use 'ronisbr/nano-theme.nvim'
 
 
   use 'Wansmer/treesj'
@@ -84,4 +85,5 @@ function()
   -- use 'doums/darcula'
   -- use 'kaicataldo/material.vim'
   -- use 'danilo-augusto/vim-afterglow'
+  -- use 'mcchrish/zenbones.nvim'
 end)
