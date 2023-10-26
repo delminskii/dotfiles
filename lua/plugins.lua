@@ -17,7 +17,7 @@ function()
   use 'phaazon/hop.nvim'
   use 'steelsojka/pears.nvim'
   use 'andymass/vim-matchup'
-  -- use 'max397574/better-escape.nvim' -- better jk map
+  use 'max397574/better-escape.nvim' -- better jk map
   use 'dhruvasagar/vim-table-mode'
 
   use {'kylechui/nvim-surround', tag = '*'}

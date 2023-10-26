@@ -78,6 +78,7 @@ require('catppuccin').setup({
 })
 cmd('colorscheme catppuccin')
 
+require("better_escape").setup()
 
 -- Visual mode pressing * or # searches for the current selection;
 map('v', '*', [[<CMD><C-u>call general#VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>]])
