@@ -8,7 +8,7 @@ alias vim='TERM=tmux-256color nvim.appimage'
 alias ivm=vim
 alias v=vim
 alias nvim=vim
-alias vp='vim *.py'
+alias vp='find . -name "*.py" -exec nvim.appimage {} \+ '
 alias vimrc='vim $HOME/.config/nvim/init.lua'
 alias tpp='vim /tmp/$(cat /dev/urandom | env LC_CTYPE=C tr -cd 'a-f0-9' | head -c 32).py'
 alias bashrc='vim $HOME/.bashrc'
