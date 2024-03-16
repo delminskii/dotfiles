@@ -158,6 +158,10 @@ snippet aw
 await ${1}
 endsnippet
 
+snippet n
+None
+endsnippet
+
 
 snippet ifok "if response.ok:"
 if response.ok:
@@ -174,18 +178,4 @@ pieces = (
 	for i, p in enumerate(pieces)
 )
 snip.rv = '\n'.join(pieces).rstrip()`
-endsnippet
-
-
-snippet wcsv "writes out csv file"
-with ${1:output_filename}.open("w", newline=str()) as fp:
-	writer = csv.writer(fp)
-	writer.writerow(header)
-	writer.writerows(output_rows)
-endsnippet
-
-
-snippet wjson "writes out json file"
-with ${1:output_filename}.open("w") as fp:
-	json.dump(${2:data}, fp, indent=4)
 endsnippet
