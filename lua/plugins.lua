@@ -29,6 +29,7 @@ function()
   -- use {'lifepillar/vim-gruvbox8', cmd = 'neovim'}
   -- use 'Shatur/neovim-ayu'
   use { "catppuccin/nvim", as = "catppuccin" }
+  use { "rebelot/kanagawa.nvim" }
   -- use 'ronisbr/nano-theme.nvim'
 
 

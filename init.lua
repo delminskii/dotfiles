@@ -71,12 +71,20 @@ g.python3_host_prog = HOME .. '/.pyenv/versions/3.10.9/bin/python3.10'
 -- local hour = tonumber(os.date('%H'))
 -- opt.bg = hour >= 7 and hour < 17 and 'light' or 'dark'
 -- cmd(string.format('colorscheme ayu-%s', hour >= 7 and hour < 17 and 'light' or 'dark'))
-require('catppuccin').setup({
-  styles = {
-    conditionals = {},
-  }
+-- require('catppuccin').setup({
+--   styles = {
+--     conditionals = {},
+--   }
+-- })
+-- cmd('colorscheme catppuccin')
+require('kanagawa').setup({
+    compile = true,
+    undercurl = false,
+    commentStyle = { italic = false },
+    keywordStyle = { italic = false},
+    statementStyle = { bold = true }
 })
-cmd('colorscheme catppuccin')
+cmd('colorscheme kanagawa-dragon')
 
 require("better_escape").setup()
 
