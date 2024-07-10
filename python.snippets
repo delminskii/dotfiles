@@ -172,14 +172,3 @@ snippet ifs "if response.is_success:"
 if response.is_success:
 	${0}
 endsnippet
-
-snippet mks
-`!p
-indent = ' ' * int(vim.eval('indent(".")'))
-pieces = filter(len, map(str.strip, snip.v.text.strip().split('\n')))
-pieces = (
-	"%s%s: str = str()" % (indent if i else '', p)
-	for i, p in enumerate(pieces)
-)
-snip.rv = '\n'.join(pieces).rstrip()`
-endsnippet
