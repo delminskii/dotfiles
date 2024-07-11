@@ -294,12 +294,20 @@ require('telescope').setup({
     file_ignore_patterns = {"output/?.*%.csv", '__pycache__'},
   }),
 })
+
+local is_inside_work_tree = {}
 map('n', '<Leader>f', function()
-  local is_git = os.execute('git >/dev/null 2>&1') == 0
-  if is_git then
-    builtin.git_files()
+  local opts = {}
+  local cwd = vim.fn.getcwd()
+  if is_inside_work_tree[cwd] == nil then
+    vim.fn.system("git rev-parse --is-inside-work-tree")
+    is_inside_work_tree[cwd] = vim.v.shell_error == 0
+  end
+
+  if is_inside_work_tree[cwd] then
+    builtin.git_files(opts)
   else
-    builtin.find_files()
+    builtin.find_files(opts)
   end
 end)
 map('n', '<Leader>b', [[<CMD>Telescope buffers<CR>]])
