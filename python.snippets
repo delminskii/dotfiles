@@ -78,6 +78,10 @@ snippet ci "_log.info"
 cls._log.info("${0}")
 endsnippet
 
+snippet ce "_log.error"
+cls._log.error("${0}")
+endsnippet
+
 
 snippet "head(aj)?" "browser-like headers" r
 `!p
@@ -141,19 +145,6 @@ THIS_DIR = Path(__file__).parent
 
 endsnippet
 
-
-snippet "bs(4)?back" "define BS4 backend" r
-BS4_BACKEND = "html.parser"
-try:
-	import lxml
-
-	BS4_BACKEND = "lxml"
-except (ImportError, ModuleNotFoundError):
-	pass
-
-endsnippet
-
-
 snippet aw
 await ${1}
 endsnippet
@@ -171,4 +162,20 @@ endsnippet
 snippet ifs "if response.is_success:"
 if response.is_success:
 	${0}
+endsnippet
+
+snippet ifns "if not response.is_success:"
+if not response.is_success:
+	cls._log.error(response)
+else:
+	${0}
+endsnippet
+
+snippet ifaf "if all(fields := ())"
+if all(
+	fields := (
+		${0}
+	)
+):
+	...
 endsnippet
