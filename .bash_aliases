@@ -10,7 +10,8 @@ alias v=vim
 alias nvim=vim
 alias vp='find . -name "*.py" -exec nvim.appimage {} \+ '
 alias vimrc='vim $HOME/.config/nvim/init.lua'
-alias tpp='vim /tmp/$(cat /dev/urandom | env LC_CTYPE=C tr -cd 'a-f0-9' | head -c 32).py'
+alias tp='vim /tmp/$(cat /dev/urandom | env LC_CTYPE=C tr -cd 'a-f0-9' | head -c 32).py'
+alias ts='vim /tmp/$(cat /dev/urandom | env LC_CTYPE=C tr -cd 'a-f0-9' | head -c 32).sh'
 alias bashrc='vim $HOME/.bashrc'
 alias wgetrc='vim $HOME/.wgetrc'
 alias conkyrc='vim $HOME/.conkyrc'
