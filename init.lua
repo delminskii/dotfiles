@@ -76,15 +76,7 @@ g.python3_host_prog = HOME .. '/.pyenv/versions/3.10.9/bin/python3.10'
 --     conditionals = {},
 --   }
 -- })
--- cmd('colorscheme catppuccin')
-require('kanagawa').setup({
-    compile = true,
-    undercurl = false,
-    commentStyle = { italic = false },
-    keywordStyle = { italic = false},
-    statementStyle = { bold = true }
-})
-cmd('colorscheme kanagawa-dragon')
+cmd('colorscheme catppuccin')
 
 require("better_escape").setup()
 
