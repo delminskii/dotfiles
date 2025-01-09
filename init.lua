@@ -76,7 +76,13 @@ g.python3_host_prog = HOME .. '/.pyenv/versions/3.10.9/bin/python3.10'
 --     conditionals = {},
 --   }
 -- })
-cmd('colorscheme catppuccin')
+-- cmd('colorscheme catppuccin')
+require("catppuccin").setup({
+    no_italic = true,
+    no_bold = false,
+    no_underline = true
+})
+vim.cmd.colorscheme "catppuccin"
 
 require("better_escape").setup()
 
