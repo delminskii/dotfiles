@@ -6,8 +6,8 @@ from random import randint
 
 
 def main():
-    SAMPLES_PER_BEGUNOK, N_BEGUNOKS = 38, 14
-    ANSWER_WIDTH_SPACES = 8
+    SAMPLES_PER_BEGUNOK, N_BEGUNOKS = 38, 18
+    ANSWER_WIDTH = 8
     OUTPUT_FILES_DIR = Path(__file__).parent / "begunoks"
     OUTPUT_FILES_DIR.mkdir(exist_ok=True)
 
@@ -18,11 +18,11 @@ def main():
         for i in range(SAMPLES_PER_BEGUNOK):
             row = []
             for j in range(N_BEGUNOKS):
-                a, b = randint(1, 10), randint(1, 10)
+                a, b = randint(2, 10), randint(2, 10)
                 row.append(
-                    f"{i+1}) {a}×{b}={' '*ANSWER_WIDTH_SPACES}"
+                    f"{i+1}) {a}×{b}={' '*ANSWER_WIDTH}"
                     if randint(0, 3)
-                    else f"{i+1}) {a*b}:{a}={' '*ANSWER_WIDTH_SPACES}",
+                    else f"{i+1}) {a*b}:{a}={' '*ANSWER_WIDTH}"
                 )
             writer.writerow(row)
 
