@@ -6,7 +6,7 @@ from random import randint
 
 
 def main():
-    SAMPLES_PER_BEGUNOK, N_BEGUNOKS = 38, 18
+    SAMPLES_PER_BEGUNOK, N_BEGUNOKS = 38, 15
     ANSWER_WIDTH = 8
     OUTPUT_FILES_DIR = Path(__file__).parent / "begunoks"
     OUTPUT_FILES_DIR.mkdir(exist_ok=True)
