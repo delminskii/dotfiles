@@ -22,7 +22,6 @@ function()
 
   use {'kylechui/nvim-surround', tag = '*'}
   use {'tpope/vim-dadbod', cmd = 'DB'}
-  use 'tpope/vim-abolish'
   use 'tpope/vim-unimpaired'
   use 'nvim-lualine/lualine.nvim'
   use 'neovim/nvim-lspconfig'

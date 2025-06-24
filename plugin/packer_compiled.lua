@@ -220,11 +220,6 @@ _G.packer_plugins = {
     path = "/home/nikolay/.local/share/nvim/site/pack/packer/start/ultisnips",
     url = "https://github.com/SirVer/ultisnips"
   },
-  ["vim-abolish"] = {
-    loaded = true,
-    path = "/home/nikolay/.local/share/nvim/site/pack/packer/start/vim-abolish",
-    url = "https://github.com/tpope/vim-abolish"
-  },
   ["vim-dadbod"] = {
     commands = { "DB" },
     loaded = false,
@@ -312,10 +307,10 @@ vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
 vim.cmd [[au FileType svg ++once lua require("packer.load")({'emmet-vim'}, { ft = "svg" }, _G.packer_plugins)]]
-vim.cmd [[au FileType html ++once lua require("packer.load")({'emmet-vim'}, { ft = "html" }, _G.packer_plugins)]]
 vim.cmd [[au FileType plsql ++once lua require("packer.load")({'vim-uppercase-sql'}, { ft = "plsql" }, _G.packer_plugins)]]
 vim.cmd [[au FileType sql ++once lua require("packer.load")({'vim-uppercase-sql'}, { ft = "sql" }, _G.packer_plugins)]]
 vim.cmd [[au FileType xml ++once lua require("packer.load")({'emmet-vim'}, { ft = "xml" }, _G.packer_plugins)]]
+vim.cmd [[au FileType html ++once lua require("packer.load")({'emmet-vim'}, { ft = "html" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 

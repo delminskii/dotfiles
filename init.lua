@@ -87,6 +87,39 @@ vim.cmd.colorscheme "catppuccin"
 require("better_escape").setup()
 
 
+-- =============================================================================
+-- FTerm settings
+-- =============================================================================
+local fterm = require('FTerm')
+local fterm_dimensions = {
+  height = 0.35,
+  width = 1.0,
+  y = 1.0
+}
+fterm.setup({ dimensions = fterm_dimensions })
+local runners = {
+  python = 'python3',
+  html = 'firefox-esr -safe-mode -new-window',
+  sh = 'bash',
+  javascript = 'node',
+  ruby = 'ruby',
+  go = 'go run',
+}
+map('n', '<Leader>e', function()
+  cmd('write')
+  local buf = vim.api.nvim_buf_get_name(0)
+  local ftype = vim.filetype.match({ filename = buf })
+  local exec = runners[ftype]
+  if exec ~= nil then
+    fterm.scratch({
+      cmd = { exec, buf },
+      dimensions = fterm_dimensions
+    })
+  end
+  end
+)
+map({'n', 't'}, '<A-i>', fterm.toggle)
+
 -- Visual mode pressing * or # searches for the current selection;
 map('v', '*', [[<CMD><C-u>call general#VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>]])
 map('v', '#', [[<CMD><C-u>call general#VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>]])
@@ -171,6 +204,29 @@ map('n', 'vE', 'vg_', {silent = false})
 
 -- Type ignore
 map('n', '<Leader>mi', ':s/$/\t# type: ignore<CR>')
+
+local function switch_common_sentences()
+	local toggles = {
+		["true"] = "false",
+		["True"] = "False",
+		["always"] = "never",
+		["yes"] = "no",
+    ["debug"] = "dev",
+	}
+
+	local cword = vim.fn.expand("<cword>")
+	local newWord
+	for word, opposite in pairs(toggles) do
+		if cword == word then newWord = opposite end
+		if cword == opposite then newWord = word end
+	end
+	if newWord then
+		local prevCursor = vim.api.nvim_win_get_cursor(0)
+		vim.cmd.normal { '"_ciw' .. newWord, bang = true }
+		vim.api.nvim_win_set_cursor(0, prevCursor)
+	end
+end
+map('n', '<Leader>-', switch_common_sentences)
 
 
 -- =============================================================================
@@ -476,20 +532,6 @@ local runners = {
   ruby = 'ruby',
   go = 'go run',
 }
-map('n', '<Leader>e', function()
-  cmd('write')
-  local buf = vim.api.nvim_buf_get_name(0)
-  local ftype = vim.filetype.match({ filename = buf })
-  local exec = runners[ftype]
-  if exec ~= nil then
-    fterm.scratch({
-      cmd = { exec, buf },
-      dimensions = fterm_dimensions
-    })
-  end
-  end
-)
-map({'n', 't'}, '<A-i>', fterm.toggle)
 
 
 -- =============================================================================
@@ -610,6 +652,7 @@ require('gitsigns').setup({
     map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>', opts)
   end
 })
+
 
 
 -- ============================================================================
