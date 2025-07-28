@@ -10,6 +10,7 @@ require('plugins')
 require('functions')
 
 local HOME = os.getenv('HOME')
+local PWD = os.getenv('PWD')
 
 -----------COMMON SETTINGS-----------
 opt.autoread = true
@@ -63,7 +64,7 @@ opt.termguicolors = true
 opt.guicursor = ''
 
 opt.directory = HOME .. '/.vim/files/swap//'
-g.python_host_prog = HOME .. '/.pyenv/versions/2.7.18/bin/python2.7'
+g.python_host_prog = './.pyenv/versions/2.7.18/bin/python2.7'
 g.python3_host_prog = HOME .. '/.pyenv/versions/3.10.9/bin/python3.10'
 
 -- Colorscheme settings
