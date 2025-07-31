@@ -10,7 +10,6 @@ require('plugins')
 require('functions')
 
 local HOME = os.getenv('HOME')
-local PWD = os.getenv('PWD')
 
 -----------COMMON SETTINGS-----------
 opt.autoread = true
