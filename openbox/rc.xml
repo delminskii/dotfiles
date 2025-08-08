@@ -387,7 +387,7 @@
     </keybind>
     <keybind key="W-v">
       <action name="Execute">
-        <command>/opt/piavpn/bin/pia-client</command>
+        <command>/home/nikolay/downloads/v2rayN-linux-64.AppImage</command>
       </action>
     </keybind>
     <keybind key="W-Tab">
