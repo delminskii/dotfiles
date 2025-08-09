@@ -387,7 +387,7 @@
     </keybind>
     <keybind key="W-v">
       <action name="Execute">
-        <command>/home/nikolay/downloads/v2rayN-linux-64.AppImage</command>
+        <command></command>
       </action>
     </keybind>
     <keybind key="W-Tab">
