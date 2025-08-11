@@ -387,7 +387,7 @@
     </keybind>
     <keybind key="W-v">
       <action name="Execute">
-        <command></command>
+        <command>/home/nikolay/scripts/vpn_toggle.sh</command>
       </action>
     </keybind>
     <keybind key="W-Tab">
