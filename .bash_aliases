@@ -23,7 +23,6 @@ alias gitconfig='vim $HOME/.gitconfig'
 alias gut=git
 alias gti=git
 alias podcast='mpv --profile=podcast'
-alias iptv='mpv --profile=iptv $HOME/.config/mpv/ru.m3u'
 alias downloads='cd $HOME/downloads/ && ll ./'
 alias tmp='cd /tmp'
 alias aliases='vim $HOME/.bash_aliases'
@@ -33,8 +32,6 @@ alias docker_remove_containers_exited='docker rm -v $(docker ps -aq -f status=ex
 alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
 alias t='tree'
 alias ff='firefox-esr'
-alias selact='source $HOME/.virtualenvs/sel_requests/bin/activate'
-alias htact='source $HOME/.virtualenvs/httpx_env/bin/activate'
 alias mkadventfiles='touch script.py {input,input_sample}.txt'
 alias greppy='ll -t | grep --include=\*.py --color=auto -ri'
 alias gh='git h'
