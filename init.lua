@@ -480,11 +480,13 @@ cmp.setup({
   completion = {keyword_length = 2},
   window = {documentation = false},
 })
+
 -- Setup lspconfig
-local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-lspconfig.pylsp.setup({capabilities = capabilities})
-lspconfig.gopls.setup({capabilities = capabilities})
+vim.lsp.config("pylsp", {capabilities = capabilities})
+vim.lsp.enable({"pylsp"})
+vim.lsp.config("gopls", {capabilities = capabilities})
+vim.lsp.enable({"gopls"})
 
 
 -- =============================================================================
