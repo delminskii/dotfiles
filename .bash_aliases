@@ -40,3 +40,4 @@ alias work='cd $HOME/projects/work && ll'
 alias pg='ping 1.1.1.1'
 alias d='docker'
 alias docker-compose='docker compose'
+alias dc=docker-compose
