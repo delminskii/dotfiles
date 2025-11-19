@@ -31,7 +31,6 @@ function()
   use { "rebelot/kanagawa.nvim" }
   -- use 'ronisbr/nano-theme.nvim'
 
-
   use 'Wansmer/treesj'
   use 'dense-analysis/ale'
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
@@ -45,6 +44,14 @@ function()
   use 'sheerun/vim-polyglot'
   use {'alcesleo/vim-uppercase-sql', ft = {'plsql', 'sql'}}
   use 'lukas-reineke/indent-blankline.nvim'
+
+  use({
+    "frankroeder/parrot.nvim",
+    requires = { 'ibhagwan/fzf-lua', 'nvim-lua/plenary.nvim'},
+    -- config = function()
+    --   require("parrot").setup()
+    -- end,
+  })
 
   -- Telescope
   use 'nvim-lua/plenary.nvim'

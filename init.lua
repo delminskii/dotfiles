@@ -656,7 +656,6 @@ require('gitsigns').setup({
 })
 
 
-
 -- ============================================================================
 -- indent_blankline settings
 -- =============================================================================
@@ -667,6 +666,265 @@ require("ibl").setup({
 })
 cmd([[highlight IndentBlanklineChar guifg=#a89984 gui=nocombine]])
 map('n', '<Leader><Tab>', [[<CMD>IBLToggle<CR>]])
+
+
+-- ============================================================================
+-- parrot settings
+-- =============================================================================
+require("parrot").setup{
+  providers = {
+    openrouter = {
+      name = "openrouter",
+      api_key = os.getenv "OPENROUTER_API_KEY",
+      endpoint = "https://openrouter.ai/api/v1/chat/completions",
+      models = {
+        "openai/gpt-oss-20b:free",
+        "kwaipilot/kat-coder-pro:free",
+        "qwen/qwen3-coder:free",
+        "tngtech/deepseek-r1t2-chimera:free",
+        "z-ai/glm-4.5-air:free",
+        "tngtech/deepseek-r1t-chimera:free",
+        "deepseek/deepseek-chat-v3-0324:free",
+        "deepseek/deepseek-r1-0528:free",
+        "google/gemma-3-27b-it:free",
+        "meta-llama/llama-3.3-70b-instruct:free",
+        "deepseek/deepseek-r1:free",
+        "google/gemini-2.0-flash-exp:free"
+      },
+      topic = {
+        model = "openai/gpt-oss-20b:free",
+        params = { max_completion_tokens = 64 },
+      },
+      -- params = {
+      --   chat = { temperature = 1 },
+      --   command = { temperature = 1, top_p = 1 },
+      -- },
+    },
+  },
+
+  user_input_ui = "buffer",
+  command_prompt_prefix_template = "Instruction ",
+  chat_user_prefix = "### User",
+  llm_prefix = "### Assistant",
+  chat_free_cursor = true,
+  command_auto_select_response = true,
+  highlight_response = false,
+  chat_shortcut_respond = { modes = { "n" }, shortcut = "<CR>" },
+  chat_shortcut_stop = { modes = { "n", "i", "v", "x" }, shortcut = "<C-c>" },
+  system_prompt = {
+    command = [[
+                <context>
+                You are an expert programming AI assistant who prioritizes minimalist, efficient code.
+                You write idiomatic solutions, seek clarification when needed (via code comments), and accept user preferences even if suboptimal.
+                Your responses stricly pertain to the code provided, focused on the snippet in question.
+                </context>
+
+                <format_rules>
+                - Match the style of user written code
+                - Comment sparingly, only to explain large & complex code blocks
+                - Always use type annotations on functions when writing python (use 3.12 style builtin types rather than importing from typing)
+                </format_rules>
+
+                Respond following these rules. Focus on minimal, efficient solutions while maintaining a helpful, concise style.
+            ]],
+  },
+  hooks = {
+            --[[
+                            Placeholders
+            {{selection}} 	      Current visual selection
+            {{filetype}} 	        Filetype of the current buffer
+            {{filename}} 	        Filename of the current buffer
+            {{filepath}} 	        Full path of the current file
+            {{filecontent}} 	    Full content of the current buffer
+            {{multifilecontent}} 	Full content of all open buffers
+            {{command}} 	        User command (prompt)
+            --]]
+    RewriteWithContext = function(prt, params)
+        local template = [[
+                    I have the following code from {{filename}}:
+
+                    ```{{filetype}}
+                    {{filecontent}}
+                    ```
+
+                    Please look at the following section specifically:
+                    ```{{filetype}}
+                    {{selection}}
+                    ```
+
+                    {{command}}
+                    Respond exclusively with the snippet that should replace the selection above.
+                ]]
+        local model_obj = prt.get_model("command")
+        prt.Prompt(params, prt.ui.Target.rewrite, model_obj, "Instruction ", template)
+    end,
+    ImplementWithContext = function(prt, params)
+        local template = [[
+                    I have the following code from {{filename}}:
+
+                    ```{{filetype}}
+                    {{filecontent}}
+                    ```
+
+                    Please look at the following section specifically:
+                    ```{{filetype}}
+                    {{selection}}
+                    ```
+
+                    Please rewrite this according to the contained instructions.
+                    Respond exclusively with the snippet that should replace the selection above.
+                ]]
+        local model_obj = prt.get_model("command")
+        prt.Prompt(params, prt.ui.Target.rewrite, model_obj, nil, template)
+    end,
+    CompleteSelection = function(prt, params)
+        local template = [[
+                    I have the following code from {{filename}}:
+
+                    ```{{filetype}}
+                    {{selection}}
+                    ```
+
+                    Please finish the code above carefully and logically. Follow any instructions in the comments.
+                    Respond just with the snippet of code that should be inserted.
+                ]]
+        local model_obj = prt.get_model("command")
+        prt.Prompt(params, prt.ui.Target.append, model_obj, nil, template)
+    end,
+    Complete = function(prt, params)
+        local template = [[
+                    I have the following code from {{filename}}:
+
+                    ```{{filetype}}
+                    {{filecontent}}
+                    ```
+
+                    Please look at the following section specifically and follow any instructions in the comments:
+                    ```{{filetype}}
+                    {{selection}}
+                    ```
+
+                    Please finish the code above carefully and logically.
+                    Respond just with the snippet of code that should be inserted.
+                ]]
+        local model_obj = prt.get_model("command")
+        prt.Prompt(params, prt.ui.Target.append, model_obj, nil, template)
+    end,
+    CompleteFullContext = function(prt, params)
+        local template = [[
+                    I have the following code from {{filename}} and other related files:
+
+                    ```{{filetype}}
+                    {{multifilecontent}}
+                    ```
+
+                    Please look at the following section specifically:
+                    ```{{filetype}}
+                    {{selection}}
+                    ```
+
+                    Please finish the code above carefully and logically.
+                    Respond just with the snippet of code that should be inserted.
+                ]]
+        local model_obj = prt.get_model("command")
+        prt.Prompt(params, prt.ui.Target.append, model_obj, nil, template)
+    end,
+    ErrorHandling = function(prt, params)
+        local template = [[
+                    You are a {{filetype}} expert.
+                    Review the following code, carefully examine it, and update it to have robust error handling.
+                    Prefer to pass errors on to the caller and use minimal try/catch blocks.
+
+                    ```{{filetype}}
+                    {{filecontent}}
+                    ```
+                ]]
+        local model_obj = prt.get_model("command")
+        prt.logger.info("Adding error handling with: " .. model_obj.name)
+        prt.Prompt(params, prt.ui.Target.enew, model_obj, nil, template)
+    end,
+    Explain = function(prt, params)
+        local template = [[
+                    Your task is to take the code snippet from {{filename}} and explain it with gradually increasing complexity.
+                    Break down the code's functionality, purpose, and key components.
+                    The goal is to help the reader understand what the code does and how it works.
+
+                    ```{{filetype}}
+                    {{selection}}
+                    ```
+
+                    Use the markdown format with codeblocks and inline code.
+                    Explanation of the code above:
+        ]]
+        local model = prt.get_model "command"
+        prt.logger.info("Explaining selection with model: " .. model.name)
+        prt.Prompt(params, prt.ui.Target.new, model, nil, template)
+    end,
+    FixBugs = function(prt, params)
+        local template = [[
+                    You are an expert in {{filetype}}.
+                    Fix bugs in the below code from {{filename}} carefully and logically:
+                    Your task is to analyze the provided {{filetype}} code snippet, identify
+                    any bugs or errors present, and provide a corrected version of the code
+                    that resolves these issues. Explain the problems you found in the
+                    original code and how your fixes address them. The corrected code should
+                    be functional, efficient, and adhere to best practices in
+                    {{filetype}} programming.
+
+                    ```{{filetype}}
+                    {{selection}}
+                    ```
+
+                    Fixed code:
+        ]]
+        local model_obj = prt.get_model "command"
+        prt.logger.info("Fixing bugs in selection with model: " .. model_obj.name)
+        prt.Prompt(params, prt.ui.Target.new, model_obj, nil, template)
+    end,
+    Optimize = function(prt, params)
+        local template = [[
+                    You are an expert in {{filetype}}.
+                    Your task is to analyze the provided {{filetype}} code snippet and
+                    suggest improvements to optimize its performance. Identify areas
+                    where the code can be made more efficient, faster, or less
+                    resource-intensive. Provide specific suggestions for optimization,
+                    along with explanations of how these changes can enhance the code's
+                    performance. The optimized code should maintain the same functionality
+                    as the original code while demonstrating improved efficiency.
+
+                    ```{{filetype}}
+                    {{selection}}
+                    ```
+
+                    Optimized code:
+        ]]
+        local model_obj = prt.get_model "command"
+        prt.logger.info("Optimizing selection with model: " .. model_obj.name)
+        prt.Prompt(params, prt.ui.Target.new, model_obj, nil, template)
+    end,
+  },
+}
+
+local opts = {noremap = true}
+vim.keymap.set({ "n", "v" }, "<Leader>Pj", ":PrtAppend<CR>", opts)
+vim.keymap.set({ "n", "v" }, "<Leader>Pk", ":PrtPrepend<CR>", opts)
+vim.keymap.set({ "v" }, "<Leader>Pr", ":PrtRewriteWithContext<CR>", opts)
+vim.keymap.set({ "v" }, "<Leader>PR", ":PrtRewrite<CR>", opts)
+vim.keymap.set({ "v" }, "<Leader>Pi", ":PrtImplementWithContext<CR>", opts)
+vim.keymap.set({ "n" }, "<Leader>Pi", "V:PrtImplementWithContext<CR>", opts)
+vim.keymap.set({ "v" }, "<Leader>PI", ":PrtImplement<CR>", opts)
+vim.keymap.set({ "n" }, "<Leader>PI", "V:PrtImplement<CR>", opts)
+vim.keymap.set({ "v" }, "<Leader>Pe", ":PrtEdit<CR>", opts)
+vim.keymap.set({ "v" }, "<Leader>Pc", ":PrtComplete<CR>", opts)
+vim.keymap.set({ "n" }, "<Leader>Pc", "V:PrtComplete<CR>", opts)
+vim.keymap.set({ "v" }, "<Leader>Ps", ":PrtCompleteSelection<CR>", opts)
+vim.keymap.set({ "v" }, "<Leader>PC", ":PrtCompleteFullContext<CR>", opts)
+vim.keymap.set({ "n" }, "<Leader>PC", "V:PrtCompleteFullContext<CR>", opts)
+vim.keymap.set({ "n", "v" }, "<Leader>Pt", ":PrtChatToggle<CR>", opts)
+vim.keymap.set({ "n", "v" }, "<Leader>Pn", ":PrtChatNew<CR>", opts)
+vim.keymap.set({ "n", "v" }, "<Leader>Pp", ":PrtChatPaste<CR>", opts)
+vim.keymap.set({ "n" }, "<Leader>P<CR>", ":PrtChatRespond<CR>", opts)
+vim.keymap.set({ "n" }, "<Leader>P?", ":PrtAsk<CR>", opts)
 
 
 -- =============================================================================
