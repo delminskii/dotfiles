@@ -273,9 +273,9 @@ require('nvim-tree').setup({
 -- Ale settings
 -- =============================================================================
 g.ale_fixers = {
+  python = {'ruff_format', 'isort'},
+  go = 'gofmt',
   ['*'] = {'remove_trailing_lines', 'trim_whitespace'},
-  python = {'black', 'isort'},
-  go = 'gofmt'
 }
 g.ale_virtualtext_cursor = 'disabled'
 g.ale_set_highlights = 0
@@ -283,8 +283,6 @@ g.ale_fix_on_save = 1
 g.ale_linters_explicit = 1
 g.ale_linters = {python = {'ruff', 'mypy'}, go = {'gopls'}}
 g.ale_python_ruff_executable = HOME .. '/.local/bin/ruff'
-g.ale_python_black_executable = HOME .. '/.local/bin/black'
-g.ale_python_black_options = '-l 79 --fast -t py310'
 g.ale_sign_column_always = 1
 g.ale_completion_enabled = 0
 g.ale_echo_delay = 200
@@ -483,7 +481,10 @@ cmp.setup({
 
 -- Setup lspconfig
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-vim.lsp.config("pylsp", {capabilities = capabilities})
+vim.lsp.config("pylsp", {
+  capabilities = capabilities,
+  root_markers = { '.git', 'pyproject.toml'},
+})
 vim.lsp.enable({"pylsp"})
 vim.lsp.config("gopls", {capabilities = capabilities})
 vim.lsp.enable({"gopls"})
@@ -645,6 +646,7 @@ require('gitsigns').setup({
     map('n', '<Leader>hR', gs.reset_buffer, opts)
     map('n', '<Leader>hp', gs.preview_hunk, opts)
     map('n', '<Leader>hb', function() gs.blame_line{full=true} end, opts)
+    map('n', '<Leader>hB', function() gs.blame() end, opts)
     map('n', '<Leader>tb', gs.toggle_current_line_blame, opts)
     map('n', '<Leader>hd', gs.diffthis, opts)
     map('n', '<Leader>hD', function() gs.diffthis('~') end, opts)
@@ -678,6 +680,7 @@ require("parrot").setup{
       api_key = os.getenv "OPENROUTER_API_KEY",
       endpoint = "https://openrouter.ai/api/v1/chat/completions",
       models = {
+        "x-ai/grok-4.1-fast",
         "openai/gpt-oss-20b:free",
         "kwaipilot/kat-coder-pro:free",
         "qwen/qwen3-coder:free",
@@ -692,7 +695,8 @@ require("parrot").setup{
         "google/gemini-2.0-flash-exp:free"
       },
       topic = {
-        model = "openai/gpt-oss-20b:free",
+        -- model = "openai/gpt-oss-20b:free",
+        model = "x-ai/grok-4.1-fast",
         params = { max_completion_tokens = 64 },
       },
       -- params = {
