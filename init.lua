@@ -695,7 +695,6 @@ require("parrot").setup{
         "google/gemini-2.0-flash-exp:free"
       },
       topic = {
-        -- model = "openai/gpt-oss-20b:free",
         model = "x-ai/grok-4.1-fast",
         params = { max_completion_tokens = 64 },
       },
