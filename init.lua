@@ -257,15 +257,13 @@ require('nvim-tree').setup({
     highlight_opened_files = "name",
     add_trailing = true
   },
-  git = {
-    ignore = true,
-    enable = true,
-  },
+  git = { ignore = true, enable = true, },
   reload_on_bufenter = true,
   disable_netrw = true,
   update_focused_file = {enable = true},
   update_cwd = true,
-  filters = {dotfiles = true, exclude = { '__*__' }},
+  -- filters = {dotfiles = false, exclude = { '__*__' }},
+  filters = { custom = { '^.git$' } },
 })
 
 
