@@ -20,7 +20,7 @@ opt.shiftwidth  = 4
 opt.shiftround = true
 opt.scrolloff = 4
 opt.scrolljump = 4
-opt.colorcolumn = '79'
+opt.colorcolumn = '88'
 
 opt.backspace = 'indent,eol,start'
 opt.hidden = true
