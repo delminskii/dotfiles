@@ -91,34 +91,29 @@ require("better_escape").setup()
 -- FTerm settings
 -- =============================================================================
 local fterm = require('FTerm')
-local fterm_dimensions = {
-  height = 0.35,
-  width = 1.0,
-  y = 1.0
-}
-fterm.setup({ dimensions = fterm_dimensions })
-local runners = {
-  python = 'python3',
-  html = 'firefox-esr -safe-mode -new-window',
-  sh = 'bash',
-  javascript = 'node',
-  ruby = 'ruby',
-  go = 'go run',
-}
-map('n', '<Leader>e', function()
-  cmd('write')
-  local buf = vim.api.nvim_buf_get_name(0)
-  local ftype = vim.filetype.match({ filename = buf })
-  local exec = runners[ftype]
-  if exec ~= nil then
-    fterm.scratch({
-      cmd = { exec, buf },
-      dimensions = fterm_dimensions
-    })
-  end
-  end
-)
+fterm.setup({
+    dimensions = {
+        height = 0.35,
+        width = 1.0,
+        y = 1.0
+    }
+})
 map({'n', 't'}, '<A-i>', fterm.toggle)
+map({'n'}, '<Leader>mr', function()
+    cmd('wa')
+    fterm.run('make run')
+end
+)
+map({'n'}, '<Leader>mu', function()
+    cmd('wa')
+    fterm.run('make up')
+end
+)
+map({'n'}, '<Leader>md', function()
+    fterm.run('make down')
+end
+)
+
 
 -- Visual mode pressing * or # searches for the current selection;
 map('v', '*', [[<CMD><C-u>call general#VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>]])
@@ -477,15 +472,17 @@ cmp.setup({
   window = {documentation = false},
 })
 
+
 -- Setup lspconfig
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-vim.lsp.config("pylsp", {
-  capabilities = capabilities,
-  root_markers = { '.git', 'pyproject.toml'},
+vim.lsp.config('*', {
+  capabilities=capabilities,
+  root_markers = { ".git", "." },
 })
+vim.lsp.config("pylsp", { capabilities = capabilities })
 vim.lsp.enable({"pylsp"})
-vim.lsp.config("gopls", {capabilities = capabilities})
-vim.lsp.enable({"gopls"})
+-- vim.lsp.config("gopls", {capabilities = capabilities})
+-- vim.lsp.enable({"gopls"})
 
 
 -- =============================================================================
@@ -516,26 +513,6 @@ map('n', "<C-j>", navigator.down)
 
 
 -- =============================================================================
--- FTerm settings
--- =============================================================================
-local fterm = require('FTerm')
-local fterm_dimensions = {
-  height = 0.35,
-  width = 1.0,
-  y = 1.0
-}
-fterm.setup({ dimensions = fterm_dimensions })
-local runners = {
-  python = 'python3',
-  html = 'firefox-esr -safe-mode -new-window',
-  sh = 'bash',
-  javascript = 'node',
-  ruby = 'ruby',
-  go = 'go run',
-}
-
-
--- =============================================================================
 -- polyglot settings
 -- =============================================================================
 -- cm('let g:python_highlight_func_calls = 0')
@@ -545,8 +522,7 @@ g.python_highlight_func_calls = 0
 -- =============================================================================
 -- dadbod settings
 -- =============================================================================
--- cmd('let g:db = "sqlite:db.sqlite3"')
-g.db = 'sqlite:db.sqlite3'
+g.db = 'sqlite:db.sqlite'
 map('n', '<Leader>db', [[<CMD>DB<CR>]])
 map('v', '<Leader>db', [[<CMD>DB<CR>]])
 

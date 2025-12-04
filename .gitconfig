@@ -10,11 +10,11 @@
 [color]
 	ui = auto
 [difftool]
-    prompt = false
+	prompt = false
 [diff]
-    tool = nvimdiff
+	tool = nvimdiff
 [difftool "nvimdiff"]
-    cmd = git diff | /home/nikolay/.local/bin/nvim.appimage
+	cmd = git diff | /home/nikolay/.local/bin/nvim.appimage
 [alias]
 	co = checkout
 	ci = commit
@@ -31,3 +31,5 @@
 	tool = fugitive
 [mergetool]
 	prompt = false
+[commit]
+	template = /home/nikolay/.dotfiles/COMMIT_EDITMSG
